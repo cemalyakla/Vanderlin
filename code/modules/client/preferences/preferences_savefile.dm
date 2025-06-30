@@ -328,9 +328,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["job_preferences"] >> job_preferences
 
 	//Load headshot link
-	S["headshot_link"]			>> headshot_link
-	if(!is_valid_headshot_link(null, headshot_link, TRUE))
-		headshot_link = null
+	S["headshot_link"]	>> headshot_link
+	//if(!is_valid_headshot_link(null, headshot_link, TRUE))
+	//	headshot_link = null
 
 	//Load flavor text
 	S["flavortext"] >> flavortext
