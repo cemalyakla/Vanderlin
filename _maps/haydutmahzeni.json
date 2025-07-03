@@ -1,0 +1,22 @@
+{
+	"map_name": "Haydut Mahzeni",
+	"map_path": "map_files/haydutmahzeni",
+	"map_file": "haydutmahzeni.dmm",
+	"immigrant_origin": "Vanderlin",
+	"monarch_title": "Captain",
+	"monarch_title_f": "Captainess",
+	"traits": [
+		{"Up": true, "Turf Weather Effects": false, "Cellar": true},
+		{"Up": true, "Down": true, "Turf Weather Effects": false, "Leylines": true},
+		{"Up": true, "Down": true, "Turf Weather Effects": false},
+		{"Down": true, "Turf Weather Effects": false}
+	],
+	"other_z": [
+		"_maps/map_files/vanderlin/vanderlin_forest.json",
+		"_maps/map_files/vanderlin/vanderlin_mountain.json",
+		"_maps/map_files/vanderlin/vanderlin_bog.json"
+	],
+	"minetype": null,
+	"space_empty_levels": 0,
+	"space_ruin_levels": 0
+}

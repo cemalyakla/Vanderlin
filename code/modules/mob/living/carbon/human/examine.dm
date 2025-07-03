@@ -166,6 +166,14 @@
 				. += span_userdanger("BANDIT!")
 			if(mind && mind.special_role == "Vampire Lord")
 				. += span_userdanger("A MONSTER!")
+			if(mind && mind.special_role == "HAYDUT")
+				. += span_userdanger("Eski bir Haydut!")
+			if(mind && mind.special_role == "VAHSI")
+				. += span_userdanger("Vahşi!")
+			if(mind && mind.special_role == "HIRSIZ")
+				. += span_userdanger("Hırsız!")
+			if(mind && mind.special_role == "KATIL")
+				. += span_userdanger("Katil!")
 
 		var/list/known_frumentarii = user.mind?.cached_frumentarii
 		if(name in known_frumentarii)

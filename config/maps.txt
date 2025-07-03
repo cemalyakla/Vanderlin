@@ -32,3 +32,8 @@ map whitepalacepass
 	maxplayers 90
 	votable
 endmap
+
+map haydutmahzeni
+	maxplayers 40
+	votable
+endmap
