@@ -85,7 +85,7 @@
 /proc/handle_maniac_mob_hallucination(mob/living/target)
 	if(!target.client)
 		return
-	var/mob_message = pick("It's mom!", "I have to HURRY UP!", "They are CLOSE!","They are NEAR!")
+	var/mob_message = pick("Anneciğim!", "ACELE ETMEM GEREKİYOR!", "ÇOK YAKINDALAR!","YAKLAŞIYORLAR!")
 	var/turf/spawning_turf
 	var/list/turf/spawning_turfs = list()
 	for(var/turf/turf in view(target))
@@ -95,7 +95,7 @@
 	if(!spawning_turf)
 		return
 	var/mob_state = pick("mom", "shadow", "deepone")
-	if(mob_message == "It's mom!")
+	if(mob_message == "Anneciğim!")
 		mob_state = "mom"
 	var/image/mob_image = image('icons/roguetown/maniac/dreamer_mobs.dmi', spawning_turf, mob_state, FLOAT_LAYER, get_dir(spawning_turf, target))
 	mob_image.plane = GAME_PLANE_UPPER
@@ -134,7 +134,7 @@
 	if(caught_dreamer)
 		var/datum/antagonist/maniac/maniac = target.mind.has_antag_datum(/datum/antagonist/maniac)
 		target.Stun(rand(0.5, 1) SECONDS)
-		var/pain_message = pick("NO!", "THEY GOT ME!", "AGH!")
+		var/pain_message = pick("HAYIR!", "YAKALANDIM!", "AGH!")
 		to_chat(target, span_userdanger("[pain_message]"))
 		if(!maniac) //If they're a maniac, they don't freak out and get knocked down, they still get stunned.
 			target.freak_out()
@@ -195,7 +195,7 @@
 	dreamer.client?.images -= fake_floor
 
 /proc/handle_maniac_admin_bwoink_hallucination(mob/living/target)
-	var/fakemin = "Trey Liam"
+	var/fakemin = "Amnotakidnapper"
 	if(length(GLOB.admin_datums))
 		var/datum/admins/badmin = GLOB.admin_datums[pick(GLOB.admin_datums)]
 		if(badmin?.owner?.key)
@@ -208,7 +208,7 @@
 	SEND_SOUND(target, sound('sound/adminhelp.ogg'))
 
 /proc/handle_maniac_admin_ban_hallucination(mob/living/target)
-	var/fakemin = "Trey Liam"
+	var/fakemin = "Amnotakidnapper"
 	if(length(GLOB.admin_datums))
 		var/datum/admins/badmin = GLOB.admin_datums[pick(GLOB.admin_datums)]
 		if(badmin?.owner?.key)

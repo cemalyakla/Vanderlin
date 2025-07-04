@@ -339,6 +339,14 @@
 	character.change_stat("speed", -2)
 	character.change_stat("intelligence", -4)
 
+/datum/special_trait/leprosy
+	name = "Leprosy"
+	greet_text = span_notice("I'm a leper. People don't like me.")
+	weight = 100
+
+/datum/special_trait/leprosy/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_LEPROSY, "[type]")
+
 /datum/special_trait/nopouch
 	name = "No Pouch"
 	greet_text = span_boldwarning("I lost my pouch recently, I'm without a zenny..")
@@ -429,18 +437,19 @@
 	ADD_TRAIT(character, TRAIT_JESTERPHOBIA, "[type]") // purely for the info text
 	character.gain_trauma(/datum/brain_trauma/mild/phobia/jesters)
 
-/datum/special_trait/wild_night
-	name = "Wild Night"
-	greet_text = span_boldwarning("I don't remember what I did last night, and now I'm lost!")
-	weight = 200
 
-/datum/special_trait/wild_night/on_apply(mob/living/carbon/human/character, silent)
-	var/turf/location = get_spawn_turf_for_job("Pilgrim")
-	character.forceMove(location)
-	character.reagents.add_reagent(pick(/datum/reagent/ozium, /datum/reagent/moondust, /datum/reagent/druqks), 15)
-	character.reagents.add_reagent(/datum/reagent/consumable/ethanol/beer, 72)
-	grant_lit_torch(character)
+//datum/special_trait/wild_night
+//	name = "Wild Night"
+//	greet_text = span_boldwarning("I don't remember what I did last night, and now I'm lost!")
+//	weight = 200
 
+///datum/special_trait/wild_night/on_apply(mob/living/carbon/human/character, silent)
+//	var/turf/location = get_spawn_turf_for_job("Pilgrim")
+//	character.forceMove(location)
+//	character.reagents.add_reagent(pick(/datum/reagent/ozium, /datum/reagent/moondust, /datum/reagent/druqks), 15)
+//	character.reagents.add_reagent(/datum/reagent/consumable/ethanol/beer, 72)
+//	grant_lit_torch(character)
+/** */
 /datum/special_trait/atrophy
 	name = "Atrophy"
 	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile")

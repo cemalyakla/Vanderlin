@@ -1,21 +1,21 @@
 /datum/objective/maniac
 	name = "WAKE UP"
-	explanation_text = "FOLLOWING my HEART shall be the WHOLE of the law."
+	explanation_text = "KALBİMİ TAKİP etmek YASANIN bütünü olacaktır."
 	flavor = "Dream"
 
 /datum/antagonist/maniac
 	name = "Maniac"
 	roundend_category = "maniacs"
 	antagpanel_category = "Maniac"
-	antag_memory = "<b>Recently I've been visited by a lot of VISIONS. They're all about another WORLD, ANOTHER life. I will do EVERYTHING to know the TRUTH, and return to the REAL world.</b>"
+	antag_memory = "<b>Son zamanlarda bir çok GÖRÜŞ tarafından ziyaret edildim. Hepsi başka bir DÜNYA, başka bir YAŞAM'la ilgili. GERÇEĞİ bilmek ve GERÇEK dünyaya dönmek için HER ŞEYİ yapacağım.</b>"
 	job_rank = ROLE_MANIAC
 	antag_hud_type = ANTAG_HUD_MANIAC
 	antag_hud_name = "generic_villain"
 	confess_lines = list(
-		"I gave them no time to squeal.",
-		"I shant quit ripping them.",
-		"They deserve to be put at my blade.",
-		"Do what thou wilt shall be the whole of the law.",
+		"Çığlık atma şansları bile olmadı.",
+		"Onları deşmeyi bırakmayacağım.",
+		"Bıçağımın dokunuşunu hissetmeyi hak ediyorlar.",
+		"Yasa benim. Ben. Başka biri veya bir şey değil.",
 	)
 	/// Traits we apply to the owner
 	innate_traits = list(
@@ -133,7 +133,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 	STOP_PROCESSING(SSobj, src)
 	if(owner.current)
 		if(!silent)
-			to_chat(owner.current,span_danger("I am no longer a MANIAC!"))
+			to_chat(owner.current,span_danger("Artık bir MANYAK değilim!"))
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/dreamer = owner.current
 			dreamer.set_patron(/datum/patron/inhumen/zizo)
@@ -218,7 +218,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 	if(GLOB.maniac_highlander) // another Maniac has TRIUMPHED before we could
 		if(src.owner && src.owner.current)
 			var/straggler = src.owner.current
-			to_chat(straggler, span_danger("IT'S NO USE! I CAN'T WAKE UP!"))
+			to_chat(straggler, span_danger("İŞE YARAMIYOR! UYANAMIYORUM!"))
 		return
 	GLOB.maniac_highlander = 1
 	STOP_PROCESSING(SSobj, src)

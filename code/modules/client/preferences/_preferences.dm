@@ -120,7 +120,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/auto_fit_viewport = FALSE
 	var/widescreenpref = TRUE
 
-	var/musicvol = 50
+	var/musicvol = 25 //fuck you serb
 	var/mastervol = 50
 
 	var/anonymize = TRUE
