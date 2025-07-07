@@ -14,6 +14,7 @@
 		"Monarch",
 		"Consort",
 		"Priest",
+		"Prisoner",
 		"Orphan",
 		"Churchling",
 		"Innkeepers Son",

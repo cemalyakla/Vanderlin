@@ -109,6 +109,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"Plate Training" = TRAIT_HEAVYARMOR,
 		"Fast Reflexes" = TRAIT_DODGEEXPERT,
 		"Villain" = TRAIT_VILLAIN,
+		"Leprosy" = TRAIT_LEPROSY,
 		"Critical Resistance" = TRAIT_CRITICAL_RESISTANCE,
 		"Critical Weakness" = TRAIT_CRITICAL_WEAKNESS,
 		"Awoken" = TRAIT_MANIAC_AWOKEN,

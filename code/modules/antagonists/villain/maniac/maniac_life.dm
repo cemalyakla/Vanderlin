@@ -195,7 +195,7 @@
 	dreamer.client?.images -= fake_floor
 
 /proc/handle_maniac_admin_bwoink_hallucination(mob/living/target)
-	var/fakemin = "Amnotakidnapper"
+	var/fakemin = pick("Amnotakidnapper", "Eloniaxe")
 	if(length(GLOB.admin_datums))
 		var/datum/admins/badmin = GLOB.admin_datums[pick(GLOB.admin_datums)]
 		if(badmin?.owner?.key)
@@ -208,13 +208,13 @@
 	SEND_SOUND(target, sound('sound/adminhelp.ogg'))
 
 /proc/handle_maniac_admin_ban_hallucination(mob/living/target)
-	var/fakemin = "Amnotakidnapper"
+	var/fakemin = pick("Amnotakidnapper", "Eloniaxe")
 	if(length(GLOB.admin_datums))
 		var/datum/admins/badmin = GLOB.admin_datums[pick(GLOB.admin_datums)]
 		if(badmin?.owner?.key)
 			fakemin = badmin.owner.key
 	var/message = ""
-	var/ban_appeal = pick("your grave", "WAKE UP WAKE UP WAKE UP")
+	var/ban_appeal = pick("Mezarın", "UYAN UYAN UYAN")
 	message = pick_list_replacements("maniac.json", "dreamer_ban")
 	to_chat(target, span_boldannounce("<BIG>You have been banned by [fakemin] from the server.\nReason: [message]</BIG>"))
 	to_chat(target, span_boldannounce("This is a permanent ban. The round ID is [GLOB.rogue_round_id]."))

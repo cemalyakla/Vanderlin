@@ -57,15 +57,15 @@
 	var/datum/antagonist/maniac/dreamer = user.mind?.has_antag_datum(/datum/antagonist/maniac)
 	if(dreamer)
 		if(!maniacs)
-			. += "<span class='danger'><b>There is NOTHING on this heart. \
-				Should be? Following the TRUTH - not here. I need to keep LOOKING. Keep FOLLOWING my heart.</b></span>"
+			. += "<span class='danger'><b>Bu kalpte HİÇ BİR SIR yok. \
+				Ama nasıl olur? GERÇEĞİ bulmalıyım - ama gerçek burada değil. BAKMAYA devam etmeliyim. KALBİMİ takip etmeliyim.</b></span>"
 		else
 			if(!(dreamer in maniacs))
-				. += "<span class='danger'><b>This heart has INDECIPHERABLE etching. \
-					Following the TRUTH - not here. I need to keep LOOKING. Keep FOLLOWING my heart.</b></span>"
+				. += "<span class='danger'><b>Bu KALBİN SIRLARI ÇÖZÜLEMEZ!. \
+					GERÇEĞİ bulmalıyım - ama gerçek burada değil. BAKMAYA devam etmeliyim. KALBİMİ takip etmeliyim.</b></span>"
 				return .
 			var/my_inscryption = LAZYACCESS(inscryptions, dreamer)
-			. += "<b><span class='warning'>There's something CUT on this HEART.</span>\n\"[my_inscryption]. Add it to the other keys to exit INRL.\"</b>"
+			. += "<b><span class='warning'>Bu kalpte bir SIR var.</span>\n\"[my_inscryption]. INRL'den çıkmak için bunu diğerlerine eklemeliyim.\"</b>"
 			if(!(my_inscryption in dreamer.hearts_seen))
 				var/wonder_code = LAZYACCESS(maniacs2wonder_ids, dreamer)
 				dreamer.hearts_seen += my_inscryption

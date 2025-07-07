@@ -1,12 +1,7 @@
 /datum/job/prisoner
 	title = "Prisoner"
 	tutorial = "For a crime, or false allegation; as a hostage against another, \
-	or held for ransom: your fate until this day has been ill-starred save its first. \
-	You are of noble birth. Perhaps your story, which none but you recall, \
-	will move some pity from callous hearts or promises of riches parole your release. \
-	Maybe your old associates conspire now to release you in a daring rescue. \
-	Yet it is far surer that your tears will rust this cursed mask \
-	than the sun shine upon your face a freed soul once more." // changed to reduce dictation of character. Nikov.
+	or held for ransom: your fate until this day has been ill-starred save its first."
 	flag = GRAVETENDER
 	department_flag = PEASANTS
 	display_order = JDO_PRISONER
@@ -55,11 +50,9 @@
 
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE) // given Noble trait. N.
-	H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE) // given Noble trait. N.
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE) // per suggestion. N.
-	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE) // given Noble trait it makes no sense they were illiterate. N.
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
@@ -73,7 +66,11 @@
 	H.change_stat(STATKEY_END, -1)
 	var/datum/antagonist/new_antag = new /datum/antagonist/prisoner()
 	H.mind?.add_antag_datum(new_antag)
+	var/datum/antagonist/prisoner/prisoner = H.mind.has_antag_datum(/datum/antagonist/prisoner)
+
 	if(!H.mind)
 		return
-	ADD_TRAIT(H, TRAIT_BANDITCAMP, TRAIT_GENERIC)
+
+	//ADD_TRAIT(H, TRAIT_BANDITCAMP, TRAIT_GENERIC)
 	//ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+

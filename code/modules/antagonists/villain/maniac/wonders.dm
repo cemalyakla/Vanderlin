@@ -170,6 +170,6 @@
 			SEND_SOUND(V, 'sound/villain/seen_wonder.ogg')
 			V.Paralyze(5 SECONDS)
 			gazed_at = TRUE
-			to_chat(V, span_userdanger("It is WONDERFUL!"))
+			to_chat(V, span_userdanger("MUHTEŞEM!"))
 			var/N = dream_master.owner?.name
 			V.log_message("was marked by Maniac [N ? "[N]'s " : ""]Wonder #[wonder_id]: \"[strip_html_simple(inscryption)].\"", LOG_ATTACK)
