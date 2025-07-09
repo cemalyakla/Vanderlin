@@ -92,16 +92,16 @@ SUBSYSTEM_DEF(ticker)
 	var/last_bot_update = 0
 
 	var/list/no_ruler_lines = list(
-		"Set a Ruler to 'high' in your class preferences to start the game!",
-		"PLAY Ruler NOW!", "A Ruler is required to start.",
-		"Pray for a Ruler.", "One day, there will be a Ruler.",
-		"Just try playing Ruler.", "If you don't play Ruler, the game will never start.",
-		"We need at least one Ruler to start the game.",
-		"We're waiting for you to pick Ruler to start.",
-		"Still no Ruler is readied..",
-		"I'm going to lose my mind if we don't get a Ruler readied up.",
-		"No. The game will not start because there is no Ruler.",
-		"What's the point of Vanderlin without a Ruler?"
+		"Oyunun başlamasını istiyorsanız, rol seçme kısmındaki 'Monarch' rolünü 'High' ayarına çekin!!",
+		"MONARCH OYNAYIN!! HEMEN ŞİMDİ!!",
+		"Monarch gelmesi için dua edin.", "Bir gün, buraların da bir kralı olacak.",
+		"Monarch oyanamayı deneyebilirsiniz!", "Monarch oynamazsanız, oyun asla başlamayacak.",
+		"MONARCH GİRİN LAN.",
+		"Biriniz Monarch girene kadar oynamıyoruz.",
+		"MONARCH. GİR. SEN. ŞİMDİ. GİR. MONARCH. HEMEN. ŞİMDİ..",
+		"Biriniz Monarch girmezseniz aklımı kaybedecem.",
+		"OYUN MONARCH GİRMEZSENİZ BAŞLAMIYO!!",
+		"Monarchsız Vanderlin mi olur?"
 		)
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)

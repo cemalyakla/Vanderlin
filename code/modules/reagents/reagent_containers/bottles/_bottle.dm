@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	. = ..()
 	var/obj/item/paper/scroll/pp = new(src)
 	contained = pp
-	pp.info = pick(GLOB.wisdoms)
+	pp.info = copytext_char(pick(GLOB.wisdoms))
 
 /obj/item/bottlemessage/rmb_self(mob/user)
 	. = ..()
