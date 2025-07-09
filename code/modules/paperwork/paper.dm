@@ -164,7 +164,7 @@
 
 /obj/item/paper/proc/show_paper_hud(mob/user)
 	var/dat = {"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
-		<html><head><style type=\"text/css\">
+		<html><head><meta charset=\"UTF-8\"><style type=\"text/css\">
 		body { background-image:url('book.png');background-repeat: repeat; }</style></head><body scroll=yes>"}
 	dat += info
 	dat += "<br>"
@@ -408,7 +408,6 @@
 			playsound(src, 'sound/items/write.ogg', 100, FALSE)
 			format_browse(info_links, usr)
 			update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)
-
 /obj/item/paper/attackby(obj/item/P, mob/living/user, params)
 	if(resistance_flags & ON_FIRE)
 		return ..()
@@ -503,3 +502,18 @@
 
 /obj/item/paper/crumpled/muddy
 	icon_state = "scrap_mud"
+
+/proc/encode_html_entities(text)
+    text = replacetext_char(text, "Ü", "&Uuml;")
+    text = replacetext_char(text, "Ö", "&Ouml;")
+    text = replacetext_char(text, "Ğ", "&#286;")
+    text = replacetext_char(text, "ü", "&uuml;")
+    text = replacetext_char(text, "ö", "&ouml;")
+    text = replacetext_char(text, "ğ", "&#287;")
+    text = replacetext_char(text, "ı", "&#305;")
+    text = replacetext_char(text, "İ", "&#304;")
+    text = replacetext_char(text, "ş", "&#351;")
+    text = replacetext_char(text, "Ş", "&#350;")
+    text = replacetext_char(text, "ç", "&ccedil;")
+    text = replacetext_char(text, "Ç", "&Ccedil;")
+    return text
