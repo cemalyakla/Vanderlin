@@ -16,7 +16,7 @@
 	show_name_in_check_antagonists = TRUE
 	show_in_roundend = TRUE
 	confess_lines = list(
-		"THE CHOSEN MUST TAKE THE THRONE!",
+		"SEÇİLMİŞ KİŞİ TAC'IN SAHİBİDİR!",
 	)
 	increase_votepwr = TRUE
 	antag_flags = FLAG_FAKE_ANTAG

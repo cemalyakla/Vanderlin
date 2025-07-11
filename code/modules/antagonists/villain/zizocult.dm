@@ -8,10 +8,10 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	antag_hud_type = ANTAG_HUD_ZIZOID
 	antag_hud_name = "zizoid_lackey"
 	confess_lines = list(
-		"DEATH TO THE TEN!",
-		"PRAISE ZIZO!",
-		"I AM THE FUTURE!",
-		"NO GODS! ONLY MASTERS!",
+		"ON'LUĞA ÖLÜM!",
+		"ZİZO, HATIRLA, ÖLÜM BİR SON DEĞİL!",
+		"GELECEK BENİM!",
+		"GÖLGELERİN HANIMI, HATIRLA!",
 	)
 	var/islesser = TRUE
 	var/change_stats = TRUE

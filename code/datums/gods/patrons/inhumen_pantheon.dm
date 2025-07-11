@@ -29,9 +29,9 @@
 	boons = "You may perform fleshcrafting. Access to roles with magic."
 	//added_traits = list(TRAIT_CABAL)	No need for this. They have fleshcrafting now.
 	confess_lines = list(
-		"I FOLLOW THE PATH OF ZIZO!",
-		"LONG LIVE QUEEN ZIZO!",
-		"ZIZO SHOWED ME THE WAY!",
+		"GÖLGELERİN HANIMI, KRALİÇEMİZ!",
+		"KRALİÇEMİZ, ÇOK YAŞA!",
+		"ZİZO, HATIRLA, ÖLÜM BİR SON DEĞİL!",
 	)
 	storyteller = /datum/storyteller/zizo
 	added_verbs = list(
@@ -49,9 +49,9 @@
 	boons = "You are drawn to the flavour of raw flesh and organs, and may consume without worry."
 	added_traits = list(TRAIT_ORGAN_EATER)
 	confess_lines = list(
-		"GRAGGAR IS THE BEAST I WORSHIP!",
-		"GRAGGAR WILL RAVAGE YOU!",
-		"GRAGGAR BRINGS UNHOLY DESTRUCTION!"
+		"GRAGGAR, TAKİP ETTİĞİM YARATIK O!",
+		"GRAGGAR SENİ YOK EDECEK!",
+		"GRAGGAR, LANETİYLE SİZİ YOK EDECEK!"
 	)
 	storyteller = /datum/storyteller/graggar
 
@@ -65,9 +65,9 @@
 	boons = "You can see the most expensive item someone is carrying."
 	added_traits = list(TRAIT_MATTHIOS_EYES)
 	confess_lines = list(
-		"MATTHIOS STEALS FROM THE WORTHLESS!",
-		"MATTHIOS IS JUSTICE FOR THE COMMON MAN!",
-		"MATTHIOS IS MY LORD, I SHALL BE HIS MARTYR!",
+		"MATTHIOS DEĞERİ OLMAYANLARDAN ÇALAR!",
+		"MATTHIOS SIRADAN ADAMA ADALET SAĞLAR!",
+		"MATTHIOS BENİM EFENDİMDİR, ONUN ŞEHİDİ OLACAĞIM!",
 	)
 	storyteller = /datum/storyteller/matthios
 
@@ -81,9 +81,9 @@
 	boons = "You will never overdose on drugs."
 	added_traits = list(TRAIT_CRACKHEAD)
 	confess_lines = list(
-		"LIVE, LAUGH, LOVE! IN BAOTHA'S NAME!",
-		"JOY AT ALL COSTS! BAOTHA'S TEACHINGS REIGN!",
-		"BAOTHA'S WHISPERS CALM MY MIND!",
+		"YAŞA, GÜL, VE SEV! BAOTHA ADINA!",
+		"HER KOŞULDA EĞLEN! BAOTHA ADINA!",
+		"BAOTHA'NIN FISILDAMALARI ZİHNİMİ RAHATLATIYOR!",
 	)
 	storyteller = /datum/storyteller/baotha
 
@@ -98,9 +98,9 @@
 	boons = "You are drawn to the flavour of other followers of Zizo, and may see them when you consume without worry."
 	added_traits = list(TRAIT_ORGAN_EATER, TRAIT_CABAL)
 	confess_lines = list(
-		"WHERE AM I!",
-		"NONE OF THIS IS REAL!",
-		"WHO AM I WORSHIPPING?!"
+		"KİME İNANIYORUM?!",
+		"UYANMALIYIM, BIRAK BENİ!",
+		"SEN GERÇEK DEĞİLSİN!"
 	)
 	preference_accessible = FALSE
 

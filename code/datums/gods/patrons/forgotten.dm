@@ -9,9 +9,9 @@
 	boons = "None. His power is divided."
 	associated_faith = /datum/faith/psydon
 	confess_lines = list(
-		"THERE IS ONLY ONE GOD!",
-		"THE SUCCESSORS HALT HIS RETURN!",
-		"PSYDON LIVES!",
+		"YALNIZCA TEK BİR TANRI VARDIR!",
+		"VARİSLERİ ONUN DÖNÜŞÜNÜ DURDURUYOR!",
+		"PSYDON YAŞIYOR!",
 	)
 
 /datum/patron/psydon/can_pray(mob/living/carbon/human/follower)
@@ -28,7 +28,7 @@
 	flaws = "Fatalistic, Sentimental, Acquiescent"
 	worshippers = "Idealistic Dreamers, Optimists, Diplomats"
 	confess_lines = list(
-		"PSYDON AND THE TEN ARE THE RIGHTFUL GODS!",
-		"THE SUCCESSORS ARE HIS MANIFESTATIONS!",
-		"THROUGH THE TEN PSYDON LIVES!",
+		"PSYDON VE ON'LUK DOĞRU TANRILARDIR!",
+		"VARİSLERİ ONUN BÜTÜNÜDÜR!",
+		"ON'UN İÇİNDEN, PSYDON YAŞIYOR!",
 	)

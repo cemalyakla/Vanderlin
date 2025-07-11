@@ -11,10 +11,10 @@
 	show_in_roundend = FALSE
 	isgoodguy = TRUE // Previous townies, still should get buffs, make chaos.
 	confess_lines = list(
-		"VIVA!",
-		"DEATH TO THE NOBLES!",
-		"STICK IT TO THE MAN!",
-		"NO GODS, NO MASTERS!",
+		"YAŞASIN DEVRİM!",
+		"SOYLULARA ÖLÜM!",
+		"GÜNLERİNİ GÖSTERİN!",
+		"TANRISIZ, EFENDİSİZ BİR YAŞAM!",
 	)
 	increase_votepwr = FALSE
 	var/datum/team/prebels/rev_team

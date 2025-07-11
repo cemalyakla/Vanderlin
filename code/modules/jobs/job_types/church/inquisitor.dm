@@ -136,12 +136,12 @@
 	if(H.add_stress(/datum/stressevent/tortured))
 		SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
 		var/static/list/torture_lines = list(
-			"CONFESS YOUR WRONGDOINGS!",
-			"TELL ME YOUR SECRETS!",
-			"SPEAK THE TRUTH!",
-			"YOU WILL SPEAK!",
-			"TELL ME!",
-			"THE PAIN HAS ONLY BEGUN, CONFESS!",
+			"GÜNAHLARINI İTİRAF ET!",
+			"SIRLARINI ANLAT!",
+			"DOĞRULARI SÖYLE!",
+			"KONUŞACAKSIN!",
+			"KONUŞ!",
+			"ACI DAHA BAŞLAMADI BİLE, İTİRAF ET!",
 		)
 		say(pick(torture_lines), spans = list("torture"))
 		H.emote("painscream")
@@ -180,10 +180,10 @@
 	if(H.add_stress(/datum/stressevent/tortured))
 		SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
 		var/static/list/faith_lines = list(
-			"DO YOU DENY PSYDON AND THE TEN?",
-			"WHO IS YOUR GOD?",
-			"ARE YOU FAITHFUL?",
-			"TO WHICH SHEPHERD DO YOU FLOCK TO?",
+			"PSYDON VE ON'LUĞU KABUL EDİYOR MUSUN?",
+			"TANRIN KİM!?",
+			"KİME İNANIYORSUN, KONUŞ!",
+			"HANGİ ÇOBANIN KOYUNUSUN?",
 		)
 		say(pick(faith_lines), spans = list("torture"))
 		H.emote("painscream")
@@ -208,14 +208,14 @@
 	if(stat == DEAD)
 		return
 	var/static/list/innocent_lines = list(
-		"I DON'T KNOW!",
-		"STOP THIS MADNESS!!",
-		"I DON'T DESERVE THIS!",
-		"THE PAIN!",
-		"I HAVE NOTHING TO SAY...!",
-		"WHY ME?!",
-		"I'M INNOCENT!",
-		"I AM NO SINNER!",
+		"B-BİLMİYORUM!!",
+		"LÜTFEN, BIRAKIN BENİ!!",
+		"BUNU HAK ETMİYORUM!!",
+		"AAAGH!",
+		"SÖYLEYECEK BİR ŞEYİM YOK...!",
+		"NEDEN BEN?!",
+		"BEN MASUMUM!",
+		"BEN GÜNAHKAR DEĞİLİM!",
 	)
 	var/resist_chance = 0
 	if(resist)
@@ -279,52 +279,52 @@
 				//this is no longer reliable as all patrons have confess lines now
 				switch(antag_type)
 					if("Bandit")
-						held_confession.bad_type = "AN OUTLAW OF THE THIEF-LORD"
+						held_confession.bad_type = "HIRSIZ-EFENDİSİ'NİN BİR HAYDUTU"
 						held_confession.antag = antag_type
 					if("Matthios")
-						held_confession.bad_type = "A FOLLOWER OF THE THIEF-LORD"
+						held_confession.bad_type = "HIRSIZ-EFENDİSİ'NİN BİR TAKİPÇİSİ"
 						held_confession.antag = "worshiper of " + antag_type
 					if("Maniac")
-						held_confession.bad_type = "A MANIAC DELUDED BY MADNESS"
+						held_confession.bad_type = "DELİLİĞE SÜRÜKLENMİŞ BİR MANYAK"
 						held_confession.antag = antag_type
 					if("Assassin")
-						held_confession.bad_type = "A DEATH CULTIST"
+						held_confession.bad_type = "ÖLÜM TARİKATININ BİR SUİKASTÇISI"
 						held_confession.antag = antag_type
 					if("Zizoid Lackey")
-						held_confession.bad_type = "A SERVANT OF THE FORBIDDEN ONE"
+						held_confession.bad_type = "YASAKLANMIŞ OLANIN HİZMETKARI"
 						held_confession.antag = antag_type
 					if("Zizoid Cultist")
-						held_confession.bad_type = "A SERVANT OF THE FORBIDDEN ONE"
+						held_confession.bad_type = "YASAKLANMIŞ OLANIN HİZMETKARI"
 						held_confession.antag = antag_type
 					if("Zizo")
-						held_confession.bad_type = "A FOLLOWER OF THE FORBIDDEN ONE"
+						held_confession.bad_type = "YASAKLANMIŞ OLANIN TAKİPÇİSİ"
 						held_confession.antag = "worshiper of " + antag_type
 					if("Werevolf")
-						held_confession.bad_type = "A BEARER OF DENDOR'S CURSE"
+						held_confession.bad_type = "DENDOR'UN LANETİNİ TAŞIYAN BİRİ"
 						held_confession.antag = antag_type
 					if("Lesser Werevolf")
-						held_confession.bad_type = "A BEARER OF DENDOR'S CURSE"
+						held_confession.bad_type = "DENDOR'UN LANETİNİ TAŞIYAN BİRİ"
 						held_confession.antag = antag_type
 					if("Vampire")
-						held_confession.bad_type = "A SCION OF KAINE"
+						held_confession.bad_type = "KABİL'İN SOYUNDAN BİRİ"
 						held_confession.antag = antag_type
 					if("Lesser Vampire")
-						held_confession.bad_type = "A SCION OF KAINE"
+						held_confession.bad_type = "KABİL'İN SOYUNDAN BİRİ"
 						held_confession.antag = antag_type
 					if("Vampire Lord")
-						held_confession.bad_type = "THE BLOOD-LORD OF VANDERLIN"
+						held_confession.bad_type = "KANLARIN EFENDİSİ"
 						held_confession.antag = antag_type
 					if("Vampire Spawn")
-						held_confession.bad_type = "AN UNDERLING OF THE BLOOD-LORD"
+						held_confession.bad_type = "KANLARIN EFENDİSİ'NİN HİZMETKARI"
 						held_confession.antag = antag_type
 					if("Graggar")
-						held_confession.bad_type = "A FOLLOWER OF THE DARK SUN"
+						held_confession.bad_type = "KARANLIK GÜNEŞ'İN TAKİPÇİSİ"
 						held_confession.antag = "worshiper of " + antag_type
 					if("Godless")
-						held_confession.bad_type = "A DAMNED ANTI-THEIST"
+						held_confession.bad_type = "TANRISIZIN TEKİ"
 						held_confession.antag = "worshiper of nothing"
 					if("Baotha")
-						held_confession.bad_type = "A FOLLOWER OF THE REMORSELESS RUINER"
+						held_confession.bad_type = "BAOTHA'NIN TAKİPÇİSİ"
 						held_confession.antag = "worshiper of " + antag_type
 					if("Peasant Rebel")
 						return // Inquisitors don't care about peasant revolts targeting the King

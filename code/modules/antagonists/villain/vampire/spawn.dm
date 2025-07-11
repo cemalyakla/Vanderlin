@@ -3,9 +3,9 @@
 	antag_hud_name = "Vspawn"
 	autojoin_team = TRUE
 	confess_lines = list(
-		"THE CRIMSON MASTER CALLS!",
-		"MY MASTER COMMANDS!",
-		"THE SUN IS THE ANATHEMA OF OUR MASTER!",
+		"KANLARIN EFENDİSİ ÇAĞIRIYOR!",
+		"EFENDİM EMREDİYOR!",
+		"GÜNEŞ, LANET OLSUN GÜNEŞE!",
 	)
 
 /datum/antagonist/vampire/lesser/on_gain()

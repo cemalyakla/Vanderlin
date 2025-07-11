@@ -10,9 +10,9 @@
 
 	profane_words = list()
 	confess_lines = list(
-		"No Gods, No Masters! There is only ME!",
-		"A man chooses, a slave obeys - I will be free from the Gods!",
-		"The old ways WILL CRUMBLE, the gods are UNJUST!"
+		"TANRISIZ, EFENDİSİZ BİR DÜNYA'DA YAŞAMAK İSTİYORUM!",
+		"İNSAN SEÇER, KÖLE İTAAT EDER - ÖZGÜR YAŞAMAK İSTİYORUM!",
+		"ESKİ YOLLAR ÇÖKECEK! TANRILARDAN KURTULACAĞIM!"
 	)
 
 /datum/patron/godless/can_pray(mob/living/follower)

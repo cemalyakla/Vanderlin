@@ -8,7 +8,7 @@
 	antag_hud_name = "bandit"
 	var/tri_amt
 	var/contrib
-	confess_lines = list("FREEDOM!!!", "I WILL NOT LIVE IN YOUR WALLS!", "I WILL NOT FOLLOW YOUR RULES!")
+	confess_lines = list("ÖZGÜRLÜÜK!!!", "DUVARLARINIZ ARASINDA YAŞAMAYACAĞIM!", "KURALLARINIZ BANA SÖKMEZ!")
 
 	innate_traits = list(
 		TRAIT_BANDITCAMP,

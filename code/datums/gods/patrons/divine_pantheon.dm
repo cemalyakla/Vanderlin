@@ -30,9 +30,9 @@
 	t2 = /datum/action/cooldown/spell/healing/greater
 	t3 = /datum/action/cooldown/spell/revive
 	confess_lines = list(
-		"ASTRATA IS MY LIGHT!",
-		"ASTRATA BRINGS LAW!",
-		"I SERVE THE GLORY OF THE SUN!",
+		"ASTRATA BENİM IŞIĞIMDIR!",
+		"ASTRATA YASAYI GETİRİR!",
+		"GÜNEŞİN GÖRKEMİNE İTAAT EDERİM!",
 	)
 	storyteller = /datum/storyteller/astrata
 
@@ -49,9 +49,9 @@
 	t2 = /datum/action/cooldown/spell/blindness/miracle
 	t3 = /datum/action/cooldown/spell/projectile/moonlit_dagger
 	confess_lines = list(
-		"NOC IS NIGHT!",
-		"NOC SEES THE TRUTH!",
-		"I SEEK THE MYSTERIES OF THE MOON!",
+		"NOC GECEDİR!",
+		"NOC GERÇEĞİ GÖSTERENDİR!",
+		"AY'IN GİZEMLERİNİ ARARIM!",
 	)
 	storyteller = /datum/storyteller/noc
 
@@ -68,9 +68,9 @@
 	t2 = /datum/action/cooldown/spell/undirected/beast_sense
 	t3 =/datum/action/cooldown/spell/beast_tame
 	confess_lines = list(
-		"DENDOR PROVIDES!",
-		"THE TREEFATHER BRINGS BOUNTY!",
-		"I ANSWER THE CALL OF THE WILD!",
+		"DENDOR SAĞLAR!",
+		"AĞAÇBABAMIZ YOL GÖSTERİR!",
+		"DOĞANIN ÇAĞRISINA CEVAP VERECEĞİM!",
 	)
 	storyteller = /datum/storyteller/dendor
 
@@ -87,9 +87,9 @@
 	t2 = /datum/action/cooldown/spell/undirected/conjure_item/summon_trident
 	t3 = /datum/action/cooldown/spell/ocean_embrace
 	confess_lines = list(
-		"ABYSSOR COMMANDS THE WAVES!",
-		"THE OCEAN'S FURY IS ABYSSOR'S WILL!",
-		"I AM DRAWN BY THE PULL OF THE TIDE!",
+		"ABYSSOR DALGALARA HÜKMEDR!",
+		"OKYANUSUN ÖFKESİ ABYSSOR'UN KENDİSİDİR!",
+		"KENDİMİ OKYANUSUN AKINTISINA BIRAKTIM!",
 	)
 	storyteller = /datum/storyteller/abyssor
 
@@ -106,9 +106,9 @@
 	t2 = /datum/action/cooldown/spell/undirected/soul_speak
 	t3 = /datum/action/cooldown/spell/aoe/churn_undead
 	confess_lines = list(
-		"ALL SOULS FIND THEIR WAY TO NECRA!",
-		"THE UNDERMAIDEN IS OUR FINAL REPOSE!",
-		"I FEAR NOT DEATH, MY LADY AWAITS ME!",
+		"HER RUH'UN YOLU NECRA'DA BİTER!",
+		"HUZUR BULACAĞIMIZ TEK YER YERALTININ-KIZI'NIN YANI!",
+		"ÖLÜMDEN KORKMAM, ÇÜNKÜ LEYDİMİZ BİZİ KUCAKLAYACAKDIR!",
 	)
 	storyteller = /datum/storyteller/necra
 
@@ -125,9 +125,9 @@
 	t2 = /datum/action/cooldown/spell/undirected/divine_strike
 	t3 = /datum/action/cooldown/spell/persistence
 	confess_lines = list(
-		"RAVOX IS JUSTICE!",
-		"THROUGH STRIFE, GRACE!",
-		"THE DRUMS OF WAR BEAT IN MY CHEST!",
+		"RAVOX ADALETLİDİR!",
+		"MÜCADELE VE ZARAFET!",
+		"SAVAŞIN DAVULLARI GÖĞSÜMDE ÇALIYOR!",
 	)
 	storyteller = /datum/storyteller/ravox
 
@@ -143,16 +143,16 @@
 	t1 = /datum/action/cooldown/spell/undirected/list_target/vicious_mimicry
 	t2 = /datum/action/cooldown/spell/status/wheel
 	confess_lines = list(
-		"ASTRATA IS MY LIGHT!",
-		"NOC IS NIGHT!",
-		"DENDOR PROVIDES!",
-		"ABYSSOR COMMANDS THE WAVES!",
-		"RAVOX IS JUSTICE!",
-		"ALL SOULS FIND THEIR WAY TO NECRA!",
+		"ASTRATA BENİM IŞIĞIMDIR!",
+		"NOC GECEDİR!",
+		"DENDOR SAĞLAR!",
+		"ABYSSOR DALGALARA HÜKMEDR!",
+		"RAVOX ADALETLİDİR!",
+		"HER RUH'UN YOLU NECRA'DA BİTER!",
 		"HAHAHAHA! AHAHAHA! HAHAHAHA!", //the only xylix-related confession
-		"PESTRA SOOTHES ALL ILLS!",
-		"MALUM IS MY FORGE!",
-		"EORA BRINGS US TOGETHER!",
+		"PESTRA BÜTÜN HASTALIKLARDAN KURTARIR!",
+		"MALUM BENİM OCAĞIMDIR!",
+		"EORA BİZİ BİR ARAYA GETİRİR!",
 	)
 	storyteller = /datum/storyteller/xylix
 
@@ -170,9 +170,9 @@
 	t2 = /datum/action/cooldown/spell/attach_bodypart
 	t3 = /datum/action/cooldown/spell/cure_rot
 	confess_lines = list(
-		"PESTRA SOOTHES ALL ILLS!",
-		"DECAY IS A CONTINUATION OF LIFE!",
-		"MY AFFLICTION IS MY TESTAMENT!",
+		"PESTRA BÜTÜN HASTALIKLARDAN KURTARIR!",
+		"ÇÜRÜMEK HAYATIN DÖNGÜSÜNÜN BİR PARÇASIDIR!",
+		"ACILARIM BENİM VASİYETİMDİR!",
 	)
 	storyteller = /datum/storyteller/pestra
 
@@ -189,9 +189,9 @@
 	t2 = /datum/action/cooldown/spell/hammer_fall
 	t3 = /datum/action/cooldown/spell/heat_metal
 	confess_lines = list(
-		"MALUM IS MY FORGE!",
-		"TRUE VALUE IS IN THE TOIL!",
-		"I AM AN INSTRUMENT OF CREATION!",
+		"MALUM BENİM OCAĞIMDIR!",
+		"GERÇEK DEĞER EMEKTEN GELİR!",
+		"BEN YARADILIŞIN ENSTRÜMANIYIM!",
 	)
 	storyteller = /datum/storyteller/malum
 
@@ -208,8 +208,8 @@
 	t2 = /datum/action/cooldown/spell/projectile/eora_curse
 	t3 = /datum/action/cooldown/spell/eoran_bloom
 	confess_lines = list(
-		"EORA BRINGS US TOGETHER!",
-		"HER BEAUTY IS EVEN IN THIS TORMENT!",
-		"I LOVE YOU, EVEN AS YOU TRESPASS AGAINST ME!",
+		"EORA BİZİ BİR ARAYA GETİRİR!",
+		"BU İŞKENCEDE BİLE ONUN SEVGİSİ VAR!",
+		"BANA KARŞI İŞKENCE ETSEN BİLE, SENİ SEVİYORUM!",
 	)
 	storyteller = /datum/storyteller/eora

@@ -4,9 +4,9 @@
 	antag_hud_name = "vamplord"
 	autojoin_team = TRUE
 	confess_lines = list(
-		"I AM ANCIENT!",
-		"I AM THE LAND!",
-		"FIRSTBORNE CHILD OF KAIN!",
+		"HERŞEYDEN ESKİYİM!",
+		"TOPRAK BANA İTAAT EDİYOR!",
+		"KABİL'İN İLK OĞLU BENİM!",
 	)
 
 	var/ascended = FALSE

@@ -14,9 +14,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	antag_hud_type = ANTAG_HUD_VAMPIRE
 	antag_hud_name = "vamp"
 	confess_lines = list(
-		"I WANT YOUR BLOOD!",
-		"DRINK THE BLOOD!",
-		"CHILD OF KAIN!",
+		"KAN İSTİYORUUM!",
+		"KANI İÇMEM GEREKİYOR!",
+		"KABİL'İN ÇOCUĞUYUM!",
 	)
 
 	/// This vampire's Team.

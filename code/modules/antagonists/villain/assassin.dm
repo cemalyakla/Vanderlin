@@ -7,10 +7,9 @@
 	antag_hud_name = "assassin"
 	show_name_in_check_antagonists = TRUE
 	confess_lines = list(
-		"MY CREED IS BLOOD!",
-		"THE DAGGER TOLD ME WHO TO CUT!",
-		"DEATH IS MY DEVOTION!",
-		"THE DARK SUN GUIDES MY HAND!",
+		"KİMİ ÖLDÜRECEĞİMİ HANÇER SÖYLEDİ!",
+		"ÖLÜM BENİM BAĞLILIĞIMDIR!",
+		"KARANLIK-GÜNEŞ ELİME REHBERLİK EDİYOR!",
 	)
 	antag_flags = FLAG_FAKE_ANTAG
 

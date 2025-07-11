@@ -8,9 +8,9 @@
 	antag_hud_type = ANTAG_HUD_WEREWOLF
 	antag_hud_name = "werewolf"
 	confess_lines = list(
-		"THE BEAST INSIDE ME!",
-		"BEWARE THE BEAST!",
-		"MY LUPINE MARK!",
+		"İÇİMDEKİ YARATIK!",
+		"İÇİMDEKİ YARATIK, KONTROL EDEMİYORUM!",
+		"YARATIĞIN İZİ, KONTROLÜMDE DEĞİL!",
 	)
 	//rogue_enabled = TRUE
 	var/special_role = ROLE_WEREWOLF

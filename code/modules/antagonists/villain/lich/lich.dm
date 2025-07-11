@@ -6,9 +6,9 @@
 	antag_hud_type = ANTAG_HUD_NECROMANCY
 	antag_hud_name = "necromancer"
 	confess_lines = list(
-		"I WILL LIVE ETERNAL!",
-		"I AM BEHIND SEVEN PHYLACTERIES!",
-		"YOU CANNOT KILL ME!",
+		"SONSUZA DEK YAŞAYACAĞIM!",
+		"SONSUZA DEK, SONSUZA DEK YAŞAYACAĞIM!",
+		"BENİ ÖLDÜREMEZSİNİZ!",
 	)
 	var/list/phylacteries = list()
 	/// weak reference to the body so we can revive even if decapitated
