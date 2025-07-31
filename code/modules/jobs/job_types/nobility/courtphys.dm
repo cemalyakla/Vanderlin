@@ -12,8 +12,7 @@
 	spawn_positions = 1
 	min_pq = 6
 
-	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_PLAYER_NONDISCRIMINATED
+	allowed_races = RACES_PLAYER_COURT_PHYSICIAN
 
 	outfit = /datum/outfit/job/courtphys
 	give_bank_account = 100
@@ -39,6 +38,7 @@
 	neck = /obj/item/clothing/neck/coif/cloth
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/keyring/physician
+	beltr = /obj/item/weapon/whip/cane/physician
 	cloak = /obj/item/clothing/cloak/apron/brown
 	if(H.gender == FEMALE)
 		pants = /obj/item/clothing/pants/skirt/green

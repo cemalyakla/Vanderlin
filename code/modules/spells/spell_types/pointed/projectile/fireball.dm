@@ -4,17 +4,18 @@
 	button_icon_state = "fireball"
 	charge_sound = 'sound/magic/charging_fire.ogg'
 
+	cast_range = 8
 	point_cost = 4
 	attunements = list(
 		/datum/attunement/fire = 0.5
 	)
 
-	charge_time = 3 SECONDS
+	charge_time = 2.5 SECONDS
 	charge_drain = 1
 	charge_slowdown = 0.7
 	cooldown_time = 25 SECONDS
 	spell_cost = 30
-
+	spell_flags = SPELL_RITUOS
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
 
 /datum/action/cooldown/spell/projectile/fireball/ready_projectile(obj/projectile/magic/aoe/fireball/to_fire, atom/target, mob/user, iteration)
@@ -47,11 +48,12 @@
 		/datum/attunement/fire = 1.1,
 	)
 
-	charge_time = 5 SECONDS
+	charge_time = 4 SECONDS
 	charge_drain = 2
 	charge_slowdown = 1.3
 	cooldown_time = 35 SECONDS
 	spell_cost = 50
+	spell_flags = NONE
 
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue/great
 

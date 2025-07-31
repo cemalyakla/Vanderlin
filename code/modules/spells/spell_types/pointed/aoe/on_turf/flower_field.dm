@@ -9,12 +9,12 @@
 		/datum/attunement/life = 0.3,
 	)
 
-	charge_time = 5 SECONDS
+	charge_time = 3 SECONDS
 	charge_drain = 3
 	charge_slowdown = 1.4
 	cooldown_time = 60 SECONDS
 	spell_cost = 50
-
+	spell_flags = SPELL_RITUOS
 	aoe_radius = 3
 	ignore_openspace = TRUE
 	staggered = TRUE

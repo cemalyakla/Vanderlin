@@ -77,7 +77,10 @@
 	* item/afterattack(atom,user,adjacent,params) - used both ranged and adjacent
 	* mob/RangedAttack(atom,params) - used only ranged, only used for tk and laser eyes but could be changed
 */
-/mob/proc/ClickOn( atom/A, params )
+/mob/proc/ClickOn(atom/A, params)
+	if(QDELETED(A)) // :)))))
+		return
+
 	var/list/modifiers = params2list(params)
 
 	if(LAZYACCESS(modifiers, RIGHT_CLICK) && LAZYACCESS(modifiers, SHIFT_CLICKED))
@@ -193,6 +196,11 @@
 		update_inv_hands()
 		return
 
+	if(!A.Adjacent(src) && LAZYACCESS(params2list(params), RIGHT_CLICK))
+		if(uses_intents && used_intent.rmb_ranged)
+			used_intent.rmb_ranged(A, src) //get the message from the intent
+			return
+
 	// operate three levels deep here (item in backpack in src; item in box in backpack in src, not any deeper)
 	if(!isturf(A) && A == loc || (A in contents) || (A.loc in contents) || (A.loc && (A.loc.loc in contents)))
 		// the above ensures adjacency
@@ -256,7 +264,7 @@
 						if(M.invisibility || M == src)
 							continue
 						mobs_here += M
-					if(mobs_here.len)
+					if(length(mobs_here))
 						var/mob/target = pick(mobs_here)
 						if(target)
 							if(target.Adjacent(src))
@@ -264,30 +272,8 @@
 								atkswinging = null
 								//update_warning()
 								return
-					if(cmode)
-						resolveAdjacentClick(T,W,params,used_hand) //hit the turf
-					if(!used_intent.noaa)
-						changeNext_move(CLICK_CD_MELEE)
-						if(get_dist(get_turf(src), T) <= used_intent.reach)
-							do_attack_animation(T, visual_effect_icon = used_intent.animname, used_intent = used_intent)
-						else
-							do_attack_animation(get_ranged_target_turf(src, get_dir(src, T), 1), visual_effect_icon = used_intent.animname)
-						if(W)
-							playsound(get_turf(src), pick(W.swingsound), 100, FALSE)
-							var/adf = used_intent.clickcd
-							if(istype(rmb_intent, /datum/rmb_intent/aimed))
-								adf = round(adf * 1.4)
-							if(istype(rmb_intent, /datum/rmb_intent/swift))
-								adf = round(adf * 0.6)
-							changeNext_move(adf)
-						else
-							playsound(get_turf(src), used_intent.miss_sound, 100, FALSE)
-							if(used_intent.miss_text)
-								visible_message("<span class='warning'>[src] [used_intent.miss_text]</span>", \
-												"<span class='warning'>I [used_intent.miss_text]</span>")
-					aftermiss()
-					atkswinging = null
-					//update_warning()
+
+					resolveAdjacentClick(T,W,params,used_hand)
 					return
 			else
 				resolveAdjacentClick(A,W,params,used_hand)
@@ -355,8 +341,7 @@
 	return FALSE
 
 /turf/IsObscured()
-	for(var/item in src)
-		var/atom/movable/AM = item
+	for(var/atom/movable/AM as anything in src)
 		if(AM.flags_1 & PREVENT_CLICK_UNDER_1)
 			return TRUE
 	return FALSE
@@ -763,7 +748,7 @@
 			UntargetMob()
 		targetting = target
 		if(!fixedeye) //If fixedeye isn't already enabled, we need to set this var
-			atom_flags |= NO_DIR_CHANGE
+			atom_flags |= NO_DIR_CHANGE_ON_MOVE
 		tempfixeye = TRUE //Change icon to 'target' red eye
 		targeti = image('icons/mouseover.dmi', targetting.loc, "target")
 		var/icon/I = icon(icon, icon_state, dir)
@@ -786,7 +771,7 @@
 	targetting = null
 	tempfixeye = FALSE
 	if(!fixedeye)
-		atom_flags &= ~NO_DIR_CHANGE
+		atom_flags &= ~NO_DIR_CHANGE_ON_MOVE
 	src.client.images -= targeti
 	//clear hud icon
 	for(var/atom/movable/screen/eye_intent/eyet in hud_used.static_inventory)
@@ -826,7 +811,7 @@
 	temptarget = TRUE
 	targetting = swingtarget
 	if(!fixedeye)
-		atom_flags |= NO_DIR_CHANGE
+		atom_flags |= NO_DIR_CHANGE_ON_MOVE
 	tempfixeye = TRUE
 	for(var/atom/movable/screen/eye_intent/eyet in hud_used.static_inventory)
 		eyet.update_appearance(UPDATE_ICON)

@@ -10,12 +10,11 @@
 	)
 
 	school = SCHOOL_TRANSMUTATION
-	charge_time = 4 SECONDS
-	cooldown_time = 30 SECONDS
+	charge_time = 2 SECONDS
+	cooldown_time = 20 SECONDS
 
 	invocation = "AULIE OXIN FIERA"
 	invocation_type = INVOCATION_WHISPER
-
 	aoe_radius = 3
 
 /datum/action/cooldown/spell/aoe/knock/get_things_to_cast_on(atom/center)

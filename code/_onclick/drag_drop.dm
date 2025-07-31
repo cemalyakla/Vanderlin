@@ -91,7 +91,6 @@
 	if(mob.stat != CONSCIOUS)
 		mob.atkswinging = null
 		charging = null
-		mouse_pointer_icon = 'icons/effects/mousemice/human.dmi'
 		return
 
 	if(mouse_down_icon)
@@ -106,7 +105,7 @@
 
 	if(!mob.fixedeye) //If fixedeye isn't already enabled, we need to set this var
 		mob.tempfixeye = TRUE //Change icon to 'target' red eye
-		mob.atom_flags |= NO_DIR_CHANGE
+		mob.atom_flags |= NO_DIR_CHANGE_ON_MOVE
 
 	for(var/atom/movable/screen/eye_intent/eyet in mob.hud_used.static_inventory)
 		eyet.update_appearance(UPDATE_ICON)
@@ -172,7 +171,7 @@
 	if(mouse_up_icon)
 		mouse_pointer_icon = mouse_up_icon
 	else
-		mouse_pointer_icon = 'icons/effects/mousemice/human.dmi'
+		mob?.update_mouse_pointer()
 	var/mob/living/L = mob
 	if(L)
 		update_to_mob(L)
@@ -188,7 +187,7 @@
 
 	if(!mob.fixedeye)
 		mob.tempfixeye = FALSE
-		mob.atom_flags &= ~NO_DIR_CHANGE
+		mob.atom_flags &= ~NO_DIR_CHANGE_ON_MOVE
 
 	if(mob.hud_used)
 		for(var/atom/movable/screen/eye_intent/eyet in mob.hud_used.static_inventory)
@@ -206,8 +205,6 @@
 	if(mob.stat != CONSCIOUS)
 		chargedprog = 0
 		mob.atkswinging = null
-//		mob.update_warning()
-		mouse_pointer_icon = 'icons/effects/mousemice/human.dmi'
 		return
 
 	if (mouse_up_icon)
@@ -253,10 +250,6 @@
 		doneset = FALSE
 		chargedprog = 0
 		START_PROCESSING(SSmousecharge, src)
-
-/client/Destroy()
-	STOP_PROCESSING(SSmousecharge, src)
-	return ..()
 
 /client/process()
 	if(!mob || !isliving(mob))

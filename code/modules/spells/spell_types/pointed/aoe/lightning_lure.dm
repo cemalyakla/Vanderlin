@@ -11,12 +11,12 @@
 		/datum/attunement/electric = 0.9
 	)
 
-	charge_time = 5 SECONDS
+	charge_time = 2.5 SECONDS
 	charge_drain = 1
 	charge_slowdown = 1.3
-	cooldown_time = 1 MINUTES
-	spell_cost = 60
-
+	cooldown_time = 40 MINUTES
+	spell_cost = 45
+	spell_flags = SPELL_RITUOS
 	aoe_radius = 4
 	max_targets = 3
 

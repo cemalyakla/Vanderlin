@@ -4,15 +4,15 @@
 	button_icon_state = "gravity"
 	sound = 'sound/magic/gravity.ogg'
 	self_cast_possible = FALSE
-
+	spell_flags = SPELL_RITUOS
 	point_cost = 2
 	attunements = list(
 		/datum/attunement/dark = 0.6,
 	)
 
-	charge_time = 4 SECONDS
-	cooldown_time = 30 SECONDS
-	spell_cost = 40
+	charge_time = 2 SECONDS
+	cooldown_time = 25 SECONDS
+	spell_cost = 35
 
 /datum/action/cooldown/spell/gravity/is_valid_target(atom/cast_on)
 	. = ..()

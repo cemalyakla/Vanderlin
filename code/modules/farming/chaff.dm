@@ -10,7 +10,7 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
-	if(foodextracted && !user.get_active_held_item())
+	if(foodextracted)
 		to_chat(user, span_warning("I start to shuck [src]..."))
 		if(do_after(user, 4 SECONDS, src))
 			user.visible_message(span_notice("[user] shucks [src]."), \
@@ -31,7 +31,7 @@
 	if(istype(I, /obj/item/weapon/pitchfork))
 		if(user.used_intent.type == DUMP_INTENT)
 			var/obj/item/weapon/pitchfork/W = I
-			if(I.wielded)
+			if(HAS_TRAIT(I, TRAIT_WIELDED))
 				if(isturf(loc))
 					var/stuff = 0
 					for(var/obj/item/natural/chaff/R in loc)

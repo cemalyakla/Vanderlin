@@ -10,6 +10,7 @@
 /datum/action/cooldown/spell/undirected/list_target
 	charge_required = FALSE
 	has_visual_effects = FALSE
+	sound = null
 
 	/// The message displayed as the title of the tgui target input list.
 	var/choose_target_message = "Choose a target."
@@ -19,7 +20,7 @@
 /datum/action/cooldown/spell/undirected/list_target/PreActivate(atom/caster)
 	var/list/list_targets = get_list_targets(caster, target_radius)
 	if(!length(list_targets))
-		//caster.balloon_alert(caster, "no targets nearby!")
+		to_chat(caster, span_warning("No valid targets nearby!"))
 		return FALSE
 
 	var/atom/chosen = browser_input_list(caster, choose_target_message, name, sortList(list_targets))
@@ -27,7 +28,7 @@
 		return FALSE
 
 	if(get_dist(chosen, caster) > target_radius)
-		//caster.balloon_alert(caster, "they're too far!")
+		to_chat(caster, span_warning("They're too far!"))
 		return FALSE
 
 	return Activate(chosen)
