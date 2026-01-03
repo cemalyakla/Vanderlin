@@ -571,7 +571,7 @@
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
 		limb_grabbed.bodypart_attacked_by(BCLASS_BLUNT, damage, user, sublimb_grabbed, crit_message = TRUE)
 		playsound(C.loc, "smashlimb", 100, FALSE, -1)
-		if prob(25)
+		if(prob(25))
 			C.add_splatter_floor()
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
