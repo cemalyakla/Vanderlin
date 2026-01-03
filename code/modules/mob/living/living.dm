@@ -1455,7 +1455,7 @@
 			grabbed = L.get_inactive_held_item()
 		if(is_limb_covered(grabbed.limb_grabbed))
 			combat_modifier += 0.6
-			resist_chance += 25
+			resist_chance += 5
 
 	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
 		combat_modifier -= 0.15
@@ -1496,7 +1496,7 @@
 
 	var/time_grabbed = S_TIMER_COOLDOWN_TIMELEFT(src, "broke_free")
 	if(time_grabbed)
-		resist_chance += min(time_grabbed / 50, 20) // Up to +20% after long grabs
+		resist_chance += min(time_grabbed / 50, 10) // Up to +20% after long grabs
 
 	if(moving_resist) //we resisted by trying to move
 		client?.move_delay = world.time + 50
@@ -1533,7 +1533,7 @@
 			gcord.take_damage(5)
 		else
 			gcord.take_damage(10)
-	if(prob(resist_chance))
+	if(prob(round(resist_chance/1.5)))
 		visible_message("<span class='warning'>[src] breaks free of [pulledby]'s grip!</span>", \
 						"<span class='notice'>I break free of [pulledby]'s grip![shitte]</span>", null, null, pulledby)
 		to_chat(pulledby, "<span class='danger'>[src] breaks free of my grip!</span>")

@@ -712,6 +712,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		ADMIN_PUNISHMENT_GIB,
 		ADMIN_PUNISHMENT_BSA,
 		ADMIN_PUNISHMENT_ROD,
+		ADMIN_PUNISHMENT_LEPROSY,
 		ADMIN_PUNISHMENT_SUPPLYPOD_QUICK,
 		ADMIN_PUNISHMENT_SUPPLYPOD,
 		ADMIN_PUNISHMENT_CBT,
@@ -777,6 +778,12 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(usr,"<span class='warning'>Target must have a head!</span>")
 				return
 			affecting.add_wound(/datum/wound/fracture/neck)
+		if(ADMIN_PUNISHMENT_LEPROSY)
+			if(!ishuman(target))
+				to_chat(usr,"<span class='warning'>Target must be human!</span>")
+				return
+			ADD_TRAIT(target, TRAIT_LEPROSY, TRAIT_GENERIC)
+			to_chat(target.mind, "<span class='danger'>Cildim dökülüyor, bu da ne böyle?</span>")
 		if(ADMIN_PUNISHMENT_HUNTED)
 			if(!ishuman(target))
 				to_chat(usr,"<span class='warning'>Target must be human!</span>")

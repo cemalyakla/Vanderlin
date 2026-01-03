@@ -231,7 +231,7 @@
 		return
 	var/text = ""
 	var/screen_location = "WEST+[rand(2,13)], SOUTH+[rand(1,12)]"
-	var/text_align = pick("left", "right", "center")
+	var/text_align = "center"
 
 	if(prob(0.1)) //has a chance to spawn a mob hallucination, gg to those who get the reference
 		text = pick_list_replacements("maniac.json", "dreamer_blurb_incoming")

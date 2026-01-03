@@ -566,11 +566,13 @@
 /obj/item/grabbing/proc/smashlimb(atom/A, mob/living/user) //implies limb_grabbed and sublimb are things
 	var/mob/living/carbon/C = grabbed
 	var/armor_block = C.run_armor_check(limb_grabbed, "blunt")
-	var/damage = user.get_punch_dmg()
+	var/damage = user.get_punch_dmg()*pick(1, 1.5, 2)
 	C.next_attack_msg.Cut()
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
 		limb_grabbed.bodypart_attacked_by(BCLASS_BLUNT, damage, user, sublimb_grabbed, crit_message = TRUE)
 		playsound(C.loc, "smashlimb", 100, FALSE, -1)
+		if prob(25)
+			C.add_splatter_floor()
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 	C.visible_message(span_danger("[user] smashes [C]'s [limb_grabbed.name] into [A]![C.next_attack_msg.Join()]"), \

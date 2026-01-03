@@ -325,7 +325,7 @@
 			if ("plantcross")
 				soundin = pick('sound/foley/plantcross1.ogg','sound/foley/plantcross2.ogg','sound/foley/plantcross3.ogg','sound/foley/plantcross4.ogg')
 			if ("smashlimb")
-				soundin = pick('sound/combat/hits/smashlimb (1).ogg','sound/combat/hits/smashlimb (2).ogg','sound/combat/hits/smashlimb (3).ogg')
+				soundin = pick('sound/combat/hits/smashlimb (1).ogg', 'sound/combat/hits/smashlimb (2).ogg', 'sound/combat/hits/smashlimb (3).ogg')
 			if("genblunt")
 				soundin = pick('sound/combat/hits/blunt/genblunt (1).ogg','sound/combat/hits/blunt/genblunt (2).ogg','sound/combat/hits/blunt/genblunt (3).ogg')
 			if("wetbreak")
