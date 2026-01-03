@@ -32,7 +32,7 @@
 							owner.current.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 							owner.current.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 						INVOKE_ASYNC(owner, GLOBAL_PROC_REF(prisoner_murderer), owner)
-						owner.special_role = "KATIL"
+						owner.special_role = "KATİL"
 					if("Thief")
 						if(skill == "High")
 							owner.current.change_stat(STATKEY_INT, pick(2,3))
@@ -78,7 +78,7 @@
 							owner.current.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 							owner.current.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 							owner.current.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-						owner.special_role = "VAHSI"
+						owner.special_role = "VAHŞİ"
 						INVOKE_ASYNC(owner, GLOBAL_PROC_REF(prisoner_brute), owner)
 					if("Bandit")
 						if(skill == "High")
@@ -153,7 +153,6 @@
 						owner.current.change_stat(STATKEY_END, 1)
 						owner.current.change_stat(STATKEY_SPD, 1)
 						owner.current.change_stat(STATKEY_LCK, pick(-2, -1))
-						ADD_TRAIT(owner, TRAIT_NOSTINK, TRAIT_GENERIC)
 						ADD_TRAIT(owner, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
 					else
 						owner.current.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
