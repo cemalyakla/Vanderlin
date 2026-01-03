@@ -1,20 +1,16 @@
 /datum/round_event/vines/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 
-	var/obj/structure/vine/SV = new()
+	for(var/area/outdoors/town/A in GLOB.areas)
+		for(var/turf/open/F as anything in A.get_turfs_from_all_zlevels())
+			if(F.density || isopenspace(F))
+				continue
+			turfs += F
 
-	for(var/area/rogue/outdoors/town/A as anything in GLOB.areas)
-		for(var/turf/open/F in A)
-			if(F.Enter(SV))
-				if(!istype(F, /turf/open/transparent/openspace))
-					turfs += F
-
-	qdel(SV)
-
-//	var/maxi = max(GLOB.badomens.len, 1)
 	var/maxi = 7
-	for(var/i in 1 to rand(5,maxi))
-		if(turfs.len) //Pick a turf to spawn at if we can
+
+	if(length(turfs))
+		for(var/i in 1 to rand(5, maxi))
 			var/turf/T = pick_n_take(turfs)
 			message_admins("VINES at [ADMIN_VERBOSEJMP(T)]")
 			new /datum/vine_controller(T, event = src) //spawn a controller at turf
@@ -191,8 +187,8 @@
 /datum/vine_mutation/woodening/on_grow(obj/structure/vine/holder)
 	if(holder.energy)
 		holder.density = TRUE
-	holder.max_integrity = 100
-	holder.obj_integrity = holder.max_integrity
+	holder.modify_max_integrity(100)
+	holder.update_integrity(100)
 
 /datum/vine_mutation/woodening/on_hit(obj/structure/vine/holder, mob/living/hitter, obj/item/I, expected_damage)
 	if(I.get_sharpness())
@@ -220,6 +216,7 @@
 	var/list/mutations = list()
 	break_sound = "plantcross"
 	destroy_sound = null
+	attacked_sound = 'sound/misc/woodhit.ogg'
 
 /obj/structure/vine/Initialize()
 	. = ..()
@@ -262,16 +259,6 @@
 //		damage_dealt = SM.on_hit(src, user, I, damage_dealt) //on_hit now takes override damage as arg and returns new value for other mutations to permutate further
 //	take_damage(damage_dealt, I.damtype, "melee", 1)
 
-/obj/structure/vine/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
-	switch(damage_type)
-		if(BRUTE)
-			if(damage_amount)
-				playsound(src, 'sound/misc/woodhit.ogg', 100, FALSE)
-			else
-				playsound(src, "nodmg", 100, FALSE)
-		if(BURN)
-			playsound(src.loc, "burn", 100, TRUE)
-
 /obj/structure/vine/Crossed(mob/crosser)
 	if(isliving(crosser))
 		for(var/datum/vine_mutation/SM in mutations)
@@ -285,13 +272,10 @@
 /obj/structure/vine/attack_hand(mob/user)
 	for(var/datum/vine_mutation/SM in mutations)
 		SM.on_hit(src, user)
-	user_unbuckle_mob(user, user)
 	. = ..()
 
 /obj/structure/vine/attack_paw(mob/living/user)
-	for(var/datum/vine_mutation/SM in mutations)
-		SM.on_hit(src, user)
-	user_unbuckle_mob(user,user)
+	return attack_hand(user)
 
 /datum/vine_controller
 	var/list/obj/structure/vine/vines
@@ -413,8 +397,8 @@
 
 /obj/structure/vine/proc/dieepic()
 	icon_state = "[icon_state]d"
-	max_integrity = 1
-	obj_integrity = 1
+	modify_max_integrity(1, can_break = FALSE)
+	update_integrity(1)
 	destroy_sound = 'sound/foley/breaksound.ogg'
 
 /obj/structure/vine/proc/grow()

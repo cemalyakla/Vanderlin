@@ -17,6 +17,9 @@
 	///Name of the outfit (shows up in the equip admin verb)
 	var/name = "Naked"
 
+	/// Id for outfits,it is used with the Custom Outfits Glob.
+	var/id
+
 	/// Type path of item to go in suit slot
 	var/suit = null
 
@@ -104,6 +107,13 @@
 	 */
 	var/list/chameleon_extras
 
+	/**
+	  * The sheaths this job should start with
+	  *
+	  * Format of this list is (typepath, typepath, typepath)
+	  */
+	var/list/scabbards = null
+
 /**
  * Called at the start of the equip proc
  *
@@ -111,12 +121,15 @@
  * other such sources of change
  *
  * Extra Arguments
- * * visualsOnly true if this is only for display (in the character setup screen)
+ * * visuals_only true if this is only for display (in the character setup screen)
  *
- * If visualsOnly is true, you can omit any work that doesn't visually appear on the character sprite
+ * If visuals_only is true, you can omit any work that doesn't visually appear on the character sprite
  */
-/datum/outfit/proc/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/proc/pre_equip(mob/living/carbon/human/H, visuals_only = FALSE)
 	//to be overridden for customization depending on client prefs,species etc
+	return
+
+/datum/outfit/proc/map_override(mob/living/carbon/human/H, visuals_only = FALSE)
 	return
 
 /**
@@ -126,11 +139,11 @@
  * fiddle with id bindings and accesses etc
  *
  * Extra Arguments
- * * visualsOnly true if this is only for display (in the character setup screen)
+ * * visuals_only true if this is only for display (in the character setup screen)
  *
- * If visualsOnly is true, you can omit any work that doesn't visually appear on the character sprite
+ * If visuals_only is true, you can omit any work that doesn't visually appear on the character sprite
  */
-/datum/outfit/proc/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/proc/post_equip(mob/living/carbon/human/H, visuals_only = FALSE)
 	//to be overridden for toggling internals, id binding, access etc
 	return
 
@@ -138,12 +151,13 @@
  * Equips all defined types and paths to the mob passed in
  *
  * Extra Arguments
- * * visualsOnly true if this is only for display (in the character setup screen)
+ * * visuals_only true if this is only for display (in the character setup screen)
  *
- * If visualsOnly is true, you can omit any work that doesn't visually appear on the character sprite
+ * If visuals_only is true, you can omit any work that doesn't visually appear on the character sprite
  */
-/datum/outfit/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	pre_equip(H, visualsOnly)
+/datum/outfit/proc/equip(mob/living/carbon/human/H, visuals_only = FALSE)
+	pre_equip(H, visuals_only)
+	map_override(H, visuals_only)
 
 	if(belt)
 		H.equip_to_slot_or_del(new belt(H),ITEM_SLOT_BELT, TRUE)
@@ -188,15 +202,28 @@
 		else
 			WARNING("Unable to equip accessory [accessory] in outfit [name]. No uniform present!")
 
-	if(!visualsOnly)
+	if(!visuals_only)
 		if(l_hand)
 	//		H.put_in_hands(new l_hand(get_turf(H)),TRUE)
 			H.equip_to_slot_or_del(new l_hand(H),ITEM_SLOT_HANDS, TRUE)
 		if(r_hand)
 		//	H.put_in_hands(new r_hand(get_turf(H)),TRUE)
 			H.equip_to_slot_or_del(new r_hand(H),ITEM_SLOT_HANDS, TRUE)
+		if(scabbards)
+			var/list/copied_scabbards = scabbards.Copy()
+			for(var/obj/item/item as anything in H.get_equipped_items())
+				if(!length(copied_scabbards))
+					break
+				var/slot = H.get_slot_by_item(item)
+				for(var/obj/item/weapon/scabbard/scabbard_path as anything in copied_scabbards)
+					var/obj/item/weapon/scabbard/scabbard = new scabbard_path()
+					if(SEND_SIGNAL(scabbard, COMSIG_TRY_STORAGE_INSERT, item, null, TRUE, FALSE))
+						H.temporarilyRemoveItemFromInventory(item, TRUE)
+						H.equip_to_slot_or_del(scabbard, slot, TRUE)
+						copied_scabbards -= scabbard_path
+						break
 
-	if(!visualsOnly) // Items in pockets or backpack don't show up on mob's icon.
+	if(!visuals_only) // Items in pockets or backpack don't show up on mob's icon.
 		if(backpack_contents)
 			for(var/path in backpack_contents)
 				var/number = backpack_contents[path]
@@ -212,13 +239,15 @@
 						if(!item || !attempt_insert_with_flipping(item, new_item, null, TRUE, TRUE))
 							item = H.get_item_by_slot(ITEM_SLOT_BELT)
 							if(!item || !attempt_insert_with_flipping(item, new_item, null, TRUE, TRUE))
-								new_item.forceMove(get_turf(H))
-								message_admins("[type] had backpack_contents set but no room to store:[new_item]")
+								item = H.get_item_by_slot(ITEM_SLOT_NECK)
+								if(!item || !attempt_insert_with_flipping(item, new_item, null, TRUE, TRUE))
+									new_item.forceMove(get_turf(H))
+									message_admins("[type] had backpack_contents set but no room to store:[new_item]")
 
 
-	post_equip(H, visualsOnly)
+	post_equip(H, visuals_only)
 
-	if(!visualsOnly)
+	if(!visuals_only)
 		apply_fingerprints(H)
 
 	H.update_body()
@@ -233,7 +262,7 @@
 	return success
 
 /client/proc/test_spawn_outfits()
-	for(var/path in subtypesof(/datum/outfit/job))
+	for(var/path in subtypesof(/datum/outfit))
 		var/mob/living/carbon/human/new_human = new(mob.loc)
 		var/datum/outfit/new_outfit = new path()
 		new_outfit.equip(new_human)
@@ -296,7 +325,18 @@
 	.["armor"] = armor
 	.["pants"] = pants
 	.["belt"] = belt
+	.["beltl"] = beltl
+	.["beltr"] = beltr
 	.["shoes"] = shoes
+	.["scabbards"] = scabbards
+	.["id"] = id
+	if(length(scabbards))
+		var/list/scabbard_text = list()
+		for(var/path in scabbards)
+			scabbard_text += "[path]"
+		.["scabbards"] = scabbard_text
+	else
+		.["scabbards"] = list()
 
 /// Prompt the passed in mob client to download this outfit as a json blob
 /datum/outfit/proc/save_to_file(mob/admin)
@@ -326,5 +366,15 @@
 	armor = text2path(outfit_data["armor"])
 	pants = text2path(outfit_data["pants"])
 	belt = text2path(outfit_data["belt"])
+	beltl = text2path(outfit_data["beltl"])
+	beltr = text2path(outfit_data["beltr"])
 	shoes = text2path(outfit_data["shoes"])
+	id = outfit_data["id"]
+	var/list/scabbard_list = outfit_data["scabbards"]
+	if(islist(scabbard_list))
+		for(var/scabbard_path in scabbard_list)
+			var/path = text2path(scabbard_path)
+			if(path)
+				LAZYADD(scabbards, path)
+
 	return TRUE

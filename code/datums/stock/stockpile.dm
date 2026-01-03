@@ -1,4 +1,4 @@
-// Guidelines for Stockpiles. Items should always cost ~50% more to withdraw than was recieved for depositing.
+// Guidelines for Stockpiles. Items should always cost ~50% more to withdraw than was received for depositing.
 // Export Prices should fall between the payout and the withdraw, unless the item is incredibly cheap.
 
 /datum/stock/stockpile
@@ -80,6 +80,7 @@
 	withdraw_price = 6
 	export_price = 5
 	importexport_amt = 20
+	stockpile_id = STOCK_FOOD
 
 /datum/stock/stockpile/grain
 	name = "Grain"
@@ -90,6 +91,7 @@
 	withdraw_price = 6
 	export_price = 5
 	importexport_amt = 20
+	stockpile_id = STOCK_FOOD
 
 /datum/stock/stockpile/oat
 	name = "Oat"
@@ -100,6 +102,7 @@
 	withdraw_price = 6
 	export_price = 5
 	importexport_amt = 20
+	stockpile_id = STOCK_FOOD
 
 /datum/stock/stockpile/turnip
 	name = "Turnips"
@@ -110,6 +113,7 @@
 	withdraw_price = 5
 	export_price = 4
 	importexport_amt = 20
+	stockpile_id = STOCK_FOOD
 
 /datum/stock/stockpile/potato
 	name = "Potatoes"
@@ -120,6 +124,18 @@
 	withdraw_price = 6
 	export_price = 5
 	importexport_amt = 20
+	stockpile_id = STOCK_FOOD
+
+/datum/stock/stockpile/borowiki
+	name = "Borowiki"
+	desc = "A hearty mushroom fit for stews and pies."
+	item_type = /obj/item/reagent_containers/food/snacks/produce/mushroom/borowiki
+	held_items = 2
+	payout_price = 2
+	withdraw_price = 7
+	export_price = 4
+	importexport_amt = 20
+	stockpile_id = STOCK_FOOD
 
 /datum/stock/stockpile/coal
 	name = "Coal"
@@ -130,6 +146,7 @@
 	withdraw_price = 6
 	export_price = 5
 	importexport_amt = 20
+	stockpile_id = STOCK_METAL
 
 /datum/stock/stockpile/copper
 	name = "Copper Ore"
@@ -140,6 +157,7 @@
 	withdraw_price = 6
 	export_price = 5
 	importexport_amt = 10
+	stockpile_id = STOCK_METAL
 
 /datum/stock/stockpile/tin
 	name = "Tin Ore"
@@ -150,6 +168,7 @@
 	withdraw_price = 7
 	export_price = 6
 	importexport_amt = 10
+	stockpile_id = STOCK_METAL
 
 /datum/stock/stockpile/iron
 	name = "Iron Ore"
@@ -160,6 +179,7 @@
 	withdraw_price = 12
 	export_price = 10
 	importexport_amt = 10
+	stockpile_id = STOCK_METAL
 
 /datum/stock/stockpile/silver
 	name = "Silver Ore"
@@ -170,6 +190,7 @@
 	withdraw_price = 15
 	export_price = 26
 	importexport_amt = 5
+	stockpile_id = STOCK_METAL
 
 /datum/stock/stockpile/gold
 	name = "Gold Ore"
@@ -180,3 +201,4 @@
 	withdraw_price = 17
 	export_price = 30
 	importexport_amt = 5
+	stockpile_id = STOCK_METAL

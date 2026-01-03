@@ -14,7 +14,7 @@
 			return TRUE
 	if(!has_language(language))
 		if(has_flaw(/datum/charflaw/paranoid))
-			V.add_stress(/datum/stressevent/paratalk)
+			V.add_stress(/datum/stress_event/paratalk)
 
 /mob/living/carbon/human/canBeHandcuffed()
 	if(num_hands < 2)
@@ -107,24 +107,35 @@
 	if(QDELETED(src) || !ishuman(src))
 		return
 
-	var/damage = 12
+	var/damage
+	if(STASTR > 12 || STASTR < 10)
+		damage = STASTR
+	else
+		damage = 12
+
 	var/used_str = STASTR
 
 	if(mind?.has_antag_datum(/datum/antagonist/werewolf))
-		return 30
+		return damage * 2
 
 	if(domhand)
 		used_str = get_str_arms(used_hand)
 
+	var/obj/G = get_item_by_slot(ITEM_SLOT_GLOVES)
+	if(istype(G, /obj/item/clothing/gloves))
+		var/obj/item/clothing/gloves/GL = G
+		damage = (damage * GL.unarmed_bonus)
+
 	if(used_str >= 11)
-		damage = max(damage + (damage * ((used_str - 10) * 0.3)), 1)
+		damage = max(damage * (1 + ((used_str - 10) * 0.03)), 1)
 	if(used_str <= 9)
-		damage = max(damage - (damage * ((10 - used_str) * 0.1)), 1)
+		damage = max(damage * (1 - ((10 - used_str) * 0.05)), 1)
 
 	var/obj/item/bodypart/BP = has_hand_for_held_index(used_hand)
 	if(istype(BP))
 		damage *= BP.punch_modifier
 
+	damage += dna.species.punch_damage
 	return damage
 
 /mob/living/carbon/human/proc/get_kick_damage(multiplier = 1)
@@ -149,12 +160,12 @@
 
 /// Fully randomizes everything in the character.
 // Reflect changes in [datum/preferences/proc/randomise_appearance_prefs]
-/mob/living/carbon/human/proc/randomize_human_appearance(randomise_flags = ALL, include_patreon = TRUE)
+/mob/living/carbon/human/proc/randomize_human_appearance(randomise_flags = ALL, include_donator = TRUE)
 	if(!dna)
 		return
 
 	if(randomise_flags & RANDOMIZE_SPECIES)
-		var/rando_race = GLOB.species_list[pick(get_selectable_species(include_patreon))]
+		var/rando_race = GLOB.species_list[pick(get_selectable_species(include_donator))]
 		set_species(new rando_race(), FALSE)
 
 	var/datum/species/species = dna.species

@@ -84,9 +84,7 @@ GLOBAL_LIST_INIT(attunement_colors, list(
 	icon_state = "rune"
 	vis_flags = NONE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	pixel_x = -8
-	pixel_y = -8
-
+	SET_BASE_PIXEL(-8, -8)
 	var/datum/weakref/mob
 	var/original_color
 
@@ -111,8 +109,7 @@ GLOBAL_LIST_INIT(attunement_colors, list(
 	plane = GAME_PLANE_UPPER
 	layer = ABOVE_ALL_MOB_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	pixel_x = -8
-	pixel_y = -8
+	SET_BASE_PIXEL(-8, -8)
 	duration = 1.8 SECONDS
 	var/datum/weakref/mob
 
@@ -135,7 +132,7 @@ GLOBAL_LIST_INIT(attunement_colors, list(
 	plane = GAME_PLANE_UPPER
 	layer = ABOVE_ALL_MOB_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	pixel_y = -8
+	SET_BASE_PIXEL(0, -8)
 	duration = 3.8 SECONDS
 	var/datum/weakref/mob
 
@@ -258,7 +255,7 @@ GLOBAL_LIST_INIT(attunement_colors, list(
 
 /datum/attunement/earth
 	name = "Earth"
-	desc = "The very ground you stand on, a raging earthquake, or an paven roads, earth is all encompassing."
+	desc = "The very ground you stand on, a raging earthquake, or a paved road, earth is all encompassing."
 
 	alignments = list(
 		/datum/patron/divine/dendor = 1.2,
@@ -292,7 +289,7 @@ GLOBAL_LIST_INIT(attunement_colors, list(
 
 /datum/attunement/time
 	name = "Time"
-	desc = "A unique and nigh-impossible element to master by all but those with either endless lifespans, or non-euclidian existence. Measured by all civilizations, and the defining aspect of countless realms and systems."
+	desc = "A unique and nigh-impossible element to master by all but those with either endless lifespans, or non-Euclidean existence. Measured by all civilizations, and the defining aspect of countless realms and systems."
 
 	alignments = list(
 		/datum/patron/divine/necra = 1,

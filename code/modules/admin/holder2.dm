@@ -26,7 +26,7 @@ GLOBAL_PROTECT(href_token)
 	var/deadmined
 	var/datum/role_ban_panel/role_ban_panel
 	var/datum/pathfind_debug/path_debug
-
+	var/datum/create_wave/create_wave
 
 /datum/admins/New(datum/admin_rank/R, ckey, force_active = FALSE, protected)
 	if(IsAdminAdvancedProcCall())
@@ -58,6 +58,8 @@ GLOBAL_PROTECT(href_token)
 		activate()
 	else
 		deactivate()
+	create_wave = new
+	create_wave.admin_holder = src
 
 /datum/admins/Destroy()
 	if(IsAdminAdvancedProcCall())
@@ -79,7 +81,6 @@ GLOBAL_PROTECT(href_token)
 	deadmined = FALSE
 	if (GLOB.directory[target])
 		associate(GLOB.directory[target])	//find the client for a ckey if they are connected and associate them with us
-		owner?.toggled_leylines = TRUE
 
 /datum/admins/proc/deactivate()
 	if(IsAdminAdvancedProcCall())
@@ -95,7 +96,7 @@ GLOBAL_PROTECT(href_token)
 		disassociate()
 		C.verbs += /client/proc/readmin
 	QDEL_NULL(path_debug)
-	owner?.toggled_leylines = FALSE
+	C?.native_say?.refresh_channels()
 
 /datum/admins/proc/associate(client/C)
 	if(IsAdminAdvancedProcCall())
@@ -117,6 +118,8 @@ GLOBAL_PROTECT(href_token)
 		owner.add_admin_verbs()	//TODO <--- todo what? the proc clearly exists and works since its the backbone to our entire admin system
 		owner.verbs -= /client/proc/readmin
 		GLOB.admins |= C
+		if(!deadmined)
+			C?.native_say?.refresh_channels()
 
 /datum/admins/proc/disassociate()
 	if(IsAdminAdvancedProcCall())

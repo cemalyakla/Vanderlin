@@ -31,7 +31,7 @@
 	var/mob/living/carbon/follower = user
 	var/datum/patron/patron = follower.patron
 
-	var/in_literal_hell = ( istype(get_area(user), /area/rogue/underworld) )
+	var/in_literal_hell = ( istype(get_area(user), /area/underworld) )
 	if(!in_literal_hell && !patron?.can_pray(follower))
 		return
 
@@ -41,7 +41,7 @@
 
 	/* admin stuff */
 	var/follower_ident = "[follower.key]/([follower.real_name]) (follower of [patron])"
-	message_admins("[follower_ident] [ADMIN_SM(follower)] [ADMIN_FLW(follower)] prays: [span_info(prayer)]")
+	message_admins("[follower_ident] [ADMIN_SM(follower)] [ADMIN_FLW(follower)] prays: [span_info(html_encode(prayer))]")
 	user.log_message("(follower of [patron]) prays: [prayer]", LOG_GAME)
 
 	follower.whisper(prayer)
@@ -502,6 +502,13 @@
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
 
+/datum/emote/living/haltyellorphan
+
+	key = "haltyellorphan"
+	message = "tries to shout a convincing halt!"
+	emote_type = EMOTE_AUDIBLE
+	only_forced_audio = TRUE
+
 /datum/emote/living/hmm
 	key = "hmm"
 	key_third_person = "hmms"
@@ -571,7 +578,7 @@
 		var/mob/living/carbon/human/H = target
 		// cursed is the one being hugged
 		if(HAS_TRAIT(H, TRAIT_EORA_CURSE))
-			to_chat(H, "<span class='warning'>I feel unexplicably repelled!</span>")
+			to_chat(H, "<span class='warning'>I feel inexplicably repelled!</span>")
 			H.cursed_freak_out()
 			return
 
@@ -581,12 +588,37 @@
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/H = target
-		H.add_stress(/datum/stressevent/hug)
+		H.add_stress(/datum/stress_event/hug)
 		playsound(target.loc, pick('sound/vo/hug.ogg'), 100, FALSE, -1)
 
 		if(user.mind)
 			SEND_SIGNAL(user, COMSIG_MOB_HUGGED, H)
 			record_round_statistic(STATS_HUGS_MADE)
+
+/datum/emote/living/headpat
+	key = "headpat"
+	key_third_person = "pats"
+	message = ""
+	message_param = "pats %t on the head."
+	emote_type = EMOTE_VISIBLE
+	restraint_check = TRUE
+
+/mob/living/carbon/human/verb/emote_headpat()
+	set name = "Headpat"
+	set category = "Emotes"
+	emote("headpat", intentional = TRUE, targetted = TRUE)
+
+/datum/emote/living/headpat/adjacentaction(mob/user, mob/target)
+	. = ..()
+	if(!user || !target)
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		playsound(target.loc, pick('sound/vo/hug.ogg'), 100, FALSE, -1)
+		if(israkshari(H))
+			if(prob(10))
+				H.emote("purr")
+
 
 // ............... I ..................
 /datum/emote/living/idle
@@ -638,7 +670,7 @@
 
 		// cursed is the one being kissed
 		if(HAS_TRAIT(E, TRAIT_EORA_CURSE))
-			to_chat(E, "<span class='warning'>I feel unexplicably repelled!</span>")
+			to_chat(E, "<span class='warning'>I feel inexplicably repelled!</span>")
 			E.cursed_freak_out()
 
 		// anti pedophile logging
@@ -691,6 +723,7 @@
 /datum/emote/living/laugh/run_emote(mob/user, params, type_override, intentional, targetted)
 	. = ..()
 	if(. && user.mind)
+		record_featured_stat(FEATURED_STATS_JOKESTERS, user)
 		record_round_statistic(STATS_LAUGHS_MADE)
 
 /mob/living/carbon/human/verb/emote_laugh()
@@ -809,6 +842,43 @@
 	key_third_person = "pouts"
 	message = "pouts."
 	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/preen
+	key = "preen"
+	key_third_person = "preens"
+	message = "preens their feathers."
+	emote_type = EMOTE_AUDIBLE
+	COOLDOWN_DECLARE(time_to_next_preen)
+
+
+/mob/living/carbon/human/verb/emote_preen()
+	set hidden = TRUE
+	set name = "Preen"
+	set category = "Emotes"
+	emote("preen", intentional = TRUE)
+
+/datum/emote/living/preen/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	. = ..()
+	if(!isharpy(user))
+		return FALSE
+
+/datum/emote/living/preen/run_emote(mob/user, params, type_override, intentional, targetted)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(!isharpy(H))
+			return
+		var/time_left = COOLDOWN_TIMELEFT(src, time_to_next_preen)
+		if(time_left)
+			to_chat(H, span_warning("I have preened my feathers recently! It has no effect on my hygiene."))
+		else
+			COOLDOWN_START(src, time_to_next_preen, HARPY_PREENING_COOLDOWN)
+			H.set_hygiene(HYGIENE_LEVEL_NORMAL)
+			if(prob(50))
+				var/preened_feather = /obj/item/natural/feather
+				new preened_feather(user.loc)
+
+
 
 /datum/emote/living/scream/painscream
 	key = "painscream"
@@ -1015,6 +1085,17 @@
 	set name = "Shiver"
 	set category = "Emotes"
 	emote("shiver", intentional = TRUE)
+
+#define SHIVER_LOOP_DURATION (1 SECONDS)
+/datum/emote/living/shiver/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+
+	animate(user, pixel_w = 1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	for(var/i in 1 to SHIVER_LOOP_DURATION / (0.2 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
+		animate(pixel_w = -2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+		animate(pixel_w = 2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+	animate(pixel_w = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
+#undef SHIVER_LOOP_DURATION
 
 /datum/emote/living/sigh
 	key = "sigh"

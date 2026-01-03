@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/voidstoneobelisk/Initialize()
 	. = ..()
 	AddComponent(/datum/component/ai_aggro_system)
-	beam = new(src)
+	beam = new
 	beam.Grant(src)
 	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, beam)
 
@@ -18,14 +18,14 @@
 /mob/living/simple_animal/hostile/retaliate/voidstoneobelisk
 	icon = 'icons/mob/summonable/32x32.dmi'
 	name = "voidstone obelisk"
-	desc = "A construct from another age. It is marked by glowing sigils and it's material seems to absorb magic!"
+	desc = "A construct from another age. It is marked by glowing sigils, and its material seems to absorb magic!"
 	icon_state = "obelisk-combined"
 	icon_living = "obelisk-combined"
 	icon_dead = "obelisk-combined"
 	summon_primer = "You are ancient. A construct built in an age before men, a time of dragons. Your builders don't seem to be around anymore, and time has past with you in standby. How you respond, is up to you."
 	tier = 3
 
-	faction = list("abberant")
+	faction = list("aberrant")
 	emote_hear = null
 	emote_see = null
 	speed = 5
@@ -33,7 +33,7 @@
 	move_to_delay = 12
 	vision_range = 9
 	aggro_vision_range = 9
-	movement_type = FLYING
+	is_flying_animal = TRUE
 
 	butcher_results = list()
 
@@ -57,12 +57,13 @@
 	defprob = 35
 	defdrain = 5
 	retreat_health = 0.2
-	food = 0
+
 	dodgetime = 17
 	aggressive = 1
+	food_max = 0
 
 	ai_controller = /datum/ai_controller/void_obelisk
-
+	dendor_taming_chance = DENDOR_TAME_PROB_NONE
 	del_on_death = TRUE
 
 	var/datum/action/cooldown/mob_cooldown/voidblast/beam
@@ -88,8 +89,8 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/voidstoneobelisk/Destroy()
-	. = ..()
 	QDEL_NULL(beam)
+	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/voidstoneobelisk/RangedAttack(atom/target, modifiers)
 	beam.Activate(target = target)
@@ -101,7 +102,7 @@
 
 /// Segments of the actual beam, these hurt if you stand in them
 /obj/effect/obeliskbeam
-	name = "abberant beam"
+	name = "aberrant beam"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "obeliskbeam_mid"
 	layer = ABOVE_MOB_LAYER

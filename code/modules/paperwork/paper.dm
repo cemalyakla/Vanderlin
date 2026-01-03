@@ -74,6 +74,7 @@
 	dropshrink = 0.5
 	var/textper = 100
 	var/maxlen = 2000
+	var/writable = TRUE
 
 	var/cached_mailer
 	var/cached_mailedto
@@ -108,8 +109,8 @@
 
 /obj/item/paper/Initialize()
 	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
+	pixel_x = base_pixel_x + rand(-9, 9)
+	pixel_y = base_pixel_y + rand(-8, 8)
 	update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)
 	updateinfolinks()
 
@@ -202,7 +203,7 @@
 	set hidden = 1
 	set src in usr
 
-	if(usr.incapacitated(ignore_grab = TRUE) || !usr.is_literate())
+	if(usr.incapacitated(IGNORE_GRAB) || !usr.is_literate())
 		return
 	var/n_name = stripped_input(usr, "What would you like to label the paper?", "Paper Labelling", null, MAX_NAME_LEN)
 	if((loc == usr && usr.stat == CONSCIOUS))
@@ -438,6 +439,8 @@
 		return
 
 	if(istype(P, /obj/item/natural/feather/infernal))
+		if(!writable)
+			return
 		if(trapped)
 			to_chat(user, span_warning("[src] is already trapped."))
 		else
@@ -445,7 +448,9 @@
 			trapped = TRUE
 
 	if(istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
-		if(is_blind(user))
+		if(!writable)
+			return
+		if(user.is_blind())
 			to_chat(user, span_warning("I want to write on [src], but I cannot."))
 			return
 

@@ -10,7 +10,7 @@
 	firefuel = 10 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_BACK
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/fertilizer/ash
 
 /obj/item/broom/apply_components()
 	AddComponent(/datum/component/walking_stick)
@@ -80,6 +80,7 @@
 
 	if(found_dirt)
 		playsound(user, "clothwipe", 100, TRUE)
+		user.nobles_seen_servant_work()
 
 	for(var/obj/effect/decal/cleanable/blood/O in current_item_loc)
 		add_blood_DNA(GET_ATOM_BLOOD_DNA(O))

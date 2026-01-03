@@ -39,12 +39,12 @@
 				var/atom/movable/spawned_loot = new lootspawn(T)
 				if (!fan_out_items)
 					if (pixel_x != 0)
-						spawned_loot.pixel_x = pixel_x
+						spawned_loot.pixel_x = spawned_loot.base_pixel_x + pixel_x
 					if (pixel_y != 0)
-						spawned_loot.pixel_y = pixel_y
+						spawned_loot.pixel_y = spawned_loot.base_pixel_y + pixel_y
 				else
 					if (loot_spawned)
-						spawned_loot.pixel_x = spawned_loot.pixel_y = ((!(loot_spawned%2)*loot_spawned/2)*-1)+((loot_spawned%2)*(loot_spawned+1)/2*1)
+						spawned_loot.pixel_x = spawned_loot.base_pixel_x + ((!(loot_spawned%2)*loot_spawned/2)*-1)+((loot_spawned%2)*(loot_spawned+1)/2*1)
 			loot_spawned++
 	else
 		do_spawn()
@@ -55,7 +55,7 @@
 
 /obj/effect/spawner/map_spawner/pit/do_spawn()
 	var/turf/T = get_turf(src)
-	var/turf/below = get_step_multiz(src, DOWN)
+	var/turf/below = GET_TURF_BELOW(T)
 	if(below)
 		T.ChangeTurf(/turf/open/transparent/openspace)
 		below.ChangeTurf(/turf/open/floor/dirt/road)

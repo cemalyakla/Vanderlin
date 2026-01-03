@@ -13,7 +13,7 @@
 
 /turf/open/floor/dirt/Initialize()
 	. = ..()
-	if(istype(loc, /area/rogue/outdoors/bog))
+	if(istype(loc, /area/outdoors/bog))
 		if(!((locate(/obj/structure) in src) || (locate(/obj/machinery) in src)))
 			if(prob(4))
 				hidden_truffles = TRUE
@@ -174,6 +174,7 @@
 			/datum/pet_command/truffle_sniff,
 		)
 
+	happy_funtime_mob = TRUE
 	var/hangry_meter = 0
 	var/random_gender = TRUE
 	var/can_breed = TRUE
@@ -241,7 +242,7 @@
 	. = ..()
 	hangry_meter += 1
 	if(hangry_meter > 9)
-		to_chat(M, "<span class='notice'>The pig squeals in anger. Its sulking and refusing to work until it gets delicious truffles.</span>")
+		to_chat(M, "<span class='notice'>The pig squeals in anger. It's sulking and refusing to work until it gets delicious truffles.</span>")
 		playsound(get_turf(src), 'sound/vo/mobs/pig/hangry.ogg', 120, TRUE, -1)
 		return
 	if(M.used_intent.type == INTENT_HELP)
@@ -299,9 +300,8 @@
 	icon = 'icons/roguetown/mob/trufflesniff.dmi'
 	icon_state = "foundsome"
 	appearance_flags = 0 //to avoid having TILE_BOUND in the flags, so that the 480x480 icon states let you see it no matter where you are
-	duration = 35
-	pixel_x = -224
-	pixel_y = -224
+	duration = 3.5 SECONDS
+	SET_BASE_PIXEL(-224, -224)
 
 /mob/living/simple_animal/hostile/retaliate/trufflepig/piglet
 	gender = FEMALE

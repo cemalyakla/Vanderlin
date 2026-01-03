@@ -61,6 +61,11 @@ SUBSYSTEM_DEF(plexora)
 
 	base_url = CONFIG_GET(string/plexora_url)
 
+	default_headers = list(
+		"Content-Type" = "application/json",
+		"Authorization" = AUTH_HEADER,
+	)
+
 	// Do a ping test to check if Plexora is actually running
 	if (!is_plexora_alive())
 		stack_trace("SSplexora is enabled BUT plexora is not alive or running! SS has not been aborted, subsequent fires will take place.")
@@ -69,10 +74,6 @@ SUBSYSTEM_DEF(plexora)
 
 	RegisterSignal(SSticker, COMSIG_TICKER_ROUND_STARTING, PROC_REF(roundstarted))
 
-	default_headers = list(
-		"Content-Type" = "application/json",
-		"Authorization" = AUTH_HEADER,
-	)
 	return TRUE
 
 /datum/controller/subsystem/plexora/Shutdown()
@@ -354,6 +355,18 @@ SUBSYSTEM_DEF(plexora)
 	request.begin_async()
 	if(mark_active)
 		active_requests += request
+
+/datum/world_topic/plx_announce
+	keyword = "PLX_announce"
+	require_comms_key = TRUE
+
+/datum/world_topic/plx_announce/Run(list/input)
+	var/message = input["message"]
+	var/from = input["from"]
+
+	var/admin_name = span_adminannounce_big("[from] Announces:")
+	var/message_to_announce = ("[span_adminannounce(message)]")
+	to_chat(world, announcement_block("[admin_name] \n \n [message_to_announce]"))
 
 /datum/world_topic/plx_restartcontroller
 	keyword = "PLX_restartcontroller"
@@ -726,6 +739,26 @@ SUBSYSTEM_DEF(plexora)
 
 	SSblackbox.record_feedback("tally", "admin_say_relay", 1, "Asay external") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/datum/world_topic/plx_givetriumphs
+	keyword = "PLX_givetriumphs"
+	require_comms_key = TRUE
+
+/datum/world_topic/plx_givetriumphs/Run(list/input)
+	var/ckey = input["ckey"]
+	var/amount = input["amount"]
+	var/reason = input["reason"]
+
+	if (!ckey)
+		return list("error" = PLEXORA_ERROR_MISSING_CKEY)
+
+	amount = text2num(amount)
+
+	if (!amount || amount <= 0)
+		return list("error" = PLEXORA_ERROR_BAD_PARAM, "param" = "amount", "reason" = "parameter must be a number greater than 0")
+
+	adjust_triumphs(ckey, amount, reason, counted = FALSE, silent = FALSE, override_bonus = TRUE)
+
+	return "[ckey] awarded [amount] triumphs.  They now have [SStriumphs.get_triumphs(ckey)]."
 
 #undef OLD_PLEXORA_CONFIG
 #undef AUTH_HEADER
@@ -777,9 +810,6 @@ SUBSYSTEM_DEF(plexora)
 
 	/// The view of the client, similar to /client/var/view.
 	var/view = "15x15"
-
-	/// View data of the client, similar to /client/var/view_size.
-	var/datum/view_data/view_size
 
 	/// Objects on the screen of the client
 	var/list/screen = list()

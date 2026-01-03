@@ -32,7 +32,7 @@
 
 	var/obj/item/sacrifice
 	for(var/obj/item/I in caster.held_items)
-		if(istype(I, /obj/item/ash))
+		if(istype(I, /obj/item/fertilizer/ash))
 			sacrifice = I
 
 	if(!sacrifice)
@@ -59,7 +59,7 @@
 	color = "#3FBAFD"
 
 /atom/movable/screen/alert/status_effect/non_detection
-	name = "Thaumaturgical Voice"
+	name = "Ashen Cloak"
 	desc = "I am projected from divination magic for a time."
 	icon_state = "stressvg"
 

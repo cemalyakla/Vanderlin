@@ -9,7 +9,7 @@
 /*	.............   Frysteak   ................ */
 /obj/item/reagent_containers/food/snacks/cooked/frysteak
 	name = "frysteak"
-	desc = "A slab of beastflesh, fried to a perfect medium-rare"
+	desc = "A slab of beastflesh, fried to a perfect medium-rare."
 	icon_state = "frysteak"
 	base_icon_state = "frysteak"
 	biting = TRUE
@@ -18,7 +18,6 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = COOKED_MEAT_NUTRITION)
 	slices_num = 0
 	rotprocess = SHELFLIFE_DECENT
-	plateable = TRUE
 	faretype = FARE_NEUTRAL
 
 /obj/item/reagent_containers/food/snacks/cooked/frysteak_tatos
@@ -33,10 +32,8 @@
 	eat_effect = null
 	tastes = list("roasted meat" = 2, "potato" = 1)
 	slices_num = 0
-	plateable = TRUE
 	faretype = FARE_NEUTRAL
 	modified = TRUE
-	foodbuff_skillcheck = TRUE
 	rotprocess = SHELFLIFE_DECENT
 	bitesize = 5
 
@@ -52,9 +49,7 @@
 	eat_effect = null
 	tastes = list("roasted meat" = 1, "caramelized onions" = 1)
 	slices_num = 0
-	plateable = TRUE
 	modified = TRUE
-	foodbuff_skillcheck = TRUE
 	rotprocess = SHELFLIFE_DECENT
 	bitesize = 5
 
@@ -64,7 +59,7 @@
 	if(modified)
 		return TRUE
 	if(bitecount >0)
-		to_chat(user, span_warning("Leftovers aren´t suitable for this."))
+		to_chat(user, span_warning("Leftovers aren't suitable for this."))
 		return TRUE
 	var/obj/item/reagent_containers/peppermill/mill = I
 	if(istype(mill) && (!modified))
@@ -89,8 +84,29 @@
 			meal_properties()
 			bitesize = initial(bitesize)
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
+			user.nobles_seen_servant_work()
 	return ..()
 
+/obj/item/reagent_containers/food/snacks/cooked/herbsteak
+	name = "herbsteak"
+	desc = "A slab of beastflesh, fried to a perfect medium-rare. It has been seasoned with herbs."
+	icon_state = "frysteak"
+	base_icon_state = "frysteak"
+	biting = TRUE
+	eat_effect = /datum/status_effect/buff/foodbuff
+	tastes = list("warm steak" = 1, "herbs" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = COOKED_MEAT_NUTRITION+2)
+	slices_num = 0
+	rotprocess = SHELFLIFE_DECENT
+	faretype = FARE_NEUTRAL
+
+/obj/item/reagent_containers/food/snacks/cooked/herbsteak/update_overlays()
+	. = ..()
+	. += mutable_appearance('icons/roguetown/items/food.dmi', "frysteak_spice")
+
+/obj/item/reagent_containers/food/snacks/cooked/herbsteak/Initialize()
+	. = ..()
+	update_appearance(UPDATE_OVERLAYS)
 
 /*	.............   Fried egg   ................ */
 /obj/item/reagent_containers/food/snacks/cooked/egg
@@ -120,9 +136,7 @@
 	base_icon_state = "omelette"
 	faretype = FARE_FINE
 	portable = FALSE
-	plateable = TRUE
 	modified = TRUE
-	foodbuff_skillcheck = TRUE
 	rotprocess = SHELFLIFE_DECENT
 	bitesize = 5
 
@@ -132,6 +146,7 @@
 	desc = "Poultry scorched to a perfect delicious crisp."
 	icon_state = "frybird"
 	base_icon_state = "frybird"
+	tastes = list("frybird" = 1)
 	biting = TRUE
 
 /obj/item/reagent_containers/food/snacks/cooked/frybird_tatos
@@ -140,12 +155,32 @@
 	icon_state = "frybirdtato"
 	base_icon_state = "frybirdtato"
 	tastes = list("frybird" = 1, "warm tato" = 1)
-	plateable = TRUE
 	modified = TRUE
 	biting = TRUE
-	foodbuff_skillcheck = TRUE
 	rotprocess = SHELFLIFE_DECENT
 	bitesize = 5
+
+/obj/item/reagent_containers/food/snacks/cooked/herbbird
+	name = "herbird"//yes it's meant to be herb-ird, because herbbird is a bit weird
+	desc = "Poultry scorched to a perfect delicious crisp. It has been seasoned with herbs."
+	icon_state = "frybird"
+	base_icon_state = "frybird"
+	biting = TRUE
+	modified = TRUE
+	eat_effect = /datum/status_effect/buff/foodbuff
+	tastes = list("frybird" = 1, "herbs" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = COOKED_MEAT_NUTRITION+2)
+	slices_num = 0
+	rotprocess = SHELFLIFE_DECENT
+	faretype = FARE_NEUTRAL
+
+/obj/item/reagent_containers/food/snacks/cooked/herbbird/update_overlays()
+	. = ..()
+	. += mutable_appearance('icons/roguetown/items/food.dmi', "roast_spice")
+
+/obj/item/reagent_containers/food/snacks/cooked/herbbird/Initialize()
+	. = ..()
+	update_appearance(UPDATE_OVERLAYS)
 
 /*	.............   Han   ................ */
 /obj/item/reagent_containers/food/snacks/cooked/ham
@@ -161,7 +196,7 @@
 
 /obj/item/reagent_containers/food/snacks/cooked/royal_truffle
 	name = "royal truffles"
-	desc = "The height of decadence, a precious truffle pig, turned into a amusing meal, served on a bed of its beloved golden truffles."
+	desc = "The height of decadence, a precious truffle pig, turned into an amusing meal, served on a bed of its beloved golden truffles."
 	icon_state = "royaltruffles"
 	base_icon_state = "royaltruffles"
 	list_reagents = list(/datum/reagent/consumable/nutriment = COOKED_MEAT_NUTRITION+COOKED_MEAT_NUTRITION+2)
@@ -170,9 +205,7 @@
 	filling_color = "#8a0000"
 	become_rot_type = /obj/item/reagent_containers/food/snacks/rotten/bacon
 	faretype = FARE_FINE
-	plateable = TRUE
 	modified = TRUE
-	foodbuff_skillcheck = TRUE
 	rotprocess = SHELFLIFE_DECENT
 	bitesize = 5
 
@@ -184,11 +217,10 @@
 /*	.............   Frything   ................ */
 /obj/item/reagent_containers/food/snacks/cooked/strange
 	name = "fried strange meat"
-	desc = "Whatever it was, its roasted."
+	desc = "Whatever it was, it's roasted."
 	icon_state = "fried_strange"
 	base_icon_state = "fried_strange"
 	list_reagents = list(/datum/reagent/consumable/nutriment = RAWMEAT_NUTRITION) // raw meat nutrition but without getting sick
-	plateable = TRUE
 	biting = TRUE
 	faretype = FARE_POOR
 
@@ -199,7 +231,7 @@
 /*	.............   Sausage & Wiener   ................ */
 /obj/item/reagent_containers/food/snacks/cooked/sausage
 	name = "sausage"
-	desc = "Delicious flesh stuffed in a intestine casing."
+	desc = "Delicious flesh stuffed in an intestine casing."
 	icon_state = "wiener"
 	base_icon_state = "wiener"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION)
@@ -220,8 +252,6 @@
 	modified = TRUE
 	rotprocess = SHELFLIFE_DECENT
 	bitesize = 5
-	plateable = TRUE
-	foodbuff_skillcheck = TRUE
 
 /obj/item/reagent_containers/food/snacks/cooked/sausage_potato
 	name = "wiener on tato"
@@ -235,8 +265,6 @@
 	modified = TRUE
 	rotprocess = SHELFLIFE_DECENT
 	bitesize = 5
-	plateable = TRUE
-	foodbuff_skillcheck = TRUE
 
 /obj/item/reagent_containers/food/snacks/cooked/sausage_onion
 	name = "wiener and onions"
@@ -250,8 +278,6 @@
 	modified = TRUE
 	rotprocess = SHELFLIFE_DECENT
 	bitesize = 5
-	plateable = TRUE
-	foodbuff_skillcheck = TRUE
 
 /obj/item/reagent_containers/food/snacks/cooked/sausage_sticked
 	name = "sausage on a stick"
@@ -271,7 +297,7 @@
 /*	.............   Sausages on sticks   ................ */
 /obj/item/reagent_containers/food/snacks/cooked/sausage_sticked
 	name = "sausage onna stick"
-	desc = "A sausage skewered for convenience and cleanliness, classic Grenzlehoftian street food."
+	desc = "A sausage skewered for convenience and cleanliness, classic Grenzelhoftian street food."
 	list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+1)
 	icon_state = "sausageonastick"
 	tastes = list("savory sausage" = 2)
@@ -293,7 +319,7 @@
 
 /obj/item/reagent_containers/food/snacks/cooked/griddledog
 	name = "griddledog"
-	desc = "A classic piece of Grenzlehoftian street food, the fried butterdough is a Vanderlinian adulteration."
+	desc = "A classic piece of Grenzelhoftian street food, the fried butterdough is a Vanderlinian adulteration."
 	list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+BUTTERDOUGHSLICE_NUTRITION+2)
 	icon_state = "griddledog"
 	tastes = list("savory sausage" = 2, "crispy butterdough" = 1)
@@ -377,8 +403,6 @@
 	biting = TRUE
 	list_reagents = list(/datum/reagent/consumable/nutriment = COOKED_MEAT_NUTRITION+COOKED_MEAT_NUTRITION+1)
 	rotprocess = SHELFLIFE_LONG
-	plateable = TRUE
-	foodbuff_skillcheck = TRUE
 	faretype = FARE_FINE
 	portable = FALSE
 
@@ -389,7 +413,7 @@
 	if(modified)
 		return TRUE
 	if(bitecount >0)
-		to_chat(user, span_warning("Leftovers aren´t suitable for this."))
+		to_chat(user, span_warning("Leftovers aren't suitable for this."))
 		return TRUE
 	else if(istype(mill))
 		if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
@@ -412,4 +436,5 @@
 			tastes = list("spicy birdmeat" = 2)
 			modified = TRUE
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
+			user.nobles_seen_servant_work()
 	return ..()

@@ -122,8 +122,12 @@
 		to_chat(user, "<span class='danger'>The [title] browser you tried to open failed a sanity check! Please report this on github!</span>")
 		return
 	var/window_size = ""
-	if (width && height)
-		window_size = "size=[width]x[height];"
+	var/scaling = 1
+	var/client/user_client = isclient(user) ? user : user.client
+	if(user_client?.window_scaling)
+		scaling = user_client.window_scaling
+	if(width && height)
+		window_size = "size=[width * scaling]x[height * scaling];"
 	var/datum/asset/simple/namespaced/common/common_asset = get_asset_datum(/datum/asset/simple/namespaced/common)
 	common_asset.send(user)
 	if (stylesheets.len)
@@ -137,9 +141,14 @@
 /datum/browser/proc/setup_onclose()
 	set waitfor = 0 //winexists sleeps, so we don't need to.
 	for (var/i in 1 to 10)
-		if (user && winexists(user, window_id))
-			onclose(user, window_id, owner)
+		if(isclient(user) && winexists(user, window_id))
+			var/client/client_user = user
+			onclose(client_user.mob, window_id, owner)
 			break
+		else
+			if (user?.client && winexists(user?.client, window_id))
+				onclose(user, window_id, owner)
+				break
 
 /datum/browser/proc/close()
 	if(!isnull(window_id))//null check because this can potentially nuke goonchat

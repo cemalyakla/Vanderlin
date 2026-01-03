@@ -20,6 +20,11 @@
 		if(C.silent || !C.can_speak())
 			message = "makes a noise. Tears stream down their face."
 
+/datum/emote/living/carbon/human/cry/run_emote(mob/user, params, type_override, intentional, targetted)
+	. = ..()
+	if(. && user.mind)
+		record_featured_stat(FEATURED_STATS_CRYBABIES, user)
+
 /datum/emote/living/carbon/human/eyebrow
 	key = "eyebrow"
 	message = "raises an eyebrow."
@@ -122,5 +127,34 @@
 		return
 	if(H.dna.species.is_wagging_tail())
 		. = null
+
+/datum/emote/living/carbon/human/rakshari
+
+/datum/emote/living/carbon/human/rakshari/meow
+	key = "meow"
+	key_third_person = "meows"
+	message = "meows!"
+	message_muffled = "meows silently."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	vary = TRUE
+	sound = SFX_CAT_MEOW
+
+/datum/emote/living/carbon/human/rakshari/purr
+	key = "purr"
+	key_third_person = "purrs"
+	vary = TRUE
+	sound = SFX_CAT_PURR
+	message = "purrs."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/species/rakshari/verb/emote_purr()
+	set name = "purr"
+	set category = "Noises"
+	emote("purr", intentional = TRUE)
+
+/mob/living/carbon/human/species/rakshari/verb/emote_meow()
+	set name = "meow"
+	set category = "Noises"
+	emote("meow", intentional = TRUE)
 
 //Ayy lmao

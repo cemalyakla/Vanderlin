@@ -38,9 +38,7 @@
 	new /obj/effect/decal/cleanable/dyes(get_turf(src))
 	var/obj/item/bin/I = new(loc)
 	I.kover = TRUE
-	I.update_appearance()
 	return ..()
-
 
 /obj/structure/dye_bin/Initialize(mapload, obj/item/dye_pack/inserted_pack)
 	. = ..()
@@ -72,7 +70,7 @@
 		return
 
 
-	if(!I.sewrepair) // ????
+	if(!(I.sewrepair || I.dyeable)) // ????
 		if(I.force < 8) // ?????????
 			to_chat(user, span_warning("I do not think \the [I] can be dyed this way."))
 		return ..()
@@ -80,7 +78,7 @@
 	/* ---------- */
 	. = TRUE
 
-	if(istype(I, /obj/item/clothing/head/mob_holder))
+	if(ismobholder(I))
 		if(!allow_mobs)
 			to_chat(user, span_warning("I could not fit [I] into [src]."))
 			return
@@ -115,15 +113,15 @@
 		dat += "<A href='byond://?src=[ref];action=eject'>Remove item.</A>"
 		dat += "<HR>"
 
-		dat += "Color: <font color='[active_color]'>&#9899;</font>"
+		dat += "Color: <span style='color:[active_color];'>&#9898;</span>"
 		dat += "<BR>"
 		dat += "<A href='byond://?src=[ref];action=select'>Select new color.</A>"
 		dat += "<BR>"
 
 		dat += "<A href='byond://?src=[ref];action=paint;type=base'>Taint with dye.</A>"
-		if(isclothing(inserted))
-			var/obj/item/clothing/cloth = inserted
-			if(cloth.detail_tag)
+		if(isitem(inserted))
+			var/obj/item/I = inserted
+			if(I.get_detail_tag())
 				dat += " | <A href='byond://?src=[ref];action=paint;type=detail'>Apply dye to accent.</A>"
 
 	var/datum/browser/menu = new(user, "colormate","<CENTER>[src]</CENTER>", 400, 400, src)
@@ -147,7 +145,7 @@
 
 	switch(href_list["action"])
 		if("select")
-			var/choice = input(user,"Choose your dye:", "Dyes", null) as null|anything in selectable_colors
+			var/choice = browser_input_list(user,"Choose your dye:", "Dyes", selectable_colors)
 			if(!choice)
 				return
 			active_color = selectable_colors[choice]
@@ -157,9 +155,6 @@
 				return
 			if(!active_color)
 				return
-			if(user.get_skill_level(/datum/skill/misc/sewing) <= 2) // We're not letting people with 0 knowledge in sewing do dying, so they don't step on the toes of the seamstress
-				to_chat(user, span_warning("I do not know enough about this craft..."))
-				return
 
 			playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 50, FALSE)
 			user.visible_message( \
@@ -168,10 +163,10 @@
 				span_hear("I hear something moving in water.") \
 			)
 			if(do_after(user, 5 SECONDS, src))
-				if(href_list["type"] == "detail" && isclothing(inserted))
-					var/obj/item/clothing/cloth = inserted
-					cloth.detail_color = active_color
-					cloth.update_appearance()
+				if(href_list["type"] == "detail" && isitem(inserted))
+					var/obj/item/I = inserted
+					I.detail_color = active_color
+					I.update_appearance(UPDATE_OVERLAYS)
 				else
 					inserted.add_atom_colour(active_color, FIXED_COLOUR_PRIORITY)
 

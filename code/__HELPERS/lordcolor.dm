@@ -41,7 +41,7 @@ GLOBAL_VAR(lordsecondary)
 		set_greyscale(list(GLOB.lordsecondary))
 	UnregisterSignal(SSdcs, COMSIG_LORD_COLORS_SET)
 
-/obj/item/clothing/lordcolor()
+/obj/item/lordcolor()
 	if(!get_detail_tag())
 		return ..()
 
@@ -58,7 +58,7 @@ GLOBAL_VAR(lordsecondary)
 
 	update_appearance(UPDATE_OVERLAYS)
 
-	if(ismob(loc))
+	if(ismob(loc) && isclothing(src))
 		var/mob/M = loc
 		M.update_clothing(slot_flags)
 
@@ -73,7 +73,7 @@ GLOBAL_VAR(lordsecondary)
 
 	UnregisterSignal(SSdcs, COMSIG_LORD_COLORS_SET)
 
-/mob/proc/lord_color_choice()
+/mob/living/carbon/human/proc/lord_color_choice()
 	if(!client)
 		addtimer(CALLBACK(src, PROC_REF(lord_color_choice)), 5 SECONDS)
 		return
@@ -92,6 +92,9 @@ GLOBAL_VAR(lordsecondary)
 	)
 	var/choice = browser_input_list(src, "Choose a Primary Color", "VANDERLIN", lordcolors)
 	if(!choice)
+		if(!client)
+			addtimer(CALLBACK(src, PROC_REF(lord_color_choice)), 5 SECONDS)
+			return
 		choice = pick(lordcolors)
 		return
 	GLOB.lordprimary = lordcolors[choice]

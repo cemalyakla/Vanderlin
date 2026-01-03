@@ -1,6 +1,6 @@
 /obj/structure/essence_node
 	name = "essence node"
-	desc = "A crystalline formation that naturally accumulates thaumaturgical essence. It pulses with inner energy."
+	desc = "A weakened point in the environment that allows access to alchemical essence. It pulses with inner energy."
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "node"
 	density = FALSE
@@ -16,7 +16,7 @@
 	var/last_recharge = 0
 
 	// Visual states
-	var/base_icon_state = "node"
+	base_icon_state = "node"
 
 /obj/structure/essence_node/Initialize(mapload)
 	. = ..()
@@ -149,7 +149,7 @@
 		jar.update_appearance(UPDATE_OVERLAYS)
 
 		var/datum/thaumaturgical_essence/temp = new essence_type.type
-		to_chat(user, span_info("You carefully extract the essence node and place it in the containment jar. The [temp.name] node is now safely contained."))
+		to_chat(user, span_info("You carefully extract the essence node and place it in the [jar]. The [temp.name] node is now safely contained."))
 		qdel(temp)
 
 		qdel(src)
@@ -163,7 +163,7 @@
 	if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
 		. += span_notice("This node generates [temp_essence.name].")
 	else
-		. += span_notice("This node generate essence smelling of [temp_essence.smells_like].")
+		. += span_notice("This node generates essence smelling of [temp_essence.smells_like].")
 
 	. += span_notice("This node generates [temp_essence.name].")
 	. += span_notice("Essence: [current_essence]/[max_essence] units")
@@ -175,7 +175,7 @@
 
 /obj/structure/essence_node/rare
 	tier = 1
-	desc = "A magnificent crystalline formation that pulses with concentrated essence. These rare nodes contain immense power."
+	desc = "A pulsating blister that oozes with concentrated essence. These rare nodes contain immense power."
 	icon_state = "node"
 
 /obj/structure/essence_node/fire
@@ -195,7 +195,7 @@
 
 /obj/item/essence_node_portable
 	name = "essence node"
-	desc = "A crystalline formation contained within a portable state. It still pulses with thaumaturgical energy."
+	desc = "A large amount of essence still wrapped within its environmental shell. It still beats with alchemical energy."
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "essence"
 	w_class = WEIGHT_CLASS_BULKY
@@ -212,7 +212,7 @@
 	var/stamina_drain = 5
 	var/last_stamina_drain = 0
 
-	var/base_icon_state = "essence_node_item"
+	base_icon_state = "essence_node_item"
 
 /obj/item/essence_node_portable/Initialize()
 	. = ..()

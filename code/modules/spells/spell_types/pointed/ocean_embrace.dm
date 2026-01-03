@@ -26,7 +26,10 @@
 
 /datum/action/cooldown/spell/ocean_embrace/cast(mob/living/cast_on)
 	. = ..()
-	if(owner.cmode || cast_on.mob_biotypes & MOB_UNDEAD)
+	if(cast_on.mob_biotypes & MOB_UNDEAD)
+		if(cast_on.mind?.has_antag_datum(/datum/antagonist/vampire/lord))
+			cast_on.visible_message(span_warning("[cast_on] overpowers being swept away!"), span_greentext("I overpower being swept away!"))
+			return
 		cast_on.visible_message(span_danger("[cast_on] is drowned by turbulent tides!"), span_userdanger("I'm being drowned by turbulent tides!"))
 		cast_on.safe_throw_at(get_step(cast_on, get_dir(owner, cast_on)), 1, 1, owner, spin = TRUE, force = cast_on.move_force)
 		var/already_dead = cast_on.stat == DEAD ? TRUE : FALSE
@@ -37,7 +40,7 @@
 			cast_on.Knockdown(5)
 			cast_on.Slowdown(60)
 			cast_on.Dizzy(10)
-			cast_on.blur_eyes(20)
+			cast_on.set_eye_blur_if_lower(40 SECONDS)
 			cast_on.emote("drown")
 		return
 

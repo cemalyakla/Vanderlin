@@ -9,7 +9,7 @@
 	has_visual_effects = FALSE
 
 	charge_required = FALSE
-	cooldown_time = 3 MINUTES
+	cooldown_time = 1 MINUTES
 	var/brat_name
 
 /datum/action/cooldown/spell/undirected/hag_call/before_cast(atom/cast_on)
@@ -33,6 +33,6 @@
 			if(HAS_TRAIT(HL, TRAIT_ORPHAN) || HAS_TRAIT(HL, TRAIT_OLDPARTY))
 				to_chat(HL, span_reallybig("[brat_name]!"))
 				if(HAS_TRAIT(HL, TRAIT_ORPHAN))
-					HL.add_stress(/datum/stressevent/mother_calling)
+					HL.add_stress(/datum/stress_event/mother_calling)
 				else
-					HL.add_stress(/datum/stressevent/friend_calling)
+					HL.add_stress(/datum/stress_event/friend_calling)

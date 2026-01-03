@@ -11,7 +11,7 @@
 	decay_factor = STANDARD_ORGAN_DECAY
 
 	low_threshold_passed = "<span class='info'>My ears begin to resonate with an internal ring sometimes.</span>"
-	now_failing = "<span class='warning'>I are unable to hear at all!</span>"
+	now_failing = "<span class='warning'>I am unable to hear at all!</span>"
 	now_fixed = "<span class='info'>Noise slowly begins filling my ears once more.</span>"
 	low_threshold_cleared = "<span class='info'>The ringing in my ears has died down.</span>"
 
@@ -126,3 +126,14 @@
 
 /obj/item/organ/ears/anthro
 	name = "wild-kin ears"
+
+/obj/item/organ/ears/rakshari
+	name = "rakshari ears"
+
+/obj/item/organ/ears/rakshari/Insert(mob/living/carbon/M, special, drop_if_replaced)
+	. = ..()
+	ADD_TRAIT(M, TRAIT_KEENEARS, "[type]")
+
+/obj/item/organ/ears/rakshari/Remove(mob/living/carbon/human/H,  special = 0)
+	. = ..()
+	REMOVE_TRAIT(H, TRAIT_KEENEARS, "[type]")

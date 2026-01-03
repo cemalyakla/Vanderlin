@@ -37,8 +37,13 @@
 		return FALSE
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
-		if(human_owner.checkcritarmor(zone_precise, bclass))
-			return FALSE
+		var/obj/item/clothing/checked_armor = human_owner.check_crit_armor(zone_precise, bclass)
+		if(checked_armor)
+			var/int_percent = round(((checked_armor.get_integrity() / checked_armor.max_integrity) * 100), 1)
+			if(int_percent > 30 && !HAS_TRAIT(human_owner, TRAIT_CRITICAL_WEAKNESS) && !HAS_TRAIT(human_owner, TRAIT_EASYDISMEMBER))
+				to_chat(human_owner, span_green("My [checked_armor.name] just saved me from losing my [src.name]!"))
+				checked_armor.take_damage(checked_armor.max_integrity / 2, damage_flag = bclass)
+				return FALSE
 
 	var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_CHEST)
 	if(affecting && dismember_wound)
@@ -47,34 +52,34 @@
 	if(body_zone == BODY_ZONE_HEAD)
 		C.visible_message("<span class='danger'><B>[C] is [pick("BRUTALLY","VIOLENTLY","BLOODILY","MESSILY")] DECAPITATED!</B></span>")
 	else
-		C.visible_message("<span class='danger'><B>The [src.name] is [pick("torn off", "sundered", "severed", "seperated", "unsewn")]!</B></span>")
+		C.visible_message("<span class='danger'><B>The [src.name] is [pick("torn off", "sundered", "severed", "separated", "unsewn")]!</B></span>")
 	C.emote("painscream")
 	src.add_mob_blood(C)
-	SEND_SIGNAL(C, COMSIG_ADD_MOOD_EVENT, "dismembered", /datum/mood_event/dismembered)
-	C.add_stress(/datum/stressevent/dismembered)
+	C.add_stress(/datum/stress_event/dismembered)
+	C.add_stress(/datum/stress_event/dismembered)
 	var/stress2give
 	if(!skeletonized && C.dna?.species) //we need a skeleton species for skeleton npcs
 		if(C.dna.species.id != SPEC_ID_GOBLIN && C.dna.species.id != SPEC_ID_ROUSMAN) //convert this into a define list later
-			stress2give = /datum/stressevent/viewdismember
+			stress2give = /datum/stress_event/viewdismember
 	if(C)
 		if(C.buckled)
 			if(istype(C.buckled, /obj/structure/fluff/psycross) || istype(C.buckled, /obj/machinery/light/fueled/campfire/pyre))
 				if((C.real_name in GLOB.excommunicated_players) || (C.real_name in GLOB.heretical_players))
-					stress2give = /datum/stressevent/viewsinpunish
+					stress2give = /datum/stress_event/viewsinpunish
 			else if(istype(C.buckled, /obj/structure/guillotine))
 				stress2give = null
 	if(stress2give)
 		for(var/mob/living/carbon/CA in hearers(world.view, C))
 			if(CA != C && !HAS_TRAIT(CA, TRAIT_BLIND))
-				if(stress2give == /datum/stressevent/viewdismember)
+				if(stress2give == /datum/stress_event/viewdismember)
 					if(HAS_TRAIT(CA, TRAIT_STEELHEARTED))
 						continue
 					if(CA.has_flaw(/datum/charflaw/addiction/maniac))
-						CA.add_stress(/datum/stressevent/viewdismembermaniac)
+						CA.add_stress(/datum/stress_event/viewdismembermaniac)
 						CA.sate_addiction()
 						continue
 					if(CA.gender == FEMALE)
-						CA.add_stress(/datum/stressevent/fviewdismember)
+						CA.add_stress(/datum/stress_event/fviewdismember)
 						continue
 				CA.add_stress(stress2give)
 	if(grabbedby)
@@ -242,7 +247,7 @@
 		if(C.hud_used)
 			var/atom/movable/screen/inventory/hand/R = C.hud_used.hand_slots["[held_index]"]
 			if(R)
-				R.update_appearance()
+				R.update_appearance(UPDATE_OVERLAYS)
 		if(C.gloves && (C.num_hands < 1))
 			C.dropItemToGround(C.gloves, force = TRUE)
 		C.update_inv_gloves() //to remove the bloody hands overlay
@@ -261,7 +266,7 @@
 		if(C.hud_used)
 			var/atom/movable/screen/inventory/hand/L = C.hud_used.hand_slots["[held_index]"]
 			if(L)
-				L.update_appearance()
+				L.update_appearance(UPDATE_OVERLAYS)
 		if(C.gloves && (C.num_hands < 1))
 			C.dropItemToGround(C.gloves, force = TRUE)
 		C.update_inv_gloves() //to remove the bloody hands overlay
@@ -345,7 +350,7 @@
 		if(C.hud_used)
 			var/atom/movable/screen/inventory/hand/hand = C.hud_used.hand_slots["[held_index]"]
 			if(hand)
-				hand.update_appearance()
+				hand.update_appearance(UPDATE_OVERLAYS)
 		C.update_inv_gloves()
 
 	if(special) //non conventional limb attachment

@@ -6,7 +6,8 @@
 	r_sleeve_status = SLEEVE_TORN
 	l_sleeve_status = SLEEVE_TORN
 	body_parts_covered = CHEST|VITALS
-	allowed_race = list(SPEC_ID_ELF, SPEC_ID_DROW)
+	allowed_race = RACES_PLAYER_ELF_ALL
+	allowed_sex = list(FEMALE)
 	salvage_result = /obj/item/natural/silk
 
 /obj/item/clothing/shirt/apothshirt
@@ -49,7 +50,6 @@
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "jestershirt"
 	icon = 'icons/roguetown/clothing/shirts.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/shirts.dmi'
 	boobed = TRUE
 	r_sleeve_status = SLEEVE_NORMAL
@@ -115,6 +115,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/ornate_tunic.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/ornate_tunic.dmi'
 	boobed = TRUE
+	abstract_type = /obj/item/clothing/shirt/ornate
 
 /obj/item/clothing/shirt/ornate/tunic
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
@@ -129,3 +130,23 @@
 	desc = "A red dress with gold accents, fit for nobility."
 	icon_state = "ornatedress"
 	sellprice = 150
+
+/obj/item/clothing/shirt/clothvest
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
+	name = "cloth vest"
+	desc = "a plain cloth vest, versatile and fashionable."
+	icon_state = "clothvest"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
+	color = CLOTHING_LINEN
+
+/obj/item/clothing/shirt/clothvest/colored
+	misc_flags = CRAFTING_TEST_EXCLUDE
+
+/obj/item/clothing/shirt/clothvest/colored/red
+	color = CLOTHING_ROYAL_RED
+
+/obj/item/clothing/shirt/clothvest/colored/random/Initialize()
+	color = pick(CLOTHING_LINEN, CLOTHING_BARK_BROWN, CLOTHING_FOREST_GREEN, CLOTHING_BERRY_BLUE, CLOTHING_BLOOD_RED, CLOTHING_PEAR_YELLOW, CLOTHING_ROYAL_TEAL)
+	return ..()
+
+

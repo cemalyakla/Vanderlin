@@ -7,7 +7,7 @@
 	icon_state = "wall"
 	explosion_block = 1
 
-	baseturfs = list(/turf/open/floor/dirt/road)
+	baseturfs = /turf/open/floor/dirt/road
 
 	smoothing_groups = SMOOTH_GROUP_CLOSED_WALL
 
@@ -17,6 +17,9 @@
 	var/sheet_amount = 2
 
 	var/list/dent_decals
+
+/turf/closed/wall/get_explosion_resistance()
+	return (atom_integrity) / 15
 
 /turf/closed/wall/handle_ricochet(obj/projectile/P)			//A huge pile of shitcode!
 	var/turf/p_turf = get_turf(P)
@@ -29,13 +32,15 @@
 	P.setAngle(new_angle_s)
 	return TRUE
 
-/turf/closed/wall/turf_destruction()
-	visible_message("<span class='notice'>\The [src] crumbles!</span>")
-	dismantle_wall(1,0)
+/turf/closed/wall/atom_destruction(damage_flag)
+	. = ..()
+	visible_message(span_notice("\The [src] crumbles!"))
+	dismantle_wall(TRUE, FALSE)
 
 /turf/closed/wall/proc/dismantle_wall(devastated=0, explode=0)
 	playsound(src, 'sound/blank.ogg', 100, TRUE)
 	ScrapeAway()
+	QUEUE_SMOOTH_NEIGHBORS(src)
 
 /turf/closed/wall/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	if(target == src)
@@ -112,7 +117,7 @@
 
 	// Are you trying to break your instrument? Go ahead!
 	if(istype(W, /obj/item/instrument))
-		user.do_attack_animation(src)
+		user.do_attack_animation(src, used_item = W, item_animation_override = ATTACK_ANIMATION_BONK)
 		visible_message("<span class='warning'>[user] slams \the [W] against \the [src]!</span>",
 						"<span class='warning'>I slam \the [W] against \the [src]!</span>",null ,COMBAT_MESSAGE_RANGE)
 		W.take_damage(10, BRUTE, "blunt")
@@ -196,7 +201,6 @@
 	icon_state = ""
 	layer = FLY_LAYER
 	bullet_bounce_sound = null
-	canSmoo
 
 /turf/closed/splashscreen/New()
 	SStitle.splash_turf = src

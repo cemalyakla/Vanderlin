@@ -22,12 +22,12 @@
 
 /obj/item/bouquet/matricaria
 	name = "matricaria bouquet"
-	desc = "A bouqet of maricaria."
+	desc = "A bouquet of maricaria."
 	icon_state = "bouquet_matricaria"
 
 /obj/item/bouquet/calendula
 	name = "calendula bouquet"
-	desc = "A bouquet of calendula, a flower used in herbal medicine due to its supposed healing properties"
+	desc = "A bouquet of calendula, a flower used in herbal medicine due to its supposed healing properties."
 	icon_state = "bouquet_calendula"
 
 /obj/item/clothing/head/flowercrown
@@ -41,13 +41,14 @@
 	body_parts_covered = null
 	icon_state = ""
 	item_state = ""
+	abstract_type = /obj/item/clothing/head/flowercrown
 
 	grid_width = 64
 	grid_height = 32
 
 /obj/item/clothing/head/flowercrown/rosa
 	name = "rosa crown"
-	desc = "A crown of rosas, often worn during weddings officated by Eoran priests."
+	desc = "A crown of rosas, often worn during weddings officiated by Eoran acolytes."
 	item_state = "rosa_crown"
 	icon_state = "rosa_crown"
 

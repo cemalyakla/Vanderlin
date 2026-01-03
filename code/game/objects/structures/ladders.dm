@@ -8,18 +8,18 @@
 	var/obj/structure/ladder/down   //the ladder below this one
 	var/obj/structure/ladder/up     //the ladder above this one
 	obj_flags = BLOCK_Z_OUT_DOWN
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 
 /obj/structure/ladder/Initialize(mapload, obj/structure/ladder/up, obj/structure/ladder/down)
 	..()
 	if (up)
 		src.up = up
 		up.down = src
-		up.update_appearance()
+		up.update_appearance(UPDATE_ICON_STATE)
 	if (down)
 		src.down = down
 		down.up = src
-		down.update_appearance()
+		down.update_appearance(UPDATE_ICON_STATE)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/ladder/Destroy(force)
@@ -38,23 +38,23 @@
 		if (L)
 			down = L
 			L.up = src  // Don't waste effort looping the other way
-			L.update_appearance()
+			L.update_appearance(UPDATE_ICON_STATE)
 	if (!up)
 		L = locate() in GET_TURF_ABOVE(T)
 		if (L)
 			up = L
 			L.down = src  // Don't waste effort looping the other way
-			L.update_appearance()
+			L.update_appearance(UPDATE_ICON_STATE)
 
 	update_appearance(UPDATE_ICON_STATE)
 
 /obj/structure/ladder/proc/disconnect()
 	if(up && up.down == src)
 		up.down = null
-		up.update_appearance()
+		up.update_appearance(UPDATE_ICON_STATE)
 	if(down && down.up == src)
 		down.up = null
-		down.update_appearance()
+		down.update_appearance(UPDATE_ICON_STATE)
 	up = down = null
 
 /obj/structure/ladder/update_icon_state()
@@ -194,18 +194,16 @@
 	max_integrity = 200
 	blade_dulling = DULLING_BASHCHOP
 
-
-
 /obj/structure/wallladder/OnCrafted(dirin, mob/user)
 	dir = dirin
 	layer = BELOW_MOB_LAYER
 	switch(dir)
 		if(NORTH)
-			pixel_y = 16
+			pixel_y = base_pixel_y + 16
 		if(SOUTH)
 			layer = ABOVE_MOB_LAYER
 		if(WEST)
-			pixel_x = -4
+			pixel_x = base_pixel_x - 4
 		if(EAST)
-			pixel_x = 4
-	. = ..()
+			pixel_x = base_pixel_x + 4
+	return ..()

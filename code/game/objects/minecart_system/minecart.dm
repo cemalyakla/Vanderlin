@@ -16,6 +16,8 @@
 	var/momentum = 0
 	///the id we just travelled to
 	var/last_travelled_to = ""
+	///do we have a hopper attached?
+	var/hopper_mode = FALSE
 
 /obj/structure/closet/crate/miningcar/Initialize(mapload)
 	. = ..()
@@ -49,6 +51,16 @@
 	. = ..()
 	if(!on_rails || momentum <= 0)
 		return
+
+	if(hopper_mode)
+		for(var/turf/turf in range(1, src))
+			if(locate(/obj/structure/roller) in get_turf(turf))
+				continue
+			for(var/obj/item/item in turf.contents)
+				if(item.anchored)
+					continue
+				item.forceMove(src)
+				visible_message(span_notice("[src] hopper up [item]."))
 
 	// Handling running OVER people
 	for(var/mob/living/smacked in loc)
@@ -85,7 +97,7 @@
 	ASSERT(momentum_mod >= 1)
 	if(!smacked.apply_damage(damage_mod * momentum, BRUTE, BODY_ZONE_CHEST))
 		return
-	if(obj_integrity <= max_integrity * 0.05)
+	if(atom_integrity <= max_integrity * 0.05)
 		smacked.visible_message(
 			span_danger("[src] smashes into [smacked], breaking into pieces!"),
 			span_userdanger("You are smacked by [src] as it breaks into pieces!"),
@@ -280,7 +292,7 @@
 		momentum = 0
 		return MOVELOOP_SKIP_STEP
 	// Forced to not move
-	if(anchored || !has_gravity())
+	if(anchored)
 		return MOVELOOP_SKIP_STEP
 
 	// Going through open space

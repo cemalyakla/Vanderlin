@@ -1,5 +1,5 @@
 /obj/item/clothing/shirt/robe
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	name = "robe"
 	desc = "A common robe, worn mostly by religious adepts."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
@@ -18,14 +18,23 @@
 	prevent_crits = list(BCLASS_TWIST)
 	max_integrity = INTEGRITY_POOR
 
-/obj/item/clothing/shirt/robe/plain
+/obj/item/clothing/shirt/robe/colored
+	misc_flags = CRAFTING_TEST_EXCLUDE
+
+/obj/item/clothing/shirt/robe/colored/linen
 	color = CLOTHING_LINEN
 
-/obj/item/clothing/shirt/robe/black
+/obj/item/clothing/shirt/robe/colored/plain
+	color = CLOTHING_LINEN
+
+/obj/item/clothing/shirt/robe/colored/black
 	color = CLOTHING_DARK_INK
 
-/obj/item/clothing/shirt/robe/white
+/obj/item/clothing/shirt/robe/colored/red//placeholder for malum & xylix acolyte robes
+	color = CLOTHING_WINESTAIN_RED
 
+/obj/item/clothing/shirt/robe/colored/purple
+	color = CLOTHING_PLUM_PURPLE
 
 //................ Temple Robes ............... //
 
@@ -49,6 +58,7 @@
 	name = "sun robe"
 	desc = "The cloth of a follower of Astrata."
 	icon_state = "astratarobe"
+
 	sleeved = null
 
 /obj/item/clothing/shirt/robe/noc
@@ -57,10 +67,13 @@
 	icon_state = "nocrobe"
 	sleeved = null
 
+//someone should make sure the necromancer robe gets dwarf and child sprites
 /obj/item/clothing/shirt/robe/necromancer
 	name = "necromancer robes"
 	desc = "Eerie black garb of death."
 	icon_state = "warlock"
+	allowed_ages = ALL_AGES_LIST
+	allowed_race = SPECIES_BASE_BODY
 	sleeved = null
 
 /obj/item/clothing/shirt/robe/dendor
@@ -102,19 +115,17 @@
 
 
 //................ Wizard Robes ............... //
-/obj/item/clothing/shirt/robe/courtmage
-	color = CLOTHING_ASH_GREY
+/obj/item/clothing/shirt/robe/colored/courtmage
+	color = CLOTHING_CHALK_WHITE
 
-/obj/item/clothing/shirt/robe/mage/Initialize()
-	color = pick( CLOTHING_PEASANT_BROWN, CLOTHING_SPRING_GREEN, CLOTHING_CHESTNUT, CLOTHING_YELLOW_OCHRE)
+/obj/item/clothing/shirt/robe/colored/mage/Initialize()
+	color = pick(CLOTHING_BERRY_BLUE, CLOTHING_SPRING_GREEN, CLOTHING_TARAXACUM_YELLOW, CLOTHING_WINESTAIN_RED)
 	. = ..()
 
 /obj/item/clothing/shirt/robe/wizard
 	name = "wizard's robe"
 	desc = "What wizard's ensemble would be complete without robes?"
 	icon_state = "wizardrobes"
-	allowed_sex = list(MALE)
-	allowed_race = list(SPEC_ID_HUMEN, SPEC_ID_TIEFLING, SPEC_ID_AASIMAR)
 	sellprice = 100
 
 /obj/item/clothing/shirt/robe/magus
@@ -122,14 +133,12 @@
 	desc = "A dark padded robe worn by only the most mysterious of mages, the magi."
 	icon_state = "warlock"
 	allowed_sex = list(MALE)
-	allowed_race = list(SPEC_ID_HUMEN, SPEC_ID_TIEFLING, SPEC_ID_AASIMAR)
-	sellprice = 150
+	allowed_race = SPECIES_BASE_BODY
+	sellprice = 70
 
 	armor = list("blunt" = 40, "slash" = 40, "stab" = 40,  "piercing" = 15, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_TWIST)
 	max_integrity = 200
-
-
 
 /obj/item/clothing/shirt/robe/merchant
 	name = "guilder jacket"
@@ -138,9 +147,10 @@
 	sellprice = 30
 
 /obj/item/clothing/shirt/robe/nun
+	name = "nun habit"
 	icon_state = "nun"
 	item_state = "nun"
-	allowed_race = list(SPEC_ID_HUMEN, SPEC_ID_TIEFLING, SPEC_ID_DROW, SPEC_ID_ELF, SPEC_ID_HALF_ELF, SPEC_ID_DWARF, SPEC_ID_AASIMAR)
+	allowed_race = SPECIES_BASE_BODY
 	allowed_sex = list(FEMALE)
 
 /obj/item/clothing/shirt/robe/feld
@@ -155,6 +165,15 @@
 	icon_state = "surgrobe"
 	item_state = "surgrobe"
 
+/obj/item/clothing/shirt/robe/courtphysician
+	name = "court physician's robe"
+	desc = "The dark red helps hide blood stains, and is elegant."
+	icon_state = "courtrobe"
+	item_state = "courtrobe"
+	icon = 'icons/roguetown/clothing/courtphys.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/courtphys.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_courtphys.dmi'
+
 /obj/item/clothing/shirt/robe/archivist
 	name = "archivist's robe"
 	desc = "Robes belonging to seekers of knowledge."
@@ -164,10 +183,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
 	boobed = TRUE
 	flags_inv = HIDEBOOB
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
-	allowed_sex = list(MALE, FEMALE)
-	allowed_race = list(SPEC_ID_HUMEN, SPEC_ID_TIEFLING, SPEC_ID_ELF, SPEC_ID_AASIMAR)
+	allowed_race = SPECIES_BASE_BODY
 	color = null
 	sellprice = 100
 
@@ -182,9 +198,6 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/shirts.dmi'
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
-	allowed_sex = list(MALE, FEMALE)
 	toggle_icon_state = TRUE
 	armor = ARMOR_PADDED_BAD
 	max_integrity = 200
@@ -194,16 +207,17 @@
 	var/picked
 	var/newicon
 	var/robe_count = 0	/// This var basicly counts the numbers of times this robe has changes its appearence
+	abstract_type = /obj/item/clothing/shirt/robe/newmage
 
 /obj/item/clothing/shirt/robe/newmage/ToggleHood()
 	if(!hoodtoggled)
 		if(ishuman(src.loc))
 			var/mob/living/carbon/human/H = src.loc
-			if(slot_flags == ITEM_SLOT_ARMOR)
+			if(slot_flags & ITEM_SLOT_ARMOR)
 				if(H.wear_armor != src)
 					to_chat(H, span_warning("I should put that on first."))
 					return
-			if(slot_flags == ITEM_SLOT_CLOAK)
+			if(slot_flags & ITEM_SLOT_CLOAK)
 				if(H.cloak != src)
 					to_chat(H, span_warning("I should put that on first."))
 					return
@@ -250,7 +264,7 @@
 
 /obj/item/clothing/shirt/robe/newmage/adept
 	name = "adept robe"
-	desc = "Standard robes for an arcane adept."
+	desc = "Standard robes for an arcyne adept."
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	icon_state = "adept-red"
 	item_state = "adept-red"
@@ -288,7 +302,7 @@
 
 /obj/item/clothing/shirt/robe/newmage/sorcerer
 	name = "sorcerer robe"
-	desc = "Standard robes for an arcane sorcerer."
+	desc = "Standard robes for an arcyne sorcerer."
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	icon_state = "sorcerer-red"
 	item_state = "sorcerer-red"
@@ -325,7 +339,7 @@
 
 /obj/item/clothing/shirt/robe/newmage/warlock
 	name = "warlock robe"
-	desc = "Standard robes for an arcane sorcerer."
+	desc = "Standard robes for an arcyne sorcerer."
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	icon_state = "vizier-red"
 	item_state = "vizier-red"
@@ -361,3 +375,13 @@
 	color = null
 	icon_state = "facelesscloth" //Credit goes to Cre
 	item_state = "facelesscloth"
+
+/obj/item/clothing/shirt/robe/kimono
+	name = "kimono"
+	desc = "Worn by merchants of Zhongese."
+	color = null
+	icon_state = "kimono"
+	item_state = "kimono"
+	sleeved = null
+	sleevetype = null
+	item_flags = ABSTRACT

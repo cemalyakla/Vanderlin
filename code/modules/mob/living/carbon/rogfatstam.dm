@@ -10,6 +10,9 @@
 		added = round(-10+ (added*-40))
 		if(HAS_TRAIT(src, TRAIT_MISSING_NOSE))
 			added = round(added * 0.5, 1)
+		//Assuming full energy bar give you 50 regen, this make it with the trait that even if you have higher endurance/athletics skill, which mean a higher fatigue bar, you won't have your regen halved
+		if(HAS_TRAIT(src, TRAIT_NOENERGY))
+			added = -50
 		if(stamina >= 1)
 			adjust_stamina(added)
 		else
@@ -35,9 +38,9 @@
 	///this trait affects both stamina and energy since they are part of the same system.
 	if(HAS_TRAIT(src, TRAIT_NOSTAMINA))
 		return TRUE
-	if(m_intent == MOVE_INTENT_RUN)
-		var/boon = get_learning_boon(/datum/skill/misc/athletics)
-		adjust_experience(/datum/skill/misc/athletics, (STAINT*0.02) * boon)
+	///This trait specifically affect energy.
+	if(HAS_TRAIT(src, TRAIT_NOENERGY))
+		return TRUE
 	energy += added
 	if(energy >= max_energy)
 		energy = max_energy
@@ -66,10 +69,15 @@
 /mob/proc/adjust_stamina(added as num)
 	return TRUE
 
+/// Positive added values deplete stamina. Negative added values restore stamina and deplete energy unless internal_regen is FALSE.
 /mob/living/adjust_stamina(added as num, emote_override, force_emote = TRUE, internal_regen = TRUE) //call update_stamina here and set last_fatigued, return false when not enough fatigue left
 	if(HAS_TRAIT(src, TRAIT_NOSTAMINA))
 		return TRUE
+	if(m_intent == MOVE_INTENT_RUN)
+		var/boon = get_learning_boon(/datum/skill/misc/athletics)
+		adjust_experience(/datum/skill/misc/athletics, (STAINT*0.1) * boon)
 	stamina = CLAMP(stamina+added, 0, maximum_stamina)
+	SEND_SIGNAL(src, COMSIG_LIVING_ADJUSTED, -added, STAMINA)
 	if(internal_regen && added < 0)
 		adjust_energy(added)
 	if(added >= 5)
@@ -90,7 +98,7 @@
 			emote("fatigue", forced = force_emote)
 		else
 			emote(emote_override, forced = force_emote)
-		blur_eyes(2)
+		set_eye_blur_if_lower(4 SECONDS)
 		last_fatigued = world.time + 30 //extra time before fatigue regen sets in
 		stop_attack()
 		changeNext_move(CLICK_CD_EXHAUSTED)
@@ -134,7 +142,7 @@
 		C.visible_message(C, "<span class='danger'>[C] clutches at [C.p_their()] chest!</span>") // Other people know something is wrong.
 		emote("breathgasp", forced = TRUE)
 		shake_camera(src, 1, 3)
-		blur_eyes(40)
+		set_eye_blur_if_lower(80 SECONDS)
 		var/stuffy = list("ZIZO GRABS MY WEARY HEART!","ARGH! MY HEART BEATS NO MORE!","NO... MY HEART HAS BEAT IT'S LAST!","MY HEART HAS GIVEN UP!","MY HEART BETRAYS ME!","THE METRONOME OF MY LIFE STILLS!")
 		to_chat(src, "<span class='userdanger'>[pick(stuffy)]</span>")
 		addtimer(CALLBACK(src, PROC_REF(set_heartattack), TRUE), 3 SECONDS) //no penthrite so just doing this
@@ -155,7 +163,7 @@
 	shake_camera(src, 1, 3)
 	flash_fullscreen("stressflash")
 	changeNext_move(CLICK_CD_EXHAUSTED)
-	add_stress(/datum/stressevent/freakout)
+	add_stress(/datum/stress_event/freakout)
 	if(stress >= 30)
 		heart_attack()
 	else

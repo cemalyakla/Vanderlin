@@ -8,6 +8,10 @@
 	attunements = list(
 		/datum/attunement/earth = 0.5,
 	)
+
+	invocation = "Earth pierce you!!!"
+	invocation_type = INVOCATION_SHOUT
+
 	spell_flags = SPELL_RITUOS
 	charge_time = 2 SECONDS
 	charge_drain = 1
@@ -31,7 +35,7 @@
 		L.apply_damage(scaled_damage, BRUTE, def_zone)
 		var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
 		if(BP)
-			var/probby = (BP.max_damage / BP.get_damage()) * 20 * attuned_strength
+			var/probby = (BP.get_damage() / BP.max_damage) * 20 * attuned_strength
 			if(prob(probby))
 				BP.add_wound(/datum/wound/fracture)
 		L.adjustBruteLoss(scaled_damage)
@@ -46,6 +50,6 @@
 
 /obj/effect/temp_visual/blade_burst
 	icon = 'icons/effects/effects.dmi'
-	icon_state = "purplesparkles"
+	icon_state = "grassblade"
 	randomdir = FALSE
 	duration = 1 SECONDS

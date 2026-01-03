@@ -1,6 +1,6 @@
 /turf/closed/wall/mineral
 	icon = 'icons/turf/walls.dmi'
-	baseturfs = list(/turf/open/floor/dirt/road)
+	baseturfs = /turf/open/floor/dirt/road
 	wallclimb = TRUE
 	explosion_block = 10
 	damage_deflection = 0
@@ -14,8 +14,8 @@
 
 /turf/closed/wall/mineral/examine()
 	. += ..()
-	if(max_integrity)
-		var/healthpercent = (turf_integrity/max_integrity) * 100
+	if(uses_integrity)
+		var/healthpercent = (atom_integrity / max_integrity) * 100
 		switch(healthpercent)
 			if(50 to 99)
 				. += "It looks slightly damaged."

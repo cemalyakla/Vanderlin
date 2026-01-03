@@ -12,7 +12,7 @@
 	smoothing_groups = SMOOTH_GROUP_CLOSED_WALL + SMOOTH_GROUP_WALLS_STONE
 	smoothing_list = SMOOTH_GROUP_DOOR_SECRET + SMOOTH_GROUP_WALLS_STONE
 	above_floor = /turf/open/floor/blocks
-	baseturfs = list(/turf/open/floor/blocks)
+	baseturfs = /turf/open/floor/blocks
 	neighborlay = "dirtedge"
 	climbdiff = 1
 	damage_deflection = 10
@@ -26,7 +26,7 @@
 	opacity = FALSE
 	max_integrity = 800
 	explosion_block = 2
-	pass_flags_self = PASSTABLE|PASSGRILLE
+	pass_flags_self = PASSGRILLE|LETPASSTHROW|NOTLETPASSTHROWNMOB
 
 /turf/closed/wall/mineral/stone/window/Initialize()
 	. = ..()
@@ -70,7 +70,7 @@
 	smoothing_groups = SMOOTH_GROUP_CLOSED_WALL + SMOOTH_GROUP_WALLS_STONE_DECO
 	smoothing_list = SMOOTH_GROUP_DOOR_SECRET + SMOOTH_GROUP_WALLS_STONE_DECO
 	above_floor = /turf/open/floor/blocks
-	baseturfs = list(/turf/open/floor/blocks)
+	baseturfs = /turf/open/floor/blocks
 	neighborlay = "dirtedge"
 	climbdiff = 1
 	damage_deflection = 10
@@ -84,7 +84,7 @@
 	opacity = FALSE
 	max_integrity = 1800
 	explosion_block = 2
-	pass_flags_self = PASSTABLE|PASSGRILLE
+	pass_flags_self = PASSGRILLE|LETPASSTHROW|NOTLETPASSTHROWNMOB
 
 /turf/closed/wall/mineral/decorstone/window/Initialize()
 	. = ..()
@@ -114,7 +114,7 @@
 	smoothing_groups = SMOOTH_GROUP_CLOSED_WALL + SMOOTH_GROUP_WALLS_STONE_CRAFT
 	smoothing_list = SMOOTH_GROUP_DOOR_SECRET + SMOOTH_GROUP_WALLS_STONE_CRAFT
 	above_floor = /turf/open/floor/blocks
-	baseturfs = list(/turf/open/floor/blocks)
+	baseturfs = /turf/open/floor/blocks
 	neighborlay = "dirtedge"
 	climbdiff = 1
 	damage_deflection = 10
@@ -135,7 +135,7 @@
 	smoothing_groups = SMOOTH_GROUP_CLOSED_WALL + SMOOTH_GROUP_WALLS_STONE_BRICK
 	smoothing_list = SMOOTH_GROUP_DOOR_SECRET + SMOOTH_GROUP_WALLS_STONE_BRICK
 	above_floor = /turf/open/floor/blocks
-	baseturfs = list(/turf/open/floor/blocks)
+	baseturfs = /turf/open/floor/blocks
 	neighborlay = "dirtedge"
 	climbdiff = 4
 	damage_deflection = 20
@@ -168,12 +168,12 @@
 	smoothing_list = SMOOTH_GROUP_DOOR_SECRET + SMOOTH_GROUP_WALLS_WOOD
 	neighborlay = "dirtedge"
 	above_floor = /turf/open/floor/ruinedwood
-	baseturfs = list(/turf/open/floor/ruinedwood)
+	baseturfs = /turf/open/floor/ruinedwood
 	climbdiff = 3
 	explosion_block = 4
 	hardness = 7
 
-	burn_power = 200
+	burn_power = 100
 	spread_chance = 1.8
 
 /turf/closed/wall/mineral/wood/window
@@ -200,13 +200,13 @@
 	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 	above_floor = /turf/open/floor/twig
-	baseturfs = list(/turf/open/floor/twig)
+	baseturfs = /turf/open/floor/twig
 	neighborlay = "dirtedge"
 	climbdiff = 1
 	explosion_block = 0
 	hardness = 70
 
-	burn_power = 200
+	burn_power = 100
 	spread_chance = 1.8
 
 
@@ -224,12 +224,12 @@
 	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 	above_floor = /turf/open/floor/ruinedwood
-	baseturfs = list(/turf/open/floor/ruinedwood)
+	baseturfs = /turf/open/floor/ruinedwood
 	neighborlay = "dirtedge"
 	climbdiff = 3
 	explosion_block = 4
 	hardness = 7
-	burn_power = 200
+	burn_power = 100
 	spread_chance = 1.8
 
 /turf/closed/wall/mineral/wooddark/OnCrafted(dirin, mob/user)
@@ -275,12 +275,12 @@
 	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 	above_floor = /turf/open/floor/rooftop
-	baseturfs = list(/turf/open/floor/ruinedwood)
+	baseturfs = /turf/open/floor/ruinedwood
 	neighborlay = "dirtedge"
 	climbdiff = 3
 	hardness = 7
 
-	burn_power = 200
+	burn_power = 100
 	spread_chance = 1.4
 
 
@@ -302,18 +302,18 @@
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "decowood"
 	blade_dulling = DULLING_BASHCHOP
-	max_integrity = 1100
+	max_integrity = 900
 	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 //	sheet_type = /obj/item/grown/log/tree/lumber
 	above_floor = /turf/open/floor/ruinedwood
-	baseturfs = list(/turf/open/floor/ruinedwood)
+	baseturfs = /turf/open/floor/ruinedwood
 	neighborlay = "dirtedge"
 	climbdiff = 3
 	explosion_block = 4
 	hardness = 7
 
-	burn_power = 200
+	burn_power = 100
 	spread_chance = 1.8
 
 /turf/closed/wall/mineral/decowood/Initialize()
@@ -335,7 +335,7 @@
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
 	above_floor = /turf/open/floor/blocks
-	baseturfs = list(/turf/open/floor/blocks)
+	baseturfs = /turf/open/floor/blocks
 	neighborlay = "dirtedge"
 	climbdiff = 1
 	hardness = 2
@@ -346,7 +346,7 @@
 /obj/structure/thronething
 	name = "stone wall"
 	icon = 'icons/turf/walls.dmi'
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 	opacity = 0
 	icon_state = "decostone-l"
 
@@ -406,6 +406,14 @@
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "shroud1"
 
+/turf/closed/sea_fog
+	name = "thick sea fog"
+	icon = 'icons/effects/effects.dmi'
+	density = TRUE
+	opacity = TRUE
+	icon_state = "mfoam"
+	plane = FLOOR_PLANE
+
 /turf/closed/wall/mineral/pipe
 	name = "metal wall"
 	icon = 'icons/turf/smooth/walls/pipe_used.dmi'
@@ -419,7 +427,7 @@
 	smoothing_groups = SMOOTH_GROUP_CLOSED_WALL + SMOOTH_GROUP_WALLS_PIPE
 	smoothing_list = SMOOTH_GROUP_DOOR_SECRET + SMOOTH_GROUP_WALLS_PIPE
 	above_floor = /turf/open/floor/concrete
-	baseturfs = list(/turf/open/floor/concrete)
+	baseturfs = /turf/open/floor/concrete
 	climbdiff = 1
 	damage_deflection = 20
 	hardness = 10
@@ -439,7 +447,7 @@
 	smoothing_groups = SMOOTH_GROUP_CLOSED_WALL + SMOOTH_GROUP_WALLS_EREBUS
 	smoothing_list = SMOOTH_GROUP_DOOR_SECRET + SMOOTH_GROUP_WALLS_EREBUS
 	above_floor = /turf/open/floor/church
-	baseturfs = list(/turf/open/floor/church)
+	baseturfs = /turf/open/floor/church
 	neighborlay = "dirtedge"
 	climbdiff = 6
 
@@ -453,3 +461,60 @@
 /turf/closed/wall/mineral/underbrick/Melt()
 	to_be_destroyed = FALSE
 	return src
+
+/turf/closed/wall/mineral/abyssal
+	name = "abyssal wall"
+	icon = 'icons/delver/abyss_walls.dmi'
+	icon_state = MAP_SWITCH("wallformed", "wallformed")
+	blade_dulling = DULLING_BASH
+	max_integrity = 99999
+	sheet_type = null
+	break_sound = 'sound/combat/hits/onmetal/sheet (1).ogg'
+	attacked_sound = list('sound/combat/hits/onmetal/attackpipewall (1).ogg','sound/combat/hits/onmetal/attackpipewall (2).ogg')
+	above_floor = /turf/open/floor/concrete
+	baseturfs = /turf/open/floor/concrete
+	climbdiff = 1
+	damage_deflection = 20
+	hardness = 10
+
+/turf/closed/wall/mineral/desert_sandstone
+	name = "sandstone wall"
+	icon = 'icons/delver/desert_sandstone.dmi'
+	icon_state = MAP_SWITCH("wallformed", "wallformed")
+	blade_dulling = DULLING_BASH
+	max_integrity = 99999
+	sheet_type = null
+	break_sound = 'sound/combat/hits/onmetal/sheet (1).ogg'
+	attacked_sound = list('sound/combat/hits/onmetal/attackpipewall (1).ogg','sound/combat/hits/onmetal/attackpipewall (2).ogg')
+	above_floor = /turf/open/floor/sandstone
+	baseturfs = /turf/open/floor/sandstone
+	climbdiff = 1
+	damage_deflection = 20
+	hardness = 10
+
+/turf/closed/wall/mineral/desert_sandstone/window
+	name = "sandstone window"
+	opacity = FALSE
+	var/state = "window_open"
+
+/turf/closed/wall/mineral/desert_sandstone/window/Initialize(mapload, ...)
+	. = ..()
+	add_overlay(mutable_appearance('icons/delver/desert_objects.dmi', state, layer = ABOVE_NORMAL_TURF_LAYER))
+
+/turf/closed/wall/mineral/desert_sandstone/window/brass
+	state = "window_brass"
+
+/turf/closed/wall/mineral/desert_soapstone
+	name = "soapstone wall"
+	icon = 'icons/delver/desert_slopstone.dmi'
+	icon_state = MAP_SWITCH("wallformed", "wallformed")
+	blade_dulling = DULLING_BASH
+	max_integrity = 99999
+	sheet_type = null
+	break_sound = 'sound/combat/hits/onmetal/sheet (1).ogg'
+	attacked_sound = list('sound/combat/hits/onmetal/attackpipewall (1).ogg','sound/combat/hits/onmetal/attackpipewall (2).ogg')
+	above_floor = /turf/open/floor/sandstone
+	baseturfs = /turf/open/floor/sandstone
+	climbdiff = 1
+	damage_deflection = 20
+	hardness = 10

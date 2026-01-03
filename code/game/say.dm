@@ -38,7 +38,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	var/rendered = compose_message(src, message_language, message, , spans, message_mods)
 	for(var/atom/movable/hearing_movable as anything in get_hearers_in_view(range, source))
 		if(!hearing_movable) // theoretically this should use as anything because it shouldnt be able to get nulls but there are reports that it does.
-			stack_trace("somehow theres a null returned from get_hearers_in_view() in send_speech!")
+			stack_trace("somehow there's a null returned from get_hearers_in_view() in send_speech!")
 			continue
 		hearing_movable.Hear(rendered, src, message_language, message, , spans, message_mods, original_message)
 
@@ -98,11 +98,19 @@ GLOBAL_LIST_INIT(freqtospan, list(
 				arrowpart += " ⇈"
 			if(speakturf.z < sourceturf.z)
 				arrowpart += " ⇊"
-			if(istype(speaker, /mob/living))
-				var/mob/living/L = speaker
-				namepart = "Unknown [(L.gender == FEMALE) ? "Woman" : "Man"]"
-			else
-				namepart = "Unknown"
+			if(!HAS_TRAIT(src, TRAIT_KEENEARS))
+				if(istype(speaker, /mob/living))
+					var/mob/living/L = speaker
+					// This isn't accurate purposely
+					var/appendage = "Figure"
+					switch(L.client?.prefs.voice_type)
+						if(VOICE_TYPE_FEM)
+							appendage = "Woman"
+						if(VOICE_TYPE_MASC)
+							appendage = "Man"
+					namepart = "Unknown [appendage]"
+				else
+					namepart = "Unknown"
 			spanpart1 = "<span class='smallyell'>"
 
 	var/languageicon = ""
@@ -147,40 +155,23 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	if(copytext(input, length(input) - 1) == "!!")
 		spans |= SPAN_YELL
 
+	input = parsemarkdown_basic(input, limited = TRUE, barebones = TRUE)
 	/* all inputs should be fully figured out past this point */
 
-	var/processed_input = say_emphasis(input)
-	processed_input = attach_spans(processed_input, spans)
+	var/processed_input = attach_spans(input, spans)
 
-	var/processed_say_mod = say_emphasis(say_mod) // port custom emotes one day?
+	var/processed_say_mod = attach_spans(say_mod, spans) // port custom emotes one day?
 
 	return "[processed_say_mod] \"[processed_input]\""
 
 /atom/movable/proc/quoteless_say_quote(input, list/spans = list(speech_span), list/message_mods = list()) //what the fuck.
+	input = parsemarkdown_basic(input, limited = TRUE, barebones = TRUE)
 	var/pos = findtext(input, "*")
-	var/final_quoteless = pos ? copytext(input, pos + 1) : input
-	return say_emphasis(final_quoteless)
+	return pos ? copytext(input, pos + 1) : input
 
 /atom/movable/proc/check_language_hear(language)
 	return FALSE
 
-/// Transforms the speech emphasis mods from [/atom/movable/proc/say_emphasis] into the appropriate HTML tags. Includes escaping backslash (\)
-#define ENCODE_HTML_EMPHASIS(input, char, html, varname) \
-	var/static/regex/##varname = regex("(?<!\\\\)[char](.+?)(?<!\\\\)[char]", "g");\
-	input = varname.Replace_char(input, "<[html]>$1</[html]>")
-
-/// Scans the input sentence for speech emphasis modifiers, notably |italics|, +bold+, and _underline_ -mothblocks
-/atom/movable/proc/say_emphasis(input)
-	ENCODE_HTML_EMPHASIS(input, "\\|", "i", italics)
-	ENCODE_HTML_EMPHASIS(input, "\\+", "b", bold)
-	ENCODE_HTML_EMPHASIS(input, "_", "u", underline)
-	var/static/regex/remove_escape_backlashes = regex("\\\\(_|\\+|\\|)", "g") // Removes backslashes used to escape text modification.
-	input = remove_escape_backlashes.Replace_char(input, "$1")
-	return input
-
-#undef ENCODE_HTML_EMPHASIS
-
-// tg#69799 please i beg
 /atom/movable/proc/lang_treat(atom/movable/speaker, datum/language/language, raw_message, list/spans, list/message_mods = list(), no_quote = FALSE)
 	var/atom/movable/source = speaker.GetSource() || speaker //is the speaker virtual
 	if(has_language(language) || check_language_hear(language))

@@ -38,10 +38,25 @@
 /obj/item/bodypart/proc/has_wound(path, specific = FALSE)
 	if(!path)
 		return
+	if(!specific)
+		return locate(path) in wounds
 	for(var/datum/wound/wound as anything in wounds)
-		if((specific && wound.type != path) || !istype(wound, path))
+		if((wound.type != path))
 			continue
 		return wound
+
+/// Like [has_wound] but returns all wounds
+/obj/item/bodypart/proc/get_all_wounds_type(path, specific = FALSE)
+	if(!path)
+		return
+	var/list/returned_wounds = list()
+	for(var/datum/wound/wound as anything in wounds)
+		if(specific && wound.type != path)
+			continue
+		else if(istype(wound, path))
+			returned_wounds += wound
+
+	return returned_wounds
 
 /// Heals wounds on this bodypart by the specified amount
 /obj/item/bodypart/proc/heal_wounds(heal_amount)
@@ -120,79 +135,72 @@
 	return bleed_rate
 
 /// Called after a bodypart is attacked so that wounds and critical effects can be applied
-/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE)
+/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, reduce_crit = 0)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return FALSE
+
+	if(dam < 5)
+		return
+
+	var/do_crit = TRUE
+
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
-		if(human_owner.checkcritarmor(zone_precise, bclass))
-			return FALSE
-	var/do_crit = TRUE
-	if(user)
-		if(user.stat_roll(STATKEY_LCK,2,10))
-			dam += 10
-		if(istype(user.rmb_intent, /datum/rmb_intent/weak))
+		if(human_owner.check_crit_armor(zone_precise, bclass))
 			do_crit = FALSE
-	var/added_wound
-	switch(bclass) //do stuff but only when we are a blade that adds wounds
-		if(BCLASS_SMASH, BCLASS_BLUNT)
-			switch(dam)
-				if(20 to INFINITY)
-					added_wound = /datum/wound/bruise/large
-				if(10 to 20)
-					added_wound = /datum/wound/bruise
-				if(1 to 10)
-					added_wound = /datum/wound/bruise/small
-		if(BCLASS_CUT, BCLASS_CHOP)
-			switch(dam)
-				if(20 to INFINITY)
-					added_wound = /datum/wound/slash/large
-				if(10 to 20)
-					added_wound = /datum/wound/slash
-				if(1 to 10)
-					added_wound = /datum/wound/slash/small
-		if(BCLASS_STAB, BCLASS_PICK, BCLASS_SHOT, BCLASS_PIERCE)
-			switch(dam)
-				if(20 to INFINITY)
-					added_wound = /datum/wound/puncture/large
-				if(10 to 20)
-					added_wound = /datum/wound/puncture
-				if(1 to 10)
-					added_wound = /datum/wound/puncture/small
-		if(BCLASS_LASHING)
-			switch(dam)
-				if(20 to INFINITY)
-					added_wound = /datum/wound/lashing/large
-				if(10 to 20)
-					added_wound = /datum/wound/lashing
-				if(1 to 10)
-					added_wound = /datum/wound/lashing/small
-		if(BCLASS_BITE)
-			switch(dam)
-				if(20 to INFINITY)
-					added_wound = /datum/wound/bite/large
-				if(10 to 20)
-					added_wound = /datum/wound/bite
-				if(1 to 10)
-					added_wound = /datum/wound/bite/small
-	if(added_wound)
-		added_wound = add_wound(added_wound, silent, crit_message)
+
+	if(user)
+		if(user.stat_roll(STATKEY_LCK, 2, 10))
+			dam += 10
+		if(ispath(user.rmb_intent?.type, /datum/rmb_intent/weak))
+			do_crit = FALSE
+
 	if(do_crit)
-		var/crit_attempt = try_crit(bclass, dam, user, zone_precise, silent, crit_message)
+		var/crit_attempt = try_crit(bclass, dam, user, zone_precise, silent, crit_message, reduce_crit)
 		if(crit_attempt)
 			return crit_attempt
-	return added_wound
+
+	return manage_dynamic_wound(bclass, dam)
+
+/// Add or upgrade a dynamic wound, returns the wound if added or upgraded
+/obj/item/bodypart/proc/manage_dynamic_wound(bclass, damage)
+	var/datum/wound/wound_type
+
+	for(var/type in GLOB.primordial_wounds)
+		// :(
+		if(!ispath(type, /datum/wound/dynamic))
+			continue
+		var/datum/wound/dynamic/dynwound = GLOB.primordial_wounds[type]
+		if(!length(dynwound.associated_bclasses))
+			continue
+		if(bclass in dynwound.associated_bclasses)
+			wound_type = dynwound.type
+			break
+
+	if(!wound_type)
+		return
+
+	var/datum/wound/dynamic/changed_wound
+	// We do this to get the first unsewn dynamic wound
+	for(var/datum/wound/wound as anything in get_all_wounds_type(wound_type))
+		if(wound.is_sewn()) // Sewn dynamic wounds are DONE because im LAZY no wound re-opening
+			continue
+		changed_wound = wound
+
+	if(!changed_wound)
+		changed_wound = add_wound(wound_type)
+
+	changed_wound?.upgrade(bclass, damage)
+
+	return changed_wound
 
 /// Behemoth of a proc used to apply a wound after a bodypart is damaged in an attack
-/obj/item/bodypart/proc/try_crit(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE)
+/obj/item/bodypart/proc/try_crit(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, reduce_crit = 0)
 	if(!bclass || !dam || (owner.status_flags & GODMODE))
 		return FALSE
 
 	if(dam < 5)
 		return FALSE
-
-	if(user?.stat_roll(STATKEY_LCK,2,10))
-		dam += 10
 
 	var/list/crit_classes
 	if(bclass in GLOB.dislocation_bclasses)
@@ -207,7 +215,11 @@
 	if(!crit_classes)
 		return FALSE
 
+	if(user?.stat_roll(STATKEY_LCK, 2, 10))
+		dam += 10
+
 	var/used
+	used -= reduce_crit
 	var/damage_dividend = (get_damage() / max_damage)
 	var/list/attempted_wounds
 	switch(pick(crit_classes))
@@ -217,6 +229,8 @@
 			if(user && istype(user.rmb_intent, /datum/rmb_intent/strong))
 				dam += 10
 			used = round(damage_dividend * 20 + (dam / 6), 1)
+			if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+				used -= 10
 			if(prob(used))
 				if(HAS_TRAIT(src, TRAIT_BRITTLE))
 					LAZYADD(attempted_wounds, /datum/wound/fracture)
@@ -230,6 +244,8 @@
 			if(HAS_TRAIT(src, TRAIT_BRITTLE))
 				dam += 10
 			used = round(damage_dividend * 20 + (dam / 6), 1)
+			if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+				used -= 10
 			if(prob(used))
 				if(damage_dividend >= 0.6)
 					LAZYADD(attempted_wounds, /datum/wound/fracture)
@@ -242,12 +258,16 @@
 				else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 					dam += 10
 			used = round(damage_dividend * 20 + (dam / 6), 1)
+			if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+				used -= 10
 			if(prob(used))
 				LAZYADD(attempted_wounds, /datum/wound/artery)
 		if("scarring")
 			if(user && istype(user.rmb_intent, /datum/rmb_intent/strong))
 				dam += 10
 			used = round(damage_dividend * 20 + (dam / 6), 1)
+			if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+				used -= 10
 			if(prob(used))
 				LAZYADD(attempted_wounds, /datum/wound/scarring)
 
@@ -265,11 +285,10 @@
 /obj/item/bodypart/chest/try_crit(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE)
 	if(!bclass || !dam || (owner.status_flags & GODMODE))
 		return FALSE
-	var/used
-	var/damage_dividend = (get_damage() / max_damage)
-	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
-	if(user?.stat_roll(STATKEY_LCK,2,10))
-		dam += 10
+
+	if(dam < 5)
+		return FALSE
+
 	var/list/crit_classes
 	if(bclass in GLOB.cbt_classes)
 		LAZYADD(crit_classes, "cbt")
@@ -283,6 +302,12 @@
 	if(!crit_classes)
 		return FALSE
 
+	if(user?.stat_roll(STATKEY_LCK,2,10))
+		dam += 10
+
+	var/used
+	var/damage_dividend = (get_damage() / max_damage)
+	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
 	var/list/attempted_wounds
 	switch(pick(crit_classes))
 		if("cbt")
@@ -304,6 +329,8 @@
 				if(HAS_TRAIT(src, TRAIT_BRITTLE))
 					dam += 10
 				used = round(damage_dividend * 20 + (dam / 6), 1)
+				if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+					used -= 10
 				var/fracture_type = /datum/wound/fracture/chest
 				if(zone_precise == BODY_ZONE_PRECISE_GROIN)
 					if(damage_dividend >= 0.7) // Lower body paralysis
@@ -316,6 +343,8 @@
 			else if(user && istype(user.rmb_intent, /datum/rmb_intent/aimed))
 				dam += 10
 			used = round(damage_dividend * 20 + (dam / 6), 1)
+			if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+				used -= 10
 			if(prob(used))
 				if((zone_precise == BODY_ZONE_PRECISE_STOMACH) && !resistance)
 					LAZYADD(attempted_wounds, /datum/wound/slash/disembowel)
@@ -327,6 +356,8 @@
 			if(user && istype(user.rmb_intent, /datum/rmb_intent/strong))
 				dam += 10
 			used = round(damage_dividend * 20 + (dam / 6), 1)
+			if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+				used -= 10
 			if(prob(used))
 				LAZYADD(attempted_wounds, /datum/wound/scarring)
 
@@ -347,15 +378,10 @@
 	var/static/list/nosestab_zones = list(BODY_ZONE_PRECISE_NOSE)
 	var/static/list/earstab_zones = list(BODY_ZONE_PRECISE_EARS)
 	var/static/list/knockout_zones = list(BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_EARS, BODY_ZONE_PRECISE_SKULL, BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_MOUTH)
-	var/used
-	var/damage_dividend = (get_damage() / max_damage)
-	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
-	var/from_behind = FALSE
-	if(user)
-		if((owner.dir == REVERSE_DIR(get_dir(owner, user))))
-			from_behind = TRUE
-	if(user?.stat_roll(STATKEY_LCK,2,10))
-		dam += 10
+
+	if(dam < 5)
+		return FALSE
+
 	var/list/crit_classes
 	if(bclass in GLOB.dislocation_bclasses)
 		LAZYADD(crit_classes, "dislocation")
@@ -367,11 +393,24 @@
 	if(!crit_classes)
 		return FALSE
 
+	if(user?.stat_roll(STATKEY_LCK, 2, 10))
+		dam += 10
+
+	var/from_behind = FALSE
+	if(user)
+		if((owner.dir == REVERSE_DIR(get_dir(owner, user))))
+			from_behind = TRUE
+
+	var/used
+	var/damage_dividend = (get_damage() / max_damage)
+	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
 	var/list/attempted_wounds
 	switch(pick(crit_classes))
 		if("dislocation")
 			if(damage_dividend >= 1)
 				used = round(damage_dividend * 20 + (dam / 6), 1)
+				if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+					used -= 10
 				if(prob(used))
 					if(HAS_TRAIT(src, TRAIT_BRITTLE))
 						LAZYADD(attempted_wounds, /datum/wound/fracture/neck)
@@ -383,6 +422,8 @@
 			if(user && istype(user.rmb_intent, /datum/rmb_intent/strong))
 				dam += 10
 			used = round(damage_dividend * 20 + (dam / 6), 1)
+			if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+				used -= 10
 			if(!owner.stat && (zone_precise in knockout_zones) && !(bclass in GLOB.no_knockout_bclasses) && prob(used))
 				owner.next_attack_msg += " [span_crit("<b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!")]"
 				owner.flash_fullscreen("whiteflash3")
@@ -424,6 +465,8 @@
 					if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 						dam += 10
 			used = round(damage_dividend * 20 + (dam / 6), 1)
+			if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+				used -= 10
 			if(prob(used))
 				var/artery_type = /datum/wound/artery
 				if(zone_precise == BODY_ZONE_PRECISE_NECK)
@@ -472,7 +515,7 @@
 
 /// Embeds an object in this bodypart
 /obj/item/bodypart/proc/add_embedded_object(obj/item/embedder, silent = FALSE, crit_message = FALSE)
-	if(!embedder || !can_embed(embedder))
+	if(!embedder || !embedder.can_embed())
 		return FALSE
 	if(owner && ((owner.status_flags & GODMODE) || HAS_TRAIT(owner, TRAIT_PIERCEIMMUNE)))
 		return FALSE
@@ -513,7 +556,7 @@
 	if(owner)
 		if(!owner.has_embedded_objects())
 			owner.clear_alert("embeddedobject")
-			SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "embedded")
+			owner.remove_stress(/datum/stress_event/embedded)
 		if(can_be_disabled)
 			update_disabled()
 	return TRUE
@@ -535,6 +578,8 @@
 	var/highest_bleed_rate = 0
 	for(var/datum/wound/wound as anything in wounds)
 		if(wound.bleed_rate < highest_bleed_rate)
+			continue
+		if(wound.is_sewn())
 			continue
 		highest_bleed_rate = wound.bleed_rate
 	for(var/obj/item/embedded as anything in embedded_objects)

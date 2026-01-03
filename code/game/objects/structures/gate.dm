@@ -42,6 +42,7 @@ GLOBAL_LIST_EMPTY(biggates)
 	icon_state = "bar1"
 	base_state = "bar"
 	opacity = FALSE
+	pass_flags_self = PASSGRILLE|LETPASSTHROW|PASSSTRUCTURE|NOTLETPASSTHROWNMOB
 
 /obj/structure/gate/bars/preopen
 	icon_state = "bar0"
@@ -173,7 +174,7 @@ GLOBAL_LIST_EMPTY(biggates)
 	icon_state = "winch"
 	density = TRUE
 	anchored = TRUE
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 	var/gid
 	var/obj/structure/gate/attached_gate
 

@@ -1,8 +1,7 @@
 /obj/effect/abstract/pollution
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "smoke-static"
-	pixel_x = -32
-	pixel_y = -32
+	SET_BASE_PIXEL(-32, -32)
 	anchored = TRUE
 	plane = GAME_PLANE_UPPER
 	layer = AREA_LAYER-1
@@ -45,6 +44,7 @@
 	if(isopenturf(my_turf))
 		if(my_turf?.pollution == src)
 			my_turf.pollution = null
+	my_turf = null // avoid invalid references to a turf that doesn't want us
 	return ..()
 
 /datum/pollution/proc/touch_act(mob/living/carbon/victim)
@@ -117,7 +117,7 @@
 		qdel(src)
 		return
 	for(var/type in pollutants)
-		pollutants[type] -= max(floor(amount_to_scrub * (pollutants[type] / total_amount)),1)
+		pollutants[type] -= max(floor(amount_to_scrub * (pollutants[type] / total_amount)), 1)
 	total_amount -= amount_to_scrub
 	update_height()
 	handle_overlay()
@@ -175,8 +175,8 @@
 		if(!isopenturf(open_turf) || QDELING(open_turf) || QDELETED(open_turf.pollution))
 			continue
 		var/datum/pollution/cached_pollution = open_turf.pollution
-		for(var/datum/pollutant/type in cached_pollution.pollutants)
-			if(type.pollutant_flags & POLLUTION_DO_NOT_SPREAD)
+		for(var/datum/pollutant/type as anything in cached_pollution.pollutants)
+			if(initial(type.pollutant_flags) & POLLUTION_DO_NOT_SPREAD)
 				continue
 			if(!total_share_pollutants[type])
 				total_share_pollutants[type] = 0

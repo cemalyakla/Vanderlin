@@ -3,7 +3,6 @@
 	icon = 'icons/roguetown/misc/lighting.dmi'
 	icon_state = "stonefire1"
 	density = TRUE
-//	pixel_y = 10
 	base_state = "stonefire"
 	climbable = TRUE
 	pass_flags_self = LETPASSTHROW
@@ -28,7 +27,7 @@
 				// to_chat(H, "<span class='warning'>HOT!</span>")
 				// if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 				// 	H.update_damage_overlays()
-				H.adjust_bodytemperature(40)
+				H.adjust_bodytemperature(10)
 		return TRUE //fires that are on always have this interaction with lmb unless its a torch
 
 	else
@@ -52,6 +51,11 @@
 	icon_state = "stumpfireb1"
 	base_state = "stumpfireb"
 	bulb_colour = "#6cfdff"
+
+/obj/machinery/light/fueled/firebowl/stumpg
+	icon_state = "stumpfireg1"
+	base_state = "stumpfireg"
+	bulb_colour = "#23b25a"
 
 /obj/machinery/light/fueled/firebowl/blackfire
 	desc = "A fire, black as death."
@@ -123,7 +127,7 @@
 	fueluse = 0
 	crossfire = FALSE
 	cookonme = TRUE
-	temperature_change = 35
+	temperature_change = 30
 
 /obj/machinery/light/fueled/wallfire/candle
 	name = "candles"
@@ -132,23 +136,23 @@
 	bulb_colour = "#ffa35c"
 	crossfire = FALSE
 	cookonme = FALSE
-	pixel_y = 32
+	SET_BASE_PIXEL(0, 32)
 	soundloop = null
 	temperature_change = 0
 
 /obj/machinery/light/fueled/wallfire/candle/OnCrafted(dirin, mob/user)
-	pixel_x = 0
-	pixel_y = 0
+	pixel_x = base_pixel_x
+	pixel_y = base_pixel_y
 	switch(dirin)
 		if(NORTH)
-			pixel_y = 32
+			pixel_y += 32
 		if(SOUTH)
-			pixel_y = -32
+			pixel_y -= 32
 		if(EAST)
-			pixel_x = 32
+			pixel_x += 32
 		if(WEST)
-			pixel_x = -32
-	. = ..()
+			pixel_x -= 32
+	return ..()
 
 /obj/machinery/light/fueled/wallfire/candle/attack_hand(mob/user)
 	if(isliving(user) && on)
@@ -158,11 +162,10 @@
 	. = ..()
 
 /obj/machinery/light/fueled/wallfire/candle/r
-	pixel_y = 0
-	pixel_x = 32
+	SET_BASE_PIXEL(32, 0)
+
 /obj/machinery/light/fueled/wallfire/candle/l
-	pixel_y = 0
-	pixel_x = -32
+	SET_BASE_PIXEL(-32, 0)
 
 /obj/machinery/light/fueled/wallfire/candle/blue
 	bulb_colour = "#8d73ff"
@@ -176,11 +179,10 @@
 	return FALSE
 
 /obj/machinery/light/fueled/wallfire/candle/blue/r
-	pixel_y = 0
-	pixel_x = 32
+	SET_BASE_PIXEL(32, 0)
+
 /obj/machinery/light/fueled/wallfire/candle/blue/l
-	pixel_y = 0
-	pixel_x = -32
+	SET_BASE_PIXEL(-32, 0)
 
 /obj/machinery/light/fueled/wallfire/candle/skull
 	bulb_colour = "#8d73ff"
@@ -194,22 +196,20 @@
 	return FALSE
 
 /obj/machinery/light/fueled/wallfire/candle/skull/r
-	pixel_y = 0
-	pixel_x = 32
+	SET_BASE_PIXEL(32, 0)
 
 /obj/machinery/light/fueled/wallfire/candle/skull/l
-	pixel_y = 0
-	pixel_x = -32
+	SET_BASE_PIXEL(-32, 0)
 
 /obj/machinery/light/fueled/wallfire/candle/weak
 	light_power = 0.9
 	light_outer_range =  6
+
 /obj/machinery/light/fueled/wallfire/candle/weak/l
-	pixel_x = -32
-	pixel_y = 0
+	SET_BASE_PIXEL(-32, 0)
+
 /obj/machinery/light/fueled/wallfire/candle/weak/r
-	pixel_x = 32
-	pixel_y = 0
+	SET_BASE_PIXEL(32, 0)
 
 /*	.............   Candle lamp   ................ */
 /obj/machinery/light/fueled/wallfire/candle/lamp // cant get them to start unlit but they work as is
@@ -237,7 +237,7 @@
 	var/shows_empty = TRUE
 
 /obj/machinery/light/fueled/torchholder/c
-	pixel_y = 32
+	SET_BASE_PIXEL(0, 32)
 
 /obj/machinery/light/fueled/torchholder/r
 	dir = WEST
@@ -284,9 +284,8 @@
 	return ..()
 
 /obj/machinery/light/fueled/torchholder/OnCrafted(dirin, user)
-	dir = turn(dirin, 180)
 	if(dir == SOUTH)
-		pixel_y = 32
+		pixel_y = base_pixel_y + 32
 	QDEL_NULL(torchy)
 	. = ..()
 
@@ -375,8 +374,7 @@
 	icon = 'icons/roguetown/misc/tallwide.dmi'
 	density = FALSE
 	brightness = 10
-	pixel_x = -10
-	pixel_y = -10
+	SET_BASE_PIXEL(-10, -10)
 	layer = 2.0
 	fueluse = 0
 	soundloop = null
@@ -405,7 +403,7 @@
 	on = FALSE
 	cookonme = TRUE
 	soundloop = /datum/looping_sound/fireloop
-	temperature_change = 45
+	temperature_change = 40
 	var/heat_time = 100
 	var/obj/item/attachment = null
 	var/obj/item/reagent_containers/food/snacks/food = null
@@ -419,7 +417,7 @@
 
 /obj/machinery/light/fueled/hearth/attackby(obj/item/W, mob/living/user, params)
 	if(!attachment)
-		if(istype(W, /obj/item/cooking/pan) || istype(W, /obj/item/reagent_containers/glass/bucket/pot) || istype(W, /obj/item/reagent_containers/glass/bottle/teapot))
+		if(istype(W, /obj/item/cooking/pan) || istype(W, /obj/item/reagent_containers/glass/bucket/pot) || istype(W, /obj/item/reagent_containers/glass/carafe/teapot))
 			playsound(get_turf(user), 'sound/foley/dropsound/shovel_drop.ogg', 40, TRUE, -1)
 
 			if(user.transferItemToLoc(W, src, silent = TRUE))
@@ -454,16 +452,16 @@
 	. = ..()
 	if(!attachment)
 		return
-	if(istype(attachment, /obj/item/cooking/pan) || istype(attachment, /obj/item/reagent_containers/glass/bucket/pot) || istype(attachment, /obj/item/reagent_containers/glass/bottle/teapot))
+	if(istype(attachment, /obj/item/cooking/pan) || istype(attachment, /obj/item/reagent_containers/glass/bucket/pot) || istype(attachment, /obj/item/reagent_containers/glass/carafe/teapot))
 		var/obj/item/I = attachment
-		I.pixel_x = 0
-		I.pixel_y = 0
+		I.pixel_x = I.base_pixel_x
+		I.pixel_y = I.base_pixel_y
 		. += new /mutable_appearance(I)
 		if(!food)
 			return
 		I = food
-		I.pixel_x = 0
-		I.pixel_y = 0
+		I.pixel_x = I.pixel_x
+		I.pixel_y = I.pixel_y
 		. += new /mutable_appearance(I)
 
 /obj/machinery/light/fueled/hearth/attack_hand(mob/user)
@@ -482,7 +480,7 @@
 			if(istype(H))
 				H.visible_message("<span class='info'>[H] warms \his hand over the embers.</span>")
 				if(do_after(H, 5 SECONDS, src))
-					H.adjust_bodytemperature(40)
+					H.adjust_bodytemperature(10)
 			return TRUE
 
 
@@ -520,7 +518,7 @@
 	max_integrity = 30
 	soundloop = /datum/looping_sound/fireloop
 
-	temperature_change = 35
+	temperature_change = 25
 
 /obj/machinery/light/fueled/campfire/process()
 	..()
@@ -551,7 +549,7 @@
 				// to_chat(H, "<span class='warning'>HOT!</span>")
 				// if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 				// 	H.update_damage_overlays()
-				H.adjust_bodytemperature(40)
+				H.adjust_bodytemperature(10)
 		return TRUE //fires that are on always have this interaction with lmb unless its a torch
 
 /obj/machinery/light/fueled/campfire/densefire

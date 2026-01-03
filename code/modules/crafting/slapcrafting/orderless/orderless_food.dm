@@ -23,19 +23,25 @@
 	if(istype(new_item))
 		// Calculate average freshness
 		var/average_freshness = (ingredient_count > 0) ? (total_freshness / ingredient_count) : 0
-
 		// Get the user's cooking skill
-		var/cooking_skill = user.get_skill_level(/datum/skill/craft/cooking)
-
+		var/cooking_skill = user.get_skill_level(/datum/skill/craft/cooking) + user.get_inspirational_bonus()
 		// Apply freshness to the new food item
 		new_item.warming = min(5 MINUTES, average_freshness)
 
-		// Calculate final quality based on ingredients, skill, and freshness
-		var/final_quality = calculate_food_quality(cooking_skill, highest_quality, average_freshness)
-		new_item.quality = round(final_quality)
+		var/datum/quality_calculator/cooking/cook_calc = new(
+			base_qual = 0,
+			mat_qual = highest_quality,
+			skill_qual = cooking_skill,
+			perf_qual = 0,
+			diff_mod = 0,
+			components = 1,
+			fresh = average_freshness,
+			recipe_mod = 1.0
+		)
 
 		// Apply descriptive modifications based on quality
-		apply_food_quality(new_item, final_quality)
+		cook_calc.apply_quality_to_item(new_item)
+		qdel(cook_calc)
 
 /datum/orderless_slapcraft/food/proc/track_ingredient_quality(obj/item/food_item)
 	// Track the ingredient for quality calculation
@@ -50,9 +56,4 @@
 		if(istype(food_item, /obj/item/reagent_containers/food/snacks))
 			var/obj/item/reagent_containers/food/snacks/F = food_item
 			total_freshness += max(0, (F.warming + F.rotprocess))
-			highest_quality = max(highest_quality, F.quality)
-
-		// Handle crops/grown items
-		else if(istype(food_item, /obj/item/reagent_containers/food/snacks/produce))
-			var/obj/item/reagent_containers/food/snacks/produce/G = food_item
-			highest_quality = max(highest_quality, G.crop_quality - 1)
+			highest_quality = max(highest_quality, F.quality, F.recipe_quality )

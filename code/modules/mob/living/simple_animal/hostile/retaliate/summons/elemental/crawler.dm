@@ -2,7 +2,7 @@
 /mob/living/simple_animal/hostile/retaliate/elemental/crawler
 	icon = 'icons/mob/summonable/32x32.dmi'
 	name = "earthen crawler"
-	summon_primer = "You are an crawler, a small elemental. Elementals such as yourself spend immeasurable time wandering about within your plane. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
+	summon_primer = "You are a crawler, a small elemental. Elementals such as yourself spend immeasurable time wandering about within your plane. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
 	icon_state = "crawler"
 	icon_living = "crawler"
 	tier = 1
@@ -34,7 +34,7 @@
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
 	retreat_health = 0.3
-	food = 0
+
 	attack_sound = list('sound/combat/hits/onstone/wallhit.ogg')
 	attack_verb_continuous = "pounds"
 	attack_verb_simple = "pounds"

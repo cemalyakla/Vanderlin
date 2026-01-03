@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/transact
 	name = "Transact"
-	desc = "Call upon your patron to heal the wounds of yourself or others by sacrificing a item. it's value as healing."
+	desc = "Call upon your patron to heal the wounds of yourself or others by sacrificing an item's value as healing."
 	button_icon_state = "transact"
 
 	spell_type = SPELL_MIRACLE
@@ -30,6 +30,9 @@
 		return
 	if(helditemvalue < 10)
 		to_chat(owner, span_info("This has little value, It will be of no use In such a transaction."))
+		return
+	if(istype(held_item, /obj/item/clothing/head/mob_holder))
+		to_chat(owner, span_info("This feels like a bad idea."))
 		return
 	if(istype(cast_on.patron, /datum/patron/psydon))
 		owner.playsound_local(owner, 'sound/magic/PSY.ogg', 100, FALSE, -1)

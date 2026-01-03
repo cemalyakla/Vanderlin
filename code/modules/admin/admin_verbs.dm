@@ -9,12 +9,17 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/spawn_pollution,
 	/client/proc/adjust_personal_see_leylines,
 	/client/proc/spawn_liquid,
+	/client/proc/spawn_faction_trader,
+	/client/proc/crop_nutrient_debug,
 	/client/proc/remove_liquid,
 	/client/proc/adjust_pq,
 	/client/proc/stop_restart,
 	/client/proc/hearallasghost,
 	/client/proc/toggle_aghost_invis,
 	/client/proc/admin_ghost,
+	/client/proc/generate_bulk_codes,
+	/client/proc/generate_custom_code,
+	/client/proc/generate_codes,
 	/client/proc/ghost_up,
 	/datum/admins/proc/start_vote,
 	/datum/admins/proc/show_player_panel,
@@ -31,9 +36,11 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/check_antagonists,
 	/client/proc/admin_force_next_migrant_wave,
 	/client/proc/cmd_admin_say,
+	/client/proc/cmd_view_job_boosts,
+	/client/proc/cmd_give_job_boost,
 	/client/proc/deadmin,				/*destroys our own admin datum so we can play as a regular player*/
 	/client/proc/toggle_context_menu,
-	/client/proc/delete_player_book,
+	/client/proc/manage_books,
 	/client/proc/manage_paintings,
 	/client/proc/ShowAllFamilies,
 	/datum/admins/proc/anoint_priest,
@@ -57,8 +64,12 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
 	/client/proc/stop_sounds,
 	/client/proc/mark_datum_mapview,
+	/client/proc/toggle_migrations, // toggles migrations.
 
 	/client/proc/invisimin,				/*allows our mob to go invisible/visible*/
+	/client/proc/toggle_specific_triumph_buy, /*toggle whether specific triumphs can be bought*/
+	/client/proc/toggle_jobs_for_persistent, /*toggles jobs for the persistent server*/
+	/client/proc/wave_creation_tools, /*custom job manage, custom wave manage and custom outfit manage*/
 //	/datum/admins/proc/show_traitor_panel,	/*interface which shows a mob's mind*/ -Removed due to rare practical use. Moved to debug verbs ~Errorage
 //	/datum/admins/proc/show_player_panel,	/*shows an interface for individual players, with various links (links require additional flags*/
 //	/datum/verbs/menu/Admin/verb/playerpanel,
@@ -73,6 +84,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/datum/admins/proc/toggleguests,	/*toggles whether guests can join the current game*/
 	/datum/admins/proc/announce,		/*priority announce something to all clients.*/
 	/datum/admins/proc/set_admin_notice, /*announcement all clients see when joining the server.*/
+	/datum/admins/proc/change_skill_exp_modifier, /*Tweaks experience gain*/
 	/client/proc/toggle_aghost_invis, /* lets us choose whether our in-game mob goes visible when we aghost (off by default) */
 	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
 	/client/proc/hearallasghost,
@@ -85,7 +97,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/cmd_admin_headset_message,	/*send an message to somebody through their headset as CentCom*/
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
 	/client/proc/cmd_admin_check_contents,	/*displays the contents of an instance*/
-	/client/proc/centcom_podlauncher,/*Open a window to launch a Supplypod and configure it or it's contents*/
 	/client/proc/check_antagonists,		/*shows all antags*/
 	/client/proc/jumptocoord,			/*we ghost and jump to a coordinate*/
 	/client/proc/Getmob,				/*teleports a mob to our location*/
@@ -96,6 +107,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/jumptomob,				/*allows us to jump to a specific mob*/
 	/client/proc/jumptoturf,			/*allows us to jump to a specific turf*/
 	/client/proc/spawn_in_test_area,
+	/client/proc/jump_to_test_area,
 	/client/proc/cmd_admin_direct_narrate,	/*send text directly to a player with no padding. Useful for narratives and fluff-text*/
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
 	/client/proc/cmd_admin_local_narrate,	/*sends text to all mobs within view of atom*/
@@ -117,8 +129,9 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/respawn_character,
 	/client/proc/discord_id_manipulation,
 	/client/proc/ShowAllFamilies,
+	/client/proc/send_bird_letter,
 	)
-GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel, /client/proc/role_ban_panel, /client/proc/check_pq, /client/proc/adjust_pq, /client/proc/getcurrentlogs, /client/proc/getserverlogs))
+GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/role_ban_panel, /client/proc/check_pq, /client/proc/adjust_pq, /client/proc/getcurrentlogs, /client/proc/getserverlogs))
 GLOBAL_PROTECT(admin_verbs_ban)
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(/client/proc/play_local_sound, /client/proc/play_sound, /client/proc/set_round_end_sound))
 GLOBAL_PROTECT(admin_verbs_sounds)
@@ -139,6 +152,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/run_particle_weather,
 	/client/proc/show_tip,
 	/client/proc/smite,
+	/client/proc/heart_attack,
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -151,6 +165,7 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/datum/admins/proc/restart,
 	/datum/admins/proc/end_round,
 	/datum/admins/proc/delay,
+	/datum/admins/proc/accelerate_or_delay_round_end,
 	/datum/admins/proc/toggleaban,
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,
@@ -189,8 +204,8 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/get_dynex_range,		//*debug verbs for dynex explosions.
 	/client/proc/set_dynex_scale,
 	/client/proc/cmd_display_del_log,
-	/client/proc/outfit_manager,
 	/client/proc/debug_huds,
+	/client/proc/map_export,
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
 	/client/proc/jump_to_ruin,
@@ -209,6 +224,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/debug_spell_requirements,
 	/client/proc/cmd_regenerate_asset_cache,
 	/client/proc/cmd_clear_smart_asset_cache,
+	/client/proc/select_job_pack_debug,
 )
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, GLOBAL_PROC_REF(release)))
 GLOBAL_PROTECT(admin_verbs_possess)
@@ -819,24 +835,92 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		SSticker.end_party=FALSE
 		to_chat(src, "<span class='interface'>Ending DISABLED.</span>")
 
-/client/proc/delete_player_book()
+/client/proc/manage_books()
 	set category = "Admin"
-	set name = "Delete Player Made Book"
+	set name = "Manage Books"
 	if(!holder)
 		return
-	var/book = input(src, "What is the book file you want to delete?") in SSlibrarian.books
-	if(SSlibrarian.del_player_book(book))
-		to_chat(src, "<span class='notice'>Book has been successfully deleted</span>")
-	else
-		to_chat(src, "<span class='notice'> Either the book file doesn't exist or you have failed to type it in properly (remember characters have been url encoded for the file name)</span>")
+
+	var/dat = "<table style='border-collapse: separate; border-spacing: 0 10px; width: 100%;'>"
+	dat += "<tr>"
+	dat += "<th style='padding: 10px 15px; text-align: left; color: #c72222;'>Title</th>"
+	dat += "<th style='padding: 10px 15px; text-align: left; color: #c72222;'>Player Author</th>"
+	dat += "<th style='padding: 10px 15px; text-align: left; color: #c72222;'>Author</th>"
+	dat += "<th style='padding: 10px 15px; text-align: left; color: #c72222;'>Category</th>"
+	dat += "<th style='padding: 10px 15px; text-align: left; color: #c72222;'>Actions</th>"
+	dat += "</tr>"
+
+	var/list/decoded_books = SSlibrarian.pull_player_book_titles()
+	for(var/encoded_title in decoded_books)
+		var/list/book = SSlibrarian.file2playerbook(encoded_title)
+		if(!book || !book["book_title"])
+			continue
+
+		dat += "<tr>"
+		dat += "<td style='padding: 12px 15px;'>[book["book_title"]]</td>"
+		dat += "<td style='padding: 12px 15px;'>[book["author_ckey"]]</td>"
+		dat += "<td style='padding: 12px 15px;'>[book["author"]]</td>"
+		dat += "<td style='padding: 12px 15px;'>[book["category"]]</td>"
+		dat += "<td style='padding: 12px 15px;'>"
+		dat += "<a href='?src=[REF(src)];show_book=1;id=[url_encode(encoded_title)]' style='margin-right: 10px;'>View</a>"
+		dat += "<a href='?src=[REF(src)];delete_book=1;author_ckey=[book["author_ckey"]];id=[url_encode(encoded_title)]'>Delete</a>"
+		dat += "</td>"
+		dat += "</tr>"
+
+	if(!length(decoded_books))
+		dat += "<tr><td colspan='4' style='padding: 20px; text-align: center;'>No books found</td></tr>"
+
+	dat += "</table>"
+	var/datum/browser/popup = new(usr, "book_management", "Book Management", 800, 700)
+	popup.set_content(dat)
+	popup.open()
+
+/client/proc/show_book_content(title)
+	var/list/book = SSlibrarian.file2playerbook(title)
+	if(!book || !book["book_title"])
+		to_chat(src, "<span class='warning'>Book not found!</span>")
+		return
+
+	src << browse_rsc('html/book.png')
+
+	var/content = book["text"]
+	var/dat = {"
+	<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
+	<html>
+		<head>
+			<style type=\"text/css\">
+				body {
+					background-image:url('book.png');
+					background-repeat: repeat;
+					color: #000000;
+					font-size: 17px;
+					line-height: 1.5;
+					padding: 20px;
+					font-family: 'Times New Roman', serif;
+				}
+			</style>
+		</head>
+		<body>
+			[content]
+		</body>
+	</html>
+	"}
+
+	src << browse(dat, "window=reading;size=800x600;can_close=1;can_minimize=1;can_maximize=1;can_resize=1;border=0")
 
 /client/proc/manage_paintings()
 	set category = "Admin"
-	set name = "Manage Player Made Paintings"
+	set name = "Manage Paintings"
 	if(!holder)
 		return
 
-	var/dat = "<table><tr><th>Preview</th><th>Title</th><th>Author</th><th>Delete</th></tr>"
+	var/dat = "<table style='border-collapse: separate; border-spacing: 0 10px; width: 100%;'>"
+	dat += "<tr>"
+	dat += "<th style='padding: 10px 15px; text-align: left; color: #c72222;'>Preview</th>"
+	dat += "<th style='padding: 10px 15px; text-align: left; color: #c72222;'>Title</th>"
+	dat += "<th style='padding: 10px 15px; text-align: left; color: #c72222;'>Author</th>"
+	dat += "<th style='padding: 10px 15px; text-align: left; color: #c72222;'>Delete</th>"
+	dat += "</tr>"
 
 	if(SSpaintings?.paintings && length(SSpaintings.paintings))
 		for(var/encoded_title in SSpaintings.paintings)
@@ -854,17 +938,19 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 					var/res_name = "painting_[md5(raw_title)].png"
 					src << browse_rsc(painting_icon, res_name)
 					dat += "<tr>"
-					dat += "<td><img src='[res_name]' height=64 width=64></td>"
-					dat += "<td>[raw_title]</td>"
-					dat += "<td>[author]</td>"
-					dat += "<td><a href='?src=[REF(src)];delete_painting=1;id=[url_encode(raw_title)]'>Delete</a></td>"
+					dat += "<td style='padding: 12px 15px;'><img src='[res_name]' height=64 width=64 style='display: block; margin: 0 auto;'></td>"
+					dat += "<td style='padding: 12px 15px;'>[raw_title]</td>"
+					dat += "<td style='padding: 12px 15px;'>[author]</td>"
+					dat += "<td style='padding: 12px 15px;'>"
+					dat += "<a href='?src=[REF(src)];delete_painting=1;id=[url_encode(raw_title)]'>Delete</a>"
+					dat += "</td>"
 					dat += "</tr>"
 	else
-		dat += "<tr><td colspan='4'>No paintings found</td></tr>"
+		dat += "<tr><td colspan='4' style='padding: 20px; text-align: center;'>No paintings found</td></tr>"
 
 	dat += "</table>"
 
-	var/datum/browser/popup = new(usr, "painting_management", "Painting Management", 600, 600)
+	var/datum/browser/popup = new(usr, "painting_management", "Painting Management", 700, 700)
 	popup.set_content(dat)
 	popup.open()
 

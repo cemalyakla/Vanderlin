@@ -43,6 +43,7 @@
 	set_minecart_dirs()
 
 /obj/structure/minecart_rail/proc/set_minecart_dirs(initial)
+	var/turf/our_turf = get_turf(src)
 	switch(dir)
 		if(NORTH, SOUTH)
 			minecart_dirs = NORTH | SOUTH
@@ -63,10 +64,10 @@
 	for(var/direction in GLOB.cardinals)
 		if(!(direction & minecart_dirs))
 			continue
-		var/turf/step_up = GET_TURF_ABOVE(get_step(src, direction))
-		var/turf/above_turf = GET_TURF_ABOVE(get_turf(src))
-		var/turf/step_down = GET_TURF_BELOW(get_step(src, direction))
+		var/turf/above_turf = GET_TURF_ABOVE(our_turf)
+		var/turf/step_up = get_step(above_turf, direction)
 		var/turf/step_side = get_step(src, direction)
+		var/turf/step_down = GET_TURF_BELOW(step_side)
 		var/found = FALSE
 
 		if(step_up && istype(above_turf, /turf/open/transparent/openspace))
@@ -76,7 +77,7 @@
 				if(dir == WEST || dir == EAST)
 					dir = direction
 					set_minecart_dirs(initial = TRUE)
-					pixel_y = 7
+					pixel_y = base_pixel_y + 7
 				icon_state = "vertical_track"
 				found = TRUE
 				break
@@ -86,7 +87,7 @@
 				if(!(REVERSE_DIR(direction) & rail.minecart_dirs))
 					continue
 				if(dir == WEST || dir == EAST)
-					rail.pixel_y = 7
+					rail.pixel_y = rail.base_pixel_y + 7
 				rail.icon_state = "vertical_track"
 				break
 

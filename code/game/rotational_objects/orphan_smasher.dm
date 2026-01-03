@@ -4,7 +4,7 @@
 
 /obj/structure/orphan_smasher
 	name = "auto anvil"
-	desc = "An holy amalgamation of buttons and levers built purposely to fulfill Malum's will."
+	desc = "A holy amalgamation of buttons and levers built purposely to fulfill Malum's will."
 
 	icon = 'icons/obj/autosmithy.dmi'
 	icon_state = "1"
@@ -37,6 +37,7 @@
 	var/turf/turf = get_step(src, EAST)
 	bin = new /obj/structure/material_bin(turf)
 	bin.parent = src
+	LAZYINITLIST(regular_recipes)
 	if(!length(regular_recipes))
 		for(var/datum/anvil_recipe/recipe_path as anything in subtypesof(/datum/anvil_recipe))
 			if(is_abstract(recipe_path))
@@ -240,14 +241,10 @@
 				material_copy -= listed_atom.type
 
 	var/atom/new_atom
-	if(current.createmultiple)
-		for(var/i=1 to current.createditem_num)
-			new_atom = new current.created_item(get_turf(bin))
-			SEND_SIGNAL(bin, COMSIG_TRY_STORAGE_INSERT, new_atom, null, TRUE, FALSE)
-
-	else
+	for(var/i in 1 to current.createditem_extra + 1)
 		new_atom = new current.created_item(get_turf(bin))
-		SEND_SIGNAL(bin, COMSIG_TRY_STORAGE_INSERT, new_atom, null, TRUE, FALSE)
+		new_atom.update_integrity(new_atom.max_integrity, update_atom = FALSE)
+		SEND_SIGNAL(bin, COMSIG_TRY_STORAGE_INSERT, new_atom, null, TRUE, TRUE)
 
 	visible_message(span_notice("[new_atom] falls into the hopper of [src]."))
 	anvil_recipes_to_craft -= current
@@ -345,16 +342,13 @@
 		icon_state = initial(icon_state)
 
 /obj/structure/material_bin/attack_hand_secondary(mob/user, params)
-	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
-		return
+	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	user.visible_message(span_danger("[user] starts to [opened ? "close" : "open"] [src]."), span_danger("You start to [opened ? "close" : "open"] [src]."))
 	if(!do_after(user, 2.5 SECONDS, src))
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		return
 	opened = !opened
 	update_appearance(UPDATE_ICON_STATE)
 	SEND_SIGNAL(src, COMSIG_TRY_STORAGE_HIDE_ALL)
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 #undef STEP_FIDDLE
 #undef STEP_LEVER

@@ -72,7 +72,7 @@
 	* Ideally this would be items placed ontop of the mannequin
 	* instead of this. If we did the everything ontop of this
 	* mannequin becomes its equipment on spawn we couldnt
-	* choose if a tabbard is placed on a mannequins armor
+	* choose if a tabbard is placed on a mannequin's armor
 	* or cloak slot. Predefined spawners with a New(items_to_wear)
 	* list can define where each object is equipped but it would
 	* require code or subtypes.
@@ -127,7 +127,7 @@
 /obj/structure/mannequin/MouseDrop(atom/over_object)
 	. = ..()
 	var/mob/living/M = usr
-	if(!istype(M) || M.incapacitated(ignore_grab = TRUE) || !Adjacent(M) || unchangeable)
+	if(!istype(M) || M.incapacitated(IGNORE_GRAB) || !Adjacent(M) || unchangeable)
 		return
 	ShowInventory(M)
 
@@ -138,7 +138,7 @@
 */
 /obj/structure/mannequin/Topic(href, href_list)
 	..()
-	if(tipped_over || !(iscarbon(usr)) || usr.incapacitated(ignore_grab = TRUE) || !Adjacent(usr))
+	if(tipped_over || !(iscarbon(usr)) || usr.incapacitated(IGNORE_GRAB) || !Adjacent(usr))
 		return
 	var/mob/living/carbon/user = usr
 	switch(href_list["command"])
@@ -305,14 +305,14 @@
 		var/obj/item/clothing/C = item_to_check
 		//Thank you DM Refrence website for telling me how to find out negative if in arguments.
 		if(!(gender in C.allowed_sex) || !(SPEC_ID_HUMEN in C.allowed_race))
-			to_chat(user, "<span class='warning'>This clothing wont fit this mannequins frame.</span>")
+			to_chat(user, "<span class='warning'>This clothing won't fit this mannequin's frame.</span>")
 			return FALSE
 
 	if(item_to_check.slot_flags & selected_area)
 		return TRUE
 
 	if(user)
-		to_chat(user, "<span class='warning'>\The [item_to_check] doesn't fit on the mannequins [PlacementDescriber(selected_area)].</span>")
+		to_chat(user, "<span class='warning'>\The [item_to_check] doesn't fit on the mannequin's [PlacementDescriber(selected_area)].</span>")
 	return FALSE
 
 /*
@@ -721,7 +721,7 @@
 ////Subtypes/////
 /obj/structure/mannequin/male
 	name = "mannequin"
-	desc = "Its unsettlingly still."
+	desc = "It's unsettlingly still."
 	icon_state = "man"
 
 /*

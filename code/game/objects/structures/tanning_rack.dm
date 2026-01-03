@@ -17,7 +17,7 @@
 	if(hide)
 		. += span_warning("There is a piece of hide ready to be worked. I might need a knife for this.")
 	if(!anchored)
-		. += span_warning("It is un-anchored and able to be moved.")
+		. += span_warning("It is unanchored and able to be moved.")
 
 /obj/machinery/tanningrack/attack_hand(mob/user, params)
 	if(hide)
@@ -79,9 +79,9 @@
 	if(!hide)
 		return
 	var/obj/item/I = hide
-	I.pixel_x = 0
-	I.pixel_y = 0
+	I.pixel_x = I.base_pixel_x
+	I.pixel_y = I.base_pixel_y
 	var/mutable_appearance/M = new /mutable_appearance(I)
-	M.pixel_y = 0
-	M.pixel_x = 0
+	M.pixel_y = I.pixel_x
+	M.pixel_x = I.pixel_y
 	. += M

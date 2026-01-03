@@ -1,7 +1,7 @@
 
 /datum/antagonist/bandit
 	name = "Bandit"
-	roundend_category = "bandits"
+	roundend_category = "Bandits"
 	antagpanel_category = "Bandit"
 	job_rank = ROLE_BANDIT
 	antag_hud_type = ANTAG_HUD_BANDIT
@@ -46,8 +46,8 @@
 	H.set_patron(/datum/patron/inhumen/matthios)
 
 /datum/antagonist/bandit/greet()
-	to_chat(owner.current, "<span class='alertsyndie'>I am a BANDIT!</span>")
-	to_chat(owner.current, "<span class='info'>Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn.</span>")
+	to_chat(owner.current, span_alertsyndie("I am a BANDIT!"))
+	to_chat(owner.current, span_info("Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn."))
 	owner.announce_objectives()
 	..()
 
@@ -83,21 +83,3 @@
 		else
 			to_chat(world, "[the_name] was a bandit. He stole [amt] triumphs worth of loot.")
 	return
-
-/*	.................   Unique Bandit recipes   ................... */
-/datum/crafting_recipe/bandit_volfhelm
-	name = "(Bandit) Volfhelm"
-	time = 4 SECONDS
-	reqs = list(/obj/item/natural/fur/volf = 2)
-	result = /obj/item/clothing/head/helmet/leather/volfhelm
-	category = CAT_NONE
-	always_availible = FALSE
-
-/datum/crafting_recipe/cult_hood
-	name = "(Cult) Ominous Hood"
-	time = 4 SECONDS
-	reqs = list(/obj/item/natural/hide = 1)
-	result = /obj/item/clothing/head/helmet/leather/hood_ominous
-	category = CAT_NONE
-	always_availible = FALSE
-

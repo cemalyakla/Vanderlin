@@ -16,13 +16,14 @@
 	grow = 0.037
 
 ///these were unfortunately requested to not be smoothed. I will likely create a smooth helper version aswell though
-///the issue is they would need atleast a 2x2 to smooth proper.
+///the issue is they would need at least a 2x2 to smooth proper.
 /obj/structure/hotspring
 	abstract_type = /obj/structure/hotspring
-	nomouseover = TRUE
-	plane = FLOOR_PLANE
+	name = "hot spring"
 	icon = 'icons/obj/structures/hotspring.dmi'
 	icon_state = "hotspring"
+	no_over_text = TRUE
+	plane = FLOOR_PLANE
 	object_slowdown = 5
 
 	var/edge = FALSE

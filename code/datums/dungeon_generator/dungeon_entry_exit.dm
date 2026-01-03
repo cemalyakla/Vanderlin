@@ -6,8 +6,6 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 	dungeon_id = "center"
 
 /obj/structure/dungeon_entry/center/vanderlin
-	icon_state = "portal_noenter"
-	entry_requirements = list("Time" = "day")
 
 /obj/structure/dungeon_entry
 	name = "The Tomb of Matthios"
@@ -17,12 +15,11 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 	icon_state = "portal"
 	density = TRUE
 	anchored = TRUE
-	pixel_x = -48
-	max_integrity = 0
+	SET_BASE_PIXEL(-48, 0)
 	bound_width = 128
 	appearance_flags = NONE
 	opacity = TRUE
-	obj_flags = INDESTRUCTIBLE
+	resistance_flags = INDESTRUCTIBLE
 
 	var/dungeon_id
 	var/list/dungeon_exits = list()
@@ -38,15 +35,8 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 	GLOB.dungeon_entries |= src
 	if(!dungeon_id)
 		GLOB.unlinked_dungeon_entries |= src
-	if(LAZYACCESS(entry_requirements, "Time"))
-		GLOB.TodUpdate += src
 	return ..()
 
-/obj/structure/dungeon_entry/update_tod(todd)
-	if(todd == entry_requirements["Time"])
-		icon_state = "portal"
-	else
-		icon_state = "portal_noenter"
 
 /obj/structure/dungeon_entry/Initialize()
 	. = ..()
@@ -73,8 +63,6 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 	dungeon_exits = null
 	GLOB.dungeon_entries -= src
 	GLOB.unlinked_dungeon_entries -= src
-	if(LAZYACCESS(entry_requirements, "Time"))
-		GLOB.TodUpdate -= src
 
 	return ..()
 
@@ -102,9 +90,6 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 
 /obj/structure/dungeon_entry/proc/has_requirements(mob/user)
 	var/requirements_met = 0
-	var/time_req = LAZYACCESS(entry_requirements, "Time")
-	if(time_req && GLOB.tod == time_req)
-		requirements_met ++
 	if(!requires_all && requirements_met > 0)
 		return TRUE
 	if(requirements_met < length(entry_requirements))
@@ -138,6 +123,8 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 	var/list/entry_requirements = list()
 	var/requires_all = FALSE
 
+	var/delve_level
+
 /obj/structure/dungeon_exit/Initialize()
 	. = ..()
 	GLOB.dungeon_exits |= src
@@ -160,6 +147,9 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 		break
 
 /obj/structure/dungeon_exit/Destroy()
+	for(var/obj/structure/dungeon_entry/listed as anything in GLOB.dungeon_entries)
+		listed.dungeon_exits -= src
+
 	entry = null
 	GLOB.dungeon_exits -= src
 	return ..()
@@ -201,9 +191,6 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 
 /obj/structure/dungeon_exit/proc/has_requirements(mob/user)
 	var/requirements_met = 0
-	var/time_req = LAZYACCESS(entry_requirements, "Time")
-	if(time_req && GLOB.tod == time_req)
-		requirements_met ++
 	if(!requires_all && requirements_met > 0)
 		return TRUE
 	if(requirements_met < length(entry_requirements))

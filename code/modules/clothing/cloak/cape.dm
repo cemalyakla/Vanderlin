@@ -13,16 +13,20 @@
 	inhand_mod = FALSE
 	slot_flags = ITEM_SLOT_BACK_R | ITEM_SLOT_CLOAK
 
-/obj/item/clothing/cloak/cape/knight
+/obj/item/clothing/cloak/cape/colored
+	misc_flags = CRAFTING_TEST_EXCLUDE
+
+/obj/item/clothing/cloak/cape/colored/knight
 	color = CLOTHING_PLUM_PURPLE
 
 /obj/item/clothing/cloak/cape/guard
+	name = "guard's cape"
 	color = CLOTHING_BLOOD_RED
 	uses_lord_coloring = LORD_PRIMARY
 
 /obj/item/clothing/cloak/captain
 	name = "captain's cape"
-	desc = "A cape with a gold embroided heraldry of Vanderlin."
+	desc = "A cape with a gold-embroidered heraldry of Vanderlin."
 	icon = 'icons/roguetown/clothing/special/captain.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/captain.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/captain.dmi'
@@ -36,8 +40,4 @@
 /obj/item/clothing/cloak/cape/archivist
 	icon_state = "puritan_cape"
 	color = CLOTHING_SOOT_BLACK
-	allowed_race = list(SPEC_ID_HUMEN, SPEC_ID_TIEFLING, SPEC_ID_ELF, SPEC_ID_HALF_ELF, SPEC_ID_DWARF, SPEC_ID_AASIMAR)
-
-/obj/item/clothing/cloak/cape/rogue
-	name = "cape"
-	icon_state = "chasuble"
+	allowed_race = SPECIES_BASE_BODY

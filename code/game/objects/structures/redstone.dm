@@ -4,6 +4,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 /obj/structure
 	var/redstone_structure = FALSE //If you want the structure to interact with player built redstone
 	var/redstone_id //Used for connecting mapload structures
+	var/last_redstone_power
 	var/list/redstone_attached = list()
 
 /obj/structure/multitool_act(mob/living/user, obj/item/I)
@@ -87,8 +88,9 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		user.visible_message("<span class='warning'>[user] pulls the lever.</span>")
 		user.log_message("pulled the lever with redstone id \"[redstone_id]\"", LOG_GAME)
 		if(do_after(user, used_time))
-			for(var/obj/structure/O in redstone_attached)
-				INVOKE_ASYNC(O, TYPE_PROC_REF(/obj/structure, redstone_triggered), user)
+			for(var/obj/structure/structure in redstone_attached)
+				INVOKE_ASYNC(structure, PROC_REF(redstone_triggered), user)
+			trigger_wire_network(user)
 			toggled = !toggled
 			icon_state = "leverfloor[toggled]"
 			playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
@@ -101,8 +103,9 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		user.log_message("kicked the lever with redstone id \"[redstone_id]\"", LOG_GAME)
 		playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 		if(prob(L.STASTR * 4))
-			for(var/obj/structure/O in redstone_attached)
-				INVOKE_ASYNC(O, TYPE_PROC_REF(/obj/structure, redstone_triggered), user)
+			for(var/obj/structure/structure in redstone_attached)
+				INVOKE_ASYNC(structure, PROC_REF(redstone_triggered), user)
+			trigger_wire_network(user)
 			toggled = !toggled
 			icon_state = "leverfloor[toggled]"
 			playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
@@ -113,14 +116,22 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 /obj/structure/lever/hidden
 	icon = null
 
-/obj/structure/lever/hidden/proc/feel_button(mob/living/user)
-	if(isliving(user))
-		var/mob/living/L = user
+	//the perception DC to use this
+	var/hidden_dc = 10
+
+/obj/structure/lever/hidden/proc/feel_button(mob/living/user, ignore_dc = FALSE)
+	if(!isliving(user))
+		return
+	var/mob/living/L = user
+	// they're trained at this
+	var/bonuses = (HAS_TRAIT(user, TRAIT_THIEVESGUILD) || HAS_TRAIT(user, TRAIT_ASSASSIN)) ? 2 : 0
+	if(L.STAPER + bonuses >= hidden_dc || ignore_dc)
 		L.changeNext_move(CLICK_CD_MELEE)
-		user.visible_message("<span class='warning'>[user] presses a hidden button.</span>")
+		user.visible_message(span_danger("[user] presses a hidden button."), span_notice("I push a hidden button."))
 		user.log_message("pulled the lever with redstone id \"[redstone_id]\"", LOG_GAME)
-		for(var/obj/structure/O in redstone_attached)
-			INVOKE_ASYNC(O, TYPE_PROC_REF(/obj/structure, redstone_triggered), user)
+		for(var/obj/structure/structure in redstone_attached)
+			INVOKE_ASYNC(structure, PROC_REF(redstone_triggered), user)
+		trigger_wire_network(user)
 		toggled = !toggled
 		playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
 
@@ -181,7 +192,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		if(!adjc.redstone_structure)
 			continue
 		structures += adjc
-	var/input = input("Choose structure to link", "REPEATER") as null|anything in structures
+	var/input = browser_input_list(user, "Choose structure to link", "REPEATER", structures)
 	if(input)
 		playsound(loc, 'sound/misc/keyboard_enter.ogg', 100, FALSE, -1)
 		if(istype(linked_thing, /obj/structure/repeater))
@@ -201,16 +212,13 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 			repeat_times = 5
 		if(2)
 			repeat_times = rand(2,8)
-	if(repeat_times)
-		for(var/i in 1 to repeat_times)
-			linked_thing.redstone_triggered(user)
-			sleep(5)
-	else
+
+	if(!repeat_times)
 		if(mode == 3)
 			for(var/i in 1 to INFINITY)
 				if(QDELETED(src) || mode != 3)
 					break
-				linked_thing.redstone_triggered(user)
+				INVOKE_ASYNC(linked_thing, PROC_REF(redstone_triggered), user)
 				sleep(5)
 		else if(mode == 0)
 			for(var/i in 1 to INFINITY)
@@ -220,8 +228,13 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 					explosion(src, light_impact_range = 1, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 					qdel(src)
 					break
-				linked_thing.redstone_triggered(user)
+				INVOKE_ASYNC(linked_thing, PROC_REF(redstone_triggered), user)
 				sleep(5)
+		return
+
+	for(var/i in 1 to repeat_times)
+		INVOKE_ASYNC(linked_thing, PROC_REF(redstone_triggered), user)
+		sleep(5)
 
 /obj/structure/pressure_plate
 	name = "pressure plate"
@@ -247,6 +260,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		if(structure.w_class >= WEIGHT_CLASS_BULKY)
 			playsound(src, 'sound/misc/pressurepad_down.ogg', 65, extrarange = 2)
 			triggerplate()
+			trigger_wire_network(AM)
 
 /obj/structure/pressure_plate/Uncrossed(atom/movable/AM)
 	. = ..()
@@ -254,11 +268,12 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		return
 	if(isliving(AM))
 		triggerplate()
+		trigger_wire_network(AM)
 
 /obj/structure/pressure_plate/proc/triggerplate()
 	playsound(src, 'sound/misc/pressurepad_up.ogg', 65, extrarange = 2)
-	for(var/obj/structure/O in redstone_attached)
-		INVOKE_ASYNC(O, TYPE_PROC_REF(/obj/structure, redstone_triggered))
+	for(var/obj/structure/structure in redstone_attached)
+		INVOKE_ASYNC(structure, PROC_REF(redstone_triggered))
 
 /obj/structure/pressure_plate/attack_hand(mob/user)
 	. = ..()
@@ -308,7 +323,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	return TRUE
 
 /obj/structure/activator/attackby(obj/item/I, mob/user, params)
-	if(!containment && (istype(I, /obj/item/gun/ballistic/revolver/grenadelauncher) || istype(I, /obj/item/bomb) || istype(I, /obj/item/flint)))
+	if(!containment && (istype(I, /obj/item/gun/ballistic/revolver/grenadelauncher) || istype(I, /obj/item/explosive/bottle) || istype(I, /obj/item/flint)))
 		if(!user.transferItemToLoc(I, src))
 			return ..()
 		containment = I
@@ -326,9 +341,9 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 /obj/structure/activator/redstone_triggered(mob/user)
 	if(!containment)
 		return
-	if(istype(containment, /obj/item/bomb))
-		var/obj/item/bomb/bomba = containment
-		bomba.light()
+	if(istype(containment, /obj/item/explosive/bottle))
+		var/obj/item/explosive/bottle/bomba = containment
+		bomba.arm_grenade()
 	if(istype(containment, /obj/item/flint))
 		var/datum/effect_system/spark_spread/S = new()
 		var/turf/front = get_step(src, dir)
@@ -361,15 +376,19 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	redstone_structure = TRUE
 	var/togg = FALSE
 	var/base_state = "floorhatch"
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 /*
 /obj/structure/floordoor/Initialize()
 	AddComponent(/datum/component/squeak, list('sound/foley/footsteps/FTMET_A1.ogg','sound/foley/footsteps/FTMET_A2.ogg','sound/foley/footsteps/FTMET_A3.ogg','sound/foley/footsteps/FTMET_A4.ogg'), 40)
 	return ..()
 */
-/obj/structure/floordoor/obj_break(damage_flag, silent)
+/obj/structure/floordoor/atom_break(damage_flag)
+	. = ..()
 	obj_flags = null
-	..()
+
+/obj/structure/floordoor/atom_fix()
+	. = ..()
+	obj_flags = initial(obj_flags)
 
 /obj/structure/floordoor/redstone_triggered(mob/user)
 	if(obj_broken)
@@ -396,8 +415,8 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	var/changing_state = FALSE
 	var/delay2open = 0
 	var/delay2close = 0
-	max_integrity = 0
-	nomouseover = TRUE
+	resistance_flags = INDESTRUCTIBLE
+	no_over_text = TRUE
 	mouse_opacity = 0
 	redstone_structure = TRUE
 
@@ -439,16 +458,16 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 
 /obj/structure/kybraxor
 	name = "Kybraxor the Devourer"
-	desc = "The old mad duke's hungriest pet."
+	desc = "Two massive slabs of metal flooring which threaten to swallow you whole. Watch out!"
 	density = FALSE
-	nomouseover = TRUE
+	no_over_text = TRUE
 	icon = 'icons/roguetown/misc/96x96.dmi'
 	icon_state = "kybraxor1"
 	redstone_id = "gatelava"
 	var/openn = FALSE
 	var/changing_state = FALSE
 	layer = ABOVE_OPEN_TURF_LAYER
-	max_integrity = 0
+	resistance_flags = INDESTRUCTIBLE
 
 /obj/structure/kybraxor/redstone_triggered(mob/user)
 	if(changing_state)

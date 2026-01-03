@@ -1,6 +1,6 @@
 /obj/structure/flora/grass/herb
 	name = "herbbush"
-	desc = "A bush,for an herb. This shouldn't show up."
+	desc = "A bush, for an herb. This shouldn't show up."
 	icon = 'icons/roguetown/misc/herbfoliage.dmi'
 	icon_state = "spritemeplz"
 	num_random_icons = 0
@@ -11,6 +11,7 @@
 	var/list/looty = list()
 	var/herbtype
 	var/obj/effect/skill_tracker/alchemy_plants/alchemy_effect
+	var/obj/item/reagent_containers/food/snacks/spiderhoney/honey/honey_type
 
 	var/timerid
 	var/harvested = FALSE
@@ -45,7 +46,7 @@
 					user.put_in_hands(B)
 					user.visible_message(span_notice("[user] finds [B] in [src]."))
 					harvested = TRUE
-					timerid = addtimer(CALLBACK(src, PROC_REF(loot_replenish)), 5 MINUTES, flags = TIMER_STOPPABLE)
+					timerid = addtimer(CALLBACK(src, PROC_REF(loot_replenish)), 8 MINUTES, flags = TIMER_STOPPABLE)
 					add_filter("picked", 1, alpha_mask_filter(icon = icon('icons/effects/picked_overlay.dmi', "picked_overlay_[rand(1,3)]"), flags = MASK_INVERSE))
 					GLOB.harvested_herbs |= src
 					return
@@ -62,7 +63,7 @@
 
 /obj/structure/flora/grass/herb/random
 	name = "random herb"
-	desc = "Haha, im in danger."
+	desc = "Haha, I'm in danger."
 	icon_state = "herb_random"
 
 /obj/structure/flora/grass/herb/random/Initialize()
@@ -87,94 +88,96 @@
 	name = "atropa"
 	icon_state = "atropa2"
 
-	herbtype = /obj/item/alch/atropa
+	herbtype = /obj/item/alch/herb/atropa
+	honey_type = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/toxic
 
 /obj/structure/flora/grass/herb/matricaria
 	name = "matricaria"
 	icon_state = "matricaria2"
 
-	herbtype = /obj/item/alch/matricaria
+	herbtype = /obj/item/alch/herb/matricaria
 
 /obj/structure/flora/grass/herb/symphitum
 	name = "symphitum"
 	icon_state = "symphitum2"
 
-	herbtype = /obj/item/alch/symphitum
+	herbtype = /obj/item/alch/herb/symphitum
 
 /obj/structure/flora/grass/herb/taraxacum
 	name = "taraxacum"
 	icon_state = "taraxacum2"
 
-	herbtype = /obj/item/alch/taraxacum
+	herbtype = /obj/item/alch/herb/taraxacum
 
 /obj/structure/flora/grass/herb/euphrasia
 	name = "euphrasia"
 	icon_state = "euphrasia2"
 
-	herbtype = /obj/item/alch/euphrasia
+	herbtype = /obj/item/alch/herb/euphrasia
 
 /obj/structure/flora/grass/herb/paris
 	name = "paris"
 	icon_state = "paris2"
 
-	herbtype = /obj/item/alch/paris
+	herbtype = /obj/item/alch/herb/paris
+	honey_type = /obj/item/reagent_containers/food/snacks/spiderhoney/honey/toxic
 
 /obj/structure/flora/grass/herb/calendula
 	name = "calendula"
 	icon_state = "calendula2"
 
-	herbtype = /obj/item/alch/calendula
+	herbtype = /obj/item/alch/herb/calendula
 
 /obj/structure/flora/grass/herb/mentha
 	name = "mentha"
 	icon_state = "mentha2"
 
-	herbtype = /obj/item/alch/mentha
+	herbtype = /obj/item/alch/herb/mentha
 
 /obj/structure/flora/grass/herb/urtica
 	name = "urtica"
 	icon_state = "urtica2"
 
-	herbtype = /obj/item/alch/urtica
+	herbtype = /obj/item/alch/herb/urtica
 
 /obj/structure/flora/grass/herb/salvia
 	name = "salvia"
 	icon_state = "salvia2"
 
-	herbtype = /obj/item/alch/salvia
+	herbtype = /obj/item/alch/herb/salvia
 
 /obj/structure/flora/grass/herb/hypericum
 	name = "hypericum"
 	icon_state = "hypericum2"
 
-	herbtype = /obj/item/alch/hypericum
+	herbtype = /obj/item/alch/herb/hypericum
 
 /obj/structure/flora/grass/herb/benedictus
 	name = "benedictus"
 	icon_state = "benedictus2"
 
-	herbtype = /obj/item/alch/benedictus
+	herbtype = /obj/item/alch/herb/benedictus
 
 /obj/structure/flora/grass/herb/valeriana
 	name = "valeriana"
 	icon_state = "valeriana2"
 
-	herbtype = /obj/item/alch/valeriana
+	herbtype = /obj/item/alch/herb/valeriana
 
 /obj/structure/flora/grass/herb/artemisia
 	name = "artemisia"
 	icon_state = "artemisia2"
 
-	herbtype = /obj/item/alch/artemisia
+	herbtype = /obj/item/alch/herb/artemisia
 
 /obj/structure/flora/grass/herb/rosa
 	name = "rosa"
 	icon_state = "rosa2"
 
-	herbtype = /obj/item/alch/rosa
+	herbtype = /obj/item/alch/herb/rosa
 
 /obj/structure/flora/grass/herb/euphorbia
 	name = "euphorbia"
 	icon_state = "euphorbia2"
 
-	herbtype = /obj/item/alch/euphorbia
+	herbtype = /obj/item/alch/herb/euphorbia

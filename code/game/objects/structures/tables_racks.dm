@@ -142,7 +142,7 @@
 	pushed_mob.visible_message("<span class='danger'>[user] smashes [pushed_mob]'s head against \the [src]!</span>",
 								"<span class='danger'>[user] smashes your head against \the [src]</span>")
 	log_combat(user, pushed_mob, "head slammed", null, "against [src]")
-	SEND_SIGNAL(pushed_mob, COMSIG_ADD_MOOD_EVENT, "table", /datum/mood_event/table_headsmash)
+	pushed_mob.add_stress(/datum/stress_event/table_headsmash)
 
 /obj/structure/table/attackby(obj/item/I, mob/user, params)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -159,15 +159,6 @@
 				deconstruct(TRUE, 1)
 			return
 
-	if(istype(I, /obj/item/plate/tray))
-		var/obj/item/plate/tray/T = I
-		if(T.contents.len > 0) // If the tray isn't empty
-			for(var/obj/item/scattered_item as anything in T.contents)
-				scattered_item.forceMove(drop_location())
-			user.visible_message(span_notice("[user] empties [I] on [src]."))
-			return
-		// If the tray IS empty, continue on (tray will be placed on the table like other items)
-
 	if(!user.cmode)
 		if(!(I.item_flags & ABSTRACT))
 			if(user.transferItemToLoc(I, drop_location(), silent = FALSE))
@@ -178,8 +169,8 @@
 				if(!icon_x || !icon_y)
 					return
 				//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-				I.pixel_x = initial(I.pixel_x) + CLAMP(icon_x - 16, -(world.icon_size/2), world.icon_size/2)
-				I.pixel_y = initial(I.pixel_y) + CLAMP(icon_y - 16, -(world.icon_size/2), world.icon_size/2)
+				I.pixel_x = I.base_pixel_x + CLAMP(icon_x - 16, -(world.icon_size/2), world.icon_size/2)
+				I.pixel_y = I.base_pixel_y + CLAMP(icon_y - 16, -(world.icon_size/2), world.icon_size/2)
 				after_added_effects(I, user)
 				return TRUE
 
@@ -453,8 +444,8 @@
 				if(!icon_x || !icon_y)
 					return
 				//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-				I.pixel_x = initial(I.pixel_x) + CLAMP(icon_x - 16, -(world.icon_size/2), world.icon_size/2)
-				I.pixel_y = initial(I.pixel_y) + CLAMP(icon_y - 16, -(world.icon_size/2), world.icon_size/2)
+				I.pixel_x = I.base_pixel_x + CLAMP(icon_x - 16, -(world.icon_size/2), world.icon_size/2)
+				I.pixel_y = I.base_pixel_y + CLAMP(icon_y - 16, -(world.icon_size/2), world.icon_size/2)
 				return 1
 
 /obj/structure/rack/attack_paw(mob/living/user)
@@ -471,25 +462,29 @@
 	climb_offset = 10
 
 /obj/structure/rack/shelf
+	name = "shelf"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "shelf"
 	climbable = FALSE
-	dir = SOUTH
-	pixel_y = 32
+	density = FALSE
+	climb_offset = 0
+	SET_BASE_PIXEL(0, 32)
 
 /obj/structure/rack/shelf/big
 	icon_state = "shelf_big"
-	climbable = FALSE
-	dir = SOUTH
-	pixel_y = 16
+	SET_BASE_PIXEL(0, 16)
 
 /obj/structure/rack/shelf/biggest
 	icon_state = "shelf_biggest"
-	pixel_y = 0
+	//this one is big enough it takes up the space of an entire tile, it should be dense
+	climbable = TRUE
+	density = TRUE
+	SET_BASE_PIXEL(0, 0)
 
-/obj/structure/rack/shelf/notdense // makes the wall mounted one less weird in a way, got downside of offset when loaded again tho
+// Shelves have been made nondense. The only functional difference this has now is a lower pixel_y
+/obj/structure/rack/shelf/notdense
 	density = FALSE
-	pixel_y = 24
+	SET_BASE_PIXEL(0, 24)
 
 // Necessary to avoid a critical bug with disappearing weapons.
 /obj/structure/rack/attackby(obj/item/I, mob/user, params)
@@ -503,8 +498,8 @@
 				if(!icon_x || !icon_y)
 					return
 				//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-				I.pixel_x = initial(I.pixel_x) + CLAMP(icon_x - 16, -(world.icon_size/2), world.icon_size/2)
-				I.pixel_y = initial(I.pixel_y) + CLAMP(icon_y - 16, -(world.icon_size/2), world.icon_size/2)
+				I.pixel_x = I.base_pixel_x + CLAMP(icon_x - 16, -(world.icon_size/2), world.icon_size/2)
+				I.pixel_y = I.base_pixel_y + CLAMP(icon_y - 16, -(world.icon_size/2), world.icon_size/2)
 				return 1
 	else
 		. = ..()

@@ -23,9 +23,9 @@
 	. = ..()
 	cast_on.visible_message(
 		span_info("A loud crunching sound has come from [cast_on]!"),
-		span_userdanger("I feel arcane teeth biting into my eyes!"),
+		span_userdanger("I feel arcyne teeth biting into my eyes!"),
 		span_hear("I hear a loud crunch"),
 	)
 	cast_on.adjustBruteLoss(30)
 	cast_on.blind_eyes(2)
-	cast_on.blur_eyes(10)
+	cast_on.set_eye_blur_if_lower(20 SECONDS)

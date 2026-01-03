@@ -1,10 +1,10 @@
 /mob/living/simple_animal/hostile/retaliate/elemental/collossus
 	icon = 'icons/mob/summonable/64x64.dmi'
-	name = "earthen collossus"
+	name = "earthen colossus"
 	icon_state = "collossus"
 	icon_living = "collossus"
 	icon_dead = "vvd"
-	summon_primer = "You are an collossus, a massive elemental. Elementals such as yourself are immeasurably old. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
+	summon_primer = "You are a colossus, a massive elemental. Elementals such as yourself are immeasurably old. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
 	tier = 4
 	gender = MALE
 	emote_hear = null
@@ -38,9 +38,9 @@
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
 	retreat_health = 0.3
-	food = 0
+
 	attack_sound = list('sound/combat/hits/onstone/wallhit.ogg')
-	pixel_x = -32
+	SET_BASE_PIXEL(-32, 0)
 	dodgetime = 0
 	aggressive = 1
 

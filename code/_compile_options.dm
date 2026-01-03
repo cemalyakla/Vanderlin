@@ -81,12 +81,24 @@
 #define DEPLOY_TEST
 #endif
 
+//#define FORCE_RANDOM_WORLD_GEN
+
 //#define LOWMEMORYMODE //uncomment this to load centcom and roguetest and thats it.
 
 //#define NO_DUNGEON //comment this to load dungeons.
 
+//#define ABSOLUTE_MINIMUM_MODE //uncomment this to skip as many resource intensive ops as possible to load in for testing the fastest while preserving most gameplay features.
+
+#define USES_PQ
+
 #ifdef LOWMEMORYMODE
-#define FORCE_MAP "_maps/roguetest.json"
+#ifdef ABSOLUTE_MINIMUM_MODE
+#define FORCE_MAP "minimal_test"
+#define FORCE_MAP_DIRECTORY "_maps"
+#else
+#define FORCE_MAP "roguetest"
+#define FORCE_MAP_DIRECTORY "_maps"
+#endif
 #endif
 
 #ifdef TESTING
@@ -111,6 +123,8 @@
 #define DO_NOT_DEFER_ASSETS
 //Test at full capacity, the extra cost doesn't matter
 #define TIMER_DEBUG
+///this saves like alot of time
+#define NO_DUNGEON
 #endif
 
 //Update this whenever you need to take advantage of more recent byond features
@@ -129,4 +143,11 @@
 #error Your version of BYOND is too out-of-date to compile this project. Go to https://secure.byond.com/download and update.
 #error You need version 515.1643 or higher
 #endif
+#endif
+
+//#define KALYPSO_PROJECT
+#if defined(KALYPSO_PROJECT)
+#define NO_DUNGEON
+#define FORCE_MAP "projectkalypso"
+#define FORCE_MAP_DIRECTORY "_maps"
 #endif

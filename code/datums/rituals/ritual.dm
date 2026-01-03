@@ -246,6 +246,15 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 
 /datum/runerituals/knowledge/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return TRUE
+/datum/runerituals/leyattunement
+	name = "leyline attunement"
+	tier = 1
+	blacklisted = FALSE
+	required_atoms = list(/obj/item/mana_battery/mana_crystal/small = 1,/obj/item/reagent_containers/food/snacks/produce/manabloom = 2,/obj/item/natural/leyline = 1)
+
+/datum/runerituals/leyattunement/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
+	return TRUE
+
 
 /datum/runerituals/buff/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return TRUE
@@ -387,7 +396,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	else
 		summoned = new mob_to_summon(loc)
 		ADD_TRAIT(summoned, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
-		summoned.status_flags += GODMODE//It's not meant to be killable until released from it's planar binding.
+		summoned.status_flags += GODMODE//It's not meant to be killable until released from its planar binding.
 		summoned.binded = TRUE	//No auto movement, no moving to targets
 		summoned.SetParalyzed(90 SECONDS)
 		summoned.candodge = FALSE
@@ -401,7 +410,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an infernal imp"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list(/obj/item/ash = 2, /obj/item/natural/obsidian = 1)
+	required_atoms = list(/obj/item/fertilizer/ash = 2, /obj/item/natural/obsidian = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/infernal/imp//temporary rat 4 testing
 
 /datum/runerituals/summoning/hellhound
@@ -422,7 +431,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 
 /datum/runerituals/summoning/archfiend
 	name = "summoning fiend"
-	desc = "summons an fiend"
+	desc = "summons a fiend"
 	blacklisted = FALSE
 	tier = 4
 	required_atoms = list(/obj/item/natural/moltencore = 1, /obj/item/natural/obsidian = 3, /obj/item/natural/melded/t3 =1)
@@ -430,7 +439,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 
 /datum/runerituals/summoning/sprite
 	name = "summoning sprite"
-	desc = "summons an fae sprite"
+	desc = "summons a fae sprite"
 	blacklisted = FALSE
 	tier = 1
 	required_atoms = list(/obj/item/reagent_containers/food/snacks/produce/manabloom = 1, /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry = 1)
@@ -438,7 +447,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 
 /datum/runerituals/summoning/glimmer
 	name = "summoning glimmerwing"
-	desc = "summons an fae spirit"
+	desc = "summons a fae spirit"
 	blacklisted = FALSE
 	tier = 2
 	required_atoms = list(/obj/item/reagent_containers/food/snacks/produce/manabloom = 1, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
@@ -446,7 +455,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 
 /datum/runerituals/summoning/dryad
 	name = "summoning dryad"
-	desc = "summons an drayd"
+	desc = "summons a drayd"
 	blacklisted = FALSE
 	tier = 3
 	required_atoms = list(/obj/item/reagent_containers/food/snacks/produce/manabloom = 2, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
@@ -485,15 +494,15 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/elemental/behemoth
 
 /datum/runerituals/summoning/collossus
-	name = "summoning elemental collossus"
-	desc = "summons an huge elemental"
+	name = "summoning elemental colossus"
+	desc = "summons a huge elemental"
 	blacklisted = FALSE
 	tier = 4
 	required_atoms = list(/obj/item/natural/elementalfragment = 1, /obj/item/mana_battery/mana_crystal/small = 1, /obj/item/natural/melded/t3 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/elemental/collossus
 
 /datum/runerituals/summoning/abberant
-	name = "summoning abberant from the void"
+	name = "summoning aberrant from the void"
 	desc = "summons a long forgotten creature"
 	blacklisted = FALSE
 	tier = 4

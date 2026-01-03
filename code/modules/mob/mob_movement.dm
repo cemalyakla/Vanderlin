@@ -1,4 +1,4 @@
-w/**
+/**
  * If your mob is concious, drop the item in the active hand
  *
  * This is a hidden verb, likely for binding with winset for hotkeys
@@ -78,12 +78,16 @@ w/**
 		return FALSE
 	if(!n || !direct)
 		return FALSE
-	if(mob.notransform)
+	if(HAS_TRAIT(mob, TRAIT_NO_TRANSFORM))
 		return FALSE	//This is sota the goto stop mobs from moving var
 	if(mob.control_object)
 		return Move_object(direct)
 	if(!isliving(mob))
 		return mob.Move(n, direct)
+	else
+		if (HAS_TRAIT(mob, TRAIT_IN_FRENZY) || HAS_TRAIT(mob, TRAIT_MOVEMENT_BLOCKED))
+			return FALSE
+
 	if(mob.stat == DEAD)
 #ifdef TESTSERVER
 		mob.ghostize()
@@ -121,8 +125,6 @@ w/**
 		var/atom/O = mob.loc
 		return O.relaymove(mob, direct)
 
-	if(!mob.Process_Spacemove(direct))
-		return FALSE
 	//We are now going to move
 	var/add_delay = mob.cached_multiplicative_slowdown
 	//If the move was recent, count using old_move_delay
@@ -155,7 +157,7 @@ w/**
 				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
 	else
 		if(L.dir != target_dir)
-			// Remove sprint intent if we change direction, but only if we sprinted atleast 1 tile
+			// Remove sprint intent if we change direction, but only if we sprinted at least 1 tile
 			if(L.m_intent == MOVE_INTENT_RUN && L.sprinted_tiles > 0)
 				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
 
@@ -164,7 +166,7 @@ w/**
 	. = ..()
 
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
-		add_delay *= 2
+		add_delay *= sqrt(2)
 
 	var/after_glide = 0
 	if(visual_delay)
@@ -227,7 +229,7 @@ w/**
 			COOLDOWN_START(src, move_delay, 1 SECONDS)
 			to_chat(src, span_warning("I'm restrained! I can't move!"))
 			return TRUE
-		else if(mob.pulledby != mob.pulling || mob.pulledby.grab_state != GRAB_PASSIVE || mob.cmode)	//Don't autoresist passive grabs if we're grabbing them too.
+		else if(mob.pulledby != mob.pulling || mob.pulledby.grab_state > GRAB_PASSIVE || mob.cmode || mob.pulledby.cmode)	//Don't autoresist passive grabs if we're grabbing them too.
 			return mob.resist_grab(TRUE)
 
 	if(mob.pulling && isliving(mob.pulling))
@@ -333,67 +335,6 @@ w/**
 			L.setDir(direct)
 	return TRUE
 
-
-/**
- * Handles mob/living movement in space (or no gravity)
- *
- * Called by /client/Move()
- *
- * return TRUE for movement or FALSE for none
- *
- * You can move in space if you have a spacewalk ability
- */
-/mob/Process_Spacemove(movement_dir = 0)
-	if(spacewalk || ..())
-		return TRUE
-	var/atom/movable/backup = get_spacemove_backup()
-	if(backup)
-		if(istype(backup) && movement_dir && !backup.anchored)
-			if(backup.newtonian_move(turn(movement_dir, 180))) //You're pushing off something movable, so it moves
-				to_chat(src, "<span class='info'>I push off of [backup] to propel myself.</span>")
-		return TRUE
-	return FALSE
-
-/**
- * Find movable atoms? near a mob that are viable for pushing off when moving
- */
-/mob/get_spacemove_backup()
-	for(var/A in orange(1, get_turf(src)))
-		if(isarea(A))
-			continue
-		else if(isturf(A))
-			var/turf/turf = A
-			if(!turf.density && !mob_negates_gravity())
-				continue
-			return A
-		else
-			var/atom/movable/AM = A
-			if(AM == buckled)
-				continue
-			if(ismob(AM))
-				var/mob/M = AM
-				if(M.buckled)
-					continue
-			if(!AM.CanPass(src) || AM.density)
-				if(AM.anchored)
-					return AM
-				if(pulling == AM)
-					continue
-				. = AM
-
-/**
- * Returns true if a mob has gravity
- *
- * I hate that this exists
- */
-/mob/proc/mob_has_gravity()
-	return has_gravity()
-
-/**
- * Does this mob ignore gravity
- */
-/mob/proc/mob_negates_gravity()
-	return FALSE
 
 /// Called when this mob slips over, override as needed
 /mob/proc/slip(knockdown_amount, obj/O, lube, paralyze, force_drop)
@@ -636,13 +577,13 @@ w/**
 					return
 				if(ishuman(L))
 					var/mob/living/carbon/human/H = L
-					if(H.get_encumbrance() >= 0.7)
-						to_chat(H, span_info("Your armor is too heavy to run in!"))
+					if(H.get_encumbrance() >= 0.5)
+						to_chat(H, span_info("You are too heavy to run!"))
 						return
 			m_intent = MOVE_INTENT_RUN
 	if(hud_used && hud_used.static_inventory)
 		for(var/atom/movable/screen/rogmove/selector in hud_used.static_inventory)
-			selector.update_appearance()
+			selector.update_appearance(UPDATE_ICON_STATE)
 	if(!silent)
 		playsound_local(src, 'sound/misc/click.ogg', 100)
 

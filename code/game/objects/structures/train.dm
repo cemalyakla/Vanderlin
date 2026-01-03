@@ -21,7 +21,7 @@
 	)
 
 /obj/structure/train/MouseDrop_T(atom/dropping, mob/user)
-	if(!isliving(user) || user.incapacitated(ignore_grab = TRUE))
+	if(!isliving(user) || user.incapacitated(IGNORE_GRAB))
 		return //No ghosts or incapacitated folk allowed to do this.
 	if(!ishuman(dropping))
 		return //Only humans have job slots to be freed.
@@ -40,7 +40,7 @@
 		return //prevents noble roles from cryoing as per request of Aberra
 	if(alert("Are you sure you want to [departing_mob == user ? "leave for [SSmapping.config.immigrant_origin] (you" : "send this person to [SSmapping.config.immigrant_origin] (they"] will be removed from the current round, the job slot freed)?", "Departing", "Confirm", "Cancel") != "Confirm")
 		return //doublechecks that people actually want to leave the round
-	if(user.incapacitated(ignore_grab = TRUE) || QDELETED(departing_mob) || (departing_mob != user && departing_mob.client) || get_dist(src, dropping) > 2 || get_dist(src, user) > 2)
+	if(user.incapacitated(IGNORE_GRAB) || QDELETED(departing_mob) || (departing_mob != user && departing_mob.client) || get_dist(src, dropping) > 2 || get_dist(src, user) > 2)
 		return //Things have changed since the alert happened.
 	say("[user] [departing_mob == user ? "is departing for [SSmapping.config.immigrant_origin]" : "is sending [departing_mob] to [SSmapping.config.immigrant_origin]!"]")
 	in_use = TRUE //Just sends a simple message to chat that some-one is leaving
@@ -64,7 +64,7 @@
 	say(span_notice("[departing_mob == user ? "Out of their own volition, " : "Ushered by [user], "][departing_mob] is departing from [SSmapping.config.map_name]."))
 	cryo_mob(departing_mob)
 
-/proc/cryo_mob(mob/departing_mob)
+/proc/cryo_mob(mob/departing_mob, admin = FALSE)
 	if(QDELETED(departing_mob))
 		return "Tried to cryo a deleted mob!"
 	GLOB.actors_list -= departing_mob.mobid // mob cryod - get him outta here.
@@ -81,8 +81,12 @@
 		qdel(departing_mob)
 		return "Cannot cryo [mob_name]: no assigned job. Deleting early."
 	log_game("Cryo successful for [mob_name], adjusting job [J.title].")
-	J.adjust_current_positions(-1)
+	if(J.parent_job)
+		J.parent_job.adjust_current_positions(-1)
+	else
+		J.adjust_current_positions(-1)
 	qdel(departing_mob)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HUMAN_ENTER_CRYO, departing_mob, admin)
 	return "[mob_name] successfully cryo'd!"
 
 /obj/structure/train/carriage //A temporary subform of the train that is just a carriage	name = "train"

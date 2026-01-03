@@ -33,10 +33,8 @@
 /client/proc/set_macros(skip_chats = FALSE, skip_macro_mode = FALSE)
 	set waitfor = FALSE
 
-	//Reset and populate the rolling buffer
+	//Reset
 	keys_held.Cut()
-	for(var/i in 1 to HELD_KEY_BUFFER_LENGTH)
-		keys_held += null
 
 	erase_all_macros()
 
@@ -47,6 +45,19 @@
 			continue
 		var/command = macro_set[key]
 		winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[command]")
+
+
+	var/chat_handled = FALSE
+	for(var/full_key in prefs.key_bindings)
+		if(chat_handled)
+			break
+		for(var/kb_name in prefs.key_bindings[full_key])
+			var/datum/keybinding/client/say/kb = GLOB.keybindings_by_name[kb_name]
+			if(!istype(kb))
+				continue
+			chat_handled = TRUE
+			winset(src, "default-[REF(full_key)]", "parent=default;name=[full_key];command=.open_say")
+			break
 
 	if(!skip_macro_mode)
 		if(prefs.hotkeys)

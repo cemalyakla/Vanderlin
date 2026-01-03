@@ -135,8 +135,6 @@
 		/datum/descriptor_choice/prominent_four_wild,
 	)
 
-	patreon_req = TRUE
-
 /datum/species/demihuman/get_hairc_list()
 	return sortList(list(
 	"blond - pale" = "9d8d6e",
@@ -159,7 +157,9 @@
 	"red - wine" = "82534c",
 	"red - sunset" = "82462b",
 	"red - blood" = "822b2b",
-	"red - maroon" = "612929"
+	"red - maroon" = "612929",
+
+	"orange - flame" = "b24c2e"
 
 	))
 
@@ -174,10 +174,15 @@
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	C.grant_language(/datum/language/common)
 
+/datum/species/demihuman/after_creation(mob/living/carbon/C)
+	. = ..()
+	C.grant_language(/datum/language/beast)
+	to_chat(C, "<span class='info'>I can speak Beastish with ,b before my speech.</span>")
+
 /datum/species/demihuman/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-	C.remove_language(/datum/language/common)
+	C.remove_language(/datum/language/beast)
 
 /datum/species/demihuman/get_skin_list()
 	return sortList(list(

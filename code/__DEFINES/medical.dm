@@ -57,6 +57,7 @@
 #define BODYPART_FEATURE_FACIAL_HAIR "facehair"
 #define BODYPART_FEATURE_ACCESSORY "accessory"
 #define BODYPART_FEATURE_FACE_DETAIL "facedetail"
+#define BODYPART_FEATURE_BRAND "brand"
 
 //flags for requirements for a surgery step
 #define SURGERY_BLOODY (1<<0)
@@ -94,3 +95,6 @@
 #define WOUND_SEVERITY_FATAL 5
 /// This wound has werewolf infection
 #define WOUND_SEVERITY_BIOHAZARD 6
+
+/// This is used as a reference point for dynamic wounds, so it's better off as a define.
+#define ARTERY_LIMB_BLEEDRATE 25

@@ -123,14 +123,26 @@
 	var/mob/M = mobs[target]
 	if(!M)
 		return
-
-	var/atom/loc = get_turf(usr)
-	log_admin("[key_name(usr)] teleported [key_name(M)] to [AREACOORD(loc)]")
-	var/msg = "[key_name_admin(usr)] teleported [ADMIN_LOOKUPFLW(M)] to [ADMIN_VERBOSEJMP(loc)]"
-	message_admins(msg)
-	admin_ticket_log(M, msg)
-	M.forceMove(loc)
+	var/atom/loc = get_turf(src.mob)
+	M.admin_teleport(loc)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Get Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/// Proc to hook user-enacted teleporting behavior and keep logging of the event.
+/atom/movable/proc/admin_teleport(atom/new_location)
+	if(isnull(new_location))
+		log_admin("[key_name(usr)] teleported [key_name(src)] to nullspace")
+		moveToNullspace()
+	else
+		var/turf/location = get_turf(new_location)
+		log_admin("[key_name(usr)] teleported [key_name(src)] to [AREACOORD(location)]")
+		forceMove(new_location)
+
+/mob/admin_teleport(atom/new_location)
+	var/turf/location = get_turf(new_location)
+	var/msg = "[key_name_admin(usr)] teleported [ADMIN_LOOKUPFLW(src)] to [isnull(new_location) ? "nullspace" : ADMIN_VERBOSEJMP(location)]"
+	message_admins(msg)
+	admin_ticket_log(src, msg)
+	return ..()
 
 /client/proc/Getkey()
 	set category = "Admin"
@@ -210,8 +222,22 @@
 
 	var/mob/living/carbon/human/new_human = new (warp_place)
 
-	var/datum/outfit/outfit = new /datum/outfit/job/tailor
+	var/datum/outfit/outfit = new /datum/outfit/tailor
 	outfit.equip(new_human)
 
 	prefs.safe_transfer_prefs_to(new_human)
 	new_human.ckey = ckey
+
+/client/proc/jump_to_test_area()
+	set name = "Jump to Test Area"
+	set desc = ""
+	set category = "GameMaster"
+
+	if(!holder)
+		return
+
+	var/turf/warp_place = pick(GLOB.admin_warp)
+	if(!warp_place)
+		return
+
+	usr.forceMove(warp_place)

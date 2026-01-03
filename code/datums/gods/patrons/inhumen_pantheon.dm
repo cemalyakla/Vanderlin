@@ -20,7 +20,7 @@
 /* ----------------- */
 
 /datum/patron/inhumen/zizo
-	name = "Zizo"
+	name = ZIZO
 	domain = "Ascended Goddess of Forbidden Magic, Domination, and Power"
 	desc = "Snow elf who slaughtered her kind in ascension, conquered and remade the Dark Elven empires in her name. She proves that any with will can achieve divinity... though at a cost."
 	flaws = "Hubris, Superiority, Fury"
@@ -28,10 +28,7 @@
 	sins = "Pearl-clutching, Moralism, Wastefulness"
 	boons = "You may perform fleshcrafting. Access to roles with magic."
 	//added_traits = list(TRAIT_CABAL)	No need for this. They have fleshcrafting now.
-	t0 = /datum/action/cooldown/spell/undirected/touch/orison //Cursed water, btw
-	t1 = /datum/action/cooldown/spell/projectile/profane
-	t2 = /datum/action/cooldown/spell/conjure/raise_lesser_undead
-	t3 = /datum/action/cooldown/spell/undirected/rituos
+	devotion_holder = /datum/devotion/inhumen/zizo
 	confess_lines = list(
 		"GÖLGELERİN HANIMI, KRALİÇEMİZ!",
 		"KRALİÇEMİZ, ÇOK YAŞA!",
@@ -44,7 +41,7 @@
 	)
 
 /datum/patron/inhumen/graggar
-	name = "Graggar"
+	name = GRAGGAR
 	domain = "Ascended God, the Dark Sini-Star of Unnatural Beasts, Unsated Consumption, and Unbridled Hatred"
 	desc = "Became the first orc upon ascension through his habit of consuming the bodies of those he conquered. His forces continue to ravage the lands in his name. Through him, one may achieve true strength."
 	flaws = "Rage, Hatred, Bloodthirst"
@@ -52,10 +49,7 @@
 	sins = "Compassion, Frailty, Servility"
 	boons = "You are drawn to the flavour of raw flesh and organs, and may consume without worry."
 	added_traits = list(TRAIT_ORGAN_EATER)
-	t0 = /datum/action/cooldown/spell/undirected/bloodrage
-	t1 = /datum/action/cooldown/spell/undirected/call_to_slaughter
-	t2 = /datum/action/cooldown/spell/projectile/blood_net
-	t3 = /datum/action/cooldown/spell/revel_in_slaughter
+	devotion_holder = /datum/devotion/inhumen/graggar
 	confess_lines = list(
 		"GRAGGAR, TAKİP ETTİĞİM YARATIK O!",
 		"GRAGGAR SENİ YOK EDECEK!",
@@ -64,18 +58,15 @@
 	storyteller = /datum/storyteller/graggar
 
 /datum/patron/inhumen/matthios
-	name = "Matthios"
+	name = MATTHIOS
 	domain = "God of Thievery, Ill-Gotten Gains, and Highwaymen"
 	desc = "Legendary humen bandit whose name was attributed to countless great thefts. It is because of his legacy that nobles clutch their coin purses to their chests in town."
-	flaws = "Pride, Greed, Orneryness"
+	flaws = "Pride, Greed, Orneriness"
 	worshippers = "Outlaws, Noble-Haters, Downtrodden Peasantry"
 	sins = "Clumsiness, Stupidity, Humility"
 	boons = "You can see the most expensive item someone is carrying."
 	added_traits = list(TRAIT_MATTHIOS_EYES)
-	t0 = /datum/action/cooldown/spell/appraise/holy //what the point if he got matthios's eyes though?
-	t1 = /datum/action/cooldown/spell/transact
-	t2 = /datum/action/cooldown/spell/beam/equalize
-	t3 = /datum/action/cooldown/spell/churn_wealthy
+	devotion_holder = /datum/devotion/inhumen/matthios
 	confess_lines = list(
 		"MATTHIOS DEĞERİ OLMAYANLARDAN ÇALAR!",
 		"MATTHIOS SIRADAN ADAMA ADALET SAĞLAR!",
@@ -84,7 +75,7 @@
 	storyteller = /datum/storyteller/matthios
 
 /datum/patron/inhumen/baotha
-	name = "Baotha"
+	name = BAOTHA
 	domain = "Goddess of Drugs, Self-Preservation, and Remorseless Joy"	//Bright-dyed hair falls within 'remorseless joy.' Joy for one's self at expense of the setting. Same for her music taste.
 	desc = "Ascended, formerly disgraced tiefling queen, notorious for having a mind elsewhere. Drove her kingdom into the ground through her demands and addictions. The first tiefling noble, last tiefling noble, and sole reason there are no more tiefling nobles. As she preaches to her followers, 'Joy at all costs!'"
 	flaws = "Manipulation, Self-Destruction, Willingness to Sacrifice Others"
@@ -92,10 +83,7 @@
 	sins = "Sobriety, Self-Sacrifice, Faltering Willpower"
 	boons = "You will never overdose on drugs."
 	added_traits = list(TRAIT_CRACKHEAD)
-	t0 = /datum/action/cooldown/spell/find_flaw
-	t1 = /datum/action/cooldown/spell/baothablessings
-	t2 = /datum/action/cooldown/spell/projectile/blowingdust
-	t3 = /datum/action/cooldown/spell/painkiller
+	devotion_holder = /datum/devotion/inhumen/baotha
 	confess_lines = list(
 		"YAŞA, GÜL, VE SEV! BAOTHA ADINA!",
 		"HER KOŞULDA EĞLEN! BAOTHA ADINA!",
@@ -122,11 +110,13 @@
 
 /datum/patron/inhumen/graggar_zizo/can_pray(mob/living/follower)
 	var/datum/antagonist/maniac/dreamer = follower.mind.has_antag_datum(/datum/antagonist/maniac)
-	if(!dreamer)
-		// if a non-maniac somehow gets this patron,
-		// something interesting should happen if they try to pray
-		return FALSE
-	return TRUE
+	if(dreamer)
+		return TRUE
+	// if a non-maniac somehow gets this patron,
+	// something interesting should happen if they try to pray.
+	INVOKE_ASYNC(follower, GLOBAL_PROC_REF(cant_wake_up), follower)  //Something interesting happened.
+	message_admins("[ADMIN_LOOKUPFLW(follower)] has been gibbed due to praying as a non-maniac with their patron set to Graggazo. Whoops..")
+	return FALSE
 
 /datum/patron/inhumen/graggar_zizo/hear_prayer(mob/living/follower, message)
 	var/datum/antagonist/maniac/dreamer = follower.mind.has_antag_datum(/datum/antagonist/maniac)
@@ -135,6 +125,4 @@
 	if(text2num(message) == dreamer.sum_keys)
 		INVOKE_ASYNC(dreamer, TYPE_PROC_REF(/datum/antagonist/maniac, wake_up))
 		return TRUE
-	// something interesting should happen...
-
 	. = ..()

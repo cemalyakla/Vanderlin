@@ -9,6 +9,9 @@
 		/datum/attunement/blood = 0.7,
 	)
 
+	invocation = "DR'N LF'E!"
+	invocation_type = INVOCATION_SHOUT
+
 	charge_time = 3 SECONDS
 	charge_drain = 1
 	charge_slowdown = 0.7
@@ -17,20 +20,19 @@
 	spell_flags = SPELL_RITUOS
 	projectile_type = /obj/projectile/magic/bloodsteal
 
-/datum/action/cooldown/spell/projectile/blood_steal/on_cast_hit(atom/source, mob/firer, atom/hit, angle)
+/datum/action/cooldown/spell/projectile/blood_steal/on_cast_hit(atom/source, mob/living/carbon/human/firer, atom/hit, angle)
 	. = ..()
 
 	if(!firer || !ishuman(hit))
 		return
 
-	var/datum/antagonist/vampire/VDrinker = firer.mind?.has_antag_datum(/datum/antagonist/vampire)
-	if(!VDrinker)
+	if(!firer.clan)
 		return
 
 	var/mob/living/carbon/human/H = hit
-	if(H.vitae_pool >= 500) // You'll only get vitae IF they have vitae.
-		H.vitae_pool -= 500
-		VDrinker.adjust_vitae(500)
+	if(H.bloodpool >= 500) // You'll only get vitae IF they have vitae.
+		H.bloodpool -= 500
+		firer.adjust_bloodpool(500)
 
 /obj/projectile/magic/bloodsteal
 	name = "blood steal"

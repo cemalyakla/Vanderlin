@@ -33,7 +33,7 @@
 	if(istype(target, /obj/item/weapon/tongs))
 		handle_tongs(target)
 		return
-	if(!target.smeltresult || target.smeltresult == /obj/item/ash)
+	if(!target.smeltresult || target.smeltresult == /obj/item/fertilizer/ash)
 		return
 	var/atom/target_loc = target.loc
 	var/obj/item/itemtospawn
@@ -63,7 +63,7 @@
 	T.hott = tyme
 	addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/weapon/tongs, make_unhot), tyme), 30 SECONDS)
 	T.proxy_heat(150)
-	T.update_appearance()
+	T.update_appearance(UPDATE_ICON_STATE)
 	T.visible_message("<font color='yellow'>After [owner]'s incantation, [T.held_item] inside [T] starts glowing from divine heat.</font>")
 
 /datum/action/cooldown/spell/heat_metal/proc/handle_anvil(obj/machinery/anvil/A) //Stole the code from smithing.
@@ -72,7 +72,7 @@
 		START_PROCESSING(SSmachines, A)
 	A.cool_time = 30 SECONDS
 	addtimer(VARSET_CALLBACK(A, cool_time, 10 SECONDS), 30 SECONDS)
-	A.update_appearance()
+	A.update_appearance(UPDATE_ICON_STATE)
 	A.visible_message("<font color='yellow'>After [owner]'s incantation, [A] begins to glow from divine heat.</font>")
 
 /datum/action/cooldown/spell/heat_metal/proc/handle_living_entity(mob/target)
@@ -84,7 +84,7 @@
 		handle_tongs(targeteditem)
 		return
 
-	if(!targeteditem.smeltresult || targeteditem.smeltresult == /obj/item/ash)
+	if(!targeteditem.smeltresult || targeteditem.smeltresult == /obj/item/fertilizer/ash)
 		owner.visible_message(
 			"<font color='yellow'>After their incantation, [owner] points at [target], but nothing happens.</font>",
 			"<font color='yellow'>After your incantation, you point at [target], but nothing happens.</font>"
@@ -130,8 +130,8 @@
 		var/chest_damage = damage_to_apply
 		var/obj/item/armor = target.get_item_by_slot(ITEM_SLOT_ARMOR)
 		var/obj/item/shirt = target.get_item_by_slot(ITEM_SLOT_SHIRT)
-		var/armor_can_heat = armor && armor.smeltresult && armor.smeltresult != /obj/item/ash
-		var/shirt_can_heat = shirt && shirt.smeltresult && shirt.smeltresult != /obj/item/ash //Full damage if no shirt
+		var/armor_can_heat = armor && armor.smeltresult && armor.smeltresult != /obj/item/fertilizer/ash
+		var/shirt_can_heat = shirt && shirt.smeltresult && shirt.smeltresult != /obj/item/fertilizer/ash //Full damage if no shirt
 		if(armor_can_heat && (shirt && !shirt_can_heat))
 			chest_damage = damage_to_apply / 2 //Halve the damage if only armor can heat but shirt can't.
 		else if(armor_can_heat && shirt_can_heat)

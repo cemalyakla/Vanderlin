@@ -6,8 +6,12 @@
 	antimagic_flags = NONE
 
 	invocation_type = INVOCATION_SHOUT
+	invocation = "Death will be laughing in the end."
 
 	spell_type = NONE
+	associated_skill = null
+	associated_stat = STATKEY_INT
+
 	charge_required = FALSE
 	sound = null
 
@@ -38,5 +42,5 @@
 		addtimer(CALLBACK(src, PROC_REF(reaction), C), rand(2 SECONDS, 2.5 SECONDS))
 
 /datum/action/cooldown/spell/undirected/tragedy/proc/reaction(mob/living/carbon/cast_on)
-	cast_on.add_stress(/datum/stressevent/tragedy)
+	cast_on.add_stress(/datum/stress_event/tragedy)
 	cast_on.emote(pick("sigh", "hmm", "cry"), forced = TRUE)

@@ -30,8 +30,6 @@
 #define EFFECT_IRRADIATE	"irradiate"
 #define EFFECT_STUTTER		"stutter"
 #define EFFECT_SLUR 		"slur"
-#define EFFECT_EYE_BLUR		"eye_blur"
-#define EFFECT_DROWSY		"drowsy"
 #define EFFECT_JITTER		"jitter"
 
 //Bitflags defining which status effects could be or are inflicted on a mob
@@ -78,7 +76,7 @@
 #define GRAB_KILL					3
 
 //Grab breakout odds
-#define BASE_GRAB_RESIST_CHANCE 	33
+#define BASE_GRAB_RESIST_CHANCE 	25
 
 //slowdown when in softcrit. Note that crawling slowdown will also apply at the same time!
 #define SOFTCRIT_ADD_SLOWDOWN 1
@@ -229,7 +227,7 @@
 #define DULLING_BASH 2
 #define DULLING_BASHCHOP 3
 #define DULLING_PICK 4 //rockwalls
-#define DULLING_FLOOR 5 //floors, only attacked by overhead smash and chop intents like from 2hammers
+// #define DULLING_FLOOR 5 //floors, only attacked by overhead smash and chop intents like from 2hammers
 //see get_complex_damage()
 
 //NOTE: INTENT_HOTKEY_* defines are not actual intents!

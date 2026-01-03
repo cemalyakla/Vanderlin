@@ -98,6 +98,8 @@
 
 			var/water_qty = max(1, holy_skill) + 1
 			var/list/water_contents = list(/datum/reagent/water/blessed = water_qty)
+			if(user.patron.type == /datum/patron/inhumen/zizo)
+				water_contents = list(/datum/reagent/water/cursed = water_qty)
 
 			var/datum/reagents/reagents_to_add = new()
 			reagents_to_add.add_reagent_list(water_contents)
@@ -295,10 +297,6 @@
 /datum/status_effect/light_buff/on_creation(mob/living/new_owner, duration_override, light_power)
 	potency = light_power
 	return ..()
-
-/datum/status_effect/light_buff/refresh()
-	// stack this up as much as we can be bothered to cast it
-	duration += initial(duration)
 
 /datum/status_effect/light_buff/on_apply()
 	. = ..()

@@ -38,8 +38,6 @@
 
 	GLOB.emote_list = init_emote_list()
 
-	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
-
 	init_subtypes(/datum/anvil_recipe, GLOB.anvil_recipes)
 
 	init_subtypes(/datum/artificer_recipe, GLOB.artificer_recipes)
@@ -54,6 +52,11 @@
 		GLOB.faithlist[path] = faith
 		if(faith.preference_accessible)
 			GLOB.preference_faiths[path] = faith
+
+	// Inquisition Hermes list
+	for (var/path in subtypesof(/datum/inqports))
+		var/datum/inqports/inqports = new path()
+		GLOB.inqsupplies[path] = inqports
 
 	// Patron Gods
 	for(var/path in subtypesof(/datum/patron))

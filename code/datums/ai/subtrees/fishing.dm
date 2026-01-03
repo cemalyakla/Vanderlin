@@ -40,12 +40,12 @@
 
 /datum/ai_behavior/fishing/setup(datum/ai_controller/controller, target_key)
 	. = ..()
-	var/atom/target = controller.blackboard[target_key]
+	var/turf/open/target = controller.blackboard[target_key]
 	if(QDELETED(target))
 		return FALSE
-	if(!istransparentturf(target) && !istype(target, /turf/open/water))
+	if(!isopenspace(target) && !istype(target, /turf/open/water))
 		return FALSE
-	if(istransparentturf(target))
+	if(isopenspace(target))
 		var/turf/bottom_turf = GET_TURF_BELOW(target)
 		while(istransparentturf(bottom_turf))
 			bottom_turf = GET_TURF_BELOW(bottom_turf)

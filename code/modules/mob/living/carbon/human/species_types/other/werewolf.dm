@@ -1,10 +1,19 @@
 /mob/living/carbon/human/species/werewolf
 	race = /datum/species/werewolf
 	footstep_type = FOOTSTEP_MOB_HEAVY
+	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
+	base_strength = 15
+	base_constitution = 15
+	base_endurance = 15
+
 	var/datum/language_holder/stored_language
 	var/list/stored_skills
 	var/list/stored_experience
-	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
+
+/mob/living/carbon/human/species/werewolf/death(gibbed, nocutscene)
+	. = ..()
+	if(stored_mob)
+		werewolf_untransform(null, TRUE, gibbed)
 
 /mob/living/carbon/human/species/werewolf/male
 	gender = MALE
@@ -20,7 +29,30 @@
 	id = "werewolf"
 
 	species_traits = list(NO_UNDERWEAR, NOEYESPRITES)
-	inherent_traits = list(TRAIT_NOSTAMINA, TRAIT_RESISTHEAT, TRAIT_RESISTCOLD, TRAIT_RESISTHIGHPRESSURE, TRAIT_RESISTLOWPRESSURE, TRAIT_RADIMMUNE, TRAIT_NODISMEMBER)
+	inherent_traits = list(
+		TRAIT_NOSTAMINA,
+		TRAIT_RESISTCOLD,
+		TRAIT_RESISTHIGHPRESSURE,
+		TRAIT_RESISTLOWPRESSURE,
+		TRAIT_RADIMMUNE,
+		TRAIT_NODISMEMBER,
+		TRAIT_LYCANRESILENCE,
+		TRAIT_STRONGBITE,
+		TRAIT_ZJUMP,
+		TRAIT_NOFALLDAMAGE1,
+		TRAIT_BASHDOORS,
+		TRAIT_STEELHEARTED,
+		TRAIT_BREADY,
+		TRAIT_ORGAN_EATER,
+		TRAIT_NASTY_EATER,
+		TRAIT_DEADNOSE,
+		TRAIT_CRITICAL_RESISTANCE,
+		TRAIT_IGNORESLOWDOWN,
+		TRAIT_HARDDISMEMBER,
+		TRAIT_UNDODGING,
+		TRAIT_LONGSTRIDER
+	)
+
 	inherent_biotypes = MOB_HUMANOID
 
 	no_equip = list(ITEM_SLOT_SHIRT, ITEM_SLOT_HEAD, ITEM_SLOT_MASK, ITEM_SLOT_ARMOR, ITEM_SLOT_GLOVES, ITEM_SLOT_SHOES, ITEM_SLOT_PANTS, ITEM_SLOT_CLOAK, ITEM_SLOT_BELT, ITEM_SLOT_BACK_R, ITEM_SLOT_BACK_L)
@@ -50,7 +82,7 @@
 	)
 
 	changesource_flags = WABBAJACK
-	bleed_mod = 0.2
+	bleed_mod = 0.3
 	pain_mod = 0.2
 
 /datum/species/werewolf/send_voice(mob/living/carbon/human/H)

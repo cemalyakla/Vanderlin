@@ -117,7 +117,7 @@ GLOBAL_LIST_INIT(stone_personalities, list(
 
 GLOBAL_LIST_INIT(stone_personality_descs, list(
 	"This stone is full of personality!",
-	"They say the intelligent races built their foundations with stones.",
+	"They say the intelligent species built their foundations with stones.",
 	"One must think, where did this stone come from?",
 	"If all stones were like this, then they would be some pretty great stones.",
 	"I wish my personality was like this stone's...",
@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 /obj/item/natural/stone/on_consume(mob/living/eater)
 	if(!magic_power)
 		return
-	eater.spell_points += magic_power * 0.1
+	eater.adjust_spell_points(magic_power * 0.1)
 	eater.mana_pool?.adjust_mana(magic_power * 25)
 	to_chat(eater, span_warning("I feel magic flowing from my stomach."))
 
@@ -356,22 +356,20 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	..()
 
 /obj/item/natural/rock/attacked_by(obj/item/I, mob/living/user)
-	var/was_destroyed = obj_destroyed
 	. = ..()
-	if(.)
-		if(!was_destroyed && obj_destroyed)
-			record_featured_stat(FEATURED_STATS_MINERS, user)
+	if(atom_integrity <= 0)
+		record_featured_stat(FEATURED_STATS_MINERS, user)
 
 /obj/item/natural/rock/deconstruct(disassembled = FALSE)
 	if(!disassembled)
 		if(mineralType && mineralAmt)
 			if(has_world_trait(/datum/world_trait/malum_diligence))
-				mineralAmt += rand(1,2)
+				mineralAmt += is_ascendant(MALUM) ? rand (2,3) : rand(1,2)
 			new mineralType(src.loc, mineralAmt)
 		for(var/i in 1 to rand(1,3))
 			var/obj/item/S = new /obj/item/natural/stone(src.loc)
-			S.pixel_x = rand(25,-25)
-			S.pixel_y = rand(25,-25)
+			S.pixel_x = S.base_pixel_x + rand(25,-25)
+			S.pixel_y = S.base_pixel_y + rand(25,-25)
 		record_round_statistic(STATS_ROCKS_MINED)
 	qdel(src)
 
