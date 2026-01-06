@@ -84,14 +84,13 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 		mind.areas_entered += text_to_show
 		var/atom/movable/screen/area_text/T = new()
 		client.screen += T
-		T.maptext = MAPTEXT_CENTER({"<span style='vertical-align:top;color: #7c5b10; font-size: 150%;
-					text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;'>[text_to_show]</span>"})
+		T.maptext = MAPTEXT_CENTER({"<span style='vertical-align:top;color: #7c5b10; font-size: 150%; font-family: "vinque"; text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;'>[text_to_show]</span>"})
 		T.maptext_width = 205
 		T.maptext_height = 209
 		T.maptext_x = 12
-		T.maptext_y = -120
+		T.maptext_y = -150
 		playsound_local(src, 'sound/misc/newday.ogg', 60, FALSE)
-		animate(T, alpha = 255, time = 10, easing = EASE_IN)
+		animate(T, alpha = 255, time = 25, easing = EASE_IN)
 		addtimer(CALLBACK(src, PROC_REF(clear_area_text), T), 35)
 	else if(GLOB.tod == "day")
 		playsound_local(src, 'sound/misc/midday.ogg', 100, FALSE)

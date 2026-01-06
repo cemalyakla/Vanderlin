@@ -445,6 +445,9 @@ GLOBAL_LIST_EMPTY(donator_races)
 		var/datum/species/S = new I
 		if(!S.check_roundstart_eligible())
 			continue
+		if(S.name == "Half-Drow" || S.name == "Medicator" || S.name == "Harpy" || S.name == "Aasimar" || S.name == "Hollow-Kin" || S.name == "Triton")
+			qdel(S)
+			continue
 		GLOB.roundstart_races += S.name
 		if(S.donator_req)
 			GLOB.donator_races += S.name
@@ -461,9 +464,9 @@ GLOBAL_LIST_EMPTY(donator_races)
 
 /datum/species/proc/check_roundstart_eligible()
 	return FALSE
-//	if(id in (CONFIG_GET(keyed_list/roundstart_races)))
-//		return TRUE
-//	return FALSE
+	//(id in (CONFIG_GET(keyed_list/roundstart_races)))
+	//	return TRUE
+	//return FALSE
 
 /datum/species/proc/get_possible_names(gender = MALE) as /list
 	SHOULD_CALL_PARENT(FALSE)

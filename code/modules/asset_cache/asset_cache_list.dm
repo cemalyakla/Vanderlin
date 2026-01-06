@@ -41,6 +41,7 @@
 		"chiseld.ttf" = 'interface/fonts/chiseld.ttf',
 		"blackmoor.ttf" = 'interface/fonts/blackmoor.ttf',
 		"handwrite.ttf" = 'interface/fonts/handwrite.ttf',
+		"vinque.ttf" = 'interface/fonts/vinque.ttf',
 		"book1.ttf" = 'interface/fonts/book1.ttf',
 		"book2.ttf" = 'interface/fonts/book1.ttf',
 		"book3.ttf" = 'interface/fonts/book1.ttf',
