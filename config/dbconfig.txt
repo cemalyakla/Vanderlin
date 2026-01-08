@@ -24,10 +24,10 @@ FEEDBACK_DATABASE haydut
 FEEDBACK_TABLEPREFIX
 
 ## Username/Login used to access the database.
-FEEDBACK_LOGIN root
+FEEDBACK_LOGIN haydut
 
 ## Password used to access the database.
-FEEDBACK_PASSWORD 123qweasd
+FEEDBACK_PASSWORD haydutmahzeni
 
 ## Time in seconds for asynchronous queries to timeout
 ## Set to 0 for infinite
