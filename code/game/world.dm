@@ -101,13 +101,10 @@ GLOBAL_PROTECT(tracy_init_reason)
 	var/list/webhook_info2 = list()
 	var/list/headers2 = list()
 
-	var/quote = pick("Savaşı kabullen. Çağrıldığın bu dansa eşlik et.", "Ancak kendini bütünüyle savaşa adamış olan kişi, insanın gerçek doğasını kavrayabilir.", "Kılıçla yaşayan adamın canını alan da kılıç olacaktır.", "Yargıç gülümsedi. Yalnızca o Adam dans edebilir.")
-
 	var/json_text2 = file2text("config/haydutUpdate.json")
 	webhook_info2 = json_decode(json_text2)
 	webhook_info2["content"] = "<@&1459582043657732302>"
 	webhook_info2["embeds"][1]["fields"][1]["value"] = "[GLOB.clients.len]"
-	webhook_info2["embeds"][1]["footer"]["text"] = "[quote]"
 	webhook_info2["allowed_mentions"] = list(
     "roles" = list("1459582043657732302")
 	)
