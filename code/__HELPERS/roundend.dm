@@ -110,11 +110,22 @@
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	set waitfor = FALSE
 
+	var/list/webhook_info = list()
+	var/list/headers = list()
+
+	webhook_info["content"] = "#[GLOB.round_id]. Hikaye sona erdi."
+	headers["Content-Type"] = "application/json"
+
+	var/webhook = "https://discord.com/api/webhooks/1459579157859012710/PxVbMaLfqsLSumDv8hujCLjjQIJeVNnWSFodUfsxd15nLS9KiubwnBPY0a5S3dAyyBNv"
+	var/datum/http_request/request = new()
+	request.prepare(RUSTG_HTTP_METHOD_POST, webhook, json_encode(webhook_info), headers, "tmp/discord_roundalert.json")
+	request.begin_async()
+
 	log_game("The round has ended.")
 
 	INVOKE_ASYNC(world, TYPE_PROC_REF(/world, flush_byond_tracy))
 
-	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale of Vanderlin.</span>")
+	to_chat(world, "<BR><BR><BR><span class='reallybig'>Ve Vanderlin'in hikayesi böyle sona erdi.</span>")
 	get_end_reason()
 
 	var/list/key_list = list()

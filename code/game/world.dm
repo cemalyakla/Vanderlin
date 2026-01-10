@@ -97,6 +97,28 @@ GLOBAL_PROTECT(tracy_init_reason)
 	else // We got a db connected, GLOB.round_id ticks up based on where its at on the db.
 		GLOB.rogue_round_id = "[pick(GLOB.roundid)][GLOB.round_id]-[timestamp]"
 	SetupLogs()
+
+	var/list/webhook_info2 = list()
+	var/list/headers2 = list()
+
+	var/quote = pick("Savaşı kabullen. Çağrıldığın bu dansa eşlik et.", "Ancak kendini bütünüyle savaşa adamış olan kişi, insanın gerçek doğasını kavrayabilir.", "Kılıçla yaşayan adamın canını alan da kılıç olacaktır.", "Yargıç gülümsedi. Yalnızca o Adam dans edebilir.")
+
+	var/json_text2 = file2text("config/haydutUpdate.json")
+	webhook_info2 = json_decode(json_text2)
+	webhook_info2["content"] = "<@&1459582043657732302>"
+	webhook_info2["embeds"][1]["fields"][1]["value"] = "[GLOB.clients.len]"
+	webhook_info2["embeds"][1]["footer"]["text"] = "[quote]"
+	webhook_info2["allowed_mentions"] = list(
+    "roles" = list("1459582043657732302")
+	)
+
+	headers2["Content-Type"] = "application/json"
+
+	var/webhook2 = "https://webhook.lewisakura.moe/api/webhooks/1459579157859012710/PxVbMaLfqsLSumDv8hujCLjjQIJeVNnWSFodUfsxd15nLS9KiubwnBPY0a5S3dAyyBNv"
+	var/datum/http_request/request2 = new()
+	request2.prepare(RUSTG_HTTP_METHOD_POST, webhook2, json_encode(webhook_info2), headers2, "tmp/discord_roundalert.json")
+	request2.begin_async()
+
 	if(CONFIG_GET(string/channel_announce_new_game_message))
 		send2chat(new /datum/tgs_message_content(CONFIG_GET(string/channel_announce_new_game_message)), CONFIG_GET(string/chat_announce_new_game))
 

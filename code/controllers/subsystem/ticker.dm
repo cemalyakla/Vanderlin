@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(ticker)
 	var/last_bot_update = 0
 
 	var/list/no_ruler_lines = list(
-		"Oyunun başlamasını istiyorsanız, rol seçme kısmındaki 'Monarch' rolünü 'High' ayarına çekin!!",
+		"Oyunun başlamasını istiyorsanız, rol seçme kısmındaki 'Monarch' rolünü 'High' ayarına çekin!",
 		"MONARCH OYNAYIN!! HEMEN ŞİMDİ!!",
 		"Monarch gelmesi için dua edin.", "Bir gün, buraların da bir kralı olacak.",
 		"Monarch oyanamayı deneyebilirsiniz!", "Monarch oynamazsanız, oyun asla başlamayacak.",
@@ -212,7 +212,7 @@ SUBSYSTEM_DEF(ticker)
 					timeLeft = null
 					Master.SetRunLevel(RUNLEVEL_LOBBY)
 				else
-					send2chat(new /datum/tgs_message_content("New round starting on Vanderlin!"), CONFIG_GET(string/chat_announce_new_game))
+					send2chat(new /datum/tgs_message_content("Yeni bir hikaye başlıyor."), CONFIG_GET(string/chat_announce_new_game))
 					SEND_SIGNAL(src, COMSIG_TICKER_ENTER_SETTING_UP)
 					current_state = GAME_STATE_SETTING_UP
 					Master.SetRunLevel(RUNLEVEL_SETUP)

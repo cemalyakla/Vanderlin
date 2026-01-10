@@ -1,0 +1,33 @@
+{
+  "content": null,
+  "embeds": [
+    {
+      "title": "YENİ BİR HİKAYE BAŞLIYOR",
+      "color": 1655327,
+      "fields": [
+        {
+          "name": "Oyuncular",
+          "value": "55",
+          "inline": true
+        },
+        {
+          "name": "IP",
+          "value": "94.154.46.74:1337",
+          "inline": true
+        }
+      ],
+      "author": {
+        "name": "Round Update",
+        "icon_url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcrus.cc%2Ftexture%2Feverlin%2Fpublic_domain%2Fgreenieface.png&f=1&nofb=1&ipt=cca6d0c2fb42257864d93331e54cfd3fa6724b2328683be60c17079235436848"
+      },
+      "footer": {
+        "text": "The priest does not say. The priest does not say.",
+        "icon_url": "https://cdn.discordapp.com/attachments/842713693459578893/1459650969318199318/BEWITCHMENT.png?ex=69640d66&is=6962bbe6&hm=afdafb35b6c570df89b5f74229fcc525fb7bc33e78234ca6d6cc377a54559eaf&"
+      },
+      "thumbnail": {
+        "url": "https://yt3.googleusercontent.com/N08Ed2YmjyYXxrgNHOCuRTNqfYEEaoUDTQivqnsimqZ0dfL_aPR2Ixa9V2-lmWWYGkBzxy_C=s900-c-k-c0x00ffffff-no-rj"
+      }
+    }
+  ],
+  "attachments": []
+}
