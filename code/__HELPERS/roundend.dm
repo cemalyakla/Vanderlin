@@ -116,7 +116,7 @@
 	webhook_info["content"] = "#[GLOB.round_id]. Hikaye sona erdi."
 	headers["Content-Type"] = "application/json"
 
-	var/webhook = "https://discord.com/api/webhooks/1459579157859012710/PxVbMaLfqsLSumDv8hujCLjjQIJeVNnWSFodUfsxd15nLS9KiubwnBPY0a5S3dAyyBNv"
+	var/webhook = "https://discord.com/api/webhooks/1458923334900252703/mJftv5zmK6gjcnh-YabmanZR-ZreJtshxy_9_iec9d1MlvnfMkfkK_HRX1wENHW0g8mL"
 	var/datum/http_request/request = new()
 	request.prepare(RUSTG_HTTP_METHOD_POST, webhook, json_encode(webhook_info), headers, "tmp/discord_roundalert.json")
 	request.begin_async()
