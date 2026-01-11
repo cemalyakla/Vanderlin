@@ -28,7 +28,7 @@
 		return
 	last_irc_check = rtod
 	var/server = CONFIG_GET(string/server)
-	return "[GLOB.round_id ? "[GLOB.round_id]. Hikaye: " : ""][GLOB.clients.len] aktörle, [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "devam etmekte" : "bitmek üzere") : "başlıyor"] -- [server ? server : "[world.internet_address]:[world.port]"]"
+	return "[GLOB.round_id ? "[GLOB.round_id]. Hikaye: " : ""][GLOB.clients.len] aktörle [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "devam etmekte" : "bitmek üzere") : "başlıyor"] -- [server ? server : "[world.internet_address]:[world.port]"]"
 
 /datum/tgs_chat_command/ahelp
 	name = "ahelp"

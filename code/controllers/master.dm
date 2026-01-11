@@ -196,6 +196,24 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	sortTim(subsystems, GLOBAL_PROC_REF(cmp_subsystem_init))
 
+	var/list/webhook_info2 = list()
+	var/list/headers2 = list()
+
+	var/json_text2 = file2text("config/haydutUpdate.json")
+	webhook_info2 = json_decode(json_text2)
+	webhook_info2["content"] = "<@&1459582043657732302>"
+	webhook_info2["embeds"][1]["fields"][1]["value"] = "[GLOB.clients.len]"
+	webhook_info2["allowed_mentions"] = list(
+    "roles" = list("1459582043657732302")
+	)
+
+	headers2["Content-Type"] = "application/json"
+
+	var/webhook2 = "https://webhook.lewisakura.moe/api/webhooks/1459579157859012710/PxVbMaLfqsLSumDv8hujCLjjQIJeVNnWSFodUfsxd15nLS9KiubwnBPY0a5S3dAyyBNv"
+	var/datum/http_request/request2 = new()
+	request2.prepare(RUSTG_HTTP_METHOD_POST, webhook2, json_encode(webhook_info2), headers2, "tmp/discord_roundalert.json")
+	request2.begin_async()
+
 	var/start_timeofday = REALTIMEOFDAY
 	// Initialize subsystems.
 	current_ticklimit = CONFIG_GET(number/tick_limit_mc_init)
