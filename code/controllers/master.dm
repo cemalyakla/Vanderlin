@@ -201,10 +201,10 @@ GLOBAL_REAL(Master, /datum/controller/master)
 
 	var/json_text2 = file2text("config/haydutUpdate.json")
 	webhook_info2 = json_decode(json_text2)
-	webhook_info2["content"] = "<@&1459582043657732302>"
+	webhook_info2["content"] = "<@&1331622076682993735>"
 	webhook_info2["embeds"][1]["fields"][1]["value"] = "[GLOB.clients.len]"
 	webhook_info2["allowed_mentions"] = list(
-    "roles" = list("1459582043657732302")
+    "roles" = list("1331622076682993735")
 	)
 
 	headers2["Content-Type"] = "application/json"
