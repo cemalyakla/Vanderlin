@@ -1946,10 +1946,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 				if("gender_choice")
 					// If pronouns are neutral, lock to ANY_GENDER
-					if(pronouns == THEY_THEM || pronouns == IT_ITS)
-						to_chat(user, span_warning("With neutral pronouns, you may only choose [ANY_GENDER]."))
-						gender_choice = ANY_GENDER
-					else
+					if(pronouns == HE_HIM || pronouns == SHE_HER)
 						var/list/gender_choice_option_list = list(ANY_GENDER, SAME_GENDER, DIFFERENT_GENDER)
 						var/new_gender_choice  = browser_input_list(user, "SELECT YOUR HERO'S PREFERENCE", "TO LOVE AND TO CHERISH", gender_choice_option_list, gender_choice)
 						if(new_gender_choice)

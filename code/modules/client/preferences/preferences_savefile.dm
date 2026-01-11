@@ -405,7 +405,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	age = sanitize_inlist(age, pref_species.possible_ages)
 	eye_color = sanitize_hexcolor(eye_color, 3, 0)
 	voice_color = voice_color
-	pronouns = sanitize_text(pronouns, THEY_THEM)
+	pronouns = sanitize_text(pronouns, HE_HIM)
 	voice_type = sanitize_text(voice_type, VOICE_TYPE_MASC)
 	skin_tone = skin_tone
 	family = family

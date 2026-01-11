@@ -22,10 +22,6 @@
 			pronouns = SHE_HER
 			allowed_voices = pref_species.allowed_voicetypes_f
 			voice_type = VOICE_TYPE_FEM
-		if(PLURAL)
-			pronouns = THEY_THEM
-			allowed_voices = VOICE_TYPES_LIST
-			voice_type = VOICE_TYPE_ANDRO
 		else
 			pronouns = IT_ITS
 			allowed_voices = VOICE_TYPES_LIST
