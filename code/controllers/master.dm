@@ -203,6 +203,8 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	webhook_info2 = json_decode(json_text2)
 	webhook_info2["content"] = "<@&1331622076682993735>"
 	webhook_info2["embeds"][1]["fields"][1]["value"] = "[GLOB.clients.len]"
+	webhook_info2["embeds"][1]["fields"][2]["value"] = "193.164.6.116:1337"
+	webhook_info2["embeds"][1]["footer"]["text"] = "Kılıçla yaşayan adamın canını alan da kılıç olacaktır."
 	webhook_info2["allowed_mentions"] = list(
     "roles" = list("1331622076682993735")
 	)
