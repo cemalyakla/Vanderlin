@@ -180,7 +180,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	///What scaling method should we use?
 	var/scaling_method = "normal"
 
-	var/musicvol = 25 //fuck you serb
+	var/musicvol = 25
 	var/mastervol = 50
 
 	var/anonymize = TRUE
@@ -389,7 +389,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			border: none;
 			outline: none;
 			font-size: 8px;
-			color: #2b1d14;
+			color: #161418;
 			text-align: left;
 			cursor: pointer;
 			display: flex;
@@ -548,9 +548,12 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			if('gender' in data) {
 				updateField('char-gender', data.gender || '');
 				var silhouette = document.getElementById('silhouette');
-				silhouette.style.backgroundImage = "url('features_bodytype_" + data.gender + ".png')";
-				if (data.gender === "F") silhouette.style.width = "15px";
-    			if (data.gender === "M") silhouette.style.width = "18px";
+				var newGender = "temp";
+				if (data.gender === "Female") newGender = "f";
+				if (data.gender === "Male") newGender = "m";
+				silhouette.style.backgroundImage = "url('features_bodytype_" + newGender + ".png')";
+				if (data.gender === "Female") silhouette.style.width = "15px";
+    			if (data.gender === "Male") silhouette.style.width = "18px";
 			}
 
 			// Update voice color blob
@@ -1570,10 +1573,11 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						to_chat(user, span_warning("This species can only use [pronouns]."))
 						return
 
-					if(gender == MALE)
-						pronouns = HE_HIM
-					else if(gender == FEMALE)
-						pronouns = SHE_HER
+					//var/pronouns_input = browser_input_list(user, "CHOOSE HOW MORTALS REFER TO YOUR HERO", "DISOBEY SOCIAL NORMS", allowed_pronouns)
+					//if(pronouns_input)
+					//	pronouns = pronouns_input
+					//	to_chat(user, span_warning("Your character's pronouns are now [pronouns]."))
+					return
 				if ("voicetype")
 					var/list/allowed_voices
 					if(gender == MALE)
@@ -1589,10 +1593,13 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						to_chat(user, span_warning("This species can only use the [voice_type] voice type."))
 						return
 
-					var/voicetype_input = browser_input_list(user, "CHOOSE YOUR HERO'S VOICE TYPE", "DISCARD SOCIETY'S EXPECTATIONS", allowed_voices)
-					if(voicetype_input)
-						voice_type = voicetype_input
-						to_chat(user, span_warning("Your character will now vocalize with a [lowertext(voice_type)] affect."))
+					//var/voicetype_input = browser_input_list(user, "CHOOSE YOUR HERO'S VOICE TYPE", "DISCARD SOCIETY'S EXPECTATIONS", allowed_voices)
+					//if(voicetype_input)
+					//	voice_type = voicetype_input
+					//	if(voicetype_input == VOICE_TYPE_ANDRO)
+					//		to_chat(user, span_warning("This will use the feminine voicepack pitched down a bit to achieve a more androgynous sound."))
+					//	to_chat(user, span_warning("Your character will now vocalize with a [lowertext(voice_type)] affect."))
+					return
 				if("faith")
 					var/list/faiths_named = list()
 					for(var/path as anything in GLOB.preference_faiths)
@@ -1836,8 +1843,12 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						change_accent = TRUE
 					else
 						change_accent = FALSE
+					if(!donator && !change_accent)
+						to_chat(user, "Sorry, this option is Donator-exclusive or unavailable to your race.")
+						selected_accent = ACCENT_DEFAULT
+						return
 					var/accent
-					if(!donator)
+					if(donator)
 						accent = browser_input_list(user, "CHOOSE YOUR HERO'S ACCENT", "VOICE OF THE WORLD", GLOB.accent_list, selected_accent)
 						if(accent)
 							selected_accent = accent
@@ -1942,15 +1953,24 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						setspouse = null
 				//Gender_choice is part of the family subsytem. It will check existing families members with the same preference of this character and attempt to place you in this family.
 				if("select_quirks")
-					open_quirk_menu(user)
+					to_chat(user, span_warning("Vanderlin geliştiricilerinin tembelliği yüzünden bu menü buglı bir halde. Düzeltilene kadar açılmayacak."))
 
 				if("gender_choice")
 					// If pronouns are neutral, lock to ANY_GENDER
-					if(pronouns == HE_HIM || pronouns == SHE_HER)
+					if(pronouns == THEY_THEM || pronouns == IT_ITS)
+						to_chat(user, span_warning("With neutral pronouns, you may only choose [ANY_GENDER]."))
+						gender_choice = ANY_GENDER
+					else
 						var/list/gender_choice_option_list = list(ANY_GENDER, SAME_GENDER, DIFFERENT_GENDER)
 						var/new_gender_choice  = browser_input_list(user, "SELECT YOUR HERO'S PREFERENCE", "TO LOVE AND TO CHERISH", gender_choice_option_list, gender_choice)
 						if(new_gender_choice)
 							gender_choice = new_gender_choice
+							if(gender_choice == MALE)
+								pronouns = HE_HIM
+								voice_type = VOICE_TYPE_MASC
+							else if(gender_choice == FEMALE)
+								pronouns = SHE_HER
+								voice_type = VOICE_TYPE_FEM
 				if("alignment")
 					var/new_alignment = browser_input_list(user, "SELECT YOUR HERO'S MORALITY", "CUT FROM THE SAME CLOTH", ALL_ALIGNMENTS_LIST, alignment)
 					if(new_alignment)

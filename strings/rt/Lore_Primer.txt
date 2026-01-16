@@ -1,235 +1,235 @@
-<p><strong><em><span style="font-size:115%"> Welcome to Vanderlin! </span></em></strong></p>
-<p> This lore primer serves as an introduction to Vanderlin's lore and world. <br>
-While it's not required reading, leadership roles may find this information useful to roleplay their positions. This, or anyone else interested in playing a character with more knowledge about the setting. Not all information is available here, and some secrets still lie within item descriptions, inscriptions, or booklets- it's a primer, not a compendium. </p>
+<p><strong><em><span style="font-size:115%"> Vanderlin'e Hoş Geldiniz! </span></em></strong></p>
+<p> Bu evren rehberi, Vanderlin'in hikayesine ve dünyasına bir giriş niteliğindedir. <br>
+Okunması zorunlu olmasa da, liderlik rolündeki oyuncular konumlarını canlandırırken bu bilgileri faydalı bulabilirler. Ayrıca evren hakkında daha fazla bilgiye sahip bir karakteri oynamak isteyen herkes için uygundur. Tüm bilgiler burada yer almamaktadır; bazı sırlar hala eşya açıklamalarında, yazıtlarda veya kitapçıklarda saklıdır - bu bir özet rehberdir, ansiklopedi değil. </p>
 <hr>
-<strong><span style="font-size:105%"> Some quick vocabulary/concepts important to the setting: </span></strong>
-<p><strong> Psydonia </strong> - The world Vanderlin takes place in, named after its creation god, Psydon. It is currently the year 2516, millenia after His death. </p>
-<p><strong> Faience </strong> - The continent Vanderlin takes place in. Shaped by His hand. </p>
-<p><strong> Lux </strong> - The core link of divinity a person holds; the soul. A sliver of Psydon present within each species touched at one point by divine hand. It is said that it carries the power of a single, focused miracle of life- yet its removal dooms a soul never to pass into the underworld. </p>
+<strong><span style="font-size:105%"> Evren için önemli bazı hızlı terimler/kavramlar: </span></strong>
+<p><strong> Psydonia </strong> - Vanderlin'in geçtiği dünya; adını yaratıcı tanrısı Psydon'dan almıştır. Şu anda, O'nun ölümünden binlerce yıl sonra, 2516 yılındayız. </p>
+<p><strong> Faience </strong> - Vanderlin'in yer aldığı kıta. O'nun eliyle şekillendirilmiştir. </p>
+<p><strong> Lux </strong> - Bir kişinin sahip olduğu ilahilik bağı; ruh. Tanrısal bir elin bir zamanlar dokunduğu her türün içinde bulunan Psydon'dan bir parça. Tek bir odaklanmış yaşam mucizesinin gücünü taşıdığı söylenir - ancak çıkarılması, bir ruhu asla yeraltı dünyasına geçememeye mahkum eder. </p>
 <hr>
 
 <details>
-	<summary><strong><span style="font-size:130%"> AREAS OF FAIENCE </span></strong></summary>
+	<summary><strong><span style="font-size:130%"> FAIENCE BÖLGELERİ </span></strong></summary>
 
 
 
-	<p><strong>  Isle of Enigma </strong><em> - "Once the trade center of the world, now a festering cancer of spilled oil, shrapnel, and bomb-shattered soil."  </em>
+	<p><strong>  Enigma Adası (Isle of Enigma) </strong><em> - "Bir zamanlar dünyanın ticaret merkeziyken, şimdi dökülen petrol, şarapnel ve bomba ile parçalanmış toprakların irinli bir kanseri."  </em>
 	<br></p>
 
 	<details>
-		<summary><em> Points of Interest </em></summary>
+		<summary><em> Önemli Yerler </em></summary>
 
-		<p><strong> - Town of Rockhill </strong><br>  A once-bustling trade center colloquially known as Roguetown. Now a warzone, the last-standing settlement against the armada of automatons. </p>
-		<p><strong> - Kingdom of Heartfelt </strong><br>  The prosperous head of technological progress within the Isle of Enigma, experiencing disaster as their automaton constructions turn against them and ravage their lands.  </p>
+		<p><strong> - Rockhill Kasabası </strong><br>  Halk arasında Roguetown (Haydut Kasabası) olarak bilinen, bir zamanlar hareketli bir ticaret merkezi. Şimdi bir savaş alanı ve otomat armadasına karşı ayakta kalan son yerleşim yeri. </p>
+		<p><strong> - Heartfelt Krallığı </strong><br>  Enigma Adası'ndaki teknolojik ilerlemenin müreffeh başı; otomat yapılarının kendilerine karşı dönmesi ve topraklarını harap etmesiyle bir felaket yaşıyorlar.  </p>
 	</details>
 	<br>
 
 
-	<p><strong>  Peninsula of Vanderlin </strong><em> - "The new trade capital of the world."  </em></p>
+	<p><strong>  Vanderlin Yarımadası </strong><em> - "Dünyanın yeni ticaret başkenti."  </em></p>
 
 	<details>
-		<summary><em> Points of Interest </em></summary>
+		<summary><em> Önemli Yerler </em></summary>
 
-		<p><strong> - City of Vanderlin </strong><br> A canyon settlement on a nearby peninsula to the East of the Isle of Enigma. Reaping the boons of both, Vanderlin is a city of trade and prosperity. Built over the first-discovered opening to the Tomb of Matthios, it attracts adventurers from all over Psydonia to delve within and seek fortune.  </p>
-		<p><strong> - County of Daftmarsh </strong><br> A thrice-sunken castle, now a town-on-stilts built from its ruins. Daftmarsh guards the river delta directly North of Vanderlin. It often serves as a safe cove for pirates, providing Vanderlin merchant ships safe passage in exchange for the Crown's averted eyes. </p>
-		<p><strong> - Mire of the Terrorbog </strong><br> A fertile and marshy area of the peninsula, overgrown and suffering an invasion of beespiders.  </p>
-		<p><strong> - Shire of Murderwood </strong><br> Ancestral Forest bearing many glades, overrun by villains, knaves, and other lawlessness. A testament to Dendor's madness, its constant-shifting thicket stretches across Western Vanderlin. </p>
-		<p><strong> - Malum's Anvil </strong><br> A jagged mountain filled with ores, treasures, and lava. Likewise a cacophony of horrid goblins, beasts, and other misfortunes. The crater of Astrata's fallen shard still scars its peak. </p>
+		<p><strong> - Vanderlin Şehri </strong><br> Enigma Adası'nın doğusundaki yakın bir yarımadada bulunan bir kanyon yerleşimi. Her iki tarafın nimetlerinden de yararlanan Vanderlin, bir ticaret ve refah şehridir. Matthios'un Mezarı'nın ilk keşfedilen girişinin üzerine inşa edilmiştir ve Psydonia'nın dört bir yanından maceracıları içeri dalıp servet aramaya çeker.  </p>
+		<p><strong> - Daftmarsh Kontluğu </strong><br> Üç kez batmış bir kale, şimdi kalıntılarından inşa edilmiş kazıklar üzerinde duran bir kasaba. Daftmarsh, Vanderlin'in hemen kuzeyindeki nehir deltasını korur. Sık sık korsanlar için güvenli bir koy görevi görür ve Kraliyet'in görmezden gelmesi karşılığında Vanderlin ticaret gemilerine güvenli geçiş sağlar. </p>
+		<p><strong> - Terrorbog Bataklığı </strong><br> Yarımadanın verimli ve bataklık bir alanı; aşırı büyümüş ve arı-örümceklerin (beespiders) istilasına uğramış durumda.  </p>
+		<p><strong> - Murderwood (Cinayet Ormanı) </strong><br> Birçok açıklığa sahip, kötü adamlar, düzenbazlar ve diğer kanunsuzluklarla dolu kadim bir orman. Dendor'un deliliğinin bir kanıtı olarak, sürekli değişen çalılıkları Batı Vanderlin boyunca uzanır. </p>
+		<p><strong> - Malum'un Örsü </strong><br> Cevherler, hazineler ve lavlarla dolu sarp bir dağ. Aynı zamanda korkunç goblinlerin, canavarların ve diğer talihsizliklerin bir kakofonisi. Astrata'nın düşen parçasının krateri hala zirvesini yaralamaktadır. </p>
 	</details>
 	<br>
 
 
-	<p><strong>  Kingsfield  </strong><em> - "The pride of humenity. Crown of Psydonia"	</em></p>
+	<p><strong>  Kingsfield  </strong><em> - "Humenliğin gururu. Psydonia'nın Tacı."	</em></p>
 
 	<details>
-		<summary><em> Points of Interest </em></summary>
+		<summary><em> Önemli Yerler </em></summary>
 
-		<p><strong> - City of Kingsfield </strong><br>  Massive city built upon temperate forests far, far North to the Isle of Enigma. Kingsfield is the most prosperous and populated city of the world, not to mention the major cultural export. It is not to be confused with the state, Kingsfield, which encompasses it. Kingsfield rail systems span all across Western Faience, of no small part due to Heartfeltian artificers' effort. </p>
+		<p><strong> - Kingsfield Şehri </strong><br>  Enigma Adası'nın çok çok kuzeyinde, ılıman ormanlar üzerine inşa edilmiş devasa şehir. Kingsfield, dünyanın en müreffeh ve kalabalık şehridir, ayrıca en büyük kültürel ihracatçısıdır. Onu kapsayan Kingsfield eyaleti ile karıştırılmamalıdır. Kingsfield raylı sistemleri, Heartfelt'li zanaatkarların çabalarının da büyük katkısıyla tüm Batı Faience'a yayılmıştır. </p>
 	</details>
 	<br>
 
 
-	<p><strong>  Tundras of Wintermare </strong><em> - "The largest humen-accepted elven territory, though most land is covered in tough permafrost."  </em></p>
+	<p><strong>  Wintermare Tundraları </strong><em> - "Humenlerin kabul ettiği en büyük elf bölgesi, ancak arazinin çoğu sert donmuş topraklarla kaplıdır."  </em></p>
 
 	<details>
-		<summary><em>Points of Interest</em></summary>
+		<summary><em>Önemli Yerler</em></summary>
 
-		<p><strong> - City of Rosewood </strong><br> The capital of the Wintermare Empire, located near its Southeastern inland sea. Houses world-reknown Noccian academies, it is widely considered the magic capital of the world. </p>
-		<p><strong> - White Palace Pass </strong><br> One of few passageways through The Howling Mountains between Grenzelhoft and Rosewood. A place of great tension and prior conflict. </p>
-		<p><strong> - Noc's Crown </strong><br> A towering peak hiding ruins of past civilization.  </p>
-		<p><strong> - Morvael Sink </strong><br> A frigid marsh. Old temples to Zizo lie in ruin.  </p>
-		<p><strong> - Snowdust Glade </strong><br> An enchanted forest bearing the dangers of unchecked fae and abandoned summons.  </p>
+		<p><strong> - Rosewood Şehri </strong><br> Güneydoğu iç denizinin yakınında bulunan Wintermare İmparatorluğu'nun başkenti. Dünyaca ünlü Noccian akademilerine ev sahipliği yapar ve yaygın olarak dünyanın büyü başkenti kabul edilir. </p>
+		<p><strong> - White Palace (Beyaz Saray) Geçidi </strong><br> Grenzelhoft ve Rosewood arasındaki Uluyan Dağlar'dan geçen birkaç geçitten biri. Büyük bir gerilim ve geçmiş çatışmaların mekanı. </p>
+		<p><strong> - Noc'un Tacı </strong><br> Geçmiş medeniyetin kalıntılarını saklayan yüksek bir zirve.  </p>
+		<p><strong> - Morvael Çukuru </strong><br> Dondurucu bir bataklık. Zizo'ya adanmış eski tapınaklar harabe halindedir.  </p>
+		<p><strong> - Snowdust (Kar Tozu) Açıklığı </strong><br> Kontrolsüz perilerin ve terk edilmiş çağırımların tehlikelerini barındıran büyülü bir orman.  </p>
 	</details>
 	<br>
 
-	<p><strong>  Necral Forests </strong><em> - "Ancestral forests scattered around Psydonia. The ancient homes of the elves." </em></p>
+	<p><strong>  Nekral (Ölümcül) Ormanlar </strong><em> - "Psydonia'ya dağılmış kadim ormanlar. Elflerin antik yuvaları." </em></p>
 
 	<details>
-		<summary><em> Points of Interest </em></summary>
+		<summary><em> Önemli Yerler </em></summary>
 
-		<p><strong> - Amber Hollow </strong><br> At the center of the Northwestern Redwoods, a ring of gnarled, interlaced roots sits atop a great earthen mound. Within which lies the largest Western entrance to Subterra. Escaped hollowkin experiments, and later harpies, call this settlement their home. Almost all hollowkin can trace their ancestry back to this maw. While hostile to outsiders, this serves as a major point of defense against dark elven forces. </p>
-		<p><strong> - The Tree of Psydonia </strong><br> A great sequoia dwarfing all others, located far Northwest of Amber Hollow. It is said to be a memorial created by Psydon Himself to honour Necra's original death. Elves revere this landmark, despite its unsettling, skull-like bark.  </p>
+		<p><strong> - Amber Kovuğu (Amber Hollow) </strong><br> Kuzeybatı Sekoyaları'nın merkezinde, büyük bir toprak tümseğin üzerinde duran boğumlu, iç içe geçmiş köklerden oluşan bir halka. İçinde Subterra'ya açılan en büyük Batı girişi bulunur. Kaçan hollowkin (oyuksoylu) deneyleri ve daha sonra harpiler burayı evleri olarak benimsemiştir. Neredeyse tüm hollowkinler soylarını bu ağza dayandırabilir. Dışarıdakilere düşman olsalar da, burası kara elf güçlerine karşı önemli bir savunma noktası görevi görür. </p>
+		<p><strong> - Psydonia Ağacı </strong><br> Amber Kovuğu'nun çok kuzeybatısında bulunan, diğerlerini cüce bırakan devasa bir sekoya. Necra'nın orijinal ölümünü onurlandırmak için bizzat Psydon tarafından yaratılmış bir anıt olduğu söylenir. Elfler, rahatsız edici, kafatası benzeri kabuğuna rağmen bu simge yapıya saygı duyarlar.  </p>
 	</details>
 	<br>
 
-	<p><strong>  The Barrows </strong><em> - "Former boreal forests called home by the snow elves, now a deadland of ruin and decay following the ascension of Zizo. Home to the great war front against her undead armies." </em></p>
+	<p><strong>  Höyükler (The Barrows) </strong><em> - "Kar elflerinin yuvası olan eski kuzey ormanları, şimdi Zizo'nun yükselişinin ardından bir harabe ve çürüme diyarı. Onun ölümsüz ordularına karşı büyük savaş cephesine ev sahipliği yapıyor." </em></p>
 
 	<details>
-		<summary><em> Points of Interest </em></summary>
-		<p><strong> - The Realm of Z </strong><br> The northern parts of The Barrows are colloquially known as 'The Realm of Z' due to her nigh-complete control. Few, if any, survivors remain- though rumours circulate that a last bastion settlement in the Northern, mountainous frostlands presses on despite all odds.  </p>
+		<summary><em> Önemli Yerler </em></summary>
+		<p><strong> - Z Diyarı </strong><br> Höyükler'in kuzey kısımleri, Zizo'nun neredeyse tam kontrolü nedeniyle halk arasında 'Z Diyarı' olarak bilinir. Hayatta kalan çok az kişi vardır - ancak söylentiler, Kuzey'deki dağlık donmuş topraklarda son bir kale yerleşiminin tüm zorluklara rağmen direndiğini dolaştırmaktadır.  </p>
 	</details>
 	<br>
 
-	<p><strong>  Subterra </strong><em> - "A vast cave system underground with its own unique biosphere of hostile flora and fauna. It once housed an ancient empire of Ravoxian dark elves, but now serves as the conquered core of Zizo's evil matriarchy." </em></p>
+	<p><strong>  Subterra </strong><em> - "Kendine has düşman flora ve faunasına sahip devasa bir yeraltı mağara sistemi. Bir zamanlar Ravoxian kara elflerinin kadim imparatorluğuna ev sahipliği yapıyordu, ancak şimdi Zizo'nun kötücül anaerkilliğinin fethedilmiş çekirdeği olarak hizmet veriyor." </em></p>
 
 	<details>
-		<summary><em> Points of Interest </em></summary>
+		<summary><em> Önemli Yerler </em></summary>
 
-		<p><strong> - Zizo's Claw Marquisate </strong><br> Located below Amber Hollow, marking the farthest West reach of Subterran caverns. Serves as a forward operations base for dark elven forces and slaves as they prepare yet another attempt at breaching the surface.  </p>
+		<p><strong> - Zizo'nun Pençesi Markizliği </strong><br> Amber Kovuğu'nun altında yer alır ve Subterra mağaralarının en batı ucunu işaretler. Kara elf güçleri ve köleleri yüzeye çıkmak için bir başka girişime hazırlanırken burası bir ileri harekat üssü görevi görür.  </p>
 		</details>
 	<br>
 
-	<p><strong>  The Lakkarian Strip </strong><em> - "The diverse stretch of resource-rich rainforests and dunes currently ruled over by the Queendom of Lakkari, the second largest elven territory of Faience."	</em></p>
+	<p><strong>  Lakkarian Şeridi </strong><em> - "Şu anda Faience'in en büyük ikinci elf bölgesi olan Lakkari Kraliçeliği tarafından yönetilen, kaynak açısından zengin yağmur ormanları ve kumulların çeşitli uzantısı."	</em></p>
 
 	<details>
-		<summary><em> Points of Interest </em></summary>
+		<summary><em> Önemli Yerler </em></summary>
 
-		<p><strong> - City Of Iwabaree </strong><br> Nestled within the northwestern jungle of The Lakkarian Strip, Iwabaree is the capital city of Lakkari. Its considered to be one of the most sacred cities to Astratans within Psydonia and the wealthiest city of the Queendom. The Black Empire failed to capture it during the War of the Split Feather. Iwabaree is defined by its towering temples to Astrata, complex system of canals, and its gold-crested royal palace. It has only recently opened its doors to those of the inhumen species.	</p>
-		<p><strong> - Barony Of Sakhumeti </strong><br> Referred to as the graveyard capital of Faience. Sakhumeti is an expansive yet desolate barony with a majority Necran population, which has dropped sharply ever since Zizo's ascension. Clerics and Templars are frequently sent to Sakhumeti to clear out the still-rising dead within the city's sprawling tombs.	</p>
-		<p><strong> - City Of Ei Onkara </strong><br> South of the Lakkarian capital city of Iwabaree, the coastal city of Ei Onkara serves as the trade hub of Lakkari and is considered the second-wealthiest city in the Queendom. Ei Onkara is renowned for its expansive market district, skilled goldsmiths, and vast underground catacombs, which few dare to explore. There are often intense feuds and conflicts between its majority Astratan nobility and its majority Xylixian commoner population.	</p>
-		<p><strong> - Barony of Sekket </strong><br> The eastern-most barony of the Queendom of Lakkari, nearing the Zaladin Dynasty's northern border. Desired for its proximity to gold deposits and strategic location next to the Veil of Colors. There have been many squabbles between the Queendom of Lakkari and the Zaladin Dynasty over who has the rightful claim to Sekket, as control over it has shifted multiple times throughout history. Being a majority Xylixian barony, Sekket is also home to many anti-slaver groups. The most prominent being the Shinobi's of Sekket, which runs many underground operations throughout the Zaladin Dynasty. The operations of the Shinobi's of Sekket has drastically soured the already dire relations between the two nations.	</p>
+		<p><strong> - Iwabaree Şehri </strong><br> Lakkarian Şeridi'nin kuzeybatı ormanlarına gizlenmiş Iwabaree, Lakkari'nin başkentidir. Psydonia'daki Astrata takipçileri için en kutsal şehirlerden biri ve Kraliçeliğin en zengin şehri kabul edilir. Kara İmparatorluk, Kırık Tüy Savaşı sırasında burayı ele geçirmeyi başaramamıştır. Iwabaree, Astrata'ya adanmış yüksek tapınakları, karmaşık kanal sistemi ve altın tepeli kraliyet sarayı ile tanımlanır. Kapılarını humen olmayan türlere ancak yakın zamanda açmıştır.	</p>
+		<p><strong> - Sakhumeti Baronluğu </strong><br> Faience'in mezarlık başkenti olarak anılır. Sakhumeti, Zizo'nun yükselişinden bu yana nüfusu hızla düşen, çoğunluğu Necran (Ölüm kültü) nüfusa sahip geniş ama ıssız bir baronluktur. Rahipler ve Tapınakçılar, şehrin geniş mezarlıklarında hala yükselen ölüleri temizlemek için sık sık Sakhumeti'ye gönderilir.	</p>
+		<p><strong> - Ei Onkara Şehri </strong><br> Lakkarian başkenti Iwabaree'nin güneyinde, kıyı şehri Ei Onkara, Lakkari'nin ticaret merkezi olarak hizmet verir ve Kraliçeliğin en zengin ikinci şehri olarak kabul edilir. Ei Onkara, geniş pazar bölgesi, yetenekli kuyumcuları ve çok az kişinin keşfetmeye cesaret edebildiği geniş yeraltı mezarlarıyla ünlüdür. Çoğunluğu Astratan soylular ile çoğunluğu Xylixian halk arasında sık sık yoğun kan davaları ve çatışmalar yaşanır.	</p>
+		<p><strong> - Sekket Baronluğu </strong><br> Lakkari Kraliçeliği'nin en doğudaki baronluğu, Zaladin Hanedanlığı'nın kuzey sınırına yakındır. Altın yataklarına yakınlığı ve Renkler Perdesi'nin yanındaki stratejik konumu nedeniyle arzulanır. Tarih boyunca kontrolü birçok kez el değiştirdiği için Lakkari Kraliçeliği ile Zaladin Hanedanlığı arasında Sekket üzerinde kimin hak iddia edeceği konusunda birçok tartışma yaşanmıştır. Çoğunluğu Xylixian olan bir baronluk olan Sekket, aynı zamanda birçok kölelik karşıtı gruba da ev sahipliği yapar. Bunların en göze çarpanı, Zaladin Hanedanlığı genelinde birçok yeraltı operasyonu yürüten Sekket Şinobileri'dir. Sekket Şinobileri'nin operasyonları, iki ulus arasındaki zaten kötü olan ilişkileri daha da bozmuştur.	</p>
 	</details>
 	<br><br>
 </details>
 
 
 <details>
-	<summary><strong><span style="font-size:130%"> FACTIONS OF FAIENCE </span></strong></summary>
+	<summary><strong><span style="font-size:130%"> FAIENCE HİZİPLERİ </span></strong></summary>
 	<br>
-	<strong><span style="font-size:115%"> MAJOR POWERS </span></strong>
+	<strong><span style="font-size:115%"> BÜYÜK GÜÇLER </span></strong>
 	<br><br>
 	<details>
-		<summary><strong> KINGSFIELD EXPANSE </strong></summary>
+		<summary><strong> KINGSFIELD GENİŞLEMESİ </strong></summary>
 		<br>
-		<em>The Crown of Psydonia</em>
+		<em>Psydonia'nın Tacı</em>
 		<br><br>
-		Kingsfield spans along the Northwest of Faience, housing the cultural center of the world in its massive cities and impressive population. Unlike many of the other humen-majority populations, its inhabitants and history are defined by kindness rather than conquest. A certain demographic of Kingsfieldians are identifiable by their odd pronunciation of certain Imperial words and inclusion of 'eh?' after a comment or question. Species from all over the world would visit and establish themselves within these cities, including a non-insignificant population of dark elves before Zizo's conquest. They are, perhaps, the most tolerant of half-drow as a result- and as such are subject to mockery by the rest of Faience.
+		Kingsfield, devasa şehirleri ve etkileyici nüfusuyla dünyanın kültür merkezine ev sahipliği yaparak Faience'in Kuzeybatısı boyunca uzanır. Diğer humen çoğunluklu nüfusların aksine, sakinleri ve tarihi fetih yerine nezaketle tanımlanır. Kingsfieldlıların belirli bir demografisi, bazı İmparatorluk kelimelerini tuhaf telaffuz etmeleri ve bir yorum veya sorudan sonra 'ha?' (eh?) eklemeleriyle tanınabilir. Dünyanın dört bir yanından türler bu şehirleri ziyaret eder ve yerleşir; Zizo'nun fethinden önce kayda değer bir kara elf nüfusu da buna dahildi. Sonuç olarak, belki de yarı-drowlara karşı en hoşgörülü olanlardır - ve bu yüzden Faience'in geri kalanı tarafından alay konusu olurlar.
 		<br><br>
-		Kingsfield's prominence was built from tactical allyship and infrastructure development through industrialization. Through close cooperation with Heartfelt, Kingsfield railways span across the Western side of the entire continent, stretching from the tip of Kingsfield's tundras to the bottom of Vanderlin's peninsula. Kingsfield's population, notable in arts and culture worldwide, is of course largely Eoran and Xylixian in patronage; however, scholars of Noc account for a close third.
+		Kingsfield'ın önemi, sanayileşme yoluyla taktiksel müttefiklik ve altyapı geliştirmeyle inşa edilmiştir. Heartfelt ile yakın işbirliği sayesinde, Kingsfield demiryolları tüm kıtanın Batı yakası boyunca uzanır; Kingsfield tundralarının ucundan Vanderlin yarımadasının en altına kadar. Kingsfield nüfusu, sanat ve kültürde dünya çapında dikkat çeker, elbette büyük ölçüde Eoran ve Xylixian himayesindedir; ancak Noc alimleri yakın bir üçüncülükle onları takip eder.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> EMPIRE OF WINTERMARE </strong></summary>
+		<summary><strong> WINTERMARE İMPARATORLUĞU </strong></summary>
 		<br>
-		<em>Noc's Embraced, The Elven Empire, The Arcyne Tundra</em>
+		<em>Noc'un Kucakladığı, Elf İmparatorluğu, Arcyne Tundrası</em>
 		<br><br>
-		Wintermare is the largest elven power in Psydonia, often the only territory marked on humen maps. Unfortunately, most of its territory is covered in unusable Northern permafrost despite its size. Nevertheless Wintermare remains incredibly influential, with most of its Southern cities producing renown magicians and Noccian scholars. Kingsfieldian rail links along the Southern mountain ranges, providing vital resources to an otherwise tense border zone between the elven empire and Grenzelhoft below.
+		Wintermare, Psydonia'daki en büyük elf gücüdür ve genellikle humen haritalarında işaretlenen tek bölgedir. Ne yazık ki, büyüklüğüne rağmen topraklarının çoğu kullanılamaz Kuzey permafrostu (donmuş toprak) ile kaplıdır. Yine de Wintermare inanılmaz derecede etkili olmaya devam ediyor; Güney şehirlerinin çoğu ünlü büyücüler ve Noccian alimleri yetiştiriyor. Kingsfield demiryolları Güney sıradağları boyunca uzanarak, elf imparatorluğu ile aşağıdaki Grenzelhoft arasındaki gergin sınır bölgesine hayati kaynaklar sağlar.
 		<br><br>
-		Abandoned settlements and ghost towns along the border of Wintermare stand as graves and memorials to wars and genocides of the past. What populated locations remain are riddled with discarded and potentially active weapons of war. What don't... after Zizo's rise, no one goes there anymore.
+		Wintermare sınırı boyunca terk edilmiş yerleşim yerleri ve hayalet kasabalar, geçmişin savaşlarına ve soykırımlarına mezar ve anıt olarak durmaktadır. Geriye kalan nüfuslu yerler, atılmış ve potansiyel olarak aktif savaş silahlarıyla doludur. Olmayanlar ise... Zizo'nun yükselişinden sonra artık kimse oraya gitmiyor.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> GRENZELHOFT IMPIRATE </strong></summary>
+		<summary><strong> GRENZELHOFT İMPARATORLUĞU (IMPIRATE) </strong></summary>
 		<br>
-		<em>The Black Empire, The Empty Throne, Empire of the Trident</em>
+		<em>Kara İmparatorluk, Boş Taht, Üç Uçlu Mızrağın İmparatorluğu</em>
 		<br><br>
-		Grenzelhoft is an imperialist state carved across the Northeast of Faience through political upheaval and military action. They are known mainly for their striking cuisine, honourable, loyal mercenaries, and their overwhelming monopoly over black powder. Despite a largely humen-supremacist culture, dwarves are embraced and regarded as the friends and builders of Psydon's vision.
+		Grenzelhoft, siyasi çalkantılar ve askeri harekatlarla Faience'in Kuzeydoğusuna oyulmuş emperyalist bir devlettir. Esas olarak çarpıcı mutfakları, onurlu, sadık paralı askerleri ve kara barut üzerindeki ezici tekelleri ile tanınırlar. Büyük ölçüde humen üstünlükçü bir kültüre rağmen, cüceler kucaklanır ve Psydon'un vizyonunun dostları ve inşaatçıları olarak kabul edilir.
 		<br><br>
-		Grenzelhoftians proudly assimilate all humens who come under their heel into their Empire, integrating local and cultural identities into their fold before crushing them in favour of their own. Grenzelhoft bears the largest armies in the world and incredible military might, which come under vast scrutiny and disgust as they become increasingly desperate to upkeep their power. Their history is defined by crusades, elven genocide, and general aggression in the supposed name of Psydon and His return to the throne. Orthodox Psydonism is the dominant religion. Critics and pagans are persecuted.
+		Grenzelhoftlular, egemenlikleri altına giren tüm humenleri gururla İmparatorluklarına asimile eder, yerel ve kültürel kimlikleri kendi bünyelerine entegre eder ve sonra kendi lehlerine ezerler. Grenzelhoft, dünyanın en büyük ordularına ve inanılmaz bir askeri güce sahiptir; güçlerini korumak için giderek daha umutsuz hale geldikçe büyük bir inceleme ve iğrenme altına girerler. Tarihleri, sözde Psydon ve O'nun tahta dönüşü adına yapılan haçlı seferleri, elf soykırımı ve genel saldırganlıkla tanımlanır. Ortodoks Psydonizm hakim dindir. Eleştirmenler ve paganlar zulüm görür.
 		<br><br>
-		Their people cannot remember a time when the Empire was not at war, and many have served within its military forces to escape the intense poverty of its lower-class. A world-scale conflict between Grenzelhoft and its neighbours was narrowly avoided in the early 2100s by the rise of a new common enemy: Zizo. Grenzelhoft's forces, explosives, and firearms now supply the Eastern front with vital support under the explicit command of Grenzelhoft's cabal of sun-averse counts and countesses.
+		Halkları, İmparatorluğun savaşta olmadığı bir zamanı hatırlayamaz ve birçoğu alt sınıfın yoğun yoksulluğundan kaçmak için askeri güçlerinde hizmet etmiştir. 2100'lerin başında Grenzelhoft ve komşuları arasında dünya çapında bir çatışma, yeni bir ortak düşmanın yükselişiyle kıl payı önlendi: Zizo. Grenzelhoft'un güçleri, patlayıcıları ve ateşli silahları artık Grenzelhoft'un güneşe çıkmayan kont ve konteslerinden oluşan grubunun açık emri altında Doğu cephesine hayati destek sağlıyor.
 		<br><br>
 
 		<details>
-		<summary><strong> THE ORATORIUM THRONI VACUI </strong> </summary>
+		<summary><strong> ORATORIUM THRONI VACUI </strong> </summary>
 		<br><br>
-		The inquisition, formally known as the Oratorium Throni Vacui, is an order of Psydonite warriors, investigators, and faithful dedicated to cleansing the rot of the inhumen gods from Psydonia, and eventually ushering in the return of Psydon.
+		Resmi olarak Oratorium Throni Vacui olarak bilinen Engizisyon, Psydonia'yı humen olmayan tanrıların çürümesinden temizlemeye ve sonunda Psydon'un dönüşünü müjdelemeye adanmış Psydonite savaşçılar, araştırmacılar ve sadıklardan oluşan bir tarikattır.
 		<br><br>
-		It is divided into three major orders, the stealthy and clever Ordo Venatari, the knightly and honourable Ordo Benetarus, and the reclusive and devout Ordo Sanctae Cruoris. Their leaders are powerful and faithful in equal measure, and below them, operating in small teams, are the Inquisitors, the highest ranking of which are the Herrs Prefekt. Prospective inquisitors are known as Sacrestants, and often join a Prefekt in pairs or trios, competing in the Iter Maledictum for the right to become an inquisitor in full.
+		Üç ana tarikata ayrılır: gizli ve zeki Ordo Venatari, şövalye ruhlu ve onurlu Ordo Benetarus ve münzevi ve dindar Ordo Sanctae Cruoris. Liderleri hem güçlü hem de inançlıdır ve onların altında küçük ekipler halinde çalışan, en yüksek rütbelileri Herrs Prefekt olan Engizisyoncular bulunur. Müstakbel engizisyoncular Sacrestant olarak bilinir ve genellikle tam bir engizisyoncu olma hakkı için Iter Maledictum'da yarışan çiftler veya üçlüler halinde bir Prefekt'e katılırlar.
 		<br><br>
-		More on the Oratorium's divisions can be found on the wiki: https://wiki.monkestation.com/Oratorium_Throni_Vacui
+		Oratorium'un bölümleri hakkında daha fazla bilgi wikide bulunabilir: https://wiki.monkestation.com/Oratorium_Throni_Vacui
 		<br><br>
 		</details>
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> ZALADIN DYNASTY </strong></summary>
+		<summary><strong> ZALADIN HANEDANLIĞI </strong></summary>
 		<br>
-		<em>The Red Sands, Empire of the Dunes, Merchants of the Pasha</em>
+		<em>Kızıl Kumlar, Kumulların İmparatorluğu, Paşa'nın Tüccarları</em>
 		<br><br>
-		A grand-spanning, mercantilist empire which found prosperity and riches from spice export. Zaladin is home to some of the worlds greatest wonders, though the labourers who built them were directed by force and threats rather than passion. The dominant ideologies are Astratanism and Xylixianism. Xylixian freemen and Astratan order-keepers clash often in mortal representations of divine conflict. Zaladians have grown numb to the possibility of a civil war, and these skirmishes have simply become another aspect of daily life.
+		Baharat ihracatından refah ve zenginlik bulan, geniş kapsamlı, merkantilist bir imparatorluk. Zaladin dünyanın en büyük harikalarından bazılarına ev sahipliği yapar, ancak bunları inşa eden işçiler tutkudan ziyade zorla ve tehditlerle yönlendirilmiştir. Hakim ideolojiler Astratanizm ve Xylixianizmdir. Xylixian özgür adamları ve Astratan düzen koruyucuları, ilahi çatışmanın ölümlü temsillerinde sık sık çatışırlar. Zaladinliler iç savaş ihtimaline karşı hissizleşmiştir ve bu çatışmalar günlük hayatın bir başka parçası haline gelmiştir.
 		<br><br>
-		Zaladin was known as 'Zybantine' whilst under Grenzelhoftian occupation. It was a title forced upon them rather than chosen, and was violently rejected alongside the repellance of Grenzelhoft's Southern crusades by Zalad armies. In modern times, the term has become considered a grave and bigoted insult.
+		Zaladin, Grenzelhoft işgali altındayken 'Zybantine' olarak biliniyordu. Bu onlara seçtikleri değil, zorla verilen bir unvandı ve Grenzelhoft'un Güney haçlı seferlerinin Zalad orduları tarafından püskürtülmesiyle birlikte şiddetle reddedildi. Modern zamanlarda, bu terim ağır ve bağnaz bir hakaret olarak kabul edilir.
 		<br><br>
-		Within desperation after the failed conquest, Zaladin's dwindling forces turned to conscription of prisoners-of-war, the first of their slave-armies, forcefully enlisting many captured Grenzelhoftians. These troops are sent to support the front lines of allied Valorian states to the North against Zizo's armies in the Barrows. Regardless of origin, Zaladin's signature "Desert Riders" are a force to reckon- especially when mounted atop their twain-humped pegasi.
+		Başarısız fethin ardından çaresizlik içinde kalan Zaladin'in azalan güçleri, savaş esirlerini zorla askere almaya yöneldi; bu, ele geçirilen birçok Grenzelhoftlu'nun zorla askere alındığı köle ordularının ilkiydi. Bu birlikler, Zizo'nun Höyükler'deki ordularına karşı müttefik Valorian devletlerinin ön hatlarını desteklemeye gönderilir. Kökeni ne olursa olsun, Zaladin'in imza niteliğindeki "Çöl Süvarileri", özellikle iki hörgüçlü pegasuslarına bindiklerinde hesaba katılması gereken bir güçtür.
 		<br><br>
 	</details>
 
 
 	<br>
-	<strong><span style="font-size:115%"> MINOR POWERS </span></strong>
+	<strong><span style="font-size:115%"> KÜÇÜK GÜÇLER </span></strong>
 	<br><br>
 
 	<details>
 		<summary><strong> KALEDON </strong></summary>
 		<br>
-		<em> Too fast, too soon. </em>
+		<em> Çok hızlı, çok erken. </em>
 		<br><br>
-		<span style="display:block; color:#17181a"> Certainly not awaiting writing. You should definitely not poke Cocokailey to provide a description to the author of this primer, who is eagerly awaiting something to include. ^v^ </span>
-		<br><br>
-	</details>
-
-	<details>
-		<summary><strong> VALORIAN RUPUBLIAS </strong></summary>
-		<br>
-		<em> The Freestates, Vineyards of Valoria, The Lords of Coin </em>
-		<br><br>
-		Valoria is a land of constant strife, bickering city-states with a number of conflicting interests. Yet they bear some pride of their lands, banding together to repel the invading Grenzelhoft Empire out of shared desire for freedom. With conflict comes innovation; the Valorian lands developed pride in their revolution of blade combat strategy and stance. Largely followers of Ravox, they value honour and duels as an expression of status.
-		<br><br>
-		Valoria is renown for their alcohol exports and trade, seconding only Zaladin as most-sought goods.
-		<br><br>
-	</details>
-	<details>
-		<summary><strong> QUEENDOM OF LAKKARI </strong></summary>
-		<br>
-		<em> The Gilded Pschent of the South, The Scourge of the Psydonites, The Land of Tombs and Feathers </em>
-		<br><br>
-		Considered to be the second largest elven power and second elven territory to be (sometimes) marked on humen maps, Lakkari is an elven queendom known for its diverse and defensive landscape and intense devotion to Astrata, Necra, and Xylix. Lush tropical rainforests and vast rivers run through the western and northern reaches of the nation, while the east and south are defined by the red dunes of the Hemhem desert, rich in iron and speckled with oases. Even further south are the Veil of Colors. A long ridge of colorful mountains rich in ceruleabaster and gold that acts as a natural border from the Zaladin Dynasty.
-		<br><br>
-		Despite its richness in natural resources and trade, wealth disparity has plagued Lakkari for centuries; many join the church or military to escape poverty. It is only in recent yils that the current Kandake, Iteru of the Dunes, has started to address the issue through a series of reforms the nobility has found incredibly controversial.
-		<br><br>
-		Lakkari is known for being one of the few elven nations to have successfully resisted Grenzelhoftian imperialism. Although it lost some of its northernmost territories during the War of the Split Feather (2401-2412), the Lakkarians were able to fend off the forces of the Black Empire following their decisive victory in the battle of Mudridge with the assistance of their closest ally, the Valorian Republics. The surviving Grenzelhoftian soldiers of the battle were captured and sent to the Lakkarian capital of Iwabaree, where they were publicly executed.
-		<br><br>
-	</details>
-	<details>
-		<summary><strong> DWARVEN CONFEDERACY </strong></summary>
-		<br>
-		<em> The Great Throngs, The Braided Confederacy, Seven Hammers </em>
-		<br><br>
-		Located in the mountains of continents all over Psydonia. The political aspects stem from federations bearing unique dwarven clans, leaderships, industries, and cultures. The largest establishment is within the great mountain range to the Southeast of Zaladin's deserts. Dwarves and humen empires have established a long history of allyship. Whilst dwarves often choose neutrality in humen-on-humen conflict, a dwarven face is a trusted face to most humens.
+		<span style="display:block; color:#17181a"> Kesinlikle yazılmayı beklemiyor. Dahil edecek bir şeyler bekleyen bu rehberin yazarına bir açıklama yapması için Cocokailey'i kesinlikle dürtmemelisiniz. ^v^ </span>
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> ELVEN ENCLAVES </strong></summary>
+		<summary><strong> VALORIAN CUMHURİYETLERİ </strong></summary>
 		<br>
-		<em> Keepers of Psydonia, Retreats of the Ancient Age, Forgotten Guides of Death </em>
+		<em> Özgür Devletler, Valoria Üzüm Bağları, Sikke Lordları </em>
 		<br><br>
-		The declining population has led Elves to retreat to compact and isolated communities outside of Wintermare. They defend their remaining homes in natural wonders around Psydonia to the death and without mercy. Subdivided into distinct cultures such as Wood, Dark, Sand, Mountain, Sea, and countless more. Whilst once there lived a culture of snow elves, Zizo's ascension resulted in an all-but complete genocide of the tribe. Most elven settlements are not even recognized, much less their their territories represented within modern humen maps.
+		Valoria, bir dizi çatışan çıkara sahip, sürekli didişen şehir devletlerinden oluşan bir karmaşa diyarıdır. Yine de topraklarıyla bir miktar gurur duyarlar ve ortak özgürlük arzusuyla işgalci Grenzelhoft İmparatorluğu'nu püskürtmek için bir araya gelirler. Çatışma yenilik getirir; Valorian toprakları, kılıçlı dövüş stratejisi ve duruşundaki devrimleriyle gurur duyar. Büyük ölçüde Ravox takipçisi olarak, onura ve statünün bir ifadesi olarak düellolara değer verirler.
+		<br><br>
+		Valoria, alkol ihracatı ve ticaretiyle ünlüdür ve en çok aranan mallar konusunda Zaladin'den sonra ikinci sıradadır.
+		<br><br>
+	</details>
+	<details>
+		<summary><strong> LAKKARI KRALİÇELİĞİ </strong></summary>
+		<br>
+		<em> Güney'in Yaldızlı Pschent'i (Tac), Psydonitlerin Belası, Mezarlar ve Tüyler Diyarı </em>
+		<br><br>
+		En büyük ikinci elf gücü ve humen haritalarında (bazen) işaretlenen ikinci elf bölgesi olarak kabul edilen Lakkari, çeşitli ve savunmacı manzarası ve Astrata, Necra ve Xylix'e olan yoğun bağlılığıyla bilinen bir elf kraliçeliğidir. Yemyeşil tropikal yağmur ormanları ve devasa nehirler ulusun batı ve kuzey kısımlarından geçerken, doğu ve güneyi demir açısından zengin ve vahalarla bezeli Hemhem çölünün kızıl kumullarıyla tanımlanır. Daha da güneyde Renkler Perdesi bulunur. Zaladin Hanedanlığı'ndan doğal bir sınır görevi gören, seruleabaster ve altın açısından zengin uzun bir renkli dağ sırtı.
+		<br><br>
+		Doğal kaynaklar ve ticaretteki zenginliğine rağmen, servet eşitsizliği yüzyıllardır Lakkari'yi rahatsız etmektedir; birçoğu yoksulluktan kaçmak için kiliseye veya orduya katılır. Mevcut Kandake (Kraliçe), Kumulların Iteru'su, soyluların inanılmaz derecede tartışmalı bulduğu bir dizi reformla sorunu ancak son yıllarda ele almaya başlamıştır.
+		<br><br>
+		Lakkari, Grenzelhoft emperyalizmine başarıyla direnen birkaç elf ulusundan biri olmasıyla bilinir. Kırık Tüy Savaşı (2401-2412) sırasında en kuzeydeki topraklarının bir kısmını kaybetmesine rağmen, Lakkari'liler en yakın müttefikleri Valorian Cumhuriyetleri'nin yardımıyla Mudridge savaşındaki kesin zaferlerinin ardından Kara İmparatorluk güçlerini püskürtmeyi başardılar. Savaşta hayatta kalan Grenzelhoft askerleri yakalandı ve Lakkari başkenti Iwabaree'ye gönderildi, burada halka açık bir şekilde idam edildiler.
+		<br><br>
+	</details>
+	<details>
+		<summary><strong> CÜCE KONFEDERASYONU </strong></summary>
+		<br>
+		<em> Büyük Kalabalıklar, Örgülü Konfederasyon, Yedi Çekiç </em>
+		<br><br>
+		Psydonia'nın her yerindeki kıtaların dağlarında bulunurlar. Siyasi yönleri, benzersiz cüce klanları, liderlikleri, endüstrileri ve kültürleri taşıyan federasyonlardan kaynaklanır. En büyük yerleşim, Zaladin çöllerinin Güneydoğusundaki büyük sıradağlardadır. Cüceler ve humen imparatorlukları köklü bir müttefiklik geçmişine sahiptir. Cüceler humenler arası çatışmalarda genellikle tarafsızlığı seçseler de, bir cüce yüzü çoğu humen için güvenilir bir yüzdür.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> ORC & GOBLIN THRONES  </strong></summary>
+		<summary><strong> ELF YERLEŞİMLERİ (ENCLAVES) </strong></summary>
 		<br>
-		<em> Crusaders of Graggar, Graggarspawn, Heirs of Psydonia  </em>
+		<em> Psydonia'nın Koruyucuları, Kadim Çağın İnziva Yerleri, Unutulmuş Ölüm Rehberleri </em>
 		<br><br>
-		Spontaneous fortresses and towns of Crimsonland origin, established via nomadic means. These encampments take advantage of natural resources and nearby settlements to raid, conquer, consume, and then move on to more promising targets. They are ever-moving hordes of gluttony and rage which constantly follow a pattern of great loss followed by a steady regrowth. Most of these forces are still recovering from the most recent Goblin War.
+		Azalan nüfus, Elflerin Wintermare dışındaki kompakt ve izole topluluklara çekilmesine neden oldu. Psydonia çevresindeki doğa harikalarında kalan evlerini ölümüne ve merhametsizce savunurlar. Orman, Kara, Kum, Dağ, Deniz ve sayısız başka kültür gibi farklı kültürlere bölünmüşlerdir. Bir zamanlar kar elfleri kültürü yaşarken, Zizo'nun yükselişi kabilenin neredeyse tamamen soykırıma uğramasıyla sonuçlandı. Çoğu elf yerleşimi tanınmaz, modern humen haritalarında bölgeleri temsil edilmez.
 		<br><br>
-		A misogynistic and self-destructive culture to its extreme, scholars report that several terms of language have been developed just to describe masculinity. Any sane individual loses focus after an orc rambles about &Sigma;-class masculinity or whatever newest scam Graggarspawn have begun pushing. Records are sparse as a result.
+	</details>
+
+	<details>
+		<summary><strong> ORK & GOBLIN TAHTLARI  </strong></summary>
+		<br>
+		<em> Graggar Haçlıları, Graggardölleri, Psydonia'nın Varisleri  </em>
+		<br><br>
+		Göçebe yollarla kurulan, Kızıl Topraklar kökenli spontane kaleler ve kasabalar. Bu kamplar, doğal kaynaklardan ve yakındaki yerleşim yerlerinden yararlanarak yağmalar, fetheder, tüketir ve ardından daha umut verici hedeflere doğru ilerler. Sürekli büyük kayıpları ve ardından istikrarlı bir yeniden büyümeyi takip eden, sürekli hareket halindeki oburluk ve öfke ordularıdır. Bu güçlerin çoğu hala en son Goblin Savaşı'ndan sonra toparlanmaktadır.
+		<br><br>
+		Aşırı derecede kadın düşmanı ve kendine zarar veren bir kültürdür; akademisyenler sadece erkekliği tanımlamak için birkaç dil terimi geliştirildiğini bildirmektedir. Aklı başında herhangi bir birey, bir ork &Sigma;-sınıfı erkeklik veya Graggardölleri'nin zorladığı en yeni saçmalık hakkında saçmalamaya başladığında odağını kaybeder. Sonuç olarak kayıtlar seyrektir.
 		<br><br>
 	</details>
 	<br><br>
@@ -237,267 +237,267 @@ While it's not required reading, leadership roles may find this information usef
 
 
 <details>
-	<summary><strong><span style="font-size:130%"> MYTHOS OF PSYDONIA </span></strong></summary>
+	<summary><strong><span style="font-size:130%"> PSYDONIA MİTOLOJİSİ </span></strong></summary>
 	<br>
-	<strong><span style="font-size:115%"> THE OLD GOD </span></strong>
+	<strong><span style="font-size:115%"> ESKİ TANRI </span></strong>
 	<br>
-	<em> The only good god is dead. He holds our rightful worship. </em>
+	<em> Tek iyi tanrı ölüdür. Haklı tapınmamızı o hak ediyor. </em>
 	<br><br>
 	<details>
-		<summary><strong> Orthodox Psydonism </strong></summary>
+		<summary><strong> Ortodoks Psydonizm </strong></summary>
 		<br>
-		The overwhelming majority of Grenzelhoft's church of Psydon. Orthodox Psydonites believe that Psydon lives still, though divided into nine pieces. They are intent to tear down The Ten so that the true God may reform, however long it takes. They hold a deep hatred towards Necra for her butchery and betrayal of Psydon.
+		Grenzelhoft'un Psydon kilisesinin ezici çoğunluğu. Ortodoks Psydonitler, Psydon'un dokuz parçaya bölünmüş olsa da hala yaşadığına inanırlar. Gerçek Tanrı'nın yeniden bir araya gelebilmesi için, ne kadar sürerse sürsün, Onlar'ı (The Ten) yıkmaya niyetlidirler. Kasaplığı ve Psydon'a ihaneti nedeniyle Necra'ya derin bir nefret beslerler.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Extremist Psydonism </strong></summary>
+		<summary><strong> Aşırılıkçı Psydonizm </strong></summary>
 		<br>
-		A small splinter of Orthodox Psydonism, believing the nine pieces are lies and propaganda, and that Psydon lives still.
+		Ortodoks Psydonizm'in küçük bir kıymığı; dokuz parçanın yalan ve propaganda olduğuna ve Psydon'un hala yaşadığına inanırlar.
 		<br><br>
 	</details>
 
 	<hr>
-	<strong><span style="font-size:115%"> THE DIVINE PANTHEON </span></strong>
+	<strong><span style="font-size:115%"> İLAHİ PANTHEON </span></strong>
 	<br>
-	<em> The time of Psydon has passed, The Ten are righteous. Necra leads us to salvation. </em>
+	<em> Psydon'un zamanı geçti, Onlar (The Ten) haklıdır. Necra bizi kurtuluşa götürür. </em>
 	<br><br>
 
 	<details>
 		<summary><strong> Astrata </strong></summary>
 		<br>
-		<b><span style="display:block; color:#e5d569; font-size:130%"> "THY DEVOTION IS NO MERE SUGGESTION. I DEMAND IT." </span></b>
+		<b><span style="display:block; color:#e5d569; font-size:130%"> "SADAKATİN BİR ÖNERİ DEĞİL. ONU EMREDİYORUM." </span></b>
 		<br>
-		<em>The Sun Queen, The Tyrant of The Ten.</em>
+		<em>Güneş Kraliçesi, Onlar'ın Tiranı.</em>
 		<br><br>
-		Goddess of light and fire. Her domain encompasses the sun, healing, and most importantly the revival of the dead. She was crafted from the head of Psydon.
+		Işık ve ateş tanrıçası. Alanı güneşi, şifayı ve en önemlisi ölülerin dirilişini kapsar. Psydon'un başından yaratılmıştır.
 		<br><br>
-		Astrata leads The Ten with an iron fist.  She demands obedience and respect as she leads both the mortal and divine worlds through calamity after calamity. As time passes, her grip only gets tighter and her patience for heresy thinner. She simply cannot spare her focus. Since the 2430s, she fills the cycles of darkness with periodic flares to light the nite.
+		Astrata, Onlar'ı demir yumrukla yönetir. Hem ölümlü hem de ilahi dünyaları felaket ardına felaketle yönetirken itaat ve saygı talep eder. Zaman geçtikçe pençesi sıkılaşıyor ve sapkınlığa sabrı azalıyor. Odağını başka yere ayıramaz. 2430'lardan beri, karanlık döngülerini geceyi aydınlatmak için periyodik parlamalarla dolduruyor.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Noc </strong></summary>
 		<br>
-		<i><span style="display:block; color:#82a1d9; font-size:120%">"Dreams are thy gateway to wisdom, if thou art worthy." </span></i>
+		<i><span style="display:block; color:#82a1d9; font-size:120%">"Rüyalar, eğer layıksan bilgeliğe açılan kapındır." </span></i>
 		<br>
-		<em>The Moon Prince, The Keeper of Magick.</em>
+		<em>Ay Prensi, Büyünün Bekçisi.</em>
 		<br>
-		God of knowledge and magick. His domain encompasses the moon, study, record-keeping, and self-improvement. He was crafted from the silver helm of Psydon.
+		Bilgi ve büyü tanrısı. Alanı ayı, çalışmayı, kayıt tutmayı ve kişisel gelişimi kapsar. Psydon'un gümüş miğferinden yaratılmıştır.
 		<br><br>
-		Noc guides scholars, often nobles, through life dedication in order to master the ways of arcyne magick. Since the ascension of Zizo, he has only grown more strict with who are worthy of practicing this gift. He is known to wear the most fabulous of dresses.
+		Noc, arcyne büyüsünün yollarında ustalaşmaları için alimlere, genellikle soylulara, ömür boyu süren bir adanmışlıkla rehberlik eder. Zizo'nun yükselişinden bu yana, bu hediyeyi uygulamaya kimin layık olduğu konusunda daha katı hale geldi. En şahane elbiseleri giymesiyle tanınır.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Abyssor </strong></summary>
 		<br>
-		<span style="display:block; color:#8b2d39; font-size:120%"> "Don't be fishin' deeper than ye can catch." </span>
+		<span style="display:block; color:#8b2d39; font-size:120%"> "Tutabileceğinden daha derinlerde balık avlama." </span>
 		<br>
-		God of the sea and storms. His domain encompasses all within the oceans, water, and blood. He defends the natural world alongside his brother, Dendor. Abyssor was crafted from the drained blood of Psydon.
+		Deniz ve fırtına tanrısı. Alanı okyanuslardaki her şeyi, suyu ve kanı kapsar. Kardeşi Dendor ile birlikte doğal dünyayı savunur. Abyssor, Psydon'un akan kanından yaratılmıştır.
 		<br><br>
-		With the destruction of the natural world, both brothers of nature were driven mad. While Dendor was struck with insanity, Abyssor encompasses the rage of the sea. Woe be to any who offend him.
+		Doğal dünyanın yok edilmesiyle her iki doğa kardeşi de delirdi. Dendor deliliğe kapılırken, Abyssor denizin öfkesini kapsar. Onu gücendiren herkesin vay haline.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Dendor </strong></summary>
 		<br>
-		<span style="display:block; color:#74875a; font-size:120%"> "Prophecy? Eh... what prophecy? Madness? Drivel? Nonsense, the lot of it!" </span>
+		<span style="display:block; color:#74875a; font-size:120%"> "Kehanet mi? Eh... ne kehaneti? Delilik? Zırva? Saçmalık, hepsi!" </span>
 		<br>
-		God of nature and beasts.  His domain encompasses the wilds on the surface, and all flora and fauna within. He does not claim any Subterran life due to its hellish corruption. Dendor was crafted from the bones of Psydon.
+		Doğa ve hayvanlar tanrısı. Alanı yüzeydeki vahşi doğayı ve içindeki tüm flora ve faunayı kapsar. Cehennemi yozlaşması nedeniyle hiçbir Subterra yaşamını sahiplenmez. Dendor, Psydon'un kemiklerinden yaratılmıştır.
 		<br><br>
-		Fallen to insanity from the world industrialization and natural decimation. His followers struggle to find meaning in his words, to commune with the growing hostility seen within the previously-pristine glades and woods. He holds a deep resentment towards Malum, and his part in the aforementioned devastation.
+		Dünyanın sanayileşmesi ve doğal kıyımı nedeniyle deliliğe düşmüştür. Takipçileri onun sözlerinde anlam bulmakta, daha önce tertemiz olan açıklıklarda ve ormanlarda artan düşmanlıkla iletişim kurmakta zorlanırlar. Malum'a ve bahsedilen yıkımdaki payına derin bir kin besler.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Ravox </strong></summary>
 		<br>
-		<span style="display:block; color:#774b44; font-size:120%"> "It's a rough world out there, kid. Keep safe. Stay holy." </span>
+		<span style="display:block; color:#774b44; font-size:120%"> "Dışarısı zorlu bir dünya evlat. Güvende kal. Kutsal kal." </span>
 		<br>
-		God of warfare, and justice. His domain encompasses righteous combat and bravery. He retreated to the underworld, reshaping it alongside Necra to include trials of combat and strife. He was crafted from the still-bloodied greatsword of Psydon.
+		Savaş ve adalet tanrısı. Alanı haklı savaşı ve cesareti kapsar. Yeraltı dünyasına çekilmiş, onu Necra ile birlikte savaş ve çekişme sınavlarını içerecek şekilde yeniden şekillendirmiştir. Psydon'un hala kanlı olan büyük kılıcından yaratılmıştır.
 		<br><br>
-		Sullen and withdrawn, Ravox struggles to keep his followers away from Graggarism. As he has discovered, even remaining alive is not enough to avoid his words and domain twisted into heresy. Ravoxians often argue that their ideology lies closest to Psydon's own ways, though few if any remember to a degree of certainty.
+		Asık suratlı ve içine kapanık olan Ravox, takipçilerini Graggarizm'den uzak tutmakta zorlanır. Keşfettiği gibi, hayatta kalmak bile sözlerinin ve alanının sapkınlığa dönüşmesini engellemek için yeterli değildir. Ravoxianlar genellikle ideolojilerinin Psydon'un kendi yollarına en yakın olduğunu savunurlar, ancak çok azı bunu kesin bir derecede hatırlar.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Malum</strong></summary>
 		<br>
-		<b><span style="display:block; color:#d39459; font-size:120%"> "Hammer with PURPOSE. Strike the STONE!" </span></b>
+		<b><span style="display:block; color:#d39459; font-size:120%"> "AMAÇLA çekiçle. TAŞA vur!" </span></b>
 		<br>
-		God of craft, forge, and toil. His domain encompasses architecture, mining, and sculpting. He considers the dwarven species his chosen, proudly supporting and guiding their technological improvements. He was crafted from the hands of Psydon.
+		Zanaat, demirhane ve emek tanrısı. Alanı mimariyi, madenciliği ve heykelciliği kapsar. Cüce türünü seçilmişleri olarak görür, teknolojik gelişmelerini gururla destekler ve yönlendirir. Psydon'un ellerinden yaratılmıştır.
 		<br><br>
-		Almost equally defined by conflict as much as creation, Malum and Dendor's rivalry spans millennia. Their bickering is reflected in the mortal planes through elven and dwarven skirmishes.
+		Neredeyse yaratım kadar çatışmayla da tanımlanan Malum ve Dendor'un rekabeti binlerce yıl öncesine dayanır. Atışmaları, elf ve cüce çatışmalarıyla ölümlü düzlemlere yansır.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Eora </strong></summary>
 		<br>
-		<span style="display:block; color:#e4bae6; font-size:115%"> "I will always love you, sweetheart. Regardless of the ne'er-do-wells you associate with."</span>
+		<span style="display:block; color:#e4bae6; font-size:115%"> "Seni her zaman seveceğim tatlım. İlişki kurduğun o hayırsızlara rağmen."</span>
 		<br>
-		Goddess of love, family, and art. Her domain encompasses marriage, painting, singing, and literature- especially romance. She is considered the backbone of The Ten, barely able to keep them together and officially allied. She was crafted from the heart of Psydon.
+		Aşk, aile ve sanat tanrıçası. Alanı evliliği, resmi, şarkı söylemeyi ve edebiyatı - özellikle romantizmi - kapsar. Onlar'ın belkemiği olarak kabul edilir, onları zar zor bir arada ve resmen müttefik tutar. Psydon'un kalbinden yaratılmıştır.
 		<br><br>
-		Despite Astrata's overt support for same-sex couples, Eora remains begrudging at best. Some theorize it is hatred, some theorize jealousy. Regardless, her failed seduction of Pestra early in their history and the Great Insult exchanged has left a lasting effect on the so-called goddess of love.
+		Astrata'nın eşcinsel çiftlere açık desteğine rağmen, Eora en iyi ihtimalle gönülsüz kalır. Bazıları bunun nefret, bazıları kıskançlık olduğunu teorize eder. Ne olursa olsun, tarihlerinin başlarında Pestra'yı baştan çıkarma girişiminin başarısızlığı ve edilen Büyük Hakaret, sözde aşk tanrıçası üzerinde kalıcı bir etki bırakmıştır.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Xylix </strong></summary>
 		<br>
-		<i><span style="display:block; color:#dfe6ba; font-size:120%"> "Please, darling. The world aaaalways needs more DRAMA!"</span></i>
+		<i><span style="display:block; color:#dfe6ba; font-size:120%"> "Lütfen tatlım. Dünyanın heeeer zaman daha fazla DRAMAYA ihtiyacı var!"</span></i>
 		<br>
-		Diety of trickery, freedom, and inspiration. Their domain encompasses friendly pranks, barding, theatre, and performance. Known widely to be genderless, as they see such concepts only as masks to play a role. They were crafted from the tongue of Psydon.
+		Hile, özgürlük ve ilham ilahı. Alanları dostça şakaları, ozanlığı, tiyatroyu ve performansı kapsar. Cinsiyetsiz oldukları yaygın olarak bilinir, çünkü bu tür kavramları sadece rol yapmak için maskeler olarak görürler. Psydon'un dilinden yaratılmışlardır.
 		<br><br>
-		Of all The Ten, Xylix is considered the most 'problem child.' Whether spats with Astrata over freedom, or making trouble for its own sake, they're something of an outcast from the orderly nature of the rest- and they are perfectly content with their position. For Xylixians, a boring life is not one worth living.
+		Onlar arasında Xylix en 'sorunlu çocuk' olarak kabul edilir. İster özgürlük konusunda Astrata ile atışmaları, ister sadece sorun çıkarmak için sorun çıkarmaları olsun, diğerlerinin düzenli doğasından biraz dışlanmışlardır - ve konumlarından gayet memnundurlar. Xylixianlar için sıkıcı bir hayat yaşamaya değmez.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Pestra </strong></summary>
 		<br>
-		<b><span style="display:block; color:#8aa01c; font-size:120%"> "What you see- loss? Imperfection? Illness? No. It is all just the changing cycles of the world. Strive to understand, fool." </span></b>
+		<b><span style="display:block; color:#8aa01c; font-size:120%"> "Gördüğün şey ne - kayıp mı? Kusur mu? Hastalık mı? Hayır. Hepsi dünyanın değişen döngüleridir. Anlamaya çalış, aptal." </span></b>
 		<br>
-		Goddess of disease, alchemy, and medicine. Her domain encompasses all cycles of change; from rot and decay to refinement and transformation. The domain of alchemy is a subject of dispute between Pestra and Noc frustratingly often for her taste, but she retains firm hold. She was a mistake, slithering out of Psydon's intestines left behind.
+		Hastalık, simya ve tıp tanrıçası. Alanı tüm değişim döngülerini kapsar; çürüme ve bozulmadan arıtma ve dönüşüme kadar. Simya alanı Pestra ve Noc arasında onun zevkine göre sinir bozucu derecede sık bir anlaşmazlık konusudur, ancak sıkı bir şekilde tutunur. O bir hataydı, Psydon'un geride kalan bağırsaklarından süzüldü.
 		<br><br>
-		Despite closeness with Astrata, Pestra remains something of an outcast amongst The Ten due to her accidental origin. Her Great Insult of rebuffal towards Eora only further damaged ties, though Pestra thrives in her isolation. To her, it's simply less chains restraining experimentation.
+		Astrata ile yakınlığına rağmen, Pestra kazara kökeni nedeniyle Onlar arasında bir dışlanmış olarak kalır. Eora'ya karşı Büyük Hakaret reddi bağları daha da zedeledi, ancak Pestra yalnızlığında gelişir. Ona göre, bu sadece deneyleri kısıtlayan daha az zincir demektir.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Necra </strong></summary>
 		<br>
-		<i><span style="display:block; color:#5a53d5; font-size:125%"> "Allow me serenity for once, child. A brief respite. Calamity surely strikes again soon..." </span></i>
+		<i><span style="display:block; color:#5a53d5; font-size:125%"> "Bana bir kez olsun sükunet ver çocuk. Kısa bir mola. Felaket şüphesiz yakında yine vuracak..." </span></i>
 		<br>
-		Goddess of death and time. Once a close partner to Psydon. She was the first mortal, the first to die, and the second to achieve godhood. Her domain encompasses passing spirits, the underworld, and the cycle of reincarnation. She created the other Nine from her butchery of Psydon.
+		Ölüm ve zaman tanrıçası. Bir zamanlar Psydon'un yakın ortağıydı. İlk ölümlü, ölen ilk kişi ve tanrılığa ulaşan ikinci kişiydi. Alanı geçen ruhları, yeraltı dünyasını ve reenkarnasyon döngüsünü kapsar. Diğer Dokuz'u Psydon'u parçalayarak yarattı.
 		<br><br>
-		Necra is most controversial amongst The Ten. She is reviled for her butchery and perceived betrayal of Psydon by those faithful to Him, yet is defended by Tennites across the land claiming she acted out of necessity. The exact circumstances of Psydon's death are unclear, but Necra is surely responsible- and she makes no effort to hide it.
+		Necra, Onlar arasında en tartışmalı olandır. O'na sadık olanlar tarafından kasaplığı ve Psydon'a algılanan ihaneti nedeniyle hor görülür, ancak diyarın dört bir yanındaki Onlar (Tennite) takipçileri onun gereklilikten hareket ettiğini iddia ederek onu savunur. Psydon'un ölümünün tam koşulları belirsizdir, ancak Necra kesinlikle sorumludur - ve bunu gizlemek için hiçbir çaba sarf etmez.
 		<br><br>
 	</details>
 
 	<hr>
-	<strong><span style="font-size:115%"> THE INHUMEN PANTHEON </span></strong>
+	<strong><span style="font-size:115%"> HUMEN OLMAYAN PANTHEON </span></strong>
 	<br>
-	<em> Mortals hold a right to divinity. We follow the new way. </em>
+	<em> Ölümlülerin tanrılık hakkı vardır. Biz yeni yolu izliyoruz. </em>
 	<br><br>
 
 	<details>
 		<summary><strong> Matthios </strong></summary>
 		<br>
-		<span style="display:block; color:#17181a; font-size:120%"> "What I say is nonya business, asshole." </span>
+		<span style="display:block; color:#17181a; font-size:120%"> "Ne söylediğim seni ilgilendirmez, pislik." </span>
 		<br>
-		God of thievery, ill-gotten gains, and highwaymen. A figure shrouded in mystery. While assumed to once have been humen, there are no records of his appearance. His very feats were spread by word-of-mouth and rumour, with little ties to any tangible figure. He was the first of The Four to ascend.
+		Hırsızlık, haksız kazanç ve haydutların tanrısı. Gizemle örtülü bir figür. Bir zamanlar humen olduğu varsayılsa da, görünüşüne dair hiçbir kayıt yoktur. Becerileri kulaktan kulağa ve söylenti yoluyla yayıldı, herhangi bir somut figürle çok az bağı vardı. Yükselen Dörtlü'nün ilkiydi.
 		<br><br>
-		Matthios is used as a figurehead by bandits and oppressed peasants alike. While his exact beliefs are unknown, his hatred for nobility specifically is apparent. He would quench his insatiable greed with their coffers over most others. He is hailed as a figure of rebellion, of freedom similar to Xylix who resonates with those who've felt abandoned by The Ten.
+		Matthios, haydutlar ve ezilen köylüler tarafından bir figüran olarak kullanılır. Kesin inançları bilinmemekle birlikte, özellikle soylulara olan nefreti açıktır. Doymak bilmez açgözlülüğünü diğerlerinden ziyade onların kasalarıyla giderirdi. O, Onlar tarafından terk edilmiş hissedenlerle rezonansa giren Xylix'e benzer bir isyan ve özgürlük figürü olarak selamlanır.
 		<br><br>
-		Upon his ascension, an otherworldly tomb's entrances began appearing around the world. The Tomb of Matthios promised riches, rewards, but equal danger. Most who enter only manage to join his collection, or fall victim to the roaming bands of orcs and goblins within.
+		Yükselişi üzerine, dünyanın dört bir yanında öteki dünyaya ait bir mezarın girişleri belirmeye başladı. Matthios'un Mezarı zenginlikler, ödüller ama eşit derecede tehlike vaat ediyordu. İçeri girenlerin çoğu ya sadece onun koleksiyonuna katılır ya da içeride dolaşan ork ve goblin çetelerinin kurbanı olur.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Baotha </strong></summary>
 		<br>
-		<i><span style="display:block; color:#88528d; font-size:110%"> "RrResign yourself to decadence, my ssweet. It es the only escape in thees rrancid world. I'm here for you, when no-one else es." </span></i>
+		<i><span style="display:block; color:#88528d; font-size:110%"> "Kendini sefahate bırrrrak tatlım. Bu kokuşmuş dünyadaki tek kaçış bu. Kimse yanında yokken ben yanındayım." </span></i>
 		<br>
-		Goddess of drugs, self-preservation, and remorseless Joy. The first tiefling; an 'exotic' consort-turned-regent whose self-indulgence sent her once-thriving kingdom careening into ruin. She preaches "Joy at all costs!" to her followers. She was the second of The Four to ascend.
+		Uyuşturucu, kendini koruma ve pişmanlık duymayan Neşe tanrıçası. İlk tiefling; keyfine düşkünlüğü bir zamanlar gelişen krallığını yıkıma sürükleyen 'egzotik' bir eş-kraliçe. Takipçilerine "Ne pahasına olursa olsun Neşe!" vaaz eder. Yükselen Dörtlü'nün ikincisiydi.
 		<br><br>
-		A Baothan follower is unmistakable. Brightly-dyed hair to make Eora weep, ridiculous slang to make listeners' ears bleed, a taste in music that's out-of-this-world, and sobriety, of course, a foreign concept. The status quo exists to be subverted. Only through rebellious joy is this failing world worth living... there's no use trying to save it.
+		Bir Baotha takipçisi hemen tanınır. Eora'yı ağlatacak kadar parlak boyalı saçlar, dinleyicilerin kulaklarını kanatacak kadar saçma argo, dünya dışı bir müzik zevki ve elbette ayıklık yabancı bir kavramdır. Statüko yıkılmak için vardır. Sadece isyankar neşe sayesinde bu başarısız dünya yaşamaya değerdir... onu kurtarmaya çalışmanın bir yararı yok.
 		<br><br>
-		Baotha's ascension marked the spread of her kind, tieflings, across Psydonia. The anomaly became a species all at once, in an event known as The Hellspawn Scourge. Her voice began to whisper in the ears of drunkards, addicts, and the hopeless- preaching not a better future, but a bliss to distract oneself from it.
+		Baotha'nın yükselişi, kendi türü olan tieflinglerin Psydonia'ya yayılmasını işaret etti. Anomali, Cehennemdölü Belası olarak bilinen bir olayda bir anda bir türe dönüştü. Sesi sarhoşların, bağımlıların ve umutsuzların kulaklarına fısıldamaya başladı - daha iyi bir gelecek değil, ondan uzaklaşmak için bir mutluluk vaaz ediyordu.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Graggar </strong></summary>
 		<br>
-		<b><span style="display:block; color:#2a7b32; font-size:125%"> "FEAST ON THEIR FLESH. REVEL IN MURDER." </span></b>
+		<b><span style="display:block; color:#2a7b32; font-size:125%"> "ETLERİYLE ZİYAFET ÇEKİN. CİNAYETLE EĞLENİN." </span></b>
 		<br>
-		God of unnatural beasts, unsated consumption, and unbridled hatred. Known as the Dark Sini-Star to faithful and foes alike. The first orc, a warlord notorious for consuming fallen opponents in ritualistic feasting. He was the third of The Four to ascend.
+		Doğal olmayan canavarların, doymak bilmez tüketimin ve dizginlenemez nefretin tanrısı. Hem sadıklar hem de düşmanlar tarafından Karanlık Sini-Star olarak bilinir. Düşen rakiplerini ritüelistik ziyafetlerde tüketmesiyle ünlü bir savaş lordu olan ilk ork. Yükselen Dörtlü'nün üçüncüsüydü.
 		<br><br>
-		Followers of Graggar put women in their place. Graggarism is a culture built on strength, misogyny, and glee in the destruction or corruption of what exists. It's an addictive, never-ending hunger of flesh, gorging until one's skin turns green and they sprout tusks. Resist the cravings as long as you can, fool. They consume all.
+		Graggar'ın takipçileri kadınlara hadlerini bildirir. Graggarizm güç, kadın düşmanlığı ve var olanın yok edilmesinden veya yozlaştırılmasından duyulan neşe üzerine kurulu bir kültürdür. Bu, kişinin derisi yeşile dönene ve dişleri çıkana kadar tıka basa yediği, bağımlılık yapan, hiç bitmeyen bir et açlığıdır. Yapabildiğin kadar arzulara diren, aptal. Onlar her şeyi tüketir.
 		<br><br>
-		Eora took pity upon Graggar as he ascended, extending some of her own divinity in attempt to heal the man she foolishly thought she could 'fix.' Graggar was gracious, of course, as he crafted with this sliver hordes of goblins and outlandish monsters to terrorize Psydonia for eternity onwards. He cackles about her naivety to this day.
+		Eora, Graggar yükselirken ona acıdı ve eski ve yeni panteonlar arasındaki gerilimi azaltma umuduyla kendi tanrısallığından bir parça uzattı, 'düzeltebileceğini' aptalca düşündüğü adama. Graggar elbette lütufkardı, çünkü bu parçayla sonsuza dek Psydonia'yı terörize etmek için goblin sürüleri ve tuhaf canavarlar yarattı. Bugüne kadar onun saflığına kıkırdar.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Zizo </strong></summary>
 		<br>
-		<i><span style="display:block; color:#791f3f; font-size:125%"> "It is only a matter of time before this order falls. Will you choose the rright side?" </span></i>
+		<i><span style="display:block; color:#791f3f; font-size:125%"> "Bu düzenin düşmesi an meselesi. Doğru tarafı seçecek misin?" </span></i>
 		<br>
-		Goddess of forbidden magicks, domination, and power. A snow-elven lich who achieved godhood through the sacrifice of her entire people. She conquered the dark elven empire, reshaping it violently into the evil it stands today. She was the final mortal to ascend... for now.
+		Yasak büyüler, tahakküm ve güç tanrıçası. Tüm halkını kurban ederek tanrılığa ulaşan bir kar elfi lich (ölümsüz büyücü). Kara elf imparatorluğunu fethetti ve bugün olduğu gibi şiddetle kötülüğe dönüştürdü. Yükselen son ölümlüydü... şimdilik.
 		<br><br>
-		Followers of Zizo put men in their place. Zizonic culture is a misandristic terror of back-stabbing and plots in the shadows. None are safe from betrayal in order to secure a position to serve The Queen. Avid practitioners of fleshcrafting and subverters of Noc's Arcyne, Zizonians believe that magick should be available to all with the drive to stand up and <em>take it.</em>
+		Zizo'nun takipçileri erkeklere hadlerini bildirir. Zizonik kültür, gölgelerde arkadan bıçaklama ve komplolarla dolu, erkek düşmanı bir terördür. Kraliçe'ye hizmet edecek bir pozisyonu güvence altına almak için hiç kimse ihanetten güvende değildir. Et işlemeciliğinin (fleshcrafting) hevesli uygulayıcıları ve Noc'un Arcyne'inin yıkıcıları olan Zizonianlar, büyünün ayağa kalkıp onu *almaya* cesareti olan herkese açık olması gerektiğine inanırlar.
 		<br><br>
-		Necra's millennium-spanning rules of life and death were all but shattered upon Zizo's ascension. Corpses no longer lied to rest, instead emerging after several minutes to walk and feast again on the living, spreading their curse of death. The deadite plague was the most impactful calamity to ever strike Psydonia. Society was only barely able to adapt and move forward with their new reality, and could not aid the dark elven empire in their defense against the lich queen's armies.
+		Necra'nın binlerce yıllık yaşam ve ölüm kuralları, Zizo'nun yükselişiyle neredeyse tamamen paramparça oldu. Cesetler artık yatmıyor, bunun yerine birkaç dakika sonra tekrar yürümek ve yaşayanlarla ziyafet çekmek, ölüm lanetlerini yaymak için ortaya çıkıyorlardı. Ölü (deadite) vebası, Psydonia'yı vuran en etkili felaketti. Toplum yeni gerçekliklerine ancak zar zor uyum sağlayıp ilerleyebildi ve lich kraliçenin ordularına karşı savunmalarında kara elf imparatorluğuna yardım edemedi.
 		<br><br>
 	</details>
 
 	<hr>
-	<strong><span style="font-size:115%"> FALSE GODS </span></strong>
+	<strong><span style="font-size:115%"> SAHTE TANRILAR </span></strong>
 	<br>
-	<em> Worship out of spite. </em>
+	<em> İnat olsun diye tapınma. </em>
 	<br><br>
 
-  	<details>
-		<summary><strong> Heartfeltian Horror </strong></summary>
+  	<details>
+		<summary><strong> Heartfelt Dehşeti </strong></summary>
 		<br>
-		Something stirs deep beneath the city. Rumours of a great machine, bidding the rabid automatons forth with purpose.
+		Şehrin derinliklerinde bir şeyler kıpırdanıyor. Kuduz otomatları bir amaçla çağıran büyük bir makinenin söylentileri.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Galadros </strong></summary>
 		<br>
-		An ancient rock wyrm of greed and gluttony with an insatiable hunger for Lux. Revered by some Kobolds as the Great Wyrm.
+		Lux'a doymak bilmez bir açlık duyan, açgözlülük ve oburluğun kadim kaya solucanı (wyrm). Bazı Koboldlar tarafından Büyük Solucan olarak saygı görür.
 		<br><br>
-		In the farthest reaches of Faience in a mountain range intraversable by all but the subterranean, generations of Kobolds have carved out his stronghold, Kruskros. There he is coiled, waiting and hungry. His size is so great his true form cannot be fully speculated. The short lifespan of the Kobold makes present knowledge scarce, and many indentured to him never leave his sanctum. Even so, his name appears in texts dating back to the time of Psydon.
+		Faience'in en uzak köşelerinde, yeraltı canlıları dışındakiler tarafından geçilemeyen bir sıradağda, nesiller boyu Koboldlar onun kalesini, Kruskros'u oydu. Orada çöreklenmiş, bekliyor ve aç. Boyutu o kadar büyük ki gerçek formu tam olarak tahmin edilemiyor. Koboldların kısa ömrü mevcut bilgiyi kıt kılıyor ve ona sözleşmeli olanların çoğu asla sığınağından ayrılmıyor. Öyle olsa bile, adı Psydon zamanına kadar uzanan metinlerde geçiyor.
 		<br><br>
-		Kobolds who fail Galadros are either fed to him or banished from Kruskros. The latter is considered a worse punishment, as most of them have developed a co-dependency that can take the rest of their lives to break. The shame of failing the Great Wyrm is greater than that of death.
+		Galadros'u başarısızlığa uğratan Koboldlar ya ona yedirilir ya da Kruskros'tan sürülür. İkincisi daha kötü bir ceza olarak kabul edilir, çünkü çoğu kırması hayatlarının geri kalanını alabilecek bir karşılıklı bağımlılık geliştirmiştir. Büyük Solucan'ı başarısızlığa uğratmanın utancı, ölümden daha büyüktür.
 		<br><br>
 	</details>
 
-  	<details>
+  	<details>
 		<summary><strong> Rashan-Kahl </strong></summary>
 		<br>
-		The twin-faced god of ambition and chains. Worshipped mainly by the rakshari out of in spite of The Ten.
+		Hırsın ve zincirlerin çift yüzlü tanrısı. Esas olarak rakshariler tarafından Onlar'a inat olsun diye tapınılır.
 		<br><br>
-		Rashan represents both creation and destruction, freedom and bondage- a duality that mirrors the rakshari’s complex relationship with power. Temples to Rashan-Kahl often double as marketplaces, symbolizing the transactional nature of life.
+		Rashan hem yaratımı hem de yıkımı, özgürlüğü ve esareti temsil eder - raksharilerin güçle olan karmaşık ilişkisini yansıtan bir ikilik. Rashan-Kahl tapınakları genellikle pazar yeri olarak da hizmet verir ve hayatın ticari doğasını sembolize eder.
 		<br><br>
 	</details>
 
 	<hr>
-	<strong><span style="font-size:115%"> ARCHDEVILS </span></strong>
+	<strong><span style="font-size:115%"> BAŞŞEYTANLAR (ARCHDEVILS) </span></strong>
 	<br>
-	<em> Burn it all to the ground. </em>
+	<em> Hepsini yakıp kül edin. </em>
 	<br><br>
 	<details>
 		<summary><strong> Abraxas </strong></summary>
 		<br>
-		King of the hells, archdevil of wisdom. Abraxas led the attack against Psydon. He is the mastermind, the strategist of the depths. Claimed Baotha to be his own spawn, though her public rejection left populations globally confused. It is only a matter of time before he strikes the surface once more.
+		Cehennemlerin kralı, bilgeliğin başşeytanı. Abraxas, Psydon'a karşı saldırıyı yönetti. O, derinliklerin beyni, stratejistidir. Baotha'nın kendi dölü olduğunu iddia etti, ancak onun halka açık reddi dünya çapında nüfusları şaşkına çevirdi. Yüzeye bir kez daha saldırması an meselesidir.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Abaddon </strong></summary>
 		<br>
-		Archdevil of destruction. Said to consume the spirits of all without souls. It is he where connotations of devils with hellfire and brimstone spawn. Abaddon's influence leads to wanton death and devastation, wherever it may fester. He leaves nothing standing in his wake.
+		Yıkımın başşeytanı. Ruhu olmayanların ruhlarını tükettiği söylenir. Şeytanların cehennem ateşi ve kükürtle çağrışımları ondan doğar. Abaddon'un etkisi, nerede festerlenirse festerlensin, ahlaksızca ölüme ve yıkıma yol açar. Ardında dikili hiçbir şey bırakmaz.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Mephistopheles </strong></summary>
 		<br>
-		Archdevil of darkness and trickery. A shapeshifting fiend whose deals always go South. He struck Psydon with his tainted blade, leaving the festering wound which led to The Creator's fall. Mephistopheles twisted the first vampires, Psydon's cursed, into the blood-sucking monsters known today.
+		Karanlığın ve hilenin başşeytanı. Anlaşmaları her zaman kötüye giden şekil değiştiren bir iblis. Psydon'a lekeli kılıcıyla vurdu ve Yaratıcı'nın düşüşüne yol açan iltihaplı yarayı bıraktı. Mephistopheles, Psydon'un lanetlileri olan ilk vampirleri bugün bilinen kan emici canavarlara dönüştürdü.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Leviathan </strong></summary>
 		<br>
-		Archdevil of the void and madness, the great eel of shadow. It is unclear where her body ends or starts, and any who dare gaze through the navy depths of the hells' seas of ink, and onto her swirling masses are driven insane. Sailors lost at sea swear they hear her voice singing alongside Abyssor's own, reciting tales of the very oceans turning to blood and swallowing them whole into an endless maw.
+		Boşluğun ve deliliğin başşeytanı, gölgenin büyük yılan balığı. Vücudunun nerede bitip nerede başladığı belirsizdir ve cehennem denizlerinin mürekkep gibi lacivert derinliklerinden onun dönen kütlelerine bakmaya cüret eden herkes delirir. Denizde kaybolan denizciler, Abyssor'un kendi sesiyle birlikte onun sesinin de şarkı söylediğini, okyanusların kana dönüştüğünü ve onları sonsuz bir ağza yuttuğunu anlatan masallar okuduğunu yemin ederler.
 		<br><br>
 	</details>
 	<hr>
@@ -505,164 +505,164 @@ While it's not required reading, leadership roles may find this information usef
 
 
 <details>
-	<summary><strong><span style="font-size:130%"> SPECIES OF PSYDONIA </span></strong></summary>
+	<summary><strong><span style="font-size:130%"> PSYDONIA TÜRLERİ </span></strong></summary>
 	<hr>
-	<strong><span style="font-size:115%"> DIVINE BLESSED SPECIES </span></strong>
+	<strong><span style="font-size:115%"> İLAHİ KUTSANMIŞ TÜRLER </span></strong>
 	<br><br>
 
 	<details>
-		<summary><strong> Humens </strong></summary>
+		<summary><strong> Humenler </strong></summary>
 		<br>
-		Humenity, created in Psydon's image.
-		Humens come from a vast swathe of cultures and ethnicities all around Psydonia, most of which have historically been at odds with both one another and other species. With their tenacity and overwhelming population, humens tend to outnumber the other species drastically. Their saturation leads to most world maps representing humen borders and states over other species'. Humens tend to find fortune easier than the other species, and are so diverse that no other trait is dominant...
+		Psydon'un suretinde yaratılan Humenlik.
+		Humenler, Psydonia'nın dört bir yanındaki çok çeşitli kültürlerden ve etnik kökenlerden gelir, bunların çoğu tarihsel olarak hem birbirleriyle hem de diğer türlerle anlaşmazlık içindedir. Azimleri ve ezici nüfuslarıyla humenler, diğer türlerden sayıca çok daha fazla olma eğilimindedir. Doygunlukları, çoğu dünya haritasının diğer türler yerine humen sınırlarını ve devletlerini temsil etmesine yol açar. Humenler serveti diğer türlerden daha kolay bulma eğilimindedir ve o kadar çeşitlidirler ki başka hiçbir özellik baskın değildir...
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Elves </strong></summary>
+		<summary><strong> Elfler </strong></summary>
 		<br>
-		Elves, created by Necra to guide humenity, are characterized by lengthened age, low fertility, and a magical aptitude originating from a vast array of tribal cultures. With the ascension of Zizo, the entire culture of snow-elves was all but destroyed, leading the remaining tribes to live in fear and paranoia of suffering the same fate. Many elves sought safety through mixing culture, positioning themselves under the watchful guard of their stronger humen counterparts. A longstanding feud remains between elves and dwarves. Elvenkind has yet to forgive the dwarves for their destruction of homeland and pillaging of natural resources within the former snow-elf territory. To elves, it was the greatest disrespect to those lost.
+		Humenliğe rehberlik etmesi için Necra tarafından yaratılan elfler, uzatılmış yaşam süreleri, düşük doğurganlık ve çok çeşitli kabile kültürlerinden kaynaklanan büyülü bir yetenekle karakterize edilir. Zizo'nun yükselişiyle, kar elfleri kültürünün tamamı neredeyse yok edildi ve geri kalan kabileler aynı kaderi paylaşma korkusu ve paranoyası içinde yaşamaya başladı. Birçok elf, kültürlerini karıştırarak, kendilerini daha güçlü humen muadillerinin gözetimi altına konumlandırarak güvenlik aradı. Elfler ve cüceler arasında uzun süredir devam eden bir kan davası vardır. Elf ırkı, eski kar elfi topraklarındaki anavatanlarını yok ettikleri ve doğal kaynakları yağmaladıkları için cüceleri henüz affetmemiştir. Elfler için bu, kaybedilenlere yapılan en büyük saygısızlıktı.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Half-elves </strong></summary>
+		<summary><strong> Yarı-elfler </strong></summary>
 		<br>
-		The child of an Elf and a Humen. Half-Elves are generally frowned upon by more conservative peoples, although as species tensions lower, more and more half-elves are being born- to the point that some scholars worry someday it may be impossible to distinguish the two species. Half-Elves are extraordinarily diverse, as they combine both Humen and Elvish culture. It is widely considered that Half-Elf culture is simply a melting pot of various others condensing into one vibrant entity. With their longevity spanning too long for a human and too short for an elf, they tend to congregate together. Depending on their heritage, Half-Elves tend to gain species traits depending on how strong their fathers, or mothers, genes were. Half-Elves typically struggle to find their own identity.
+		Bir Elf ve bir Humen'in çocuğu. Yarı-Elfler genellikle daha muhafazakar halklar tarafından hoş karşılanmaz, ancak türler arası gerilimler azaldıkça, daha fazla yarı-elf doğuyor - öyle ki bazı akademisyenler bir gün iki türü ayırt etmenin imkansız olabileceğinden endişe ediyor. Yarı-Elfler, hem Humen hem de Elf kültürünü birleştirdikleri için olağanüstü çeşitlilik gösterirler. Yarı-Elf kültürünün, tek bir canlı varlıkta yoğunlaşan çeşitli diğer kültürlerin bir erime potası olduğu yaygın olarak kabul edilir. Bir insan için çok uzun ve bir elf için çok kısa olan ömürleriyle, genellikle bir araya gelme eğilimindedirler. Miraslarına bağlı olarak, Yarı-Elfler babalarının veya annelerinin genlerinin ne kadar güçlü olduğuna bağlı olarak tür özellikleri kazanma eğilimindedir. Yarı-Elfler genellikle kendi kimliklerini bulmakta zorlanırlar.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Dwarves </strong></summary>
+		<summary><strong> Cüceler </strong></summary>
 		<br>
-		Shaped by Psydon and Necra, chosen by Malum. A proud and robust species of vertically challenged folk, dwarves are known for their martial strength and their tenacity towards their ancient customs of craft and honour. Dwarves hold a strong alliance with humenkind and have done so throughout history, as was their original purpose decreed by Psydon. A Dwarf, much like the rock that they carve their fortress out of, is stubborn and ancient. They are revered craftsmen, sculptors, smiths, and miners. As an old and mostly out-of-date saying goes, "If you want it done right, lose 2 feet and grow a beard." Despite their cultural praise, a long-standing feud remains between dwarves and elves stemming from old industrial practices.
+		Psydon ve Necra tarafından şekillendirilen, Malum tarafından seçilenler. Dikey olarak zorlanan (kısa) halkın gururlu ve sağlam bir türü olan cüceler, dövüş güçleri ve kadim zanaat ve onur geleneklerine olan bağlılıklarıyla bilinirler. Cüceler humen ırkıyla güçlü bir ittifaka sahiptir ve Psydon tarafından emredilen orijinal amaçları olduğu gibi tarih boyunca bunu sürdürmüşlerdir. Bir Cüce, kalesini oyduğu kaya gibi inatçı ve kadimdir. Saygıdeğer zanaatkarlar, heykeltıraşlar, demirciler ve madencilerdir. Eski ve çoğunlukla modası geçmiş bir deyişin dediği gibi, "Doğru yapılmasını istiyorsan, 2 fit (60 cm) kaybet ve sakal bırak." Kültürel övgülerine rağmen, cüceler ve elfler arasında eski endüstriyel uygulamalardan kaynaklanan uzun süredir devam eden bir kan davası vardır.
 		<br><br>
 	</details>
 
 	<details>
 		<summary><strong> Aasimar </strong></summary>
 		<br>
-		Immortal offspring sculpted by the gods for use in servitude. Aasimar roaming alone on Psydonia often are those abandoned after serving their purpose. This species is often revered due to their celestial origin, but face great solitude as not many of their kind exist. Many an aasimar will detest the reverence in which they are greeted with, for their greatest failure or unuse that lead to their discarding is not subject for celebration. An aasimar may be crafted with any number of materials. Many resemble sculptures of stone or are ceramic in skin, but their insides are just as mortal as any other. Most Aasimar were created to serve The Ten, and few if any Psydonic Aasimar remain to this day- decrepit husks of what were once great warriors.
+		Hizmette kullanılmak üzere tanrılar tarafından yontulmuş ölümsüz evlatlar. Psydonia'da tek başına dolaşan Aasimar'lar genellikle amaçlarına hizmet ettikten sonra terk edilenlerdir. Bu tür, göksel kökenleri nedeniyle sıklıkla saygı görür, ancak türlerinden pek fazla bulunmadığı için büyük bir yalnızlıkla karşı karşıyadır. Birçok aasimar, karşılandıkları saygıdan nefret eder, çünkü atılmalarına yol açan en büyük başarısızlıkları veya kullanılmamaları kutlanacak bir konu değildir. Bir aasimar herhangi bir sayıda malzeme ile üretilebilir. Birçoğu taş heykellere benzer veya derileri seramiktir, ancak içleri diğerleri kadar ölümlüdür. Çoğu Aasimar, Onlar'a hizmet etmek için yaratılmıştır ve bugün çok az Psydonic Aasimar kalmıştır - bir zamanlar büyük savaşçılar olanların köhne kabukları.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Halflings </strong></summary>
+		<summary><strong> Buçukluklar (Halflings) </strong></summary>
 		<br>
-		Halflings, merry-folk, pipe-tokers, these people are one of many names and few insults. Beloved, not for their glory and their honor, like men, or their crafts and stout ales like dwarves, nor the graceful mystique of elfen kind- but for their bright smile and richly warm welcome that they provide even to the most boorish of visitors. Fabled to be a younger kind than most, the oldest records tell of a mingling of an exceptionally petite daughter of the mayor of a hamlet east of Vanderlin's capital and the bogs of Daftmarsh  in a little valley, with the heir to a fortress of Brass dwarves built down into the hills that border it. She couldn't be married off to another well-to-do family due to her stunted form, though pretty as she were. The dwarven heir knew he needed a way to bring the two populi together to stave off the decline of his clan, the beasts of the nearby marshes and the hill-trolls were taking their toll. Trade had declined, for the dwarves, yet the humens of the hamlet continued their sale of highly demanded pipeweed and richly flavored wine.
+		Buçukluklar, neşeli halk, pipo tüttürenler; bu insanlar birçok isme sahip ama çok az hakarete maruz kalırlar. İnsanlar gibi şanları ve şerefleri için, cüceler gibi zanaatları ve güçlü biraları için ya da elf ırkının zarif gizemi için değil - en kaba ziyaretçilere bile sundukları parlak gülümsemeleri ve zengin sıcak karşılamaları için sevilirler. Çoğundan daha genç bir tür olduğu söylenen en eski kayıtlar, Vanderlin başkentinin doğusundaki bir mezranın son derece minyon kızı ile Daftmarsh bataklıkları arasındaki küçük bir vadide, onu çevreleyen tepelere inşa edilmiş bir Pirinç cüceleri kalesinin varisinin karışımından bahseder. Güzel olmasına rağmen bodur formu nedeniyle başka bir varlıklı aileye gelin gidememişti. Cüce varis, klanının çöküşünü önlemek için iki halkı bir araya getirmenin bir yoluna ihtiyacı olduğunu biliyordu, yakındaki bataklıkların canavarları ve tepe trolleri onlara zarar veriyordu. Ticaret cüceler için azalmıştı, ancak mezranın humenleri, çok talep gören pipo otu ve zengin aromalı şarap satışlarına devam ediyordu.
 		<br><br>
-		As it were, the effort was successful, and their union bore something not alike humenity nor dwarfdom. There was no name, at first, before the decades, centuries, passed, yet this remote place continued on in exclusive inclusion of this new 'folk'. The rowdy merrymaking of the dwarves fusing with the industrial nature of the humens what with their vineyards and smokeleaves defined the county that was born from the marriage of these two once separate groups. The earliest, most prominent record of this place calling it 'The Hearth-hills', soon to be known to sprawl over the hillocks and small valleys that rested east of Vanderlin's capital and shortly north-east of Daftmarsh until it formed a small region of counties, such as Leafland, the most commercially powerful district of this reclusive nation of small-folk. Largely unregulated by the higher powers of Vanderlin, The Hearth-hills developed an almost entirely alien culture in comparison to the rest of the world, with many following in the footsteps of the mayor's daughter and her bearded husband. Slowly, it was not humens and dwarves that dwelt in the hillocks betwixt, but halflings. A hardy, green-thumbed folk who wore not shoes but walked barefoot through Dendor's domains, and grew their westleach leaves and berry vines for wine while the rest of Psydonia was painted red with blood. Not even Zizo's war touched them, for they were a shy folk, and few even knew of them before the most recent Mayor of Leafland sent out his Hill-Trodders to bring messages to nearby rulers to establish trade, Geldon Winefoot.
+		Olduğu gibi, çaba başarılı oldu ve birliktelikleri ne humenliğe ne de cüceliğe benzeyen bir şey doğurdu. Başlangıçta bir isim yoktu, on yıllar, yüzyıllar geçmeden önce, ancak bu uzak yer, bu yeni 'halkın' ayrıcalıklı kapsayıcılığında devam etti. Cücelerin gürültülü eğlencesi, üzüm bağları ve tütün yapraklarıyla humenlerin endüstriyel doğasıyla birleşti ve bu iki ayrı grubun evliliğinden doğan ilçeyi tanımladı. Buranın en eski, en belirgin kaydı ona 'Ocak-tepeleri' (The Hearth-hills) adını veriyordu, kısa süre sonra Vanderlin başkentinin doğusunda ve Daftmarsh'ın biraz kuzeydoğusundaki tepecikler ve küçük vadiler boyunca yayıldığı bilinecekti. Bu münzevi küçük halk ulusunun ticari olarak en güçlü bölgesi olan Leafland gibi bir ilçe bölgesi oluşturdu. Vanderlin'in yüksek güçleri tarafından büyük ölçüde düzenlenmemiş olan Ocak-tepeleri, dünyanın geri kalanına kıyasla neredeyse tamamen yabancı bir kültür geliştirdi, birçoğu belediye başkanının kızı ve sakallı kocasının izinden gitti. Yavaş yavaş, aradaki tepeciklerde yaşayanlar humenler ve cüceler değil, buçukluklardı. Dendor'un alanlarında ayakkabı giymeyen, bunun yerine çıplak ayakla yürüyen ve Psydonia'nın geri kalanı kanla kırmızıya boyanırken şarap için batı yapraklarını ve meyve asmalarını yetiştiren dayanıklı, yeşil parmaklı bir halk. Zizo'nun savaşı bile onlara dokunmadı, çünkü onlar utangaç bir halktı ve en son Leafland Belediye Başkanı Geldon Winefoot, ticaret kurmak için yakındaki hükümdarlara Tepe-Yürüyüşçülerini göndermeden önce varlıklarını çok az kişi biliyordu.
 		<br><br>
-		What is known of these diminutive folk is their propensity towards hearty fellowship, an altogether lacking of frugality or any regard for coin at all in lieu of bartering and gift-giving. Small tent-shaped homes atop their green hills, and their basements of the finest wines and smoke-leaves that could rival even elven stock. Among their culture, carpentry, farming, and winemaking are the most noble professions- with little regard to the more martially inclined individuals, as while they were a necessity to keep the volves out of the pig-pens, it was the art of the meal and pipe-smoking that they valued. Tales of travelers being overwhelmed with joy by this utterly alien place, filled with raucous laughter and grand festivals for the solstices are not uncommon. Grand feasting contests, sack-races, and tree-climbing competitions the most popular amongst these events, it has, since the public reveal of their presence in the hillocks of Vanderlin, become their main attraction for their civilization.
+		Bu ufak tefek halk hakkında bilinenler, samimi dostluğa olan eğilimleri, takas ve hediye verme yerine paraya hiç önem vermemeleri veya tutumlu olmamalarıdır. Yeşil tepelerinin üzerindeki küçük çadır şeklindeki evleri ve elf stoklarına bile rakip olabilecek en iyi şaraplar ve tütün yapraklarıyla dolu bodrumları. Kültürleri arasında marangozluk, çiftçilik ve şarap yapımı en soylu mesleklerdir - savaşçı eğilimli bireylere çok az önem verilir, çünkü kurtları domuz ağıllarından uzak tutmak için bir zorunluluk olsalar da, değer verdikleri şey yemek sanatı ve pipo içmekti. Gezginlerin, şen kahkahalar ve gündönümleri için büyük festivallerle dolu bu tamamen yabancı yer tarafından neşeyle boğulduğuna dair hikayeler nadir değildir. Büyük ziyafet yarışmaları, çuval yarışları ve ağaca tırmanma yarışmaları bu etkinlikler arasında en popüler olanlarıdır; Vanderlin tepelerindeki varlıklarının halka açıklanmasından bu yana medeniyetlerinin ana cazibesi haline gelmiştir.
 		<br><br>
-		And true to their nature, Halflings are most commonly known to have full bellies, smaller frames than that of dwarves and far less width to them as well. Curly hair of warm and earthy coloration, with coarse tufts atop the bridge of their proportionally large feet rather than a propensity to wear any sort of shoe to protect their already leathery soles. No magick is present among these people, blessed not with the grand wizardry of Noc but that simpler everyday magicks of the world, for a halfling goes unseen as easily as the wind blows.
+		Ve doğalarına sadık kalarak, Buçukluklar en çok tok karınları, cücelerden daha küçük çerçeveleri ve aynı zamanda çok daha az genişlikleri ile bilinirler. Zaten kösele gibi olan tabanlarını korumak için herhangi bir tür ayakkabı giyme eğiliminden ziyade, orantılı olarak büyük ayaklarının köprüsünün üzerinde kaba tutamlar bulunan sıcak ve toprak rengi kıvırcık saçlar. Bu insanlar arasında hiçbir büyü mevcut değildir, Noc'un büyük büyücülüğü ile değil, dünyanın o daha basit günlük büyüleriyle kutsanmışlardır, çünkü bir buçukluk rüzgarın esmesi kadar kolayca görünmez olur.
 		<br><br>
-		Truly, they are a hearth in this age.
-		<br><br>
-	</details>
-
-	<hr>
-	<strong><span style="font-size:115%"> DIVINE TOLERATED SPECIES </span></strong>
-	<br><br>
-
-	<details>
-		<summary><strong> Tritons </strong></summary>
-		<br>
-		The Children of Abyssor, also known as Tritons or their colloquial name, "Deep Folk,"  are a strange species of people that live under the waves of Psydonia. Born from creatures of the deep with Abyssor's guidance, these aquatic wayfarers all share a few common traits.
-		<br><br>
-		Similar to other creatures that dwell below the surface, their eyes are dull with disuse. Tritons feel pain when gazing upon that which direct light of Astrata herself illuminates.
-		<br><br>
-		 Unlike most of the people of Psydonia, their culture is often considered cold and dour; an apathetic attitude to most negative or positive news. For them, the depths of Psydonia's oceans are cold and unforgiving. Large beasts travel the waters that swallow their kin whole...  but the crushing depths have provided them a hearty disposition and resistance to most threats. Born of Abyssor, their normally placid emotions can swing into a wild rage when they view injustice done upon their kin at the hands of a sapient being.
-		 <br><br>
-		 Tritons seen on the surface are very important trade partners, mercenaries, and surprising academics.  Merchants often spend vast amounts of coin to have them aboard their trade vessels, fending off pirates or guiding their boats through turbulent weather. Be it on or within the sea, they excel- on land, however, they struggle. With their awkward and gangly fins, long, sharp talons, ghastly, lipless teeth, and milky, foreign eyes, they seem unfit to walk amongst the people. Humen children are often afraid of them due to such appearances.
-		 <br><br>
-		 Their species is not without its tribalism, however. Large sections of their kin have broken away form their father,  to consider themselves Noc's chosen. Due to their extreme sexual dimorphism similar to that of the common angler, males of this species are more likely to pursue magick with their weaker frames compared to their stronger female counterparts.
-		<br><br>
-	</details>
-
-	<details>
-		<summary><strong> Medicators / "Feculents" </strong></summary>
-		<br>
-		Medicators originate from the the fetid swamps and murk within the Isle of Enigma. Their species has historically been localized around the area, although the Brass Cataclysm of Heartfelt's fall has resulted in droves of their kind seeking refuge elsewhere. They are a newer form of sapience, with records dating back only after Zizo's ascension.
-		<br><br>
-		Their appearance is gaunt, patches of bare skin riddled with feathers and pox scars, Medicators are a horrifying fusion of bird and men- unlike their far more appealing adversaries, the harpies. With long, hanging beaks which clatter as they breathe, other species find them displeasing at best and repulsive at worst. Despite this, their eyes betray great intelligence behind otherwise monstrosity.
-		<br><br>
-		Born of carcinogens, pollution, mechanical and biological waste, these creatures were not always sapient. Through their appearance, accidental origin, and innate sicknesses, they have gained the fascination and uplifting of Pestra and inherited aspects of the serpentine goddess in turn. Medicators, as they called themselves, carry with them the bedside manners, or lack thereof, of the worst Pestrans. Their culture holds discovery and medicinal breakthroughs in the highest regard, be it through experimentation to shift their own ailments or others'. Medicators care little about the nickname granted to them by other species, 'feculents,' so long as their medical prowess is not subject to question.
-		<br><br>
-		Medicators and Harpies often find themselves in conflict, mirroring the quarrels of their patrons, whether of conscious faith or not.
-		<br><br>
-	</details>
-
-	<details>
-		<summary><strong> Harpies </strong></summary>
-		<br>
-		Harpies, or less ceremoniously known as 'magpies,' resemble the despised hollow-kin in appearance at first glance. One would rightfully assume they are similar in nature- with accuracy even, much to the harpies' chagrin. Harpies have been uplifted and reconnected to divinity by Eora, having developed culture of music and song which caught the attention of such a goddess. Their songs and voices may be their own, or proud mimicking other voices they've heard with unnatural accuracy.
-		<br><br>
-		Whilst harpies may fly, their freedom is weighed by corruption of fleshcrafting to this day. Complete open-air freedom is still foreign to them. Harpies tend to live and gather in colonies at the tops of great sequoia forests and in nearby cliffs. Due to their laden flight, they must employ use of updrafts and proximity to large objects or structures to bolster their limited range and air-dancing performances. Their serene songs and blissful music can be heard echoing far below, guiding travelers and thieves both to respite... or treasure. For as lifted into grace as they might be, these 'magpies' earn such a nickname from instinctual Matthiosan greed and love for anything that shines. Yet if one can work past that distrust and compensate them well, harpies make for unparalleled couriers.
-		<br><br>
-		Harpies and Feculents often find themselves in conflict, mirroring the quarrels of their patrons, whether of conscious faith or not.
+		Gerçekten de, onlar bu çağda bir ocaktır.
 		<br><br>
 	</details>
 
 	<hr>
-	<strong><span style="font-size:115%"> DISCRIMINATED "INHUMEN" SPECIES </span></strong>
+	<strong><span style="font-size:115%"> İLAHİ HOŞGÖRÜLEN TÜRLER </span></strong>
 	<br><br>
 
 	<details>
-		<summary><strong> Tieflings </strong></summary>
+		<summary><strong> Tritonlar </strong></summary>
 		<br>
-		Also known as Infernal-Spawn, Hell-Bloods, Surface-Devils, and perhaps in a more humorous manner, <em>thief</em>-lings. Their treatment ranges from shunning to distrust, depending on the region. Shopkeeps and merchants always keep a wary eye on any tiefling passersby. The resentment feed into itself, leading to higher rates of tiefling ire and thievery against other species. Many tieflings resign to seeking a solitary and nomadic life, huddled in groups outside the watchful eyes of others. They also tend to be extremely perceptive and paranoid, as luck is rarely on their side.
+		Abyssor'un Çocukları, Tritonlar veya halk arasındaki adıyla "Derin Halk", Psydonia dalgalarının altında yaşayan garip bir insan türüdür. Abyssor'un rehberliğiyle derinlerin yaratıklarından doğan bu su gezginlerinin hepsi birkaç ortak özelliği paylaşır.
 		<br><br>
-		Tieflings began appearing all over Psydonia after Baotha's ascension within the 21st century, and were exiled in droves as the world adapted. They are often mistaken as being related to her.
+		Yüzeyin altında yaşayan diğer yaratıklara benzer şekilde, gözleri kullanılmamaktan donuklaşmıştır. Tritonlar, bizzat Astrata'nın doğrudan ışığının aydınlattığı şeye baktıklarında acı hissederler.
 		<br><br>
-		Tieflings are incapable of reproducing with mortals, and thus are spawn of either devils, demons, or other tieflings. A tiefling may develop any number of hellish features, a wide range of horns, potential hooves, odd spines and spikes, or scales. Oddly positioned scales, hollow bones, and other varying oddities that appear consistently in tiefling biology make them considerably fragile. It is not uncommon for a tiefling to be generally unpleasant to look at in the eye of the commonfolk. As if to make matters worse, their hellish progenitors have left them a destiny of misfortune, though perhaps their immunity to fire opens new opportunities for them...
+		 Psydonia halkının çoğunun aksine, kültürleri genellikle soğuk ve asık suratlı kabul edilir; çoğu olumsuz veya olumlu habere karşı kayıtsız bir tutum. Onlar için Psydonia okyanuslarının derinlikleri soğuk ve affetmezdir. Akrabalarını bütün olarak yutan büyük canavarlar sularda gezer... ancak ezici derinlikler onlara sağlam bir mizaç ve çoğu tehdide karşı direnç sağlamıştır. Abyssor'dan doğan normalde sakin duyguları, akrabalarına zeki bir varlığın elinden yapılan adaletsizliği gördüklerinde vahşi bir öfkeye dönüşebilir.
+		 <br><br>
+		 Yüzeyde görülen Tritonlar çok önemli ticaret ortakları, paralı askerler ve şaşırtıcı akademisyenlerdir. Tüccarlar, korsanları savuşturmak veya teknelerini çalkantılı havalarda yönlendirmek için onları ticaret gemilerinde bulundurmak adına genellikle büyük miktarda para harcarlar. Denizde veya denizin içinde olsun, üstündürler - ancak karada zorlanırlar. Garip ve sırık gibi yüzgeçleri, uzun, keskin pençeleri, korkunç, dudaksız dişleri ve sütlü, yabancı gözleriyle insanların arasında yürümeye uygun görünmezler. Humen çocuklar, bu tür görünüşleri nedeniyle onlardan sık sık korkarlar.
+		 <br><br>
+		 Ancak türleri kabilecilikten yoksun değildir. Akrabalarının büyük bölümleri babalarından kopmuş, kendilerini Noc'un seçilmişleri olarak görmüşlerdir. Sıradan fener balığına benzer aşırı cinsel dimorfizm (iki biçimlilik) nedeniyle, bu türün erkeklerinin daha güçlü dişi muadillerine kıyasla daha zayıf çerçeveleriyle büyü peşinde koşma olasılıkları daha yüksektir.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Half dark-elves / "Half-drow" </strong></summary>
+		<summary><strong> Medikatörler / "Fekülentler" (Pislikler) </strong></summary>
 		<br>
-		The child of a dark elf and humen. The distinction between half-elves and 'half-drow' has been a subject of debate for centuries. While similar in physicality and longevity to their non-drow cousins, their origins cause them to face discrimination akin to their elven side. Groups of half-elves and half-drow have been known to congregate together and consider themselves one species. According to some radical academic scholars, they might be one and the same species indeed- yet the people of Psydonia certainly do not believe the same at large.
+		Medikatörler, Enigma Adası'ndaki kokuşmuş bataklıklardan ve bulanıklıktan doğar. Heartfelt'in düşüşünün Pirinç Felaketi, türlerinin sürülerinin başka yerlere sığınmasına neden olsa da, türleri tarihsel olarak bölgede yerelleşmiştir. Zizo'nun yükselişinden sonrasına dayanan kayıtlarla daha yeni bir zeka biçimidirler.
+		<br><br>
+		Görünümleri sıska, tüyler ve çiçek hastalığı izleriyle dolu çıplak deri yamalarıyla Medikatörler, çok daha çekici düşmanları olan harpilerin aksine, kuş ve insanların korkunç bir birleşimidir. Nefes alırken takırdayan uzun, sarkan gagalarıyla diğer türler onları en iyi ihtimalle itici, en kötü ihtimalle iğrenç bulur. Buna rağmen gözleri, aksi takdirde canavarlığın ardındaki büyük zekayı ele verir.
+		<br><br>
+		Kanserojenlerden, kirlilikten, mekanik ve biyolojik atıklardan doğan bu yaratıklar her zaman zeki değildi. Görünümleri, kazara kökenleri ve doğuştan gelen hastalıkları sayesinde Pestra'nın hayranlığını ve yükselişini kazandılar ve sırayla yılan tanrıçanın özelliklerini miras aldılar. Kendilerine verdikleri isimle Medikatörler, yanlarında en kötü Pestranların hasta başı tavırlarını - ya da eksikliğini - taşırlar. İster kendi rahatsızlıklarını ister başkalarınınkini değiştirmek için deneyler yoluyla olsun, kültürleri keşif ve tıbbi atılımları en yüksek saygıda tutar. Medikatörler, tıbbi yetenekleri sorgulanmadığı sürece diğer türler tarafından kendilerine verilen 'fekülentler' lakabını pek önemsemezler.
+		<br><br>
+		Medikatörler ve Harpiler, ister bilinçli inanç olsun ister olmasın, patronlarının kavgalarını yansıtarak kendilerini sık sık çatışma içinde bulurlar.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Dark-elves </strong></summary>
+		<summary><strong> Harpiler </strong></summary>
 		<br>
-		Zizo's conquered. These elves hail from an underground expanse of newly-reborn empires.  They lead harsh, matriarchal lives under the watchful gaze of Zizo, the vast majority hoping to one day achieve such power and domination for themselves.
+		Harpiler veya daha az törensel olarak bilinen adıyla 'saksağanlar', ilk bakışta görünüş olarak hor görülen hollowkinlere benzerler. Doğaları gereği benzer olduklarını varsaymak haklı olurdu - harpilerin üzüntüsüne rağmen doğrulukla bile. Harpiler, böyle bir tanrıçanın dikkatini çeken müzik ve şarkı kültürü geliştirerek Eora tarafından yükseltilmiş ve tanrısallığa yeniden bağlanmıştır. Şarkıları ve sesleri kendilerine ait olabilir veya duydukları diğer sesleri doğal olmayan bir doğrulukla gururla taklit edebilirler.
 		<br><br>
-		Zizo's spawn, the last snow elves, integrated themselves- whether gleefully or resentfully- within the dark elf culture their grandmother had carved through conquest.
+		Harpiler uçabilse de, özgürlükleri bugüne kadar et işlemeciliğinin (fleshcrafting) yozlaşmasıyla tartılmaktadır. Tam açık hava özgürlüğü onlara hala yabancıdır. Harpiler, büyük sekoya ormanlarının tepelerinde ve yakındaki kayalıklarda koloniler halinde yaşama ve toplanma eğilimindedir. Yüklü uçuşları nedeniyle, sınırlı menzillerini ve hava dansı performanslarını desteklemek için yukarı yönlü hava akımlarını ve büyük nesnelere veya yapılara yakınlığı kullanmaları gerekir. Dingin şarkıları ve keyifli müzikleri çok aşağılarda yankılanarak duyulabilir, hem gezginlere hem de hırsızlara mola vermeleri... veya hazine bulmaları için rehberlik eder. Çünkü lütuf içine ne kadar yükseltilmiş olurlarsa olsunlar, bu 'saksağanlar' takma adını içgüdüsel Matthiosan açgözlülüğünden ve parlayan her şeye olan sevgilerinden kazanırlar. Yine de bu güvensizliği aşabilir ve onlara iyi bir tazminat ödeyebilirseniz, harpiler benzersiz kuryelerdir.
 		<br><br>
-		To most in Psydonia, a dark elf is nothing more than a servant of Zizo waiting to betray for power, leading most dark elves to remain within their safe underground strongholds. Those who breach the surface rarely receive fair treatment. Dark elves over 500 years old may remember their Ravoxian empire of old, yet few remain who were not killed or converted.
+		Harpiler ve Fekülentler, ister bilinçli inanç olsun ister olmasın, patronlarının kavgalarını yansıtarak kendilerini sık sık çatışma içinde bulurlar.
+		<br><br>
+	</details>
+
+	<hr>
+	<strong><span style="font-size:115%"> AYRIMCILIĞA UĞRAYAN "HUMEN OLMAYAN" TÜRLER </span></strong>
+	<br><br>
+
+	<details>
+		<summary><strong> Tieflingler </strong></summary>
+		<br>
+		Cehennem-Dölü, Cehennem-Kanı, Yüzey-Şeytanları ve belki de daha mizahi bir şekilde, *hırsız*-lingler (thief-lings) olarak da bilinirler. Muameleleri, bölgeye bağlı olarak dışlanmadan güvensizliğe kadar değişir. Dükkan sahipleri ve tüccarlar, yoldan geçen herhangi bir tiefling'e her zaman temkinli bir gözle bakarlar. Kırgınlık kendi kendini besler, bu da diğer türlere karşı tiefling öfkesinin ve hırsızlığının oranlarının artmasına neden olur. Birçok tiefling, başkalarının dikkatli gözlerinin dışında gruplar halinde toplanarak yalnız ve göçebe bir yaşam aramaya razı olur. Ayrıca şans nadiren yanlarında olduğu için son derece algısal ve paranoyak olma eğilimindedirler.
+		<br><br>
+		Tieflingler, 21. yüzyılda Baotha'nın yükselişinden sonra Psydonia'nın her yerinde görünmeye başladı ve dünya uyum sağlarken sürüler halinde sürüldüler. Sıklıkla onunla akraba sanılırlar.
+		<br><br>
+		Tieflingler ölümlülerle üreyemezler ve bu nedenle ya iblislerin, şeytanların ya da diğer tieflinglerin dölüdürler. Bir tiefling herhangi bir sayıda cehennem özelliği, geniş bir boynuz yelpazesi, potansiyel toynaklar, garip dikenler ve sivri uçlar veya pullar geliştirebilir. Tiefling biyolojisinde sürekli olarak görülen garip konumlandırılmış pullar, içi boş kemikler ve diğer çeşitli tuhaflıklar onları oldukça kırılgan kılar. Bir tiefling'in sıradan halkın gözünde genel olarak bakılması nahoş olması alışılmadık bir durum değildir. Sanki işleri daha da kötüleştirmek istercesine, cehennem ataları onlara bir talihsizlik kaderi bırakmıştır, ancak belki de ateşe bağışıklıkları onlar için yeni fırsatlar açar...
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Half-orcs </strong></summary>
+		<summary><strong> Yarı kara-elfler / "Yarı-drow" </strong></summary>
 		<br>
-		The bastards of Graggar. Half-orcs are the offspring of orcs and another species, half-orcs, or another species who has consumed much kinsflesh on their way to orcishness.  An outsider cannot tell a half-orc product of heritage or cannibalism at a glance, leading to much social ostracization.
-		<br><br>
-		Due to their parent's refusal to nurture them, as well as their other parent often rejecting or attacking them, most half-orcs will grow as orphans. Their rejection by the rest of society causes their growth to stunt, often making them hostile and prone to violence. Because of this, most will assume the worst in them, believing that they are cursed to follow their orcish parent's footsteps in the gorging of kin-flesh.
-		<br><br>
-		A half-orc may display orcish features, sporting tusks and natural strength. Many are nigh-indistinguishable visually from full orcs, save for their remaining grasp on self-control.
+		Bir kara elf ve humen çocuğu. Yarı-elfler ve 'yarı-drow'lar arasındaki ayrım yüzyıllardır bir tartışma konusu olmuştur. Fiziksellik ve uzun ömür bakımından drow olmayan kuzenlerine benzeseler de, kökenleri onların elf taraflarına benzer bir ayrımcılığa maruz kalmalarına neden olur. Yarı-elf ve yarı-drow gruplarının bir araya geldiği ve kendilerini tek bir tür olarak gördükleri bilinmektedir. Bazı radikal akademik bilginlere göre, gerçekten de aynı tür olabilirler - ancak Psydonia halkı kesinlikle genel olarak aynı şeye inanmıyor.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Hollowkin </strong></summary>
+		<summary><strong> Kara-elfler </strong></summary>
 		<br>
-		Hollowkin are short lived, widely diverse, and have an insatiable hatred for dark elves. This hate stems from their long standing political neighbor and rival, the Zizonic dark-elven kingdoms of Subterra. Dendor and Xylix stand as the 'patron-deities' of this species despite having no hand in their creation. Hollowkin view freedom to be of the upmost importance due to their dark-elven neighbors' tendencies toward slavery and their own history of subjugation. They also, often mistakenly, worship Dendor for the boon of their animalistic nature, perceiving him as the source of their traits, talents, and instinct.
+		Zizo'nun fethettikleri. Bu elfler, yeni yeniden doğmuş imparatorlukların yeraltı genişliğinden gelirler.  Zizo'nun dikkatli bakışları altında sert, anaerkil hayatlar sürerler, büyük çoğunluğu bir gün kendileri için böyle bir güç ve hakimiyet elde etmeyi umar.
 		<br><br>
-		Their true origin is much darker. Hollowkin are the product of dark-elven ingenuity and fleshcrafting. Their creation is a simple story of malice and greed- of sapient animal hybrid slave homunculi, a person turned product which they could market and sell to other great houses of modern Zizonic Subterra. The true nature of their existence is largely lost to the hollowkin through centuries. The dark elves still recall, of course, viciously mocking their creations from deep within their caves, declaring them but nothing more than animals or pets. Hollowkin react violently to dark-elven attempts at oppression, this leads to conflicts across the world of Psydonia.
+		Zizo'nun dölü, son kar elfleri, büyükannelerinin fetih yoluyla oyduğu kara elf kültürüne - ister neşeyle ister kırgınlıkla olsun - kendilerini entegre ettiler.
 		<br><br>
-		 To the unaligned observer, hollowkin are often seen amongst bandit bands, working openly with Agents of Matthios, conflating the idea of freedom between the two deities. There is, of course, the old wives' tales that circulate... how hollowkin lead to infestations of Werewolves. Whether this is true or not is unknown to the common person, but to those familiar with the horrendous magics used by the dark elves, they must only assume the worst.
+		Psydonia'daki çoğu kişiye göre, bir kara elf, güç için ihanet etmeyi bekleyen bir Zizo hizmetkarından başka bir şey değildir, bu da çoğu kara elfin güvenli yeraltı kalelerinde kalmasına neden olur. Yüzeye çıkanlar nadiren adil muamele görür. 500 yaşın üzerindeki kara elfler eski Ravoxian imparatorluklarını hatırlayabilir, ancak öldürülmeyen veya dönüştürülmeyen çok az kişi kalmıştır.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Kobolds </strong></summary>
+		<summary><strong> Yarı-orklar </strong></summary>
 		<br>
-		Speculated to have originated from the dank depths of Subterra, Kobolds are a species of stout sea-faring and mountain-dwelling lizardfolk infamous for their skills in trap-making, their habit of hoarding grandiose amounts of trinkets and artifacts, and their opportunism. They are often found in servitude to great beasts such as dragons and giants - trapping their lairs and utilizing pack tactics to dispose of ambitious adventurers and thieves alike. But in their lonesome, Kobolds are generally weak and quick to die, as they noticeably lack the meaningful amount of constitution, strength, and endurance that other species usually have.
+		Graggar'ın piçleri. Yarı-orklar, orkların ve başka bir türün yavruları, yarı-orklar veya orkluğa giden yolda çok fazla akraba eti tüketmiş başka bir türdür.  Bir yabancı, bir bakışta miras ürünü bir yarı-ork ile yamyamlık ürünü bir yarı-orku ayırt edemez, bu da çok fazla sosyal dışlanmaya yol açar.
+		<br><br>
+		Ebeveynlerinin onları beslemeyi reddetmesi ve diğer ebeveynlerinin de onları sık sık reddetmesi veya saldırması nedeniyle, çoğu yarı-ork yetim olarak büyür. Toplumun geri kalanı tarafından reddedilmeleri büyümelerini engeller, bu da onları genellikle düşman ve şiddete meyilli yapar. Bu nedenle, çoğu kişi onlarda en kötüsünü varsayar ve akraba eti yeme konusunda ork ebeveynlerinin izinden gitmeye lanetlendiklerine inanır.
+		<br><br>
+		Bir yarı-ork, dişleri ve doğal gücüyle ork özellikleri sergileyebilir. Birçoğu, kalan özdenetimleri dışında, görsel olarak tam orklardan neredeyse ayırt edilemez.
+		<br><br>
+	</details>
+
+	<details>
+		<summary><strong> Hollowkin (Oyuksoylular) </strong></summary>
+		<br>
+		Hollowkin kısa ömürlüdür, çok çeşitlidir ve kara elflere karşı doymak bilmez bir nefrete sahiptir. Bu nefret, uzun süredir devam eden siyasi komşuları ve rakipleri olan Subterra'nın Zizonik kara elf krallıklarından kaynaklanmaktadır. Dendor ve Xylix, yaratımlarında hiçbir payları olmamasına rağmen bu türün 'patron-tanrıları' olarak dururlar. Hollowkin, kara elf komşularının köleliğe eğilimleri ve kendi boyun eğdirilme geçmişleri nedeniyle özgürlüğü en büyük önemde görür. Ayrıca, Dendor'u özelliklerinin, yeteneklerinin ve içgüdülerinin kaynağı olarak algılayarak, hayvansal doğalarının lütfu için sık sık yanlışlıkla ona taparlar.
+		<br><br>
+		Gerçek kökenleri çok daha karanlıktır. Hollowkin, kara elf yaratıcılığının ve et işlemeciliğinin ürünüdür. Yaratılışları basit bir kötülük ve açgözlülük hikayesidir - zeki hayvan melezi köle homunkulusları, modern Zizonik Subterra'nın diğer büyük evlerine pazarlayıp satabilecekleri ürüne dönüştürülmüş bir kişi. Varlıklarının gerçek doğası, yüzyıllar boyunca hollowkinler için büyük ölçüde kaybolmuştur. Kara elfler elbette hala hatırlar, mağaralarının derinliklerinden yarattıklarıyla acımasızca alay eder, onları hayvanlardan veya evcil hayvanlardan başka bir şey olmamakla ilan ederler. Hollowkin, kara elflerin baskı girişimlerine şiddetle tepki verir, bu da Psydonia dünyasında çatışmalara yol açar.
+		<br><br>
+		 Tarafsız bir gözlemciye göre, hollowkinler genellikle haydut çeteleri arasında görülür, Matthios Ajanları ile açıkça çalışır ve iki tanrı arasındaki özgürlük fikrini birleştirirler. Elbette dolaşan kocakarı masalları vardır... hollowkinlerin Kurtadam istilalarına nasıl yol açtığı hakkında. Bunun doğru olup olmadığı sıradan insanlar tarafından bilinmemektedir, ancak kara elfler tarafından kullanılan korkunç büyülere aşina olanlar için sadece en kötüsünü varsaymak gerekir.
+		<br><br>
+	</details>
+
+	<details>
+		<summary><strong> Koboldlar </strong></summary>
+		<br>
+		Subterra'nın rutubetli derinliklerinden geldiği tahmin edilen Koboldlar, tuzak kurma becerileri, muazzam miktarda ıvır zıvır ve eser biriktirme alışkanlıkları ve fırsatçılıkları ile nam salmış, denizci ve dağlarda yaşayan tıknaz bir kertenkele halkı türüdür. Genellikle ejderhalar ve devler gibi büyük canavarların hizmetinde bulunurlar - inlerini tuzaklar ve hırslı maceracıları ve hırsızları bertaraf etmek için sürü taktikleri kullanırlar. Ancak yalnız kaldıklarında, Koboldlar genellikle zayıftır ve çabuk ölürler, çünkü diğer türlerin genellikle sahip olduğu anlamlı miktarda bünye, güç ve dayanıklılıktan belirgin şekilde yoksundurlar.
 		<br><br>
 	</details>
 
@@ -670,109 +670,109 @@ While it's not required reading, leadership roles may find this information usef
 </details>
 
 <details>
-	<summary><strong><span style="font-size:130%"> RECENT HISTORY: MAJOR EVENTS </span></strong></summary>
+	<summary><strong><span style="font-size:130%"> YAKIN TARİH: ÖNEMLİ OLAYLAR </span></strong></summary>
 	<br>
-	While the recent history of the world is interesting and may shape many a character and setting, ask yourself this whilst you are reading: "Would my character realistically know this?"
-	Not every character is a history expert. Keep this in mind.
+	Dünyanın yakın tarihi ilginç olsa ve birçok karakteri ve ortamı şekillendirebilecek olsa da, bunu okurken kendinize şunu sorun: "Karakterim bunu gerçekçi bir şekilde bilir miydi?"
+	Her karakter bir tarih uzmanı değildir. Bunu aklınızda bulundurun.
 	<br><br>
 	<details>
-		<summary><strong> Matthios' Final Heist - 2001 </strong></summary>
+		<summary><strong> Matthios'un Son Soygunu - 2001 </strong></summary>
 		<br>
-		During an otherwise peaceful early morning, Heartfeltians awoke to alarms raised and economic panic. A grand heist had taken place the night before, countless priceless artifacts, gemstones, and even debt records missing from vaults across the city. The entire reserve was missing, leaving only the bloodied coins typical of Matthiosan calling card and no otherwise visible signs of entry. As most heists of this era, this was attributed to the unknown figurehead thief Matthios, despite growing rumours of his death. Economy worldwide suffered after the sudden downturn of this center of trade. Heartfelt recovered only five decades later.
+		Aksi takdirde huzurlu bir sabahın erken saatlerinde, Heartfeltlılar yükselen alarmlara ve ekonomik paniğe uyandılar. Önceki gece büyük bir soygun gerçekleşmiş, şehrin dört bir yanındaki kasalardan sayısız paha biçilmez eser, değerli taş ve hatta borç kayıtları kaybolmuştu. Tüm rezerv kayıptı, geriye sadece Matthios'un kartviziti olan kanlı sikkeler kalmış ve görünürde başka bir giriş izi yoktu. Bu dönemin çoğu soygunu gibi, bu da ölümüyle ilgili artan söylentilere rağmen bilinmeyen figüran hırsız Matthios'a atfedildi. Bu ticaret merkezinin ani düşüşünün ardından dünya ekonomisi zarar gördü. Heartfelt ancak elli yıl sonra toparlanabildi.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> The Tomb's Unearthing - 2003 </strong></summary>
+		<summary><strong> Mezarın Ortaya Çıkarılması - 2003 </strong></summary>
 		<br>
-		A Vanderlinian dwarf dug deeply below the growing settlement, striking solid bricks instead of stone or metal. He unearthed the tomb of the late Matthios, rumoured to have been buried for decades... yet no corpse was found inside. The tomb's contents shifted brimming with his power and riches, but of equal danger. Adventurers talent from across the lands further boost Vanderlin's influence and power. Soon, other entrances would open up across the continent nearby major settlements.
+		Vanderlinli bir cüce, büyüyen yerleşim yerinin derinliklerini kazdı ve taş veya metal yerine sağlam tuğlalara çarptı. Onlarca yıldır gömülü olduğu söylenen merhum Matthios'un mezarını ortaya çıkardı... ancak içeride ceset bulunamadı. Mezarın içeriği onun gücü ve zenginlikleriyle dolup taşıyordu ama eşit derecede tehlike de vardı. Diyarın dört bir yanından gelen maceracı yetenekleri Vanderlin'in etkisini ve gücünü daha da artırdı. Kısa süre sonra, büyük yerleşim yerlerinin yakınındaki kıtanın dört bir yanında başka girişler açılacaktı.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Baotha's Fall - 2019 </strong></summary>
+		<summary><strong> Baotha'nın Düşüşü - 2019 </strong></summary>
 		<br>
-		"The Demon Queen," "The Prince of Wine," "Consort of Misfortune." Regardless of the disparaging title of choice, Baotha's consortship and eventual regency was subject of disparagement and snide remarks across all of nobility. Her tastes and demands for increasingly exotic substances further doomed her kingdom day after day, until the once thriving azure coasts held nothing but memories of struggle and suffering.
+		"İblis Kraliçe", "Şarap Prensi", "Talihsizliğin Eşi." Seçilen aşağılayıcı unvan ne olursa olsun, Baotha'nın eşliği ve nihai naipliği, tüm soylular arasında aşağılama ve iğneleyici sözlerin konusuydu. Zevkleri ve giderek artan egzotik maddelere olan talepleri, bir zamanlar gelişen masmavi kıyıların mücadele ve acı hatıralarından başka bir şey barındırmadığı güne kadar krallığını her geçen gün daha da mahvetti.
 		<br><br>
-		Nobility and peasantry cheered alike when word spread of her death. Overdose of Lux, they said. A blight across the lands lifted... or so was thought. Her dark whispers reached more and more ears, of drunkards, the miserable, offering a false salvation of escape. To make matters worse, Her Grace, The First Tiefling's ascension marked the emergence of even more of her people across all of Psydonia.
+		Ölüm haberi yayıldığında soylular ve köylüler aynı şekilde tezahürat yaptı. Lux aşırı dozu, dediler. Toprakların üzerindeki bir felaket kalktı... ya da öyle sanıldı. Karanlık fısıltıları daha fazla kulağa, sarhoşlara, sefillere ulaştı ve kaçış için sahte bir kurtuluş sundu. İşleri daha da kötüleştirmek için, Ekselansları İlk Tiefling'in yükselişi, halkının daha fazlasının tüm Psydonia'da ortaya çıkışını işaret etti.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> The Hellspawn Scourge - 2020 </strong></summary>
+		<summary><strong> Cehennemdölü Belası - 2020 </strong></summary>
 		<br>
-		What was first thought to be another invasion from the hells turned instead to be considered a plague, a nuisance- the emergence of a new species, tieflings. Parents across Psydonia birthed, hatched, or otherwise found unexpected surprises of hell-tainted children bearing half their features. Most hadn't the slightest explanation to this. Many blamed the influence of recently-ascended Baotha, yet the new goddess seemed insistent to deny that out of any aspect of her life.
+		İlk başta cehennemden gelen başka bir istila olduğu düşünülen şey, bunun yerine bir veba, bir baş belası - yeni bir türün, tieflinglerin ortaya çıkışı olarak kabul edildi. Psydonia'nın dört bir yanındaki ebeveynler, özelliklerinin yarısını taşıyan cehennem lekeli çocukların beklenmedik sürprizlerini doğurdu, yumurtladı veya başka bir şekilde buldu. Çoğunun buna dair en ufak bir açıklaması yoktu. Birçoğu yakın zamanda yükselen Baotha'nın etkisini suçladı, ancak yeni tanrıça hayatının herhangi bir yönü dışında bunu reddetmekte ısrarcı görünüyordu.
 		<br><br>
-		After rejection and expulsion from nation after nation, tiefling culture developed around a nomadic lifestyle. As time passed, some were even allowed to integrate themselves within lower echelons of humen society. Yet all nobility agreed on one aspect; no tiefling would ever preside over a court again, much less allowed the grace of divine noble blood at all.
+		Ulus üstüne ulustan reddedilip kovulduktan sonra, tiefling kültürü göçebe bir yaşam tarzı etrafında gelişti. Zaman geçtikçe, bazılarının humen toplumunun alt kademelerine entegre olmalarına bile izin verildi. Ancak tüm soylular tek bir konuda hemfikirdi; hiçbir tiefling bir daha asla bir mahkemeye başkanlık etmeyecek, hele ilahi soylu kanın lütfu hiç verilmeyecekti.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Graggar, The First Greenskin - 2053 </strong></summary>
+		<summary><strong> Graggar, İlk Yeşilderili - 2053 </strong></summary>
 		<br>
-		As knaves and brigands descended upon the ruins of Baotha's lands, one warlord gained quick notoriety and power above them all. Graggar, feared by follower and foe alike for his habit of consuming the flesh of his fallen opponents, tore his way through the steppes and forests North of Zaladin, pillaging, destroying, and consuming in endless destruction and gluttony. None were surprised when his exterior grew as monstrous as interior. With feast after feast, conquest after conquest, the first orc's battle cries were soon heard by the heavens themselves, marking him the third mortal to reach ascendance.
+		Düzenbazlar ve haydutlar Baotha'nın topraklarının kalıntılarına inerken, bir savaş lordu hepsinin üzerinde hızlı bir ün ve güç kazandı. Düşen rakiplerinin etini tüketme alışkanlığı nedeniyle takipçisi ve düşmanı tarafından korkulan Graggar, Zaladin'in kuzeyindeki bozkırları ve ormanları yarıp geçti; sonsuz bir yıkım ve oburluk içinde yağmaladı, yok etti ve tüketti. Dış görünüşünün içi kadar canavarlaştığında kimse şaşırmadı. Ziyafet üstüne ziyafet, fetih üstüne fetihle, ilk orkun savaş çığlıkları kısa süre sonra göklerin kendisi tarafından duyuldu ve onu yükselişe ulaşan üçüncü ölümlü olarak işaretledi.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Goblin War I - 2054 </strong></summary>
+		<summary><strong> I. Goblin Savaşı - 2054 </strong></summary>
 		<br>
-		A direct product of Eora's naivety, so the stories say. Her offering to Graggar, a sliver of divinity in hopes of easing tensions between the pantheons of old and new, was graciously accepted and used to form barely-sapient monsters of hunger and rage across Psydonia. As with the spreading curse of orcishness, these greenskins under orders of their new god attacked almost every settlement capable of taking records. The attempt at world conquest was crushed after two years of humenity's efforts to resist the calamity proved fruitful.
+		Hikayelerin dediğine göre, Eora'nın saflığının doğrudan bir ürünü. Graggar'a sunduğu, eski ve yeni panteonlar arasındaki gerilimi hafifletme umuduyla bir tanrısallık parçası, nezaketle kabul edildi ve Psydonia'da zar zor zeki olan açlık ve öfke canavarları oluşturmak için kullanıldı. Orkluğun yayılan lanetiyle birlikte, yeni tanrılarının emri altındaki bu yeşilderililer, kayıt tutabilen neredeyse her yerleşim yerine saldırdı. Dünya fethi girişimi, humenliğin felakete direnme çabalarının meyve vermesinin ardından iki yıl sonra ezildi.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Ascension of Zizo - 2102 </strong></summary>
+		<summary><strong> Zizo'nun Yükselişi - 2102 </strong></summary>
 		<br>
-		<em>"I will never forget the night of silver wires. I was sitting around the kampfire alongside the snow elven family who had taken me in. I had grown to konsider them friends, family even, as I studied their ways and kulture. Imagine my horror, as strands of silver light descended from the sky to their hearts, arcing from some unknown origin beyond the horizon. My brief fascination turned to panic as their Lux was violently ripped from each of their hearts, leaving only the gore, bones, and lifeless rred eyes of my former kompanions staining the snow. I kould not save them. No one kould save any of them. Kenturies later, the memories haunt me no less."</em>- Aspen Uki, wood-elven scholar.
+		<em>"Gümüş teller gecesini asla unutmayacağım. Beni yanlarına alan kar elfi ailesinin yanında kamp ateşi etrafında oturuyordum. Onların yollarını ve kültürlerini incelerken onları arkadaş, hatta aile olarak görmeye başlamıştım. Gökyüzünden kalplerine gümüş ışık şeritleri inerken, ufkun ötesindeki bilinmeyen bir kökenden kavis çizerken dehşetimi hayal edin. Kısa süreli hayranlığım, Lux'ları her birinin kalbinden şiddetle sökülüp, karda eski yoldaşlarımın sadece kanını, kemiklerini ve cansız kırmızı gözlerini bırakırken paniğe dönüştü. Onları kurtaramadım. Kimse hiçbirini kurtaramazdı. Yüzyıllar sonra, anılar beni daha az rahatsız etmiyor."</em>- Aspen Uki, orman elfi alimi.
 		<br><br>
-		The snow-elven lich Zizo, after having grown in power and isolation for centuries, finally made her move. She forcefully stole the souls of her entire people, sparing only her descendants. Using the sheer power of captured divinity, she took her position as the fourth ascended goddess. As she grew higher and tested the limits of her newfound power, the very rules of death twisted. Corpses everywhere would stand yet again, weighing hunger against the will of their new matriarch.
+		Kar elfi lich Zizo, yüzyıllardır güçlenip izole olduktan sonra nihayet hamlesini yaptı. Sadece kendi soyundan gelenleri bağışlayarak tüm halkının ruhlarını zorla çaldı. Yakalanan tanrısallığın saf gücünü kullanarak, dördüncü yükselmiş tanrıça olarak yerini aldı. O yükseldikçe ve yeni bulduğu gücün sınırlarını test ettikçe, ölümün kuralları çarpıldı. Cesetler her yerde tekrar ayağa kalkacak, açlığı yeni anaerkillerinin iradesine karşı tartacaktı.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Dark Elven Empire Conquered - 2104 </strong></summary>
+		<summary><strong> Kara Elf İmparatorluğu Fethedildi - 2104 </strong></summary>
 		<br>
-		Amidst the chaos of the deadite calamity, Zizo led an organized assault within the caverns of Subterra. The dark elven empire was subjugated in entirety, their Ravoxian ways violently crushed in favour of Zizo's matriarchy. Most elders and leaders were slaughtered, leaving the once respected and revered culture now a feared husk of what it once stood for.
+		Ölü (deadite) felaketinin kaosu ortasında Zizo, Subterra mağaralarında organize bir saldırı yönetti. Kara elf imparatorluğu bütünüyle boyun eğdirildi, Ravoxian yolları Zizo'nun anaerkilliği lehine şiddetle ezildi. Çoğu yaşlı ve lider katledildi, bir zamanlar saygı duyulan ve hürmet edilen kültürü şimdi bir zamanlar savunduğu şeyin korkulan bir kabuğu haline getirdi.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> The Red Dune Massacre - 2401 </strong></summary>
+		<summary><strong> Kızıl Kumul Katliamı - 2401 </strong></summary>
 		<br>
-		A devastating massacre carried out by Psydonite settlers and extremists from The Black Empire at St. Samiyas Convent, a northern Lakkarian convent near the Grenzelhoftian border. The abbess of the convent, alongside a countless number of her churchlings and acolytes, were mercilessly slain for reasons that Lakkarian scholars have long struggled to determine.
+		Grenzelhoft sınırı yakınlarındaki kuzey Lakkarian manastırı olan St. Samiyas Manastırı'nda Psydonite yerleşimciler ve Kara İmparatorluk'tan aşırılık yanlıları tarafından gerçekleştirilen yıkıcı bir katliam. Manastırın başrahibesi, sayısız kilise mensubu ve yardımcısıyla birlikte, Lakkarian alimlerinin belirlemekte uzun süre zorlandığı nedenlerle acımasızca katledildi.
 		<br><br>
-		Iteru of the Dunes, Lakkari's Kandake, swiftly denounced this act of aggression and declared war on The Black Empire.
+		Lakkari'nin Kandake'si Kumulların Iteru'su, bu saldırganlık eylemini hızla kınadı ve Kara İmparatorluk'a savaş ilan etti.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> The War of the Split Feather - 2401-2412 </strong></summary>
+		<summary><strong> Kırık Tüy Savaşı - 2401-2412 </strong></summary>
 		<br>
-		The horrific eleven yil long war between the Queendom of Lakkari and the Grenzelhoftian Impirate. The Queendom of Lakkari sustained heavy losses, losing most of its northernmost territories, but ultimately won the war after a series of close and decisive victories in the Lakkarian rainforest following the Battle of Mudridge in 2411.
+		Lakkari Kraliçeliği ile Grenzelhoft İmparatorluğu (Impirate) arasındaki on bir yıl süren korkunç savaş. Lakkari Kraliçeliği ağır kayıplar verdi, en kuzeydeki topraklarının çoğunu kaybetti, ancak sonunda 2411'deki Mudridge Savaşı'nın ardından Lakkarian yağmur ormanlarında bir dizi yakın ve kesin zaferin ardından savaşı kazandı.
 		<br><br>
-		Having overstretched their supply lines into the Lakkarian rainforests (which they struggled to navigate) and facing relentless ambushes from both indigenous jungle elf tribes and the Lakkarian military, the Black Empire ultimately decided to pull back out of the rainforest and prioritize establishing control over the rebellious territories they already took in the north.
-		<br><br>
-	</details>
-
-	<details>
-		<summary><strong> Astrata's Comet - 2402 </strong></summary>
-		<br>
-		A strange comet struck the peak of Malum's Anvil. In its center, a rusted capsule remained, containing a divine, crystalline shard of Astrata's light. The first artificer to touch the shard could not handle the pure divinity, falling to ash. It was successfully contained within Vanderlin, now serving to light the way of travelers.
+		Tedarik hatlarını (gezinmekte zorlandıkları) Lakkarian yağmur ormanlarına kadar uzatan ve hem yerli orman elfi kabilelerinden hem de Lakkarian ordusundan gelen amansız pusularla karşı karşıya kalan Kara İmparatorluk, sonunda yağmur ormanlarından çekilmeye ve kuzeyde zaten aldıkları isyankar bölgeler üzerinde kontrol kurmaya öncelik vermeye karar verdi.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Goblin War II - 2470 </strong></summary>
+		<summary><strong> Astrata'nın Kuyruklu Yıldızı - 2402 </strong></summary>
 		<br>
-		The most recent 'Goblin War' in the minds of the general populous. Graggar's armies struck with a greater ferocity than ever before, but centuries of preparation led to an overwhelming defeat after five years of viscious and taxing combat. The late 70's were defined by the joy of veterans returning home from the conflict, and the grief of families who'd lost during the carnage.
+		Garip bir kuyruklu yıldız Malum'un Örsü'nün zirvesine çarptı. Merkezinde, Astrata'nın ışığının ilahi, kristal bir parçasını içeren paslanmış bir kapsül kaldı. Parçaya dokunan ilk zanaatkar, saf tanrısallığı kaldıramadı ve küle döndü. Başarıyla Vanderlin içinde muhafaza altına alındı, şimdi gezginlerin yolunu aydınlatmaya hizmet ediyor.
 		<br><br>
 	</details>
 
 	<details>
-		<summary><strong> Heartfelt's Hubris, The Brass Cataclysm- 2501 </strong></summary>
+		<summary><strong> II. Goblin Savaşı - 2470 </strong></summary>
 		<br>
-		Automaton servants created by Heartfelt's artificers haywire, ravaging their home city and surrounding lands as they engage in endless conquest for biomass to fuel themselves. The already-polluted Enigma only further fell into disarray and destruction. Rockhill fortified and established itself instead as a bastion against automaton forces in the growing Machine War.
+		Genel nüfusun zihnindeki en son 'Goblin Savaşı'. Graggar'ın orduları her zamankinden daha büyük bir vahşetle saldırdı, ancak yüzyıllarca süren hazırlık, beş yıllık şiddetli ve yorucu çatışmanın ardından ezici bir yenilgiye yol açtı. 70'lerin sonları, savaştan eve dönen gazilerin sevinci ve katliam sırasında kaybeden ailelerin kederiyle tanımlandı.
+		<br><br>
+	</details>
+
+	<details>
+		<summary><strong> Heartfelt'in Kibri, Pirinç Felaketi - 2501 </strong></summary>
+		<br>
+		Heartfelt'in zanaatkarları tarafından yaratılan otomat hizmetkarlar çığırından çıktı, kendilerini beslemek için biyokütle adına sonsuz bir fethe girişirken evleri olan şehri ve çevreleyen toprakları harap etti. Zaten kirli olan Enigma daha da kargaşa ve yıkıma düştü. Rockhill bunun yerine büyüyen Makine Savaşı'nda otomat güçlerine karşı bir kale olarak kendini güçlendirdi ve kurdu.
 		<br><br>
 	</details>
 
