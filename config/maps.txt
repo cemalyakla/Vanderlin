@@ -14,7 +14,7 @@ Format:
 endmap
 
 map vanderlin
-	default
+	maxplayers 90
 	votable
 endmap
 
@@ -34,6 +34,12 @@ map whitepalacepass
 endmap
 
 map haydutmahzeni
+	maxplayers 40
+	votable
+endmap
+
+map riverrun
+	default
 	maxplayers 40
 	votable
 endmap

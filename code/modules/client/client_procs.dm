@@ -633,6 +633,80 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		message_admins("[key_name_admin(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age==1?"":"s")] old, created on [account_join_date].")
 		if (CONFIG_GET(flag/irc_first_connection_alert))
 			send2irc_adminless_only("new_byond_user", "[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age==1?"":"s")] old, created on [account_join_date].")
+	// Check if account is too new (less than 90 days old) and kick if so
+	// If database wasn't available, try to fetch account age via BYOND website
+	if(account_age == -1 && !holder && !GLOB.deadmins[ckey])
+		var/join_date = findJoinDate()
+		if(join_date)
+			// Parse the date string (YYYY-MM-DD) and calculate age
+			var/list/date_parts = splittext(join_date, "-")
+			if(length(date_parts) == 3)
+				var/year = text2num(date_parts[1])
+				var/month = text2num(date_parts[2])
+				var/day = text2num(date_parts[3])
+				if(year && month && day)
+					// Calculate days since join date
+					var/current_date = time2text(world.realtime, "YYYY-MM-DD")
+					var/list/current_parts = splittext(current_date, "-")
+					if(length(current_parts) == 3)
+						var/current_year = text2num(current_parts[1])
+						var/current_month = text2num(current_parts[2])
+						var/current_day = text2num(current_parts[3])
+						if(current_year && current_month && current_day)
+							// Calculate days difference (accurate enough for 90-day check)
+							var/days_diff = 0
+							var/month_days = list(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+							// Calculate days for full years between
+							for(var/y = year + 1; y < current_year; y++)
+								days_diff += IsLeapYear(y) ? 366 : 365
+							// Calculate days for months and days
+							if(current_year == year)
+								// Same year: count days from join month/day to current month/day
+								if(month == current_month)
+									days_diff += (current_day - day)
+								else
+									// Days remaining in join month
+									if(month == 2 && IsLeapYear(year))
+										days_diff += (29 - day)
+									else if(month >= 1 && month <= 12)
+										days_diff += (month_days[month] - day)
+									// Days in full months between
+									for(var/m = month + 1; m < current_month; m++)
+										if(m == 2 && IsLeapYear(year))
+											days_diff += 29
+										else if(m >= 1 && m <= 12)
+											days_diff += month_days[m]
+									// Days in current month
+									days_diff += current_day
+							else
+								// Different years: days remaining in join year + full years + days in current year
+								// Days remaining in join year (from join date to end of year)
+								// Days remaining in join month
+								if(month == 2 && IsLeapYear(year))
+									days_diff += (29 - day)
+								else if(month >= 1 && month <= 12)
+									days_diff += (month_days[month] - day)
+								// Full months remaining in join year
+								for(var/m = month + 1; m <= 12; m++)
+									if(m == 2 && IsLeapYear(year))
+										days_diff += 29
+									else if(m >= 1 && m <= 12)
+										days_diff += month_days[m]
+								// Days in current year up to current date
+								for(var/m = 1; m < current_month; m++)
+									if(m == 2 && IsLeapYear(current_year))
+										days_diff += 29
+									else if(m >= 1 && m <= 12)
+										days_diff += month_days[m]
+								days_diff += current_day
+							account_age = max(0, days_diff)
+							account_join_date = join_date
+	if(account_age >= 0 && account_age < 90 && !holder && !GLOB.deadmins[ckey])
+		log_access("Failed Login: [key] - BYOND account is [account_age] day[(account_age==1?"":"s")] old, below 90 day minimum")
+		message_admins("<span class='adminnotice'>Failed Login: [key] - BYOND account is [account_age] day[(account_age==1?"":"s")] old, below 90 day minimum</span>")
+		//to_chat(src, "<span class='danger'>Your BYOND account is too new to join this server. Your account must be at least 90 days old. Your account is currently [account_age] day[(account_age==1?"":"s")] old, created on [account_join_date || "an unknown date"].</span>")
+		qdel(src)
+		return
 	get_message_output("watchlist entry", ckey)
 	check_overwatch()
 	validate_key_in_db()

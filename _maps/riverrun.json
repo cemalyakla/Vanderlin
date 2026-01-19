@@ -1,0 +1,21 @@
+{
+	"map_name": "Riverrun",
+	"map_path": "map_files/riverrun",
+	"map_file": "riverrun.dmm",
+	"immigrant_origin": "Vanderlin",
+	"monarch_title": "Baron",
+	"monarch_title_f": "Baroness",
+	"traits": [
+		{"Up": true, "Turf Weather Effects": true, "Cellar": true},
+		{"Up": true, "Down": true, "Turf Weather Effects": true},
+		{"Down": true, "Turf Weather Effects": true}
+	],
+	"other_z": [
+		"_maps/map_files/vanderlin/vanderlin_forest.json",
+		"_maps/map_files/vanderlin/vanderlin_mountain.json",
+		"_maps/map_files/vanderlin/vanderlin_bog.json"
+	],
+	"minetype": null,
+	"space_empty_levels": 0,
+	"space_ruin_levels": 0
+}

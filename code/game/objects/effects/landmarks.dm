@@ -139,6 +139,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "City Watchmen"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/militiamen
+	name = "Militia-men"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/lieutenant
 	name = "City Watch Lieutenant"
 	icon_state = "arrow"
@@ -247,6 +251,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 /obj/effect/landmark/start/weaponsmith
 	name = "Weaponsmith"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/blacksmith
+	name = "Blacksmith"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/armorsmith

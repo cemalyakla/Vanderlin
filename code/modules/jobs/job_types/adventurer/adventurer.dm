@@ -21,7 +21,7 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 
 	outfit = null
 	outfit_female = null
-	job_reopens_slots_on_death = TRUE
+	job_reopens_slots_on_death = FALSE
 	same_job_respawn_delay = 15 MINUTES
 	advclass_cat_rolls = list(CTAG_ADVENTURER = 15)
 	is_foreigner = TRUE
@@ -37,24 +37,24 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 /datum/job/adventurer/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	to_chat(spawned, "<br><font color='#855b14'><span class='bold'>If I wanted to make mammons by selling my services, or completing quests, the Mercenary guild would be a good place to start.</span></font><br>")
-
-/datum/job/adventurer/set_spawn_and_total_positions(count)
-	// Calculate the new spawn positions
-	var/new_spawn = adventurer_slot_formula(count)
-
-	// Sync everything
-	spawn_positions = new_spawn
-	total_positions_so_far = new_spawn
-	total_positions = new_spawn
-
-	return spawn_positions
-
-/datum/job/adventurer/get_total_positions()
-	var/slots = adventurer_slot_formula(get_total_town_members())
-
-	if(slots <= total_positions_so_far)
-		slots = total_positions_so_far
-	else
-		total_positions_so_far = slots
-
-	return slots
+//
+///datum/job/adventurer/set_spawn_and_total_positions(count)
+//	// Calculate the new spawn positions
+//	var/new_spawn = adventurer_slot_formula(count)
+//
+//	// Sync everything
+//	spawn_positions = new_spawn
+//	total_positions_so_far = new_spawn
+//	total_positions = new_spawn
+//
+//	return spawn_positions
+//
+///datum/job/adventurer/get_total_positions()
+//	var/slots = adventurer_slot_formula(get_total_town_members())
+//
+//	if(slots <= total_positions_so_far)
+//		slots = total_positions_so_far
+//	else
+//		total_positions_so_far = slots
+//
+//	return slots
