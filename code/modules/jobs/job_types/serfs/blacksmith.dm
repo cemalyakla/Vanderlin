@@ -190,7 +190,7 @@
 	allowed_races = RACES_PLAYER_ALL
 
 	outfit = /datum/outfit/weaponsmith
-	display_order = JDO_WSMITH
+	display_order = JDO_BSMITH
 	give_bank_account = 30
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 

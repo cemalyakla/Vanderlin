@@ -127,8 +127,9 @@
 
 #define JDO_ARMORER 20
 #define JDO_WSMITH 21
-#define JDO_BAPP 22
-#define JDO_ARTIFICER 23
+#define JDO_BSMITH 22
+#define JDO_BAPP 23
+#define JDO_ARTIFICER 24
 
 
 

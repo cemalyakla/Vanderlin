@@ -50,7 +50,6 @@
 		/datum/job/soilchild,
 		/datum/job/magician,
 		/datum/job/mageapprentice,
-		/datum/job/servant,
 		/datum/job/squire,
 		/datum/job/gaffer,
 		/datum/job/templar,
@@ -75,5 +74,6 @@
 		/datum/job/miner = 2,
 		/datum/job/carpenter = 2,
 		/datum/job/mason = 1,
+		/datum/job/servant = 2,
 		/datum/job/bard = 1
 	)
