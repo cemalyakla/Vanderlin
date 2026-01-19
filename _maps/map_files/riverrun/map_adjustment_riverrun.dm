@@ -77,7 +77,3 @@
 		/datum/job/mason = 1,
 		/datum/job/bard = 1
 	)
-
-	species_adjust = list(
-		/datum/job/militiamen = "human"
-	)
