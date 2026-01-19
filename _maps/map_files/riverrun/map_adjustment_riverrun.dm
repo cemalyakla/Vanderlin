@@ -3,9 +3,6 @@
 	If you need to add more map_adjustment, check 'map_adjustment_include.dm'
 	These 'map_adjustment.dm' files shouldn't be included in 'dme'
 */
-#define HUMEN list(\
-	SPEC_ID_HUMEN\
-)
 
 
 /datum/map_adjustment/riverrun
@@ -82,5 +79,5 @@
 	)
 
 	species_adjust = list(
-		/datum/job/militiamen = HUMEN
+		/datum/job/militiamen = "human"
 	)
