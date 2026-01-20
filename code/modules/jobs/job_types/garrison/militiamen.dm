@@ -190,7 +190,7 @@
 	)
 
 /datum/outfit/militiamen/pikeman
-	name = "City Watch Pikeman"
+	name = "Militia-men Pikeman"
 	head = /obj/item/clothing/head/helmet/kettle
 	neck = /obj/item/clothing/neck/coif
 	armor = /obj/item/clothing/armor/chainmail/hauberk/iron

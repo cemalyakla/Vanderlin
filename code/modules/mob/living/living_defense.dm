@@ -47,7 +47,8 @@
 		def_zone = ran_zone(BODY_ZONE_CHEST, 65)//Hits a random part of the body, geared towards the chest
 
 	var/armor = run_armor_check(def_zone, P.flag, "", "",P.armor_penetration, damage = P.damage)
-
+	var/limb_hit = check_limb_hit(def_zone)//to get the correct message info.
+	var/organ_damage = (P.damage * rand(8, 18)/10)
 	next_attack_msg.Cut()
 
 	var/on_hit_state = P.on_hit(src, armor)
@@ -62,15 +63,32 @@
 				check_projectile_dismemberment(P, def_zone,armor)
 			if(P.woundclass)
 				check_projectile_wounding(P, def_zone)
+				organ_damage = organ_damage*1.5
 			if(P.embedchance && !check_projectile_embed(P, def_zone))
 				P.handle_drop()
+			switch(limb_hit)
+				if(BODY_ZONE_HEAD)
+					organ_damage = organ_damage*1.5
+					adjustOrganLoss(ORGAN_SLOT_BRAIN, organ_damage)
+				if(BODY_ZONE_CHEST)
+					if(P.accuracy >= 75)
+						adjustOrganLoss(ORGAN_SLOT_HEART, organ_damage)
+					else if(P.accuracy >= 40)
+						adjustOrganLoss(ORGAN_SLOT_LUNGS, organ_damage)
+				if(BODY_ZONE_PRECISE_STOMACH)
+					if(P.accuracy >= 50)
+						adjustOrganLoss(ORGAN_SLOT_STOMACH, organ_damage)
+					else
+						adjustOrganLoss(ORGAN_SLOT_GUTS, organ_damage)
 		else
 			P.handle_drop()
 
+
 	var/organ_hit_text = ""
-	var/limb_hit = check_limb_hit(def_zone)//to get the correct message info.
+
 	if(limb_hit)
 		organ_hit_text = " in \the [parse_zone(limb_hit)]"
+
 	if(P.hitsound && !nodmg)
 		var/volume = P.vol_by_damage()
 		playsound(src, pick(P.hitsound), volume, TRUE, -1)

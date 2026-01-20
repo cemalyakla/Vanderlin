@@ -103,6 +103,15 @@
 
 /obj/item/organ/heart/on_life()
 	..()
+	// Heavy heart damage should be able to trigger a heart attack even before total failure.
+	if(owner && !failed && damage > high_threshold)
+		to_chat(owner, "<span class='userdanger'>OOHHH MY HEART!</span>")
+		owner.emote("breathgasp")
+		owner.Stun(2 SECONDS)
+		owner.set_heartattack(TRUE)
+		failed = TRUE
+		beating = 0
+
 	if(owner.client && beating)
 		failed = FALSE
 		var/sound/slowbeat = sound('sound/blank.ogg', repeat = TRUE)

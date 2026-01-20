@@ -190,5 +190,21 @@
 	high_threshold_cleared = "<span class='info'>The pain in my guts die down for now.</span>"
 	low_threshold_cleared = "<span class='info'>The last bouts of pain in my guts have died out.</span>"
 
+/obj/item/organ/guts/on_life()
+	..()
+	if(!owner)
+		return
+	// Severe gut trauma can cause nausea and vomiting even without recent food.
+	if(damage >= high_threshold)
+		var/mob/living/carbon/C = owner
+		if(istype(C))
+			if(prob(50))
+				C.vomit(10, FALSE, TRUE, 0, 1, FALSE, TRUE)
+				to_chat(C, "<span class='userdanger'>A wave of pain shoots through my abdomen and I retch uncontrollably!</span>")
+			else
+				to_chat(C, "<span class='userdanger'>OOHHH MY GUTS!</span>")
+				C.emote("painscream")
+				C.Stun(1 SECONDS)
+
 
 #undef STOMACH_METABOLISM_CONSTANT

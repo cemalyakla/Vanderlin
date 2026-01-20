@@ -95,7 +95,7 @@
 	beltr = /obj/item/weapon/sword/arming
 	backl = /obj/item/storage/backpack/satchel
 	scabbards = list(/obj/item/weapon/scabbard/sword/noble)
-	backpack_contents = list(/obj/item/storage/keyring/manorguard = 1)
+	backpack_contents = list(/obj/item/storage/keyring/royalknight = 1)
 
 /datum/outfit/royalknight/post_equip(mob/living/carbon/human/H, visuals_only = FALSE)
 	. = ..()

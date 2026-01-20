@@ -64,6 +64,7 @@
 	populate_contents = list(
 		/obj/item/weapon/knife/dagger/steel,
 		/obj/item/storage/keyring/militia,
+		/obj/item/storage/belt/pouch/coins/mid,
 	)
 
 // Bandit's belt starts with a bandage and a key to their guildhall.

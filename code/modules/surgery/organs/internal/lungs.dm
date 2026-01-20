@@ -23,6 +23,16 @@
 		if(owner.stat == CONSCIOUS)
 			owner.visible_message("<span class='danger'>[owner] grabs [owner.p_their()] throat, struggling for breath!</span>", \
 								"<span class='danger'>I suddenly feel like you can't breathe!</span>")
+		// Failing lungs rapidly deprive the body of oxygen.
+		if(isliving(owner))
+			var/mob/living/carbon/C = owner
+			C.adjustOxyLoss(5)
+			//oxyloss damages every other organ
+			C.adjustOrganLoss(ORGAN_SLOT_HEART, 5)
+			C.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
+			C.adjustOrganLoss(ORGAN_SLOT_LIVER, 5)
+			if(prob(50))
+				C.emote("breathgasp")
 		failed = TRUE
 	else if(!(organ_flags & ORGAN_FAILING))
 		failed = FALSE

@@ -1883,6 +1883,66 @@ GLOBAL_LIST_EMPTY(donator_races)
 					user.put_in_hands(I)
 					H.emote("pain", TRUE)
 					playsound(H, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
+
+			// Extra: heavy hits to vital zones also harm internal organs.
+			if(actual_damage > 0 && I.damtype == BRUTE && user?.used_intent)
+				var/blade_class = user.used_intent.blade_class
+				// Penetrating / thrust attacks are best at reaching organs.
+				if(blade_class == BCLASS_STAB || blade_class == BCLASS_PIERCE)
+					switch(affecting.body_zone)
+						if(BODY_ZONE_CHEST)
+							// Precise abdomen targeting primarily affects stomach and guts.
+							if(selzone == BODY_ZONE_PRECISE_STOMACH)
+								var/abdomen_damage = (actual_damage * rand(8, 20)/10)
+								if(prob(70))
+									H.adjustOrganLoss(ORGAN_SLOT_STOMACH, abdomen_damage)
+									H.adjustOrganLoss(ORGAN_SLOT_GUTS, abdomen_damage * 0.5)
+							else if(selzone == BODY_ZONE_PRECISE_GROIN)
+								var/gut_damage = (actual_damage * rand(8, 20)/10)
+								if(prob(60))
+									H.adjustOrganLoss(ORGAN_SLOT_GUTS, gut_damage)
+							else
+								// Generic chest stabs transfer damage to heart and lungs.
+								var/thoracic_damage = (actual_damage * rand(8, 20)/10)
+								if(prob(75))
+									H.adjustOrganLoss(ORGAN_SLOT_HEART, thoracic_damage)
+									H.adjustOrganLoss(ORGAN_SLOT_LUNGS, thoracic_damage)
+						if(BODY_ZONE_HEAD)
+							// Eye stabs mostly damage the eyes; other head stabs lean on brain trauma.
+							if(selzone == BODY_ZONE_PRECISE_L_EYE || selzone == BODY_ZONE_PRECISE_R_EYE)
+								var/eye_damage = (actual_damage * rand(8, 20)/10)
+								H.adjustOrganLoss(ORGAN_SLOT_EYES, eye_damage)
+							else
+								var/brain_damage = (actual_damage * rand(8, 20)/10)
+								H.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
+				// Heavy blunt strikes can also concuss/bruise internal organs, but a bit weaker.
+				else if(blade_class == BCLASS_BLUNT || blade_class == BCLASS_SMASH)
+					// Only count fairly big hits as organ-threatening.
+					if(actual_damage > 0)
+						switch(affecting.body_zone)
+							if(BODY_ZONE_HEAD)
+								// Scaled down vs stab: more like concussion/brain trauma.
+								var/brain_concussion = actual_damage * 0.75
+								H.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_concussion)
+
+								//make it so that getting hit in the head will cause dizziness and confusion depending on the amount of damage taken
+								var/dizziness_chance = actual_damage * 0.5
+								var/confusion_chance = actual_damage * 0.25
+								//blur the screen also
+								if(prob(actual_damage))
+									H.set_eye_blur_if_lower(5 SECONDS)
+								if(prob(dizziness_chance))
+									H.Dizzy(round(actual_damage / 5))
+								else if(prob(confusion_chance))
+									H.confused += round(actual_damage / 3)
+
+
+							if(BODY_ZONE_CHEST)
+								// Rib-breaking blows that can bruise heart and lungs.
+								var/thoracic_bruise = actual_damage * 0.35
+								H.adjustOrganLoss(ORGAN_SLOT_HEART, thoracic_bruise)
+								H.adjustOrganLoss(ORGAN_SLOT_LUNGS, thoracic_bruise)
+
 			I.do_special_attack_effect(user, affecting, intent, H, selzone)
 			if(istype(user.used_intent, /datum/intent/effect) && selzone)
 				var/datum/intent/effect/effect_intent = user.used_intent

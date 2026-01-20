@@ -17,6 +17,7 @@
 	low_threshold = 45
 	high_threshold = 120
 
+	var/fallenIntoComa = FALSE
 	var/suicided = FALSE
 	var/mob/living/brain/brainmob = null
 	var/brain_death = FALSE //if the brainmob was intentionally killed by attacking the brain after removal, or by severe braindamage
@@ -183,12 +184,28 @@
 		owner.death()
 		brain_death = TRUE
 
+/obj/item/organ/brain/proc/reset_fallenIntoComa()
+	fallenIntoComa = FALSE
+
 /obj/item/organ/brain/check_damage_thresholds(mob/M)
 	. = ..()
+	if(damage > 75 && fallenIntoComa == FALSE)
+		fallenIntoComa = TRUE
+		owner.visible_message("<span class='danger'>[owner] falls into a deep coma, their eyes shut off completely. They will not awaken for a while.</span>", \
+								"<span class='userdanger'>My eyes shut off completely. It feels as if everything is going to be better...</span>")
+		//make sure the coma person can't wake up
+		owner.Unconscious(40 SECONDS)
+		owner.Immobilize(40 SECONDS)
+		owner.Paralyze(40 SECONDS)
+
+		addtimer(CALLBACK(src, .proc/reset_fallenIntoComa), 5 MINUTES)
+
 	//if we're not more injured than before, return without gambling for a trauma
 	if(damage <= prev_damage)
 		return
+
 	damage_delta = damage - prev_damage
+
 	if(damage > BRAIN_DAMAGE_MILD)
 		if(prob(damage_delta * (1 + max(0, (damage - BRAIN_DAMAGE_MILD)/100)))) //Base chance is the hit damage; for every point of damage past the threshold the chance is increased by 1% //learn how to do your bloody math properly goddamnit
 			gain_trauma_type(BRAIN_TRAUMA_MILD)
