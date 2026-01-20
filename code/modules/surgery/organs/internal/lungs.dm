@@ -1,6 +1,7 @@
 /obj/item/organ/lungs
 	var/failed = FALSE
 	var/operated = FALSE	//whether we can still have our damages fixed through surgery
+	var/next_blood_cough = 0
 	name = "lungs"
 	icon_state = "lungs"
 	zone = BODY_ZONE_CHEST
@@ -19,6 +20,12 @@
 
 /obj/item/organ/lungs/on_life()
 	..()
+	if(damage > 0 && owner && world.time >= next_blood_cough)
+		var/mob/living/carbon/C = owner
+		if(istype(C) && !(NOBLOOD in C.dna?.species?.species_traits) && !HAS_TRAIT(C, TRAIT_BLOODLOSS_IMMUNE) && C.blood_volume > 0)
+			next_blood_cough = world.time + 20 SECONDS
+			C.visible_message("<span class='danger'>[C] coughs up blood!</span>", "<span class='danger'>I cough up blood!</span>")
+			C.bleed(2)
 	if((!failed) && ((organ_flags & ORGAN_FAILING)))
 		if(owner.stat == CONSCIOUS)
 			owner.visible_message("<span class='danger'>[owner] grabs [owner.p_their()] throat, struggling for breath!</span>", \
