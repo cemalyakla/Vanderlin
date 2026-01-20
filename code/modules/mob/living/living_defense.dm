@@ -48,27 +48,32 @@
 
 	var/armor = run_armor_check(def_zone, P.flag, "", "",P.armor_penetration, damage = P.damage)
 	var/limb_hit = check_limb_hit(def_zone)//to get the correct message info.
-	var/organ_damage = (P.damage * rand(8, 18)/10)
+	var/actual_damage = 0
+	var/organ_damage = 0
 	next_attack_msg.Cut()
 
 	var/on_hit_state = P.on_hit(src, armor)
 	var/nodmg = FALSE
 	if(!P.nodamage && on_hit_state != BULLET_ACT_BLOCK)
-		if(!apply_damage(P.damage, P.damage_type, def_zone, armor))
+		actual_damage = apply_damage(P.damage, P.damage_type, def_zone, armor)
+		if(!actual_damage)
 			nodmg = TRUE
 			next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 		apply_effects(P.stun, 0, 0, 0,0, 0, 0, 0, armor, P.jitter, P.paralyze, 0)
 		if(!nodmg)
 			if(P.dismemberment)
 				check_projectile_dismemberment(P, def_zone,armor)
+			organ_damage = (actual_damage * rand(8, 18)/10)
 			if(P.woundclass)
 				check_projectile_wounding(P, def_zone)
 				organ_damage = organ_damage*1.5
 			if(P.embedchance && !check_projectile_embed(P, def_zone))
 				P.handle_drop()
+			organ_damage = min(organ_damage, actual_damage)
 			switch(limb_hit)
 				if(BODY_ZONE_HEAD)
 					organ_damage = organ_damage*1.5
+					organ_damage = min(organ_damage, actual_damage)
 					adjustOrganLoss(ORGAN_SLOT_BRAIN, organ_damage)
 				if(BODY_ZONE_CHEST)
 					if(P.accuracy >= 75)
