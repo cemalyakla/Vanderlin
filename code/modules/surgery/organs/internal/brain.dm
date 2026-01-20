@@ -189,14 +189,15 @@
 
 /obj/item/organ/brain/check_damage_thresholds(mob/M)
 	. = ..()
-	if(damage > 75 && fallenIntoComa == FALSE)
+	var/mob/living/L = M
+	if(L && damage > 75 && fallenIntoComa == FALSE)
 		fallenIntoComa = TRUE
-		owner.visible_message("<span class='danger'>[owner] falls into a deep coma, their eyes shut off completely. They will not awaken for a while.</span>", \
+		L.visible_message("<span class='danger'>[L] falls into a deep coma, their eyes shut off completely. They will not awaken for a while.</span>", \
 								"<span class='userdanger'>My eyes shut off completely. It feels as if everything is going to be better...</span>")
 		//make sure the coma person can't wake up
-		owner.Unconscious(40 SECONDS)
-		owner.Immobilize(40 SECONDS)
-		owner.Paralyze(40 SECONDS)
+		L.Unconscious(40 SECONDS)
+		L.Immobilize(40 SECONDS)
+		L.Paralyze(40 SECONDS)
 
 		addtimer(CALLBACK(src, .proc/reset_fallenIntoComa), 5 MINUTES)
 
