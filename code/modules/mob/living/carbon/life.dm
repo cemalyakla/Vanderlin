@@ -190,24 +190,17 @@
 	if(stat == DEAD)
 		return
 	if(HAS_TRAIT(src, TRAIT_NOBREATH))
-		hypoxia_start_time = 0
 		next_hypoxia_brain_damage = 0
-		next_hypoxia_message = 0
+		hypoxia_message_stage = 0
 		return
 	if(!getorganslot(ORGAN_SLOT_BRAIN))
-		hypoxia_start_time = 0
 		next_hypoxia_brain_damage = 0
-		next_hypoxia_message = 0
+		hypoxia_message_stage = 0
 		return
 	var/oxy = getOxyLoss()
 	if(oxy <= HYPOXIA_BRAIN_DAMAGE_OXY_THRESHOLD)
-		hypoxia_start_time = 0
 		next_hypoxia_brain_damage = 0
-		next_hypoxia_message = 0
-		return
-	if(!hypoxia_start_time)
-		hypoxia_start_time = world.time
-	if(world.time - hypoxia_start_time < HYPOXIA_BRAIN_DAMAGE_DELAY)
+		hypoxia_message_stage = 0
 		return
 	if(world.time < next_hypoxia_brain_damage)
 		return
@@ -218,9 +211,37 @@
 	damage = min(damage, HYPOXIA_BRAIN_DAMAGE_MAX)
 	if(damage > 0)
 		adjustOrganLoss(ORGAN_SLOT_BRAIN, damage)
-	if(world.time >= next_hypoxia_message)
-		next_hypoxia_message = world.time + HYPOXIA_BRAIN_DAMAGE_MESSAGE_INTERVAL
-		to_chat(src, span_warning("My head throbs as the lack of air dulls my thoughts."))
+	var/brain_damage = getOrganLoss(ORGAN_SLOT_BRAIN)
+	var/new_stage = 0
+	if(brain_damage >= HYPOXIA_BRAIN_MESSAGE_STAGE_3)
+		new_stage = 3
+	else if(brain_damage >= HYPOXIA_BRAIN_MESSAGE_STAGE_2)
+		new_stage = 2
+	else if(brain_damage >= HYPOXIA_BRAIN_MESSAGE_STAGE_1)
+		new_stage = 1
+	if(new_stage > hypoxia_message_stage)
+		hypoxia_message_stage = new_stage
+		switch(hypoxia_message_stage)
+			if(1)
+				to_chat(src, span_warning(pick(
+					"My thoughts feel sluggish and far away.",
+					"My head aches as the lack of air dulls my thoughts.",
+					"I struggle to focus through a growing fog."
+				)))
+			if(2)
+				to_chat(src, span_warning(pick(
+					"My vision swims as my mind starves for air.",
+					"I can feel my thoughts slipping away.",
+					"The world feels distant as my head pounds."
+				)))
+			if(3)
+				to_chat(src, span_warning(pick(
+					"My mind is fading; I need air now!",
+					"Everything fractures as my brain screams for air.",
+					"I can barely think. I need to breathe!"
+				)))
+	else if(new_stage < hypoxia_message_stage)
+		hypoxia_message_stage = new_stage
 
 /mob/living/proc/handle_inwater(turf/open/water/W)
 	if(body_position == LYING_DOWN || W.water_level == 3)
