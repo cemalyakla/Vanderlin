@@ -32,6 +32,7 @@
 		handle_embedded_objects()
 		handle_blood()
 		handle_roguebreath()
+		handle_hypoxia()
 		update_stress()
 		handle_nausea()
 		if((blood_volume > BLOOD_VOLUME_SURVIVE) || HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
@@ -184,6 +185,64 @@
 			if(next_smell <= world.time)
 				next_smell = world.time + 30 SECONDS
 				T.pollution.smell_act(src)
+
+/mob/living/carbon/proc/handle_hypoxia()
+	if(stat == DEAD)
+		return
+	if(HAS_TRAIT(src, TRAIT_NOBREATH))
+		next_hypoxia_brain_damage = 0
+		hypoxia_message_stage = 0
+		return
+	if(!getorganslot(ORGAN_SLOT_BRAIN))
+		next_hypoxia_brain_damage = 0
+		hypoxia_message_stage = 0
+		return
+	var/oxy = getOxyLoss()
+	if(oxy <= HYPOXIA_BRAIN_DAMAGE_OXY_THRESHOLD)
+		next_hypoxia_brain_damage = 0
+		hypoxia_message_stage = 0
+		return
+	if(world.time < next_hypoxia_brain_damage)
+		return
+
+	next_hypoxia_brain_damage = world.time + HYPOXIA_BRAIN_DAMAGE_INTERVAL
+	var/severity = oxy - HYPOXIA_BRAIN_DAMAGE_OXY_THRESHOLD
+	var/damage = HYPOXIA_BRAIN_DAMAGE_BASE + round(severity * HYPOXIA_BRAIN_DAMAGE_SCALE, 0.1)
+	damage = min(damage, HYPOXIA_BRAIN_DAMAGE_MAX)
+	if(damage > 0)
+		adjustOrganLoss(ORGAN_SLOT_BRAIN, damage)
+	var/brain_damage = getOrganLoss(ORGAN_SLOT_BRAIN)
+	var/new_stage = 0
+	var/static/list/hypoxia_stage_messages = list(
+		list(
+			"My thoughts feel sluggish and far away.",
+			"My head aches as the lack of air dulls my thoughts.",
+			"I struggle to focus through a growing fog."
+		),
+		list(
+			"My vision swims as my mind starves for air.",
+			"I can feel my thoughts slipping away.",
+			"The world feels distant as my head pounds."
+		),
+		list(
+			"My mind is fading; I need air now!",
+			"Everything fractures as my brain screams for air.",
+			"I can barely think. I need to breathe!"
+		)
+	)
+	if(brain_damage >= HYPOXIA_BRAIN_MESSAGE_STAGE_3)
+		new_stage = 3
+	else if(brain_damage >= HYPOXIA_BRAIN_MESSAGE_STAGE_2)
+		new_stage = 2
+	else if(brain_damage >= HYPOXIA_BRAIN_MESSAGE_STAGE_1)
+		new_stage = 1
+	if(new_stage > hypoxia_message_stage)
+		hypoxia_message_stage = new_stage
+		var/list/messages = hypoxia_stage_messages[hypoxia_message_stage]
+		if(messages)
+			to_chat(src, span_warning(pick(messages)))
+	else if(new_stage < hypoxia_message_stage)
+		hypoxia_message_stage = new_stage
 
 /mob/living/proc/handle_inwater(turf/open/water/W)
 	if(body_position == LYING_DOWN || W.water_level == 3)
