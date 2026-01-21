@@ -19,6 +19,12 @@
 
 /obj/item/organ/lungs/on_life()
 	..()
+	if(!failed && owner && damage > low_threshold)
+		if(prob(5))
+				to_chat(owner, "<span class='danger'>MY... LUNGS!!")
+				owner.emote("breathgasp")
+				owner.Stun(1 SECONDS)
+
 	if((!failed) && ((organ_flags & ORGAN_FAILING)))
 		if(owner.stat == CONSCIOUS)
 			owner.visible_message("<span class='danger'>[owner] grabs [owner.p_their()] throat, struggling for breath!</span>", \

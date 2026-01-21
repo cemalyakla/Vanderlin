@@ -113,7 +113,7 @@
 		beating = 0
 
 	if(owner && !failed && beating && damage > low_threshold)
-		if(prob(20))
+		if(prob(5))
 			if(owner.stat_roll(STATKEY_STR, 2, 10))
 				to_chat(owner, "<span class='danger'>My heart's pounding like hell!")
 			else
