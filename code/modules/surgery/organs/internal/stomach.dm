@@ -198,10 +198,10 @@
 	if(damage >= high_threshold)
 		var/mob/living/carbon/C = owner
 		if(istype(C))
-			if(prob(50))
+			if(prob(5))
 				C.vomit(10, FALSE, TRUE, 0, 1, FALSE, TRUE)
 				to_chat(C, "<span class='userdanger'>A wave of pain shoots through my abdomen and I retch uncontrollably!</span>")
-			else
+			else if(prob(3))
 				to_chat(C, "<span class='userdanger'>OOHHH MY GUTS!</span>")
 				C.emote("painscream")
 				C.Stun(1 SECONDS)

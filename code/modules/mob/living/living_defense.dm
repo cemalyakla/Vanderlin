@@ -50,6 +50,7 @@
 	var/limb_hit = check_limb_hit(def_zone)//to get the correct message info.
 	var/actual_damage = 0
 	var/organ_damage = 0
+	var/wounding = check_projectile_wounding(P, def_zone)
 	next_attack_msg.Cut()
 
 	var/on_hit_state = P.on_hit(src, armor)
@@ -66,20 +67,24 @@
 			organ_damage = (actual_damage * rand(12, 24)/10)
 			if(P.woundclass)
 				check_projectile_wounding(P, def_zone)
-				organ_damage = organ_damage*1.5
+				//organ_damage = organ_damage*2
 			if(P.embedchance && !check_projectile_embed(P, def_zone))
 				P.handle_drop()
 			organ_damage = min(organ_damage, actual_damage)
 			switch(limb_hit)
 				if(BODY_ZONE_HEAD)
-					organ_damage = organ_damage*2.5
-					organ_damage = min(organ_damage, actual_damage)
+					if(wounding)
+						organ_damage = organ_damage*2
+					//organ_damage = min(organ_damage, actual_damage)
+					organ_damage = organ_damage*1.5
 					adjustOrganLoss(ORGAN_SLOT_BRAIN, organ_damage)
 				if(BODY_ZONE_CHEST)
-					if(prob(30))
+					if(prob(25) || wounding)
+						if(wounding)
+							organ_damage = organ_damage*2
 						adjustOrganLoss(ORGAN_SLOT_HEART, organ_damage)
 						//rest in piss you won't be missed
-					else if(prob(40))
+					else if(prob(30))
 						adjustOrganLoss(ORGAN_SLOT_LUNGS, organ_damage)
 						emote("breathgasp")
 						Stun(2)
@@ -87,7 +92,9 @@
 						emote("painscream")
 						Stun(1)
 				if(BODY_ZONE_PRECISE_STOMACH)
-					if(P.accuracy >= 50)
+					if(wounding)
+						organ_damage = organ_damage*2
+					if(prob(50))
 						adjustOrganLoss(ORGAN_SLOT_STOMACH, organ_damage)
 					else
 						adjustOrganLoss(ORGAN_SLOT_GUTS, organ_damage)
