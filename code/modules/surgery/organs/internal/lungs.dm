@@ -1,6 +1,7 @@
 /obj/item/organ/lungs
 	var/failed = FALSE
 	var/operated = FALSE	//whether we can still have our damages fixed through surgery
+	var/next_blood_cough = 0
 	name = "lungs"
 	icon_state = "lungs"
 	zone = BODY_ZONE_CHEST
@@ -19,12 +20,30 @@
 
 /obj/item/organ/lungs/on_life()
 	..()
-	if(!failed && owner && damage > low_threshold)
-		if(prob(5))
-				to_chat(owner, "<span class='danger'>MY... LUNGS!!")
-				owner.emote("breathgasp")
-				owner.Stun(1 SECONDS)
-
+	if(damage > 0 && owner && world.time >= next_blood_cough)
+		var/mob/living/carbon/C = owner
+		if(istype(C) && !(NOBLOOD in C.dna?.species?.species_traits) && !HAS_TRAIT(C, TRAIT_BLOODLOSS_IMMUNE) && C.blood_volume > 0)
+			next_blood_cough = world.time + 20 SECONDS
+			var/muffled = C.silent || !C.can_speak_vocal()
+			if(muffled)
+				C.visible_message("<span class='danger'>[C] coughs up blood, the sound muffled.</span>", "<span class='danger'>I cough up blood, the sound muffled.</span>")
+			else
+				C.visible_message("<span class='danger'>[C] coughs up blood!</span>", "<span class='danger'>I cough up blood!</span>")
+			var/static/list/cough_sounds_male = list(
+				'sound/vo/male/gen/cough (1).ogg',
+				'sound/vo/male/gen/cough (2).ogg'
+			)
+			var/static/list/cough_sounds_female = list(
+				'sound/vo/female/gen/cough (1).ogg',
+				'sound/vo/female/gen/cough (2).ogg'
+			)
+			var/list/cough_sounds = cough_sounds_male
+			if(C.gender == FEMALE)
+				cough_sounds = cough_sounds_female
+			else if(C.gender != MALE)
+				cough_sounds = cough_sounds_male + cough_sounds_female
+			playsound(C, pick(cough_sounds), 100, FALSE)
+			C.bleed(2)
 	if((!failed) && ((organ_flags & ORGAN_FAILING)))
 		if(owner.stat == CONSCIOUS)
 			owner.visible_message("<span class='danger'>[owner] grabs [owner.p_their()] throat, struggling for breath!</span>", \
