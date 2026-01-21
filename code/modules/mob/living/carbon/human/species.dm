@@ -1887,8 +1887,33 @@ GLOBAL_LIST_EMPTY(donator_races)
 			// Extra: heavy hits to vital zones also harm internal organs.
 			if(actual_damage > 0 && I.damtype == BRUTE && user?.used_intent)
 				var/blade_class = user.used_intent.blade_class
+				if(crit_wound?.critical && (blade_class == BCLASS_CUT || blade_class == BCLASS_CHOP))
+					var/slash_organ_damage = actual_damage * 1.2 * (rand(8, 20) / 10)
+					if(istype(crit_wound, /datum/wound/slash/disembowel))
+						var/datum/wound/slash/disembowel/disembowel = crit_wound
+						disembowel.organ_damage = slash_organ_damage
+						disembowel.apply_spill_damage()
+						H.adjustOrganLoss(ORGAN_SLOT_STOMACH, slash_organ_damage)
+						H.adjustOrganLoss(ORGAN_SLOT_LIVER, slash_organ_damage)
+						H.adjustOrganLoss(ORGAN_SLOT_GUTS, slash_organ_damage)
+					else
+						switch(affecting.body_zone)
+							if(BODY_ZONE_CHEST)
+								if(selzone == BODY_ZONE_PRECISE_STOMACH)
+									H.adjustOrganLoss(ORGAN_SLOT_STOMACH, slash_organ_damage)
+									H.adjustOrganLoss(ORGAN_SLOT_GUTS, slash_organ_damage * 0.5)
+								else if(selzone == BODY_ZONE_PRECISE_GROIN)
+									H.adjustOrganLoss(ORGAN_SLOT_GUTS, slash_organ_damage)
+								else
+									H.adjustOrganLoss(ORGAN_SLOT_HEART, slash_organ_damage)
+									H.adjustOrganLoss(ORGAN_SLOT_LUNGS, slash_organ_damage)
+							if(BODY_ZONE_HEAD)
+								if(selzone == BODY_ZONE_PRECISE_L_EYE || selzone == BODY_ZONE_PRECISE_R_EYE)
+									H.adjustOrganLoss(ORGAN_SLOT_EYES, slash_organ_damage)
+								else
+									H.adjustOrganLoss(ORGAN_SLOT_BRAIN, slash_organ_damage)
 				// Penetrating / thrust attacks are best at reaching organs.
-				if(blade_class == BCLASS_STAB || blade_class == BCLASS_PIERCE)
+				else if(blade_class == BCLASS_STAB || blade_class == BCLASS_PIERCE)
 					switch(affecting.body_zone)
 						if(BODY_ZONE_CHEST)
 							// Precise abdomen targeting primarily affects stomach and guts.

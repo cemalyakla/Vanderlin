@@ -105,6 +105,8 @@
 		ORGAN_SLOT_LIVER = 50,
 		ORGAN_SLOT_GUTS = 100 // It's called GUTTED for a reason.
 	)
+	var/list/spilled_organs = null
+	var/organ_damage = 0
 
 /datum/wound/slash/disembowel/can_stack_with(datum/wound/other)
 	if(istype(other, /datum/wound/slash/disembowel) && (type == other.type))
@@ -121,7 +123,7 @@
 	. = ..()
 	var/mob/living/carbon/gutted = affected.owner
 	var/atom/drop_location = gutted.drop_location()
-	var/list/spilled_organs = list()
+	var/list/spilled_organs_list = list()
 	for(var/obj/item/organ/organ as anything in gutted.internal_organs)
 		var/org_zone = check_zone(organ.zone)
 		if(org_zone != BODY_ZONE_CHEST)
@@ -132,15 +134,24 @@
 		var/spill_prob = affected_organs[organ.slot]
 		if(prob(spill_prob))
 		*/
-		spilled_organs += organ
-	for(var/obj/item/organ/spilled as anything in spilled_organs)
+		spilled_organs_list += organ
+	for(var/obj/item/organ/spilled as anything in spilled_organs_list)
 		spilled.Remove(owner)
 		spilled.forceMove(drop_location)
+	spilled_organs = spilled_organs_list
+	if(organ_damage)
+		apply_spill_damage()
 	if(istype(affected, /obj/item/bodypart/chest))
 		var/obj/item/bodypart/chest/cavity = affected
 		if(cavity.cavity_item)
 			cavity.cavity_item.forceMove(drop_location)
 			cavity.cavity_item = null
+
+/datum/wound/slash/disembowel/proc/apply_spill_damage(amount = organ_damage)
+	if(!amount || !length(spilled_organs))
+		return
+	for(var/obj/item/organ/spilled as anything in spilled_organs)
+		spilled.applyOrganDamage(amount)
 
 /datum/wound/slash/incision
 	name = "incision"
