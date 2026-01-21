@@ -472,8 +472,11 @@
 	var/damage = H.get_punch_dmg()
 	C.next_attack_msg.Cut()
 	playsound(C, "genblunt", 100, FALSE, -1)
-	C.apply_damage(damage*1.5, , Chead, armor_block)
+	var/actual_damage = C.apply_damage(damage*1.5, BRUTE, Chead, armor_block)
 	Chead.bodypart_attacked_by(BCLASS_SMASH, damage*1.5, H, crit_message=TRUE)
+	if(actual_damage > 0)
+		var/brain_concussion = actual_damage * 0.75
+		C.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_concussion)
 	H.apply_damage(damage, BRUTE, Hhead, armor_block_user)
 	Hhead.bodypart_attacked_by(BCLASS_SMASH, damage/1.2, H, crit_message=TRUE)
 
@@ -582,11 +585,15 @@
 	var/armor_block = C.run_armor_check(limb_grabbed, "blunt")
 	var/damage = user.get_punch_dmg()*pick(1, 1.5, 2)
 	C.next_attack_msg.Cut()
-	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
+	var/actual_damage = C.apply_damage(damage, BRUTE, limb_grabbed, armor_block)
+	if(actual_damage)
 		limb_grabbed.bodypart_attacked_by(BCLASS_BLUNT, damage, user, sublimb_grabbed, crit_message = TRUE)
 		playsound(C.loc, "smashlimb", 100, FALSE, -1)
 		if(prob(25))
 			C.add_splatter_floor()
+		if(limb_grabbed.body_zone == BODY_ZONE_HEAD)
+			var/brain_concussion = actual_damage * 0.75
+			C.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_concussion)
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 	C.visible_message(span_danger("[user] smashes [C]'s [limb_grabbed.name] into [A]![C.next_attack_msg.Join()]"), \
