@@ -1912,7 +1912,7 @@ GLOBAL_LIST_EMPTY(donator_races)
 							if(selzone == BODY_ZONE_PRECISE_L_EYE || selzone == BODY_ZONE_PRECISE_R_EYE)
 								var/eye_damage = (actual_damage * rand(8, 20)/10)
 								H.adjustOrganLoss(ORGAN_SLOT_EYES, eye_damage)
-							else
+							else if(selzone != BODY_ZONE_PRECISE_NECK)
 								var/brain_damage = (actual_damage * rand(8, 20)/10)
 								H.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
 				// Heavy blunt strikes can also concuss/bruise internal organs, but a bit weaker.

@@ -63,7 +63,7 @@
 		if(!nodmg)
 			if(P.dismemberment)
 				check_projectile_dismemberment(P, def_zone,armor)
-			organ_damage = (actual_damage * rand(8, 18)/10)
+			organ_damage = (actual_damage * rand(12, 24)/10)
 			if(P.woundclass)
 				check_projectile_wounding(P, def_zone)
 				organ_damage = organ_damage*1.5
@@ -72,14 +72,20 @@
 			organ_damage = min(organ_damage, actual_damage)
 			switch(limb_hit)
 				if(BODY_ZONE_HEAD)
-					organ_damage = organ_damage*1.5
+					organ_damage = organ_damage*2.5
 					organ_damage = min(organ_damage, actual_damage)
 					adjustOrganLoss(ORGAN_SLOT_BRAIN, organ_damage)
 				if(BODY_ZONE_CHEST)
-					if(P.accuracy >= 75)
+					if(prob(30))
 						adjustOrganLoss(ORGAN_SLOT_HEART, organ_damage)
-					else if(P.accuracy >= 40)
+						//rest in piss you won't be missed
+					else if(prob(40))
 						adjustOrganLoss(ORGAN_SLOT_LUNGS, organ_damage)
+						emote("breathgasp")
+						Stun(2)
+					else
+						emote("painscream")
+						Stun(1)
 				if(BODY_ZONE_PRECISE_STOMACH)
 					if(P.accuracy >= 50)
 						adjustOrganLoss(ORGAN_SLOT_STOMACH, organ_damage)

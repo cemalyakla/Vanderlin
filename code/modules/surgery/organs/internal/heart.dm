@@ -112,6 +112,15 @@
 		failed = TRUE
 		beating = 0
 
+	if(owner && !failed && beating && damage > low_threshold)
+		if(prob(20))
+			if(owner.stat_roll(STATKEY_STR, 2, 10))
+				to_chat(owner, "<span class='danger'>My heart's pounding like hell!")
+			else
+				to_chat(owner, "<span class='danger'>MY HEART'S KILLING ME!")
+				owner.emote("painscream")
+				owner.Stun(1 SECONDS)
+
 	if(owner.client && beating)
 		failed = FALSE
 		var/sound/slowbeat = sound('sound/blank.ogg', repeat = TRUE)
