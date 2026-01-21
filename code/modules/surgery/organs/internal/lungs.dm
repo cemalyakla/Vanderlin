@@ -22,8 +22,8 @@
 	..()
 	if(damage > 0 && owner && world.time >= next_blood_cough)
 		var/mob/living/carbon/C = owner
-		if(istype(C) && !(NOBLOOD in C.dna?.species?.species_traits) && !HAS_TRAIT(C, TRAIT_BLOODLOSS_IMMUNE) && C.blood_volume > 0)
-			next_blood_cough = world.time + 30 SECONDS
+		if(istype(C) && C.stat == CONSCIOUS && !(NOBLOOD in C.dna?.species?.species_traits) && !HAS_TRAIT(C, TRAIT_BLOODLOSS_IMMUNE) && C.blood_volume > 0)
+			next_blood_cough = world.time + 20 SECONDS
 			var/muffled = C.silent || !C.can_speak_vocal()
 			if(muffled)
 				C.visible_message("<span class='danger'>[C] coughs up blood, the sound muffled.</span>", "<span class='danger'>I cough up blood, the sound muffled.</span>")
