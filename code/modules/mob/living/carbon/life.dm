@@ -32,6 +32,7 @@
 		handle_embedded_objects()
 		handle_blood()
 		handle_roguebreath()
+		handle_hypoxia()
 		update_stress()
 		handle_nausea()
 		if((blood_volume > BLOOD_VOLUME_SURVIVE) || HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
@@ -184,6 +185,42 @@
 			if(next_smell <= world.time)
 				next_smell = world.time + 30 SECONDS
 				T.pollution.smell_act(src)
+
+/mob/living/carbon/proc/handle_hypoxia()
+	if(stat == DEAD)
+		return
+	if(HAS_TRAIT(src, TRAIT_NOBREATH))
+		hypoxia_start_time = 0
+		next_hypoxia_brain_damage = 0
+		next_hypoxia_message = 0
+		return
+	if(!getorganslot(ORGAN_SLOT_BRAIN))
+		hypoxia_start_time = 0
+		next_hypoxia_brain_damage = 0
+		next_hypoxia_message = 0
+		return
+	var/oxy = getOxyLoss()
+	if(oxy <= HYPOXIA_BRAIN_DAMAGE_OXY_THRESHOLD)
+		hypoxia_start_time = 0
+		next_hypoxia_brain_damage = 0
+		next_hypoxia_message = 0
+		return
+	if(!hypoxia_start_time)
+		hypoxia_start_time = world.time
+	if(world.time - hypoxia_start_time < HYPOXIA_BRAIN_DAMAGE_DELAY)
+		return
+	if(world.time < next_hypoxia_brain_damage)
+		return
+
+	next_hypoxia_brain_damage = world.time + HYPOXIA_BRAIN_DAMAGE_INTERVAL
+	var/severity = oxy - HYPOXIA_BRAIN_DAMAGE_OXY_THRESHOLD
+	var/damage = HYPOXIA_BRAIN_DAMAGE_BASE + round(severity * HYPOXIA_BRAIN_DAMAGE_SCALE, 0.1)
+	damage = min(damage, HYPOXIA_BRAIN_DAMAGE_MAX)
+	if(damage > 0)
+		adjustOrganLoss(ORGAN_SLOT_BRAIN, damage)
+	if(world.time >= next_hypoxia_message)
+		next_hypoxia_message = world.time + HYPOXIA_BRAIN_DAMAGE_MESSAGE_INTERVAL
+		to_chat(src, span_warning("My head throbs as the lack of air dulls my thoughts."))
 
 /mob/living/proc/handle_inwater(turf/open/water/W)
 	if(body_position == LYING_DOWN || W.water_level == 3)

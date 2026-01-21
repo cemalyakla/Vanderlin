@@ -69,6 +69,9 @@
 
 	var/tiredness = 0
 	var/next_smell = 0
+	var/hypoxia_start_time = 0
+	var/next_hypoxia_brain_damage = 0
+	var/next_hypoxia_message = 0
 
 	var/advsetup = 0
 
