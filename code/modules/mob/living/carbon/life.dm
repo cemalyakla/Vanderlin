@@ -213,6 +213,23 @@
 		adjustOrganLoss(ORGAN_SLOT_BRAIN, damage)
 	var/brain_damage = getOrganLoss(ORGAN_SLOT_BRAIN)
 	var/new_stage = 0
+	var/static/list/hypoxia_stage_messages = list(
+		list(
+			"My thoughts feel sluggish and far away.",
+			"My head aches as the lack of air dulls my thoughts.",
+			"I struggle to focus through a growing fog."
+		),
+		list(
+			"My vision swims as my mind starves for air.",
+			"I can feel my thoughts slipping away.",
+			"The world feels distant as my head pounds."
+		),
+		list(
+			"My mind is fading; I need air now!",
+			"Everything fractures as my brain screams for air.",
+			"I can barely think. I need to breathe!"
+		)
+	)
 	if(brain_damage >= HYPOXIA_BRAIN_MESSAGE_STAGE_3)
 		new_stage = 3
 	else if(brain_damage >= HYPOXIA_BRAIN_MESSAGE_STAGE_2)
@@ -221,25 +238,9 @@
 		new_stage = 1
 	if(new_stage > hypoxia_message_stage)
 		hypoxia_message_stage = new_stage
-		switch(hypoxia_message_stage)
-			if(1)
-				to_chat(src, span_warning(pick(
-					"My thoughts feel sluggish and far away.",
-					"My head aches as the lack of air dulls my thoughts.",
-					"I struggle to focus through a growing fog."
-				)))
-			if(2)
-				to_chat(src, span_warning(pick(
-					"My vision swims as my mind starves for air.",
-					"I can feel my thoughts slipping away.",
-					"The world feels distant as my head pounds."
-				)))
-			if(3)
-				to_chat(src, span_warning(pick(
-					"My mind is fading; I need air now!",
-					"Everything fractures as my brain screams for air.",
-					"I can barely think. I need to breathe!"
-				)))
+		var/list/messages = hypoxia_stage_messages[hypoxia_message_stage]
+		if(messages)
+			to_chat(src, span_warning(pick(messages)))
 	else if(new_stage < hypoxia_message_stage)
 		hypoxia_message_stage = new_stage
 
