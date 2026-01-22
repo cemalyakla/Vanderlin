@@ -489,6 +489,11 @@
 
 /datum/config_entry/string/centcom_source_whitelist
 
+
+//WEBHOOK SHIT
+/datum/config_entry/string/discord_round_alert_webhook_url
+
+
 /datum/config_entry/flag/reopen_roundstart_suicide_roles
 
 /datum/config_entry/flag/reopen_roundstart_suicide_roles_command_positions

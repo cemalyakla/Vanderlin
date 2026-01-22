@@ -211,7 +211,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 
 	headers2["Content-Type"] = "application/json"
 
-	var/webhook2 = "https://webhook.lewisakura.moe/api/webhooks/1458923334900252703/mJftv5zmK6gjcnh-YabmanZR-ZreJtshxy_9_iec9d1MlvnfMkfkK_HRX1wENHW0g8mL"
+	var/webhook2 = CONFIG_GET(string/discord_round_alert_webhook_url)
 	var/datum/http_request/request2 = new()
 	request2.prepare(RUSTG_HTTP_METHOD_POST, webhook2, json_encode(webhook_info2), headers2, "tmp/discord_roundalert.json")
 	request2.begin_async()
