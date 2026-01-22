@@ -3952,6 +3952,7 @@
 #include "code\modules\surgery\surgery_helpers.dm"
 #include "code\modules\surgery\surgery_tools_rogue.dm"
 #include "code\modules\surgery\surgery_tools_rogue_improv.dm"
+#include "code\modules\surgery\teeth.dm"
 #include "code\modules\surgery\bodyparts\_bodyparts.dm"
 #include "code\modules\surgery\bodyparts\bodypart_dismemberment.dm"
 #include "code\modules\surgery\bodyparts\bodypart_examine.dm"

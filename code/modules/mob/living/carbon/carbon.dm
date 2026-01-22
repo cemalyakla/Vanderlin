@@ -1383,6 +1383,7 @@
 /mob/living/carbon/proc/skeletonize(lethal = TRUE)
 	for(var/obj/item/bodypart/B in bodyparts)
 		B.skeletonize(lethal)
+	teeth_count = 0
 	update_body_parts()
 
 /// grant undead eyes to a carbon mob.

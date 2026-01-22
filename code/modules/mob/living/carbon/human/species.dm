@@ -1457,7 +1457,7 @@ GLOBAL_LIST_EMPTY(donator_races)
 			nodmg = TRUE
 			target.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 		else
-			affecting.bodypart_attacked_by(user.used_intent.blade_class, damage, user, selzone, crit_message = TRUE)
+			affecting.bodypart_attacked_by(user.used_intent.blade_class, damage, user, selzone, crit_message = TRUE, teeth_damage = max(0, damage - armor_block))
 			if(affecting.body_zone == BODY_ZONE_HEAD)
 				SEND_SIGNAL(user, COMSIG_HEAD_PUNCHED, target)
 		log_combat(user, target, "punched")
@@ -1676,7 +1676,7 @@ GLOBAL_LIST_EMPTY(donator_races)
 						target.visible_message("<span class='danger'>[user] puts their foot on [target]'s neck!</span>", \
 										"<span class='danger'>I get my throat stepped on by [user]! I can't breathe!</span>", "<span class='hear'>I hear a sickening sound of pugilism!</span>", COMBAT_MESSAGE_RANGE, user)
 					else
-						affecting.bodypart_attacked_by(BCLASS_BLUNT, damage, user, user.zone_selected, crit_message = TRUE)
+						affecting.bodypart_attacked_by(BCLASS_BLUNT, damage, user, user.zone_selected, crit_message = TRUE, teeth_damage = max(0, damage - armor_block))
 						target.visible_message("<span class='danger'>[user] stomps [target]![target.next_attack_msg.Join()]</span>", \
 										"<span class='danger'>I'm stomped by [user]![target.next_attack_msg.Join()]</span>", "<span class='hear'>I hear a sickening kick!</span>", COMBAT_MESSAGE_RANGE, user)
 						to_chat(user, "<span class='danger'>I stomp on [target]![target.next_attack_msg.Join()]</span>")
@@ -1770,7 +1770,7 @@ GLOBAL_LIST_EMPTY(donator_races)
 			damage_blocked = TRUE
 			target.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 		else
-			affecting.bodypart_attacked_by(BCLASS_BLUNT, damage, user, selzone)
+			affecting.bodypart_attacked_by(BCLASS_BLUNT, damage, user, selzone, teeth_damage = max(0, damage - armor_block))
 			if(damage > 10)
 				var/blunt_organ_damage = damage * 0.35
 				switch(affecting.body_zone)

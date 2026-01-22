@@ -191,6 +191,9 @@
 	. = ..()
 	ADD_TRAIT(affected, TRAIT_NO_BITE, "[type]")
 	ADD_TRAIT(affected, TRAIT_GARGLE_SPEECH, "[type]")
+	if(istype(affected, /mob/living/carbon))
+		var/mob/living/carbon/carbon = affected
+		carbon.knockout_teeth(rand(2, 3))
 
 /datum/wound/fracture/mouth/on_mob_loss(mob/living/affected)
 	. = ..()
