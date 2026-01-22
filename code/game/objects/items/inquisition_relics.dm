@@ -767,7 +767,7 @@
 	var/obj/item/grabbing/currentgrab
 	var/mob/living/lastcarrier
 	var/active = FALSE
-	var/choke_damage = 8
+	var/choke_damage = 16
 	integrity_failure = 0.01
 	embedding = null
 	sellprice = 0

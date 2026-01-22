@@ -20,7 +20,7 @@
 
 /obj/item/organ/lungs/on_life()
 	..()
-	if(damage > 0 && owner && world.time >= next_blood_cough)
+	if(damage > low_threshold && owner && world.time >= next_blood_cough)
 		var/mob/living/carbon/C = owner
 		if(istype(C) && C.stat == CONSCIOUS && !(NOBLOOD in C.dna?.species?.species_traits) && !HAS_TRAIT(C, TRAIT_BLOODLOSS_IMMUNE) && C.blood_volume > 0)
 			next_blood_cough = world.time + 20 SECONDS
@@ -44,24 +44,37 @@
 				cough_sounds = cough_sounds_male + cough_sounds_female
 			playsound(C, pick(cough_sounds), 100, FALSE)
 			C.bleed(2)
+
+	if(damage > high_threshold && owner && isliving(owner) && owner.stat == CONSCIOUS && !failed)
+		if(prob(damage / 25))
+			var/mob/living/L = owner
+			// Stun duration scales with damage: damage/50 seconds (clamped between 0.5 and 2 seconds)
+			var/stun_duration = clamp(damage / 50, 0.5, 2) SECONDS
+			L.Stun(stun_duration)
+			L.emote("breathgasp")
+
 	if((!failed) && ((organ_flags & ORGAN_FAILING)))
 		if(owner.stat == CONSCIOUS)
 			owner.visible_message("<span class='danger'>[owner] grabs [owner.p_their()] throat, struggling for breath!</span>", \
 								"<span class='danger'>I suddenly feel like you can't breathe!</span>")
-		// Failing lungs rapidly deprive the body of oxygen.
-		if(isliving(owner))
-			var/mob/living/carbon/C = owner
-			C.adjustOxyLoss(5)
-			//oxyloss damages every other organ
-			C.adjustOrganLoss(ORGAN_SLOT_HEART, 5)
-			C.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
-			C.adjustOrganLoss(ORGAN_SLOT_LIVER, 5)
-			if(prob(50))
-				C.emote("breathgasp")
 		failed = TRUE
 	else if(!(organ_flags & ORGAN_FAILING))
 		failed = FALSE
 	return
+
+
+	// Failing lungs rapidly deprive the body of oxygen.
+	if((failed) && isliving(owner))
+		var/mob/living/carbon/C = owner
+		C.adjustOxyLoss(10)
+		//oxyloss damages every other organ
+		C.adjustOrganLoss(ORGAN_SLOT_HEART, 5)
+		C.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
+		C.adjustOrganLoss(ORGAN_SLOT_LIVER, 5)
+		if(prob(5) && owner.stat == CONSCIOUS)
+			C.emote("breathgasp")
+
+
 
 /obj/item/organ/lungs/prepare_eat()
 	var/obj/S = ..()

@@ -140,7 +140,7 @@
 	/// It also has seperate range behaviour where it will Zfall onto targets.
 	var/arcshot = FALSE
 
-	var/accuracy = 65 //How likely the project will hit it's intended target area. Decreases over distance moved, increased from perception.
+	var/accuracy = 40 //How likely the projectile will hit its intended target area. Decreased from 65 - skill is now essential for accurate shots.
 	var/bonus_accuracy = 0 //bonus accuracy that cannot be affected by range drop off.
 	///this is basically do we ignore projectile effects?
 	var/dirty = NONE

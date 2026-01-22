@@ -44,13 +44,25 @@
 
 /mob/living/bullet_act(obj/projectile/P, def_zone = BODY_ZONE_CHEST)
 	if(!prob(P.accuracy + P.bonus_accuracy)) //if your accuracy check fails, you wont hit your intended target
-		def_zone = ran_zone(BODY_ZONE_CHEST, 65)//Hits a random part of the body, geared towards the chest
+		def_zone = ran_zone(BODY_ZONE_CHEST, 40)//Hits a random part of the body, geared towards the chest
+
+	// Headshot redirect check - BEFORE any damage is applied
+	// If aiming for head but lack accuracy, redirect to body
+	if(def_zone == BODY_ZONE_HEAD)
+		var/total_accuracy = P.accuracy + P.bonus_accuracy
+		var/headshot_threshold = 75 // Minimum accuracy needed to attempt a headshot
+		// Success chance scales with accuracy above threshold: (acc - 75) * 2
+		// 75 acc = 0%, 90 acc = 30%, 110 acc = 70%
+		var/headshot_chance = max(0, (total_accuracy - headshot_threshold) * 2)
+		
+		if(total_accuracy < headshot_threshold || !prob(headshot_chance))
+			// Shot misses the head, redirects to chest/body
+			def_zone = ran_zone(BODY_ZONE_CHEST, 50)
 
 	var/armor = run_armor_check(def_zone, P.flag, "", "",P.armor_penetration, damage = P.damage)
 	var/limb_hit = check_limb_hit(def_zone)//to get the correct message info.
 	var/actual_damage = 0
 	var/organ_damage = 0
-	var/wounding = check_projectile_wounding(P, def_zone)
 	next_attack_msg.Cut()
 
 	var/on_hit_state = P.on_hit(src, armor)
@@ -71,29 +83,52 @@
 			if(P.embedchance && !check_projectile_embed(P, def_zone))
 				P.handle_drop()
 			organ_damage = min(organ_damage, actual_damage)
+			
 			switch(limb_hit)
 				if(BODY_ZONE_HEAD)
-					if(wounding)
-						organ_damage = organ_damage*2
-					//organ_damage = min(organ_damage, actual_damage)
-					organ_damage = organ_damage*1.5
+					// Headshot landed - lethal brain damage
+					organ_damage = organ_damage * 3.5
+					emote("breathgasp")
 					adjustOrganLoss(ORGAN_SLOT_BRAIN, organ_damage)
 				if(BODY_ZONE_CHEST)
-					if(prob(25) || wounding)
-						if(wounding)
-							organ_damage = organ_damage*2
+					organ_damage = organ_damage * 1.25
+					// Accuracy-based organ targeting: higher accuracy = better chance to hit vital organs
+					// Hard gate: you NEED skill to hit vital organs consistently
+					var/total_accuracy = P.accuracy + P.bonus_accuracy
+					// Modifier based on how far above/below 60 accuracy you are
+					// 60 is the "competent" threshold - below this you're penalized hard
+					var/accuracy_modifier = (total_accuracy - 60) * 1.5
+					accuracy_modifier = clamp(accuracy_modifier, -50, 60)
+					var/hit_roll = rand(1, 100)
+					// Cap the effective roll based on accuracy - luck can't carry bad aim
+					var/max_roll = clamp(total_accuracy, 30, 150)
+					hit_roll = min(hit_roll, max_roll)
+					var/adjusted_roll = hit_roll + accuracy_modifier
+
+					// Heart shots require BOTH good accuracy AND a good roll
+					// Minimum 70 accuracy to even have a chance at heart shot
+					if(adjusted_roll >= 95 && total_accuracy >= 70)
+						organ_damage = organ_damage * 1.75
 						adjustOrganLoss(ORGAN_SLOT_HEART, organ_damage)
-						//rest in piss you won't be missed
-					else if(prob(30))
+						// rest in piss you won't be missed
+					else if(adjusted_roll >= 60) // Lung shot - needs decent accuracy
+						organ_damage = organ_damage * 1.75
 						adjustOrganLoss(ORGAN_SLOT_LUNGS, organ_damage)
 						emote("breathgasp")
-						Stun(2)
-					else
+						var/stun_duration = clamp(organ_damage / 3, 10, 25)
+						Stun(stun_duration)
+					else if(adjusted_roll >= 30) // Grazing both organs - average shot
+						adjustOrganLoss(ORGAN_SLOT_HEART, organ_damage * 0.35)
+						adjustOrganLoss(ORGAN_SLOT_LUNGS, organ_damage * 0.35)
 						emote("painscream")
-						Stun(1)
+						var/stun_duration = clamp(organ_damage / 4, 5, 15)
+						Stun(stun_duration)
+					else // Poor shot - minimal organ damage
+						adjustOrganLoss(ORGAN_SLOT_LUNGS, organ_damage * 0.15)
+						emote("gasp")
+						var/stun_duration = clamp(organ_damage / 5, 5, 20)
+						Stun(stun_duration)
 				if(BODY_ZONE_PRECISE_STOMACH)
-					if(wounding)
-						organ_damage = organ_damage*2
 					if(prob(50))
 						adjustOrganLoss(ORGAN_SLOT_STOMACH, organ_damage)
 					else

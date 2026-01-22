@@ -1771,6 +1771,14 @@ GLOBAL_LIST_EMPTY(donator_races)
 			target.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 		else
 			affecting.bodypart_attacked_by(BCLASS_BLUNT, damage, user, selzone)
+			if(damage > 10)
+				var/blunt_organ_damage = damage * 0.35
+				switch(affecting.body_zone)
+					if(BODY_ZONE_HEAD)
+						target.adjustOrganLoss(ORGAN_SLOT_BRAIN, blunt_organ_damage)
+					if(BODY_ZONE_CHEST)
+						target.adjustOrganLoss(ORGAN_SLOT_HEART, blunt_organ_damage)
+						target.adjustOrganLoss(ORGAN_SLOT_LUNGS, blunt_organ_damage)			
 
 		SEND_SIGNAL(user, COMSIG_MOB_KICK, target, selzone, damage_blocked)
 		playsound(target, 'sound/combat/hits/kick/kick.ogg', 100, TRUE, -1)
@@ -1887,8 +1895,20 @@ GLOBAL_LIST_EMPTY(donator_races)
 			// Extra: heavy hits to vital zones also harm internal organs.
 			if(actual_damage > 0 && I.damtype == BRUTE && user?.used_intent)
 				var/blade_class = user.used_intent.blade_class
-				if(crit_wound?.critical && (blade_class == BCLASS_CUT || blade_class == BCLASS_CHOP))
-					var/slash_organ_damage = actual_damage * 1.2 * (rand(8, 20) / 10)
+				if(blade_class == BCLASS_CUT || blade_class == BCLASS_CHOP)
+					var/skill_level = user.get_skill_level(I.associated_skill)
+					var/lucky_strike_chance = skill_level * 4 // 0% at skill 0, 24% at skill 6
+					var/is_lucky_strike = prob(lucky_strike_chance)
+					
+					var/slash_organ_damage = actual_damage * (rand(3, 8) / 10)
+					if(crit_wound?.critical)
+						slash_organ_damage = slash_organ_damage * actual_damage/10
+						if(blade_class == BCLASS_CUT)
+							slash_organ_damage = slash_organ_damage * 0.5
+					else
+						if(blade_class == BCLASS_CUT)//non-crit slashes shouldn't deal organ damage
+							slash_organ_damage = 0
+
 					if(istype(crit_wound, /datum/wound/slash/disembowel))
 						var/datum/wound/slash/disembowel/disembowel = crit_wound
 						disembowel.organ_damage = slash_organ_damage
@@ -1896,59 +1916,116 @@ GLOBAL_LIST_EMPTY(donator_races)
 						H.adjustOrganLoss(ORGAN_SLOT_STOMACH, slash_organ_damage)
 						H.adjustOrganLoss(ORGAN_SLOT_LIVER, slash_organ_damage)
 						H.adjustOrganLoss(ORGAN_SLOT_GUTS, slash_organ_damage)
+						if(is_lucky_strike)
+							H.visible_message("<span class='danger'>[user] disembowels [H] with precision!</span>")
+							H.adjustOrganLoss(ORGAN_SLOT_GUTS, slash_organ_damage * 0.5) // Bonus gut damage
 					else
 						switch(affecting.body_zone)
 							if(BODY_ZONE_CHEST)
 								if(selzone == BODY_ZONE_PRECISE_STOMACH)
-									H.adjustOrganLoss(ORGAN_SLOT_STOMACH, slash_organ_damage)
-									H.adjustOrganLoss(ORGAN_SLOT_GUTS, slash_organ_damage * 0.5)
+									// Skill affects chance to hit deeper organs
+									var/organ_hit_chance = 60 + (skill_level * 6) // 60% at skill 0, 96% at skill 6
+									if(prob(organ_hit_chance))
+										H.adjustOrganLoss(ORGAN_SLOT_STOMACH, slash_organ_damage)
+										H.adjustOrganLoss(ORGAN_SLOT_GUTS, slash_organ_damage * 0.5)
+										if(is_lucky_strike)
+											H.visible_message("<span class='danger'>[user] slashes deep into [H]'s abdomen!</span>")
+											H.adjustOrganLoss(ORGAN_SLOT_LIVER, slash_organ_damage * 0.5)
 								else if(selzone == BODY_ZONE_PRECISE_GROIN)
-									H.adjustOrganLoss(ORGAN_SLOT_GUTS, slash_organ_damage)
+									var/organ_hit_chance = 50 + (skill_level * 7)
+									if(prob(organ_hit_chance))
+										H.adjustOrganLoss(ORGAN_SLOT_GUTS, slash_organ_damage)
 								else
-									H.adjustOrganLoss(ORGAN_SLOT_HEART, slash_organ_damage)
-									H.adjustOrganLoss(ORGAN_SLOT_LUNGS, slash_organ_damage)
+									// Generic chest slashes - skill determines heart vs lungs
+									var/organ_hit_chance = 45 + (skill_level * 8) // 45% at skill 0, 93% at skill 6
+									if(prob(organ_hit_chance))
+										var/heart_chance = 25 + (skill_level * 10) // 25% at skill 0, 85% at skill 6
+										if(is_lucky_strike || prob(heart_chance))
+											H.adjustOrganLoss(ORGAN_SLOT_HEART, slash_organ_damage)
+											if(is_lucky_strike)
+												H.visible_message("<span class='danger'>[user]'s blade finds [H]'s heart!</span>")
+										H.adjustOrganLoss(ORGAN_SLOT_LUNGS, slash_organ_damage)
 							if(BODY_ZONE_HEAD)
+								var/brain_hit_chance = 40 + (skill_level * 9) // 40% at skill 0, 94% at skill 6
 								if(selzone == BODY_ZONE_PRECISE_L_EYE || selzone == BODY_ZONE_PRECISE_R_EYE)
 									H.adjustOrganLoss(ORGAN_SLOT_EYES, slash_organ_damage)
-								else
+								else if(prob(brain_hit_chance))
 									H.adjustOrganLoss(ORGAN_SLOT_BRAIN, slash_organ_damage)
+									if(is_lucky_strike)
+										H.visible_message("<span class='danger'>[user]'s slash cleaves into [H]'s skull!</span>")
+										H.adjustOrganLoss(ORGAN_SLOT_BRAIN, slash_organ_damage * 0.5)
 				// Penetrating / thrust attacks are best at reaching organs.
 				else if(blade_class == BCLASS_STAB || blade_class == BCLASS_PIERCE)
+					var/skill_level = user.get_skill_level(I.associated_skill)
+					// Lucky strike chance: skilled fighters can find vital organs
+					var/lucky_strike_chance = skill_level * 5 // 0% at skill 0, 30% at skill 6
+					var/is_lucky_strike = prob(lucky_strike_chance)
+					
 					switch(affecting.body_zone)
 						if(BODY_ZONE_CHEST)
 							// Precise abdomen targeting primarily affects stomach and guts.
 							if(selzone == BODY_ZONE_PRECISE_STOMACH)
 								var/abdomen_damage = (actual_damage * rand(8, 20)/10)
-								if(prob(70))
+								// Skill-based targeting: higher skill = more likely to hit the organ
+								var/hit_chance = 40 + (skill_level * 8) // 40% at skill 0, 88% at skill 6
+								if(prob(hit_chance))
 									H.adjustOrganLoss(ORGAN_SLOT_STOMACH, abdomen_damage)
 									H.adjustOrganLoss(ORGAN_SLOT_GUTS, abdomen_damage * 0.5)
+									if(is_lucky_strike)
+										H.visible_message("<span class='danger'>[user] finds a vital spot!</span>")
+										H.adjustOrganLoss(ORGAN_SLOT_LIVER, abdomen_damage) // Bonus liver damage
 							else if(selzone == BODY_ZONE_PRECISE_GROIN)
 								var/gut_damage = (actual_damage * rand(8, 20)/10)
-								if(prob(60))
+								var/hit_chance = 35 + (skill_level * 7) // 35% at skill 0, 77% at skill 6
+								if(prob(hit_chance))
 									H.adjustOrganLoss(ORGAN_SLOT_GUTS, gut_damage)
 							else
-								// Generic chest stabs transfer damage to heart and lungs.
+								// Generic chest stabs - skill determines heart vs lungs
 								var/thoracic_damage = (actual_damage * rand(8, 20)/10)
-								if(prob(75))
-									H.adjustOrganLoss(ORGAN_SLOT_HEART, thoracic_damage)
+								var/organ_hit_chance = 45 + (skill_level * 8) // 45% at skill 0, 93% at skill 6
+								
+								if(prob(organ_hit_chance))
+									// Higher skill = more likely to hit heart specifically
+									var/heart_chance = 20 + (skill_level * 10) // 20% at skill 0, 80% at skill 6
+									if(is_lucky_strike || prob(heart_chance))
+										H.adjustOrganLoss(ORGAN_SLOT_HEART, thoracic_damage)
+										if(is_lucky_strike)
+											H.visible_message("<span class='danger'>[user] pierces [H]'s heart!</span>")
 									H.adjustOrganLoss(ORGAN_SLOT_LUNGS, thoracic_damage)
 						if(BODY_ZONE_HEAD)
 							// Eye stabs mostly damage the eyes; other head stabs lean on brain trauma.
-							if(selzone == BODY_ZONE_PRECISE_L_EYE || selzone == BODY_ZONE_PRECISE_R_EYE)
-								var/eye_damage = (actual_damage * rand(8, 20)/10)
-								H.adjustOrganLoss(ORGAN_SLOT_EYES, eye_damage)
-							else if(selzone != BODY_ZONE_PRECISE_NECK)
+							if(selzone != BODY_ZONE_PRECISE_NECK)
 								var/brain_damage = (actual_damage * rand(8, 20)/10)
-								H.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
+								// Skill affects chance to hit brain vs just glancing blow
+								var/brain_hit_chance = 50 + (skill_level * 8) // 50% at skill 0, 98% at skill 6
+								if(prob(brain_hit_chance))
+									H.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
+									if(is_lucky_strike)
+										H.visible_message("<span class='danger'>[user]'s strike pierces deep into [H]'s skull!</span>")
+										H.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_damage * 0.5) // Bonus brain damage
+								if(selzone == BODY_ZONE_PRECISE_L_EYE || selzone == BODY_ZONE_PRECISE_R_EYE)
+									var/eye_damage = (actual_damage * rand(8, 20)/10)
+									H.adjustOrganLoss(ORGAN_SLOT_EYES, eye_damage)
+
 				// Heavy blunt strikes can also concuss/bruise internal organs, but a bit weaker.
 				else if(blade_class == BCLASS_BLUNT || blade_class == BCLASS_SMASH)
+					var/skill_level = user.get_skill_level(I.associated_skill)
+					var/lucky_strike_chance = skill_level * 4 // 0% at skill 0, 24% at skill 6
+					var/is_lucky_strike = prob(lucky_strike_chance)
+					
 					// Only count fairly big hits as organ-threatening.
 					if(actual_damage > 0)
 						switch(affecting.body_zone)
 							if(BODY_ZONE_HEAD)
 								// Scaled down vs stab: more like concussion/brain trauma.
 								var/brain_concussion = actual_damage * 0.75
-								H.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_concussion)
+								// Skill affects severity of concussion
+								var/concuss_chance = 60 + (skill_level * 6) // 60% at skill 0, 96% at skill 6
+								if(prob(concuss_chance))
+									H.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_concussion)
+									if(is_lucky_strike)
+										H.visible_message("<span class='danger'>[user] lands a devastating blow to [H]'s head!</span>")
+										H.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_concussion * 0.5)
 
 								//make it so that getting hit in the head will cause dizziness and confusion depending on the amount of damage taken
 								var/dizziness_chance = actual_damage * 0.5
@@ -1965,8 +2042,16 @@ GLOBAL_LIST_EMPTY(donator_races)
 							if(BODY_ZONE_CHEST)
 								// Rib-breaking blows that can bruise heart and lungs.
 								var/thoracic_bruise = actual_damage * 0.35
-								H.adjustOrganLoss(ORGAN_SLOT_HEART, thoracic_bruise)
-								H.adjustOrganLoss(ORGAN_SLOT_LUNGS, thoracic_bruise)
+								// Skill affects which organs get hit
+								var/organ_hit_chance = 50 + (skill_level * 7) // 50% at skill 0, 92% at skill 6
+								if(prob(organ_hit_chance))
+									// Higher skill = more likely to hit heart
+									var/heart_chance = 30 + (skill_level * 8) // 30% at skill 0, 78% at skill 6
+									if(is_lucky_strike || prob(heart_chance))
+										H.adjustOrganLoss(ORGAN_SLOT_HEART, thoracic_bruise)
+										if(is_lucky_strike)
+											H.visible_message("<span class='danger'>[user] strikes [H]'s chest with bone-crushing force!</span>")
+									H.adjustOrganLoss(ORGAN_SLOT_LUNGS, thoracic_bruise)
 
 			I.do_special_attack_effect(user, affecting, intent, H, selzone)
 			if(istype(user.used_intent, /datum/intent/effect) && selzone)

@@ -11,6 +11,9 @@
 	associated_skill = /datum/skill/magic/holy
 	required_items = list(/obj/item/clothing/neck/psycross)
 
+	invocation = "The light cleanses!!"
+	invocation_type = INVOCATION_SHOUT
+
 	charge_required = FALSE
 	cooldown_time = 10 SECONDS
 	spell_cost = 10
@@ -222,6 +225,9 @@
 /datum/action/cooldown/spell/healing/greater
 	name = "Miracle"
 	button_icon_state = "astrata"
+
+	invocation = "The sunlight will cleanse all!!"
+	invocation_type = INVOCATION_SHOUT
 
 	charge_required = TRUE
 	charge_time = 1 SECONDS

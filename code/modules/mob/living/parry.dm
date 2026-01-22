@@ -246,6 +246,18 @@
 	var/dam2take = round((get_complex_damage(AB, user, used_weapon.blade_dulling)/2), 1)
 	if(dam2take)
 		used_weapon.take_damage(max(dam2take, 1), BRUTE, used_weapon.damage_type)
+	
+	// Axe breaks the shield, simple as that
+	if(istype(used_weapon, /obj/item/weapon/shield) && intenty?.blade_class == BCLASS_CHOP)
+		var/chop_bonus_damage = max(dam2take * (user.STASTR - 8) / 2, dam2take * 0.5)//this might be overtuned, change if needed
+		used_weapon.take_damage(max(chop_bonus_damage, 1), BRUTE, "blunt")
+		
+		// Stagger that ho
+		var/stagger_chance = (user.STASTR - 8) * 10 // 0% at 8 STR, 10% per point above
+		if(prob(stagger_chance))
+			src.visible_message("<span class='danger'>[user]'s axe blow staggers [src]!</span>")
+			src.Stun(10)
+			playsound(src, 'sound/combat/shieldbash_wood.ogg', 100, FALSE)
 
 /**
  * Handle parrying attacks with a weapon

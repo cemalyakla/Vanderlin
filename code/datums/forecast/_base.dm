@@ -46,3 +46,4 @@
 	last_time_of_day = time_of_day
 	var/list/range = temp_ranges[time_of_day]
 	current_ambient_temperature = rand(range[1], range[2])
+

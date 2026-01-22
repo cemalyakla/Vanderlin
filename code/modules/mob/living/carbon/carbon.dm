@@ -1284,6 +1284,8 @@
 		return FALSE
 	if(mouth?.muteinmouth)
 		return FALSE
+	if(HAS_TRAIT(src, TRAIT_GARROTED))
+		return FALSE
 	for(var/obj/item/grabbing/grab in grabbedby)
 		if(grab.sublimb_grabbed == BODY_ZONE_PRECISE_MOUTH)
 			return FALSE
