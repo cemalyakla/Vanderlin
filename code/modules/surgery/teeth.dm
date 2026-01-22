@@ -1,6 +1,6 @@
 /obj/item/tooth
 	name = "tooth"
-	desc = "A knocked-out tooth."
+	desc = "A tooth."
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "tooth1"
 	w_class = WEIGHT_CLASS_TINY

@@ -30,8 +30,6 @@
 
 	/// Number of teeth remaining for this mob
 	var/teeth_count = 32
-	/// Prevent multiple tooth checks in the same tick
-	var/last_teeth_knockout_tick = 0
 
 	var/obj/item/clothing/gloves = null //only used by humans
 	var/obj/item/clothing/shoes = null //only used by humans.

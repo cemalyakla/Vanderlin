@@ -147,7 +147,7 @@
 	if(zone_precise == BODY_ZONE_PRECISE_MOUTH && istype(owner, /mob/living/carbon))
 		var/mob/living/carbon/carbon_owner = owner
 		var/effective_teeth_damage = isnull(teeth_damage) ? dam : teeth_damage
-		carbon_owner.try_knockout_teeth(effective_teeth_damage, bclass, zone_precise, user)
+		carbon_owner.try_knockout_teeth(effective_teeth_damage, bclass, zone_precise)
 
 	var/do_crit = TRUE
 

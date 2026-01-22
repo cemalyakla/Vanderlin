@@ -22,14 +22,12 @@
 	if( (!mask_only && head && (head.flags_cover & HEADCOVERSMOUTH)) || (!head_only && wear_mask && (wear_mask.flags_cover & MASKCOVERSMOUTH)) )
 		return TRUE
 
-/mob/living/carbon/proc/try_knockout_teeth(damage, bclass, zone_precise, mob/living/attacker)
+/mob/living/carbon/proc/try_knockout_teeth(damage, bclass, zone_precise)
 	if(zone_precise != BODY_ZONE_PRECISE_MOUTH)
 		return
 	if(teeth_count <= 0)
 		return
 	if(!bclass || damage <= 0)
-		return
-	if(last_teeth_knockout_tick == world.time)
 		return
 
 	var/obj/item/bodypart/head/head_part = get_bodypart(BODY_ZONE_HEAD)
@@ -52,16 +50,28 @@
 	if(is_mouth_covered(mask_only = TRUE))
 		knock_chance *= 0.75
 
+	var/obj/item/mouth_item = mouth
+	if(mouth_item && !(mouth_item.item_flags & ABSTRACT) && mouth_item.muteinmouth && !mouth_item.spitoutmouth)
+		knock_chance *= 0.25
+
 	knock_chance = clamp(round(knock_chance), 1, 95)
 	if(!prob(knock_chance))
 		return
-
-	last_teeth_knockout_tick = world.time
 
 	var/weight_single = 80
 	var/weight_double = min(25, 15 + round(damage * 0.2))
 	var/weight_triple = min(10, 5 + round(damage * 0.05))
 	var/teeth_to_knock = pickweight(alist(1 = weight_single, 2 = weight_double, 3 = weight_triple))
+
+	knockout_teeth(teeth_to_knock)
+
+/mob/living/carbon/proc/knockout_teeth(teeth_to_knock)
+	if(teeth_to_knock <= 0 || teeth_count <= 0)
+		return 0
+
+	var/obj/item/bodypart/head/head_part = get_bodypart(BODY_ZONE_HEAD)
+	if(head_part?.skeletonized)
+		return 0
 
 	teeth_to_knock = min(teeth_to_knock, teeth_count)
 	teeth_count -= teeth_to_knock
@@ -77,6 +87,7 @@
 	else
 		visible_message(span_danger("[teeth_to_knock] teeth fly out of [src]'s mouth!"), \
 			span_danger("[teeth_to_knock] teeth fly out of my mouth!"), null, COMBAT_MESSAGE_RANGE)
+	return teeth_to_knock
 
 /mob/living/carbon/is_eyes_covered(check_glasses = TRUE, check_head = TRUE, check_mask = TRUE)
 	if(check_head && head && (head.flags_cover & HEADCOVERSEYES))
