@@ -61,7 +61,7 @@
 	var/weight_single = 80
 	var/weight_double = min(25, 15 + round(damage * 0.2))
 	var/weight_triple = min(10, 5 + round(damage * 0.05))
-	var/teeth_to_knock = pickweight(list(1 = weight_single, 2 = weight_double, 3 = weight_triple))
+	var/teeth_to_knock = pickweight(alist(1 = weight_single, 2 = weight_double, 3 = weight_triple))
 
 	teeth_to_knock = min(teeth_to_knock, teeth_count)
 	teeth_count -= teeth_to_knock
