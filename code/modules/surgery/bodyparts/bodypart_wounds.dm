@@ -137,12 +137,17 @@
 	return bleed_rate
 
 /// Called after a bodypart is attacked so that wounds and critical effects can be applied
-/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, reduce_crit = 0)
+/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, reduce_crit = 0, teeth_damage = null)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return FALSE
 
 	if(dam < 5)
 		return
+
+	if(zone_precise == BODY_ZONE_PRECISE_MOUTH && istype(owner, /mob/living/carbon))
+		var/mob/living/carbon/carbon_owner = owner
+		var/effective_teeth_damage = isnull(teeth_damage) ? dam : teeth_damage
+		carbon_owner.try_knockout_teeth(effective_teeth_damage, bclass, zone_precise, user)
 
 	var/do_crit = TRUE
 

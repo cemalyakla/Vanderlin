@@ -197,7 +197,7 @@
 						var/throwee = null
 						if(throwingdatum)
 							throwee = isliving(throwingdatum.thrower) ? throwingdatum.thrower : null
-						affecting.bodypart_attacked_by(I.thrown_bclass, I.throwforce, throwee, affecting.body_zone, crit_message = TRUE)
+						affecting.bodypart_attacked_by(I.thrown_bclass, I.throwforce, throwee, affecting.body_zone, crit_message = TRUE, teeth_damage = max(0, I.throwforce - armor))
 					I.do_special_attack_effect(I.thrownby, affecting, null, src, zone, thrown = TRUE)
 				else
 					simple_woundcritroll(I.thrown_bclass, I.throwforce, null, zone, crit_message = TRUE)
