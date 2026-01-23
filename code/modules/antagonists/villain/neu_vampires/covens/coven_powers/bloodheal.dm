@@ -60,19 +60,27 @@
 			var/datum/wound/wound = owner.get_wounds()[i]
 			wound.heal_wound(500 * level)
 
-	// Brain damage healing (only at higher levels)
-	if(level >= 4)
-		var/obj/item/organ/brain/brain = owner.getorganslot(ORGAN_SLOT_BRAIN)
-		if(brain)
-			brain.applyOrganDamage(-HEAL_BASHING_LETHAL * (level * 0.5))
+	// Organ damage healing (all internal organs)
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		var/total_organ_heal = HEAL_AGGRAVATED * level
+		if(total_organ_heal > 0 && length(C.internal_organs))
+			var/list/damaged_organs = list()
+			for(var/obj/item/organ/organ as anything in C.internal_organs)
+				if(organ.damage > 0)
+					damaged_organs += organ
+			var/remaining = total_organ_heal
+			for(var/obj/item/organ/organ as anything in damaged_organs)
+				if(remaining <= 0)
+					break
+				var/heal_amount = min(remaining, organ.damage)
+				organ.applyOrganDamage(-heal_amount)
+				remaining -= heal_amount
 
-	// Eye damage healing (only at higher levels)
+	// Eye clarity recovery (only at higher levels)
 	if(level >= 5)
-		var/obj/item/organ/eyes/eyes = owner.getorganslot(ORGAN_SLOT_EYES)
-		if(eyes)
-			eyes.applyOrganDamage(-HEAL_BASHING_LETHAL * (level * 0.5))
-			owner.adjust_blindness(-HEAL_AGGRAVATED * (level * 0.5))
-			owner.adjust_eye_blur(-HEAL_AGGRAVATED * (level) SECONDS)
+		owner.adjust_blindness(-HEAL_AGGRAVATED * (level * 0.5))
+		owner.adjust_eye_blur(-HEAL_AGGRAVATED * (level) SECONDS)
 
 	// Masquerade violation check
 	if(level >= 3)
