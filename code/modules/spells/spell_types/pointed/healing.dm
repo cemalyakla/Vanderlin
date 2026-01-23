@@ -22,6 +22,8 @@
 	var/base_healing = 25
 	/// Wound healing modifier
 	var/wound_modifier = 0.25
+	/// Organ healing modifier (total pool based on amount_healed)
+	var/organ_modifier = 0.25
 	/// Blood healing amount
 	var/blood_restoration = 0
 	/// Stuns undead
@@ -215,6 +217,20 @@
 		affecting.heal_damage(amount_healed, amount_healed)
 		affecting.heal_wounds(amount_healed * wound_modifier)
 		C.update_damage_overlays()
+	if(organ_modifier > 0)
+		var/total_organ_heal = amount_healed * organ_modifier
+		if(total_organ_heal > 0 && length(C.internal_organs))
+			var/list/damaged_organs = list()
+			for(var/obj/item/organ/organ as anything in C.internal_organs)
+				if(organ.damage > 0)
+					damaged_organs += organ
+			var/remaining = total_organ_heal
+			for(var/obj/item/organ/organ as anything in damaged_organs)
+				if(remaining <= 0)
+					break
+				var/heal_amount = min(remaining, organ.damage)
+				organ.applyOrganDamage(-heal_amount)
+				remaining -= heal_amount
 
 /datum/action/cooldown/spell/healing/profane
 	name = "Corrupt Lesser Miracle"
@@ -236,6 +252,7 @@
 
 	base_healing = 50
 	wound_modifier = 0.5
+	organ_modifier = 0.5
 	blood_restoration = BLOOD_VOLUME_SURVIVE
 	stun_undead = TRUE
 
