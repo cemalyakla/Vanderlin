@@ -198,7 +198,7 @@
 /mob/living/carbon/heal_overall_damage(brute = 0, burn = 0, required_status, updating_health = TRUE)
 	. = FALSE
 
-	var/list/obj/item/bodypart/parts = get_damaged_bodyparts(brute, burn, stamina, required_status)
+	var/list/obj/item/bodypart/parts = get_damaged_bodyparts(brute, burn, required_status)
 	var/update = NONE
 	while(length(parts) && (brute > 0 || burn > 0))
 		var/obj/item/bodypart/picked = pick(parts)
