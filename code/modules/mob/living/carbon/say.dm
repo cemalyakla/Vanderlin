@@ -25,3 +25,13 @@
 		. = T.could_speak_in_language(dt)
 	else
 		. = !(initial(dt.flags) & TONGUE_REQUIRED)
+
+/mob/living/carbon/treat_message(message)
+	. = ..()
+	if(!.)
+		return
+	// Apply lisp effect for missing teeth
+	var/missing_teeth = 32 - teeth_count
+	if(missing_teeth > 0)
+		. = toothless_speech(., missing_teeth)
+

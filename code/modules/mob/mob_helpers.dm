@@ -357,6 +357,93 @@
 		message = stutter(message)
 	return message
 
+///Applies a lisp effect for missing teeth - more teeth missing = worse lisp
+/proc/toothless_speech(message, missing_teeth)
+	if(missing_teeth <= 0)
+		return message
+	// Calculate effect probability based on missing teeth (1-32 teeth possible)
+	// Few teeth missing = mild effect, most/all teeth missing = severe effect
+	var/effect_chance = clamp(missing_teeth * 3, 5, 95)
+	var/severe = missing_teeth >= 16 // Half or more teeth missing = severe
+
+	var/phrase = html_decode(message)
+	var/leng = length(phrase)
+	var/newphrase = ""
+	var/i = 1
+
+	while(i <= leng)
+		var/letter = copytext_char(phrase, i, i + 1)
+		var/lower_letter = lowertext(letter)
+		var/next_letter = ""
+		if(i + 1 <= leng)
+			next_letter = lowertext(copytext_char(phrase, i + 1, i + 2))
+
+		// Check for digraphs first
+		if(lower_letter == "t" && next_letter == "h")
+			// "th" sounds are hard without front teeth
+			if(prob(effect_chance))
+				newphrase += "f"
+				i += 2
+				continue
+		else if(lower_letter == "s" && next_letter == "h")
+			// "sh" becomes "th" or slurred
+			if(prob(effect_chance))
+				newphrase += "th"
+				i += 2
+				continue
+
+		// Single letter replacements
+		if(prob(effect_chance))
+			switch(lower_letter)
+				if("s")
+					// S sounds become lispy "th"
+					if(letter == "S")
+						newphrase += "TH"
+					else
+						newphrase += "th"
+					i++
+					continue
+				if("z")
+					// Z sounds become "th" as well
+					if(letter == "Z")
+						newphrase += "TH"
+					else
+						newphrase += "th"
+					i++
+					continue
+				if("c")
+					// Soft C (before e, i) becomes "th"
+					if(next_letter in list("e", "i"))
+						if(letter == "C")
+							newphrase += "TH"
+						else
+							newphrase += "th"
+						i++
+						continue
+				if("f")
+					// F can become slurred
+					if(severe && prob(30))
+						if(letter == "F")
+							newphrase += "PH"
+						else
+							newphrase += "ph"
+						i++
+						continue
+				if("v")
+					// V becomes "w" when severe
+					if(severe && prob(40))
+						if(letter == "V")
+							newphrase += "W"
+						else
+							newphrase += "w"
+						i++
+						continue
+
+		newphrase += letter
+		i++
+
+	return newphrase
+
 /**
  * Turn text into complete gibberish!
  *

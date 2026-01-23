@@ -42,10 +42,10 @@
 	if(is_mouth_covered(head_only = TRUE))
 		return
 
-	var/knock_chance = clamp((damage - 5) * 1.25, 5, 30)
+	var/knock_chance = clamp((damage) * 1.5, 5, 40)
 
 	if(body_position == LYING_DOWN)
-		knock_chance *= 1.5
+		knock_chance *= 2
 
 	if(is_mouth_covered(mask_only = TRUE))
 		knock_chance *= 0.75
@@ -76,11 +76,19 @@
 	teeth_to_knock = min(teeth_to_knock, teeth_count)
 	teeth_count -= teeth_to_knock
 
-	var/turf/drop_turf = get_turf(src)
-	if(drop_turf)
+	var/turf/center_turf = get_turf(src)
+	if(center_turf)
+		var/list/adjacent_turfs = list()
+		for(var/turf/adjacent_turf in get_adjacent_open_turfs(src))
+			adjacent_turfs += adjacent_turf
 		for(var/i in 1 to teeth_to_knock)
-			new /obj/item/tooth(drop_turf)
+			var/obj/item/tooth/new_tooth = new /obj/item/tooth(center_turf)
+			// Throw tooth to a random adjacent turf (or stay on center if no adjacent turfs)
+			if(length(adjacent_turfs))
+				var/turf/target_turf = pick(adjacent_turfs)
+				new_tooth.throw_at(target_turf, 1, 1, src, spin = TRUE)
 
+	playsound(src, pick('sound/combat/hits/punch/hard_fist (1).ogg', 'sound/combat/hits/punch/hard_fist (2).ogg', 'sound/combat/hits/punch/hard_fist (3).ogg'), 80, TRUE)
 	if(teeth_to_knock == 1)
 		visible_message(span_danger("A tooth flies out of [src]'s mouth!"), \
 			span_danger("A tooth flies out of my mouth!"), null, COMBAT_MESSAGE_RANGE)

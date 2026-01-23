@@ -190,7 +190,7 @@
 /obj/item/organ/brain/check_damage_thresholds(mob/M)
 	. = ..()
 	var/mob/living/L = M
-	if(L && damage > 75 && fallenIntoComa == FALSE)
+	if(L && damage > 75 && fallenIntoComa == FALSE && L.stat != DEAD && L.stat == CONSCIOUS)
 		fallenIntoComa = TRUE
 		L.visible_message("<span class='danger'>[L] falls into a deep coma, their eyes shut off completely. They will not awaken for a while.</span>", \
 								"<span class='userdanger'>My eyes shut off completely. It feels as if everything is going to be better...</span>")

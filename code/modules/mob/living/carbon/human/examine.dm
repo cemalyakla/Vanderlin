@@ -515,6 +515,24 @@
 			if(stun_absorption[i]["end_time"] > world.time && stun_absorption[i]["examine_message"])
 				msg += "[m1][stun_absorption[i]["examine_message"]]"
 
+	//Missing teeth
+	var/missing_teeth = 32 - teeth_count
+	if(missing_teeth > 0)
+		var/teeth_msg
+		switch(missing_teeth)
+			if(1 to 3)
+				teeth_msg = "[m1] missing a few teeth."
+			if(4 to 8)
+				teeth_msg = "[m1] missing several teeth."
+			if(9 to 16)
+				teeth_msg = "[m1] missing many teeth."
+			if(17 to 31)
+				teeth_msg = "[m1] missing most of [m2] teeth."
+			if(32 to INFINITY)
+				teeth_msg = "[m3] no teeth at all."
+		if(teeth_msg)
+			msg += teeth_msg
+
 	if(!appears_dead)
 		if(!skipface)
 			//Disgust

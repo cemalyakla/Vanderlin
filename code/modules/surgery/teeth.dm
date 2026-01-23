@@ -5,7 +5,7 @@
 	icon_state = "tooth1"
 	w_class = WEIGHT_CLASS_TINY
 
-	var/static/list/tooth_states = list("teeth1", "teeth2", "tooth1", "tooth2")
+	var/static/list/tooth_states = list("teeth1", "teeth2")
 
 /obj/item/tooth/Initialize()
 	. = ..()
