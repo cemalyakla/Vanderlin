@@ -337,6 +337,9 @@
 		return
 
 	if(href_list["yes_to_class_select"]) // Send the data over and wrap it up.
+		if(!linked_client || !linked_client.mob)
+			qdel(src)
+			return
 		SSrole_class_handler.finish_class_handler(linked_client.mob, cur_picked_class, src, special_selected)
 		return
 
