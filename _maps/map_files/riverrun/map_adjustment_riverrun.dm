@@ -48,7 +48,6 @@
 		/datum/job/matron,
 		/datum/job/town_elder,
 		/datum/job/soilchild,
-		/datum/job/magician,
 		/datum/job/mageapprentice,
 		/datum/job/squire,
 		/datum/job/gaffer,
