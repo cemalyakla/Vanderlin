@@ -1,9 +1,9 @@
 /datum/job/magician
-	title = "Court Magician"
-	tutorial = "A seer of dreams, a reader of stars, and a master of the arcyne. Along a band of unlikely heroes, you shaped the fate of these lands.\
-	Now the days of adventure are gone, replaced by dusty tomes and whispered prophecies. The ruler's coin funds your studies,\
-	but debts both magical and mortal are never so easily repaid. With age comes wisdom, but also the creeping dread that your greatest spell work\
-	may already be behind you."
+	title = "Court Sorcerer"
+	tutorial = "Irmakdibi lordunun çocukluktan beri arkadaşısın.\
+	Fiziksel anlamda güçlü olmayabilirsin, ama gerçek gücün kitapların ve mektupların satır aralarında saklandığını anlayacak kadar zekisin.\
+	Lord'un sana olan sevgi ve saygısından ötürü seni soyluluğa yükseltti, tabii bir bedel karşılığında.\
+	Artık hayatını sarayın kütüphanesini düzenleyerek ve Lord'una yanlış yapanları cezalandırarak geçiriyorsun."
 	department_flag = NOBLEMEN
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_MAGICIAN
@@ -16,18 +16,16 @@
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/magician
-	give_bank_account = 120
+	give_bank_account = 60
 	cmode_music = 'sound/music/cmode/nobility/CombatCourtMagician.ogg'
-	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
+	allowed_patrons = list(/datum/patron/divine/noc)
 	magic_user = TRUE
-	spell_points = 17
-	attunements_max = 6
-	attunements_min = 4
+	spell_points = 10
+	attunements_max = 3
+	attunements_min = 1
 	job_bitflag = BITFLAG_ROYALTY
 
 	spells = list(
-		/datum/action/cooldown/spell/aoe/knock,
-		/datum/action/cooldown/spell/undirected/jaunt/ethereal_jaunt,
 		/datum/action/cooldown/spell/undirected/touch/prestidigitation,
 	)
 
@@ -40,16 +38,16 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = -2,
+		STATKEY_STR = -3,
 		STATKEY_INT = 5,
-		STATKEY_CON = -2,
-		STATKEY_SPD = -2
+		STATKEY_CON = -3,
+		STATKEY_SPD = -3
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 6,
+		/datum/skill/misc/reading = 5,
 		/datum/skill/misc/riding = 2,
-		/datum/skill/magic/arcane = 5,
+		/datum/skill/magic/arcane = 4,
 		/datum/skill/combat/wrestling = 1,
 		/datum/skill/combat/unarmed = 1,
 		/datum/skill/misc/athletics = 2,
