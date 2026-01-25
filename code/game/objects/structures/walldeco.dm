@@ -458,7 +458,7 @@
 /obj/effect/decal/shadow_floor
 	name = ""
 	desc = ""
-	icon = 'decoration.dmi'
+	icon = 'icons/roguetown/misc/decoration.dmi'
 	icon_state = "shadow_floor"
 	mouse_opacity = 0
 
