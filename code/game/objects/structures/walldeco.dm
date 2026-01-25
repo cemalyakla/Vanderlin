@@ -217,6 +217,11 @@
 	desc = "A flag bearing the logo of the Maker's Guild."
 	icon_state = "mason"
 
+/obj/structure/fluff/walldeco/riverrun
+	name = "Riverrun Banner"
+	desc = "The banner of Riverrun. A golden trout on a rushing river. It's a symbol for their pride and honor."
+	icon_state = "riverrun"
+
 /obj/structure/fluff/walldeco/maidendrape
 	name = "black drape"
 	desc = "A drape of fabric."
@@ -453,7 +458,7 @@
 /obj/effect/decal/shadow_floor
 	name = ""
 	desc = ""
-	icon = 'icons/roguetown/misc/decoration.dmi'
+	icon = 'decoration.dmi'
 	icon_state = "shadow_floor"
 	mouse_opacity = 0
 

@@ -52,6 +52,7 @@
 		/datum/job/squire,
 		/datum/job/gaffer,
 		/datum/job/templar,
+		/datum/job/prisoner,
 		/datum/job/clinicapprentice,
 		/datum/job/cook
 	)
@@ -65,7 +66,6 @@
 		/datum/job/royalknight = 1,
 		/datum/job/prince = 1,
 		/datum/job/monk = 1,
-		/datum/job/prisoner = 1,
 		/datum/job/mercenary = 2,
 		/datum/job/vagrant = 2,
 		/datum/job/bapprentice = 1,

@@ -24,6 +24,7 @@
 		/datum/skill/combat/knives = 1,
 		/datum/skill/combat/wrestling = 2,
 		/datum/skill/combat/unarmed = 2,
+		/datum/skill/combat/firearms = 3,
 		/datum/skill/misc/athletics = 3,
 		/datum/skill/misc/swimming = 3,
 		/datum/skill/misc/reading = 3,
@@ -62,6 +63,9 @@
 		/obj/item/reagent_containers/powder/spice = 8,
 		/obj/item/reagent_containers/powder/ozium = 8,
 		/obj/item/reagent_containers/powder/moondust = 8,
+		/obj/item/reagent_containers/glass/bottle/aflask = 1,
+		/obj/item/gun/ballistic/revolver/grenadelauncher/pistol = 1,
+		/obj/item/storage/belt/pouch/bullets = 1,
 	)
 
 /datum/migrant_wave/sweetshare

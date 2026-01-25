@@ -84,6 +84,14 @@
 				P.handle_drop()
 			organ_damage = min(organ_damage, actual_damage)
 			
+			// STACON-based organ damage reduction
+			// STACON 8 = baseline (0% change)
+			// Below 8 = more damage, above 8 = less damage
+			// 5% per point, max 60% reduction at STACON 20
+			var/stacon_modifier = 1 - ((STACON - 8) * 0.05)
+			stacon_modifier = clamp(stacon_modifier, 0.40, 1.35)
+			organ_damage = organ_damage * stacon_modifier
+			
 			switch(limb_hit)
 				if(BODY_ZONE_HEAD)
 					// Headshot landed - lethal brain damage

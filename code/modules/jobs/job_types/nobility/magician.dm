@@ -50,6 +50,7 @@
 		/datum/skill/magic/arcane = 4,
 		/datum/skill/combat/wrestling = 1,
 		/datum/skill/combat/unarmed = 1,
+		/datum/skill/misc/medicine = 4,
 		/datum/skill/misc/athletics = 2,
 		/datum/skill/combat/polearms = 3,
 		/datum/skill/craft/alchemy = 3,

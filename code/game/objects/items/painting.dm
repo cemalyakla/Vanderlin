@@ -37,7 +37,7 @@
 /obj/structure/fluff/walldeco/painting
 	name = "painting"
 	desc = "The artist is unknown. The subject is unknown. Maybe a memorial to a corpse that was trampled on the trail to this reality."
-	icon = 'icons/roguetown/misc/decoration.dmi'
+	icon = 'decoration.dmi'
 	icon_state = "painting_deployed"
 	anchored = TRUE
 	density = FALSE
