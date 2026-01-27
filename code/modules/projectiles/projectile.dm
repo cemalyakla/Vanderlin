@@ -139,6 +139,14 @@
 	/// If the projectile is arcing, it will try to ignore mobs except for the direct target.
 	/// It also has seperate range behaviour where it will Zfall onto targets.
 	var/arcshot = FALSE
+	/// Arcshot fired upward; snaps to the upper z at fire time.
+	var/arcshot_up = FALSE
+	/// Number of z-levels traveled upward for arcshot.
+	var/arcshot_up_z_delta = 0
+	/// Starting turf on the upper z for arcshot_up.
+	var/turf/arcshot_start_turf = null
+	/// Optional override for the originally aimed target (used for arcshot_up lock failure).
+	var/turf/arcshot_override_target_turf = null
 
 	var/accuracy = 40 //How likely the projectile will hit its intended target area. Decreased from 65 - skill is now essential for accurate shots.
 	var/bonus_accuracy = 0 //bonus accuracy that cannot be affected by range drop off.
@@ -795,18 +803,24 @@
 
 //Spread is FORCED!
 /obj/projectile/proc/preparePixelProjectile(atom/target, atom/source, params, spread = 0)
-	var/turf/curloc = get_turf(source)
+	var/turf/starting_turf = get_turf(source)
+	var/turf/curloc = starting_turf
 	var/turf/targloc = get_turf(target)
-	if(targloc && curloc)
+	if(arcshot_up && arcshot_start_turf)
+		starting_turf = arcshot_start_turf
+		curloc = starting_turf
+	else if(targloc && curloc)
 		if(targloc.z > curloc.z)
 			var/turf/above = GET_TURF_ABOVE(curloc)
 			if(istype(above, /turf/open/transparent/openspace))
 				curloc = above
 	trajectory_ignore_forcemove = TRUE
-	forceMove(get_turf(source))
+	forceMove(starting_turf)
 	trajectory_ignore_forcemove = FALSE
-	starting = get_turf(source)
+	starting = starting_turf
 	original = target
+	if(arcshot_override_target_turf)
+		original = arcshot_override_target_turf
 	if(targloc || !params)
 		yo = targloc.y - curloc.y
 		xo = targloc.x - curloc.x
