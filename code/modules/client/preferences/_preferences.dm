@@ -2446,9 +2446,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 /datum/preferences/proc/set_loadout(mob/user, loadout_number, datum/loadout_item/loadout)
 	if(!loadout)
 		return
-	if(!donator)
-		to_chat(user, span_danger("This is a donator feature!"))
-		return FALSE
+	//if(!donator)
+	//	to_chat(user, span_danger("This is a donator feature!"))
+	//	return FALSE
 
 	if(loadout == "None")
 		vars["loadout[loadout]"] = null

@@ -1,9 +1,9 @@
 /datum/job/royalknight
 	title = "Royal Knight"
-	tutorial = "You are a knight of the royal family, elevated by your skill and steadfast devotion. \
-	Sworn to protect the royal family, you stand as their shield, upholding their rule with steel and sacrifice. \
-	Yet service is not without its trials, and your loyalty will be tested in ways both seen and unseen. \
-	In the end, duty is a path you must walk carefully."
+	tutorial = "Kılıcını ve hayatını Irmakdibi lorduna kutsal yeminle atamış bir şövalyesin. \
+	Lordunun dileklerini yerine getirir, onun rejmini gerek çeliğinle, gerek cesaretinle güçlendirirsin. \
+	Tabii bu servisinin görünmeyen bedelleri var, aldığın masum canlar peşini bırakmıyor. \
+	Günün sonunda, Lordunun adını andığı ve sana baktığı o an, her şeye değer."
 	department_flag = GARRISON
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_ROYALKNIGHT
@@ -41,7 +41,7 @@
 		/datum/skill/combat/swords = 4,
 		/datum/skill/combat/wrestling = 4,
 		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/shields = 3,
+		/datum/skill/combat/shields = 4,
 		/datum/skill/combat/polearms = 3,
 		/datum/skill/combat/whipsflails = 3,
 		/datum/skill/combat/axesmaces = 3,
@@ -115,28 +115,28 @@
 	gloves = /obj/item/clothing/gloves/plate
 	shoes = /obj/item/clothing/shoes/boots/armor
 
-/datum/job/advclass/royalknight/steam
-	title = "Steam Knight"
-	tutorial = "The pinnacle of Vanderlin's steam technology. \
-	Start with a set of Steam Armor that requires steam to function. \
-	The suit is powerful when powered but will slow you down when not \
-	learning how to use it has cost you precious time \
-	you could have spent learning to use other weapons."
-	outfit = /datum/outfit/royalknight/steam
-	category_tags = list(CTAG_ROYALKNIGHT)
+//datum/job/advclass/royalknight/steam
+//	title = "Steam Knight"
+//	tutorial = "The pinnacle of Vanderlin's steam technology. \
+//	Start with a set of Steam Armor that requires steam to function. \
+//	The suit is powerful when powered but will slow you down when not \
+//	learning how to use it has cost you precious time \
+//	you could have spent learning to use other weapons."
+//	outfit = /datum/outfit/royalknight/steam
+//	category_tags = list(CTAG_ROYALKNIGHT)
 
-/datum/job/advclass/royalknight/steam/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
-	spawned.adjust_skillrank(/datum/skill/combat/swords, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/unarmed, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/shields, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/wrestling, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/polearms, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/whipsflails, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/axesmaces, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/bows, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/crossbows, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE)
+///datum/job/advclass/royalknight/steam/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+//	. = ..()
+//	spawned.adjust_skillrank(/datum/skill/combat/swords, -1, TRUE)
+//	spawned.adjust_skillrank(/datum/skill/combat/unarmed, -1, TRUE)
+//	spawned.adjust_skillrank(/datum/skill/combat/shields, -1, TRUE)
+//	spawned.adjust_skillrank(/datum/skill/combat/wrestling, -1, TRUE)
+//	spawned.adjust_skillrank(/datum/skill/combat/polearms, -1, TRUE)
+//	spawned.adjust_skillrank(/datum/skill/combat/whipsflails, -1, TRUE)
+//	spawned.adjust_skillrank(/datum/skill/combat/axesmaces, -1, TRUE)
+//	spawned.adjust_skillrank(/datum/skill/combat/bows, -1, TRUE)
+//	spawned.adjust_skillrank(/datum/skill/combat/crossbows, -1, TRUE)
+//	spawned.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE)
 
 /datum/outfit/royalknight/steam
 	name = "Steam Knight"
@@ -180,6 +180,6 @@
 
 	if(grant_shield)
 		H.adjust_skillrank(/datum/skill/combat/shields, 1)
-		var/obj/item/weapon/shield/tower/metal/shield = new /obj/item/weapon/shield/tower/metal()
+		var/obj/item/weapon/shield/heater/shield = new /obj/item/weapon/shield/heater()
 		if(!H.equip_to_appropriate_slot(shield))
 			qdel(shield)

@@ -30,15 +30,15 @@
 
 	// Apply trait and position modifiers
 	if(HAS_TRAIT(src, TRAIT_GUIDANCE))
-		prob2defend += 10
+		prob2defend += 15
 	if(HAS_TRAIT(user, TRAIT_GUIDANCE))
-		prob2defend -= 10
+		prob2defend -= 15
 
 	if(body_position == LYING_DOWN)
-		prob2defend *= 0.8
+		prob2defend *= 0.6
 
 	// Clamp and roll
-	prob2defend = clamp(prob2defend, 5, 95)
+	prob2defend = clamp(prob2defend, 5, 100)
 
 	var/attacker_dualwielding = user.dual_wielding_check()
 	var/defender_dualwielding = dual_wielding_check()
@@ -246,17 +246,17 @@
 	var/dam2take = round((get_complex_damage(AB, user, used_weapon.blade_dulling)/2), 1)
 	if(dam2take)
 		used_weapon.take_damage(max(dam2take, 1), BRUTE, used_weapon.damage_type)
-	
+
 	// Axe breaks the shield, simple as that
 	if(istype(used_weapon, /obj/item/weapon/shield) && intenty?.blade_class == BCLASS_CHOP)
 		var/chop_bonus_damage = max(dam2take * (user.STASTR - 8) / 2, dam2take * 0.5)//this might be overtuned, change if needed
 		used_weapon.take_damage(max(chop_bonus_damage, 1), BRUTE, "blunt")
-		
+
 		// Stagger that ho
-		var/stagger_chance = (user.STASTR - 8) * 10 // 0% at 8 STR, 10% per point above
+		var/stagger_chance = clamp(H.STASTR - user.STASTR, 0, 10) * 10 // 0% at 8 STR, 10% per point above
 		if(prob(stagger_chance))
 			src.visible_message("<span class='danger'>[user]'s axe blow staggers [src]!</span>")
-			src.Stun(10)
+			src.Stun(20)
 			playsound(src, 'sound/combat/shieldbash_wood.ogg', 100, FALSE)
 
 /**

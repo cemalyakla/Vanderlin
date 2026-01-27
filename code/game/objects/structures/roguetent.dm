@@ -7,7 +7,7 @@
 	layer = TABLE_LAYER
 	density = TRUE
 	anchored = TRUE
-	opacity = FALSE
+	opacity = TRUE
 	weatherproof = TRUE
 	max_integrity = 100
 	var/base_state = "tent_door"
@@ -54,4 +54,5 @@
 
 // Preopen version, so visuals and opacity matches up round start.
 /obj/structure/roguetent/preopen
+	opacity = FALSE
 	density = FALSE

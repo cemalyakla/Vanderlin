@@ -61,9 +61,10 @@
 			ADD_TRAIT(spawned, TRAIT_FORAGER, TRAIT_GENERIC)
 			ADD_TRAIT(spawned, TRAIT_BRUSHWALK, TRAIT_GENERIC)
 			spawned.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/leather/volfhelm, ITEM_SLOT_HEAD, TRUE)
-			spawned.equip_to_slot_or_del(new /obj/item/ammo_holder/quiver/arrows, ITEM_SLOT_BELT_L, TRUE)
+			spawned.equip_to_slot_or_del(new /obj/item/ammo_holder/quiver/arrows, ITEM_SLOT_BELT_R, TRUE)
 			spawned.equip_to_slot_or_del(new /obj/item/restraints/legcuffs/beartrap, ITEM_SLOT_BACKPACK, TRUE)
 			spawned.equip_to_slot_or_del(new /obj/item/restraints/legcuffs/beartrap, ITEM_SLOT_BACKPACK, TRUE)
+			spawned.equip_to_slot_or_del(new /obj/item/lockpickring/mundane, ITEM_SLOT_BACKPACK, TRUE)
 
 /datum/outfit/bandit/knave
 	name = "Knave (Bandit)"

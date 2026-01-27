@@ -790,35 +790,35 @@
 			if(contract.special_instructions)
 				html += {"
 							<div class="contract-instructions">
-								<strong>Instructions:</strong> [contract.special_instructions]
+								<strong>Instructions:</strong> <strong>[contract.special_instructions]</strong>
 							</div>
 				"}
 
 			if(requires_location && contract.delivery_location)
 				html += {"
 							<div class="contract-instructions">
-								<strong>Location:</strong> [contract.delivery_location]
+								<strong>Location:</strong> <strong>[contract.delivery_location]</strong>
 							</div>
 				"}
 
 			if(contract.contract_type == "smuggling" && contract.contraband_type)
 				html += {"
 							<div class="contract-instructions">
-								<strong>Contraband:</strong> [contract.contraband_type]
+								<strong>Contraband:</strong> <strong>[contract.contraband_type]</strong>
 							</div>
 				"}
 
 			if(requires_location && contract.waiting_for_area_completion)
 				html += {"
 							<div class="waiting-indicator">
-								Awaiting completion at [contract.delivery_location]...
+								Awaiting completion at <strong>[contract.delivery_location]</strong>...
 							</div>
 				"}
 
 			if(contract.contraband_spawned && !contract.completed)
 				html += {"
 							<div class="contraband-spawned">
-								Goods ready at [contract.spawn_location]
+								Goods ready at <strong>[contract.spawn_location]</strong>
 							</div>
 				"}
 

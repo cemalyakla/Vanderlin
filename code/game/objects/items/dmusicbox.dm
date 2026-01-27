@@ -1,7 +1,7 @@
 
 /datum/looping_sound/dmusloop
 	mid_sounds = list()
-	mid_length = 2400
+	mid_length = 6000
 	volume = 100
 	falloff_exponent = 2
 	extra_range = 5
