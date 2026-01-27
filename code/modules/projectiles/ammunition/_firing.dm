@@ -27,6 +27,40 @@
 	BB.arcshot = user?.used_intent?.arc_check()
 	if(BB.arcshot)
 		BB.range = get_dist_euclidian(target, user)
+		if(user && target)
+			var/turf/user_turf = get_turf(user)
+			var/turf/target_turf = get_turf(target)
+			if(user_turf && target_turf && target_turf.z > user_turf.z)
+				var/turf/below = user_turf
+				var/turf/step = GET_TURF_ABOVE(below)
+				var/levels = 0
+				var/clear_column = TRUE
+				while(step && step.z <= target_turf.z)
+					if(!istype(step, /turf/open/transparent/openspace))
+						clear_column = FALSE
+						break
+					if(!step.zPassIn(BB, UP, below))
+						clear_column = FALSE
+						break
+					var/turf/next = GET_TURF_ABOVE(step)
+					if(step.z < target_turf.z)
+						if(!next || !step.zPassOut(BB, UP, next))
+							clear_column = FALSE
+							break
+					levels++
+					below = step
+					step = next
+				if(clear_column && below && below.z == target_turf.z)
+					BB.arcshot_up = TRUE
+					BB.arcshot_up_z_delta = levels
+					BB.arcshot_start_turf = below
+					if(levels > 0)
+						BB.accuracy = max(0, BB.accuracy - (10 * levels))
+						if(isliving(target))
+							var/lock_chance = max(35, 85 - (15 * (levels - 1)))
+							if(!prob(lock_chance))
+								BB.arcshot_override_target_turf = target_turf
+								BB.can_hit_turfs = TRUE
 	BB.fired_from = fired_from
 	if (zone_override)
 		BB.def_zone = zone_override
